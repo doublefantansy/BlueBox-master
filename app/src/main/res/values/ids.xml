@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<resources>
+    <item name="left_back" type="id" />
+    <item name="tv_title" type="id" />
+    <item name="right_title" type="id" />
+    <item type="id" name="linearlayout_tab"/>
+    <item type="id" name="viewpager_tab"/>
+    <item type="id" name="divide_tab"/>
+</resources>

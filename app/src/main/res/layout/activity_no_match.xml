@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_44"
+        android:background="@color/mainColor">
+
+
+        <TextView
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:padding="@dimen/dp_10"
+            android:text="取消"
+            android:textColor="@color/color_fff"
+            android:textSize="@dimen/text_size_16"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+
+    <ImageView
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="@dimen/dp_88"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_109"
+        android:src="@mipmap/ic_no_wifi" />
+
+
+    <TextView
+        style="@style/no_font_padding_text_view"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_56"
+        android:text="没有可以识别的蓝光宝盒，请重新进入Wi-Fi网络"
+        android:textColor="@color/color_999999"
+        android:textSize="@dimen/text_size_15" />
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_62"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_81"
+        android:gravity="center">
+
+        <!--<ImageView-->
+        <!--android:id="@+id/check_wifi"-->
+        <!--android:layout_width="@dimen/dp_41"-->
+        <!--android:layout_height="@dimen/dp_40"-->
+        <!--android:layout_marginLeft="@dimen/dp_5"-->
+        <!--android:src="@mipmap/ic_check_wifi" />-->
+
+        <!--<TextView-->
+        <!--style="@style/no_font_padding_text_view"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:text="检查网络"-->
+        <!--android:textColor="@color/color_666666"-->
+        <!--android:textSize="@dimen/text_size_13" />-->
+
+        <ImageView
+            android:id="@+id/refresh"
+            android:layout_width="@dimen/dp_41"
+            android:layout_height="@dimen/dp_40"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp_5"
+            android:src="@mipmap/ic_refresh" />
+
+        <TextView
+            style="@style/no_font_padding_text_view"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:text="刷新界面"
+            android:textColor="@color/color_666666"
+            android:textSize="@dimen/text_size_13" />
+
+    </RelativeLayout>
+
+</LinearLayout>

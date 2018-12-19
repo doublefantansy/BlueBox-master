@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <ImageView
+        android:layout_width="@dimen/dp_165"
+        android:layout_height="@dimen/dp_165"
+        android:src="@mipmap/meinv" />
+
+    <TextView
+        style="@style/no_font_padding_text_view"
+        android:layout_marginTop="@dimen/dp_12"
+        android:text="#北京"
+        android:textColor="@color/color_333"
+        android:textSize="@dimen/text_size_17" />
+
+    <TextView
+        style="@style/no_font_padding_text_view"
+        android:layout_marginTop="@dimen/dp_8"
+        android:text="55张"
+        android:textColor="@color/color_999999"
+        android:textSize="@dimen/text_size_15" />
+
+</LinearLayout>

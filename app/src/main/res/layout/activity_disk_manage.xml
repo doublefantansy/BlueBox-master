@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/item_title_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_43"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/disk_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_11"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="硬盘SSD"
+            android:textColor="@color/color_000"
+            android:textSize="@dimen/text_size_15" />
+
+
+        <TextView
+            android:id="@+id/disk_state"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/dp_12"
+            android:gravity="center_vertical"
+            android:text="已使用101.2G/250G"
+            android:textColor="@color/color_000"
+            android:textSize="@dimen/text_size_13" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/main_bg" />
+
+    <TextView
+        style="@style/no_font_padding_text_view"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_29"
+        android:text="剩余"
+        android:textColor="@color/color_000"
+        android:textSize="@dimen/text_size_18" />
+
+    <TextView
+        android:id="@+id/disk_reduce"
+        style="@style/no_font_padding_text_view"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_14"
+        android:text="148.8G"
+        android:textColor="@color/color_00a4ff"
+        android:textSize="@dimen/text_size_36" />
+
+    <TextView
+        android:id="@+id/disk_total"
+        style="@style/no_font_padding_text_view"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_67"
+        android:text="总容量250G"
+        android:textColor="@color/color_000"
+        android:textSize="@dimen/text_size_18" />
+
+
+    <com.languang.bluebox.coustomview.CustomPercentView
+        android:id="@+id/custom_percent_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_9"
+        android:layout_marginLeft="@dimen/dp_11"
+        android:layout_marginRight="@dimen/dp_11"
+        android:layout_marginTop="@dimen/dp_18" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_19">
+
+        <View
+            android:layout_width="@dimen/dp_10"
+            android:layout_height="@dimen/dp_10"
+            android:layout_marginLeft="@dimen/dp_11"
+            android:layout_marginTop="@dimen/dp_3"
+            android:background="@drawable/shape_system_circle" />
+
+
+        <TextView
+            style="@style/no_font_padding_text_view"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:text="系统"
+            android:textColor="@color/color_000"
+            android:textSize="@dimen/text_size_14" />
+
+
+        <View
+            android:layout_width="@dimen/dp_10"
+            android:layout_height="@dimen/dp_10"
+            android:layout_marginLeft="@dimen/dp_156"
+            android:layout_marginTop="@dimen/dp_3"
+            android:background="@drawable/shape_temporary_circle" />
+
+        <TextView
+            style="@style/no_font_padding_text_view"
+            android:layout_marginLeft="@dimen/dp_175"
+            android:text="临时缩略文件"
+            android:textColor="@color/color_000"
+            android:textSize="@dimen/text_size_14" />
+
+
+        <View
+            android:layout_width="@dimen/dp_10"
+            android:layout_height="@dimen/dp_10"
+            android:layout_marginLeft="@dimen/dp_11"
+            android:layout_marginTop="@dimen/dp_33"
+            android:background="@drawable/shape_storage_circle" />
+
+        <TextView
+            style="@style/no_font_padding_text_view"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:layout_marginTop="@dimen/dp_30"
+            android:text="图片片库索引"
+            android:textColor="@color/color_000"
+            android:textSize="@dimen/text_size_14" />
+
+        <View
+            android:layout_width="@dimen/dp_10"
+            android:layout_height="@dimen/dp_10"
+            android:layout_marginLeft="@dimen/dp_156"
+            android:layout_marginTop="@dimen/dp_33"
+            android:background="@drawable/shape_raw_circle" />
+
+        <TextView
+            style="@style/no_font_padding_text_view"
+            android:layout_marginLeft="@dimen/dp_175"
+            android:layout_marginTop="@dimen/dp_30"
+            android:text="待归档RAW文件"
+            android:textColor="@color/color_000"
+            android:textSize="@dimen/text_size_14" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_0"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/clear_cache"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_38"
+        android:layout_marginBottom="@dimen/dp_71"
+        android:layout_marginLeft="@dimen/dp_23"
+        android:layout_marginRight="@dimen/dp_23"
+        android:background="@mipmap/ic_clear_cache" />
+
+</LinearLayout>

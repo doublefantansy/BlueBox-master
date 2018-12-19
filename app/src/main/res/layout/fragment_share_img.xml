@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0"
+        android:layout_weight="1"
+        android:src="@mipmap/meinv" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0"
+        android:layout_weight="1" />
+
+
+    <com.languang.bluebox.coustomview.HorizontalListView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_75" />
+
+    <TextView
+        android:id="@+id/picture_state"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_44"
+        android:background="@color/color_cc000000"
+        android:gravity="center"
+        android:text="新标注--张照片、--个视频未光盘归档"
+        android:textColor="@color/color_fff"
+        android:textSize="@dimen/text_size_15" />
+
+
+    <ImageView
+        android:id="@+id/speak"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_109"
+        android:layout_marginBottom="@dimen/dp_4"
+        android:layout_marginLeft="@dimen/dp_7"
+        android:layout_marginRight="@dimen/dp_7"
+        android:layout_marginTop="@dimen/dp_6"
+        android:src="@mipmap/ic_speak"
+        android:visibility="gone" />
+</LinearLayout>

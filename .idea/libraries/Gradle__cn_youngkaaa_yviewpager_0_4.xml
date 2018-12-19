@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: cn.youngkaaa:yviewpager-0.4">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/yviewpager-0.4.aar/e887a6c0ebe46e71dc71ff1afd6b78d3/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/yviewpager-0.4.aar/e887a6c0ebe46e71dc71ff1afd6b78d3/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/cn.youngkaaa/yviewpager/0.4/aba759566e594e6d56c40b2b856bfc70c85bbee1/yviewpager-0.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

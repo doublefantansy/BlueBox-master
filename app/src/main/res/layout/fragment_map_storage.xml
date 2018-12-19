@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_44"
+        android:background="@color/mainColor">
+
+        <LinearLayout
+            android:id="@+id/item_title_left_layout"
+            android:layout_width="45dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dp_15">
+
+            <ImageView
+                android:id="@+id/item_title_back"
+                android:layout_width="@dimen/dp_15"
+                android:layout_height="@dimen/dp_20"
+                android:background="@mipmap/ic_left_back"
+                android:contentDescription="@string/app_name" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/item_title_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="设备"
+                android:textColor="@color/color_fff"
+                android:textSize="@dimen/dp_17" />
+
+            <TextView
+                android:id="@+id/item_title_small_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/app_name"
+                android:textColor="@color/color_333"
+                android:textSize="@dimen/dp_11"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/item_title_add_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dp_10">
+
+            <ImageView
+                android:id="@+id/add_iv"
+                android:layout_width="@dimen/dp_20"
+                android:layout_height="@dimen/dp_20"
+                android:layout_marginRight="@dimen/dp_15"
+                android:background="@mipmap/ic_more"
+                android:contentDescription="@string/app_name" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_29"
+        android:layout_marginLeft="@dimen/dp_76"
+        android:layout_marginRight="@dimen/dp_76"
+        android:layout_marginTop="@dimen/dp_19"
+        android:background="@drawable/bg_map_tab_layout"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_0.5">
+
+        <RadioButton
+            android:id="@+id/time_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/selector_time_tab"
+            android:button="@color/transparent"
+            android:gravity="center"
+            android:text="时间"
+            android:textColor="@drawable/selector_picture_tab_text_color"
+            android:textSize="@dimen/text_size_15" />
+
+        <RadioButton
+            android:id="@+id/address_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/selector_address_tab"
+            android:button="@color/transparent"
+            android:gravity="center"
+            android:text="地点"
+            android:textColor="@drawable/selector_picture_tab_text_color"
+            android:textSize="@dimen/text_size_15" />
+
+        <RadioButton
+            android:id="@+id/person_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/selector_person_tab"
+            android:button="@color/transparent"
+            android:gravity="center"
+            android:text="人物"
+            android:textColor="@drawable/selector_picture_tab_text_color"
+            android:textSize="@dimen/text_size_15" />
+
+    </RadioGroup>
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v4.view.ViewPager>
+
+
+</LinearLayout>

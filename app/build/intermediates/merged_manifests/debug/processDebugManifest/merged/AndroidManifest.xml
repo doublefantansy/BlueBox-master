@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.languang.bluebox"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="26" />
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 在SDCard中创建与删除文件权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+
+    <meta-data
+        android:name="android.support.VERSION"
+        android:value="25.3.1" />
+
+    <application
+        android:name="com.languang.bluebox.basework.BaseApplication"
+        android:allowBackup="true"
+        android:debuggable="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:testOnly="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+        <activity
+            android:name="com.languang.bluebox.activity.SplashActivity"
+            android:theme="@style/SplashTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- 登录界面（初始化wifi） -->
+        <activity
+            android:name="com.languang.bluebox.activity.login.LoginActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <!-- 注册页面 -->
+        <activity
+            android:name="com.languang.bluebox.activity.login.RegisterActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <!-- 设备列表界面 -->
+        <activity
+            android:name="com.languang.bluebox.activity.login.FacilityListActivity"
+            android:screenOrientation="portrait" />
+        <!-- 无网络界面 -->
+        <activity
+            android:name="com.languang.bluebox.activity.login.NoWifiActivity"
+            android:screenOrientation="portrait" />
+        <!-- 设置WAN -->
+        <activity
+            android:name="com.languang.bluebox.activity.initialize.SettingWanActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <!-- 设置WAN -->
+        <activity
+            android:name="com.languang.bluebox.activity.initialize.SettingPwdActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <!-- ========================主页页面=========================== -->
+        <!-- 主页 -->
+        <activity android:name="com.languang.bluebox.AddPicActivity" />
+        <activity
+            android:name="com.languang.bluebox.MainActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <!-- USB -->
+        <activity
+            android:name="com.languang.bluebox.activity.picturestorege.UsbActivity"
+            android:screenOrientation="portrait" />
+        <!-- 浏览SD卡 -->
+        <activity
+            android:name="com.languang.bluebox.activity.picturestorege.BrowseSdActivity"
+            android:screenOrientation="portrait" />
+        <!-- 手机相册 -->
+        <activity
+            android:name="com.languang.bluebox.activity.picturestorege.PhotoAlbumActivity"
+            android:screenOrientation="portrait" />
+        <!-- 分享界面 -->
+        <activity
+            android:name="com.languang.bluebox.activity.picturestorege.ShareActivity"
+            android:screenOrientation="portrait" />
+        <!-- 编辑图片 -->
+        <activity
+            android:name="com.languang.bluebox.activity.picturestorege.CompilePictureActivity"
+            android:screenOrientation="portrait" />
+        <!-- ========================回迁单页面=========================== -->
+        <!-- 导出设备 -->
+        <activity
+            android:name="com.languang.bluebox.activity.property.ExportFacilityActivity"
+            android:screenOrientation="portrait" />
+        <!-- ========================设备栏页面=========================== -->
+        <!-- 我的wifi -->
+        <activity
+            android:name="com.languang.bluebox.activity.facility.MyWifiActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <!-- 设备信息 -->
+        <activity
+            android:name="com.languang.bluebox.activity.FacilityInfoActivity"
+            android:screenOrientation="portrait" />
+        <!-- 硬盘信息 -->
+        <activity
+            android:name="com.languang.bluebox.activity.facility.DiskManageActivity"
+            android:screenOrientation="portrait" />
+        <!-- 管理员密码 -->
+        <activity
+            android:name="com.languang.bluebox.activity.facility.AdminPwdActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <!-- 访客密码 -->
+        <activity
+            android:name="com.languang.bluebox.activity.facility.VisitorPwdActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name="com.languang.bluebox.activity.facility.MobileActivity" />
+        <activity
+            android:name="cn.finalteam.rxgalleryfinal.ui.activity.MediaActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name="com.languang.bluebox.WaiSeActivity" />
+
+        <meta-data
+            android:name="android.support.VERSION"
+            android:value="26.1.0" />
+        <meta-data
+            android:name="android.arch.lifecycle.VERSION"
+            android:value="27.0.0-SNAPSHOT" />
+    </application>
+
+</manifest>

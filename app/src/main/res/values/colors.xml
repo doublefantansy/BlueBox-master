@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+    <color name="main_bg">#e8e8e8</color>
+    <color name="mainColor">#2d93f9</color>
+    //点击颜色
+    <color name="list_view_item_press">@color/color_f6f6f8</color>
+
+    <color name="color_f7">#f7f7f7</color>
+    <!--customs-->
+    <color name="transparent">#00000000</color>
+    <color name="color_1e1f3e">#1e1f3e</color>
+    <color name="tab_selected_bg">#C4E1E1</color>
+    <color name="color_546fc0">#546fc0</color>
+    <color name="color_666666">#666666</color>
+    <color name="color_f6f6f8">#f6f6f8</color>
+    <color name="color_000">#000000</color>
+    <color name="color_333">#333333</color>
+    <color name="color_fff">#ffffff</color>
+    <color name="color_e8e8e8">#e8e8e8</color>
+    <color name="color_d9d9d9">#d9d9d9</color>
+    <color name="color_b02222">#b02222</color>
+    <color name="color_1b284a">#1b284a</color>
+    <color name="color_ffde00">#FFDE00</color>
+    <color name="color_fa5a5c">#fa5a5c</color>
+    <color name="color_a3a3a3">#a3a3a3</color>
+    <color name="color_7f7e7e">#7f7e7e</color>
+    <color name="color_1a4da8">#1a4da8</color>
+    <color name="color_5566b6">#5566b6</color>
+    <color name="color_1cc568">#1cc568</color>
+    <color name="color_999999">#999999</color>
+    <color name="color_aaaaaa">#cccccc</color>
+    <color name="color_2d93f9">#2d93f9</color>
+    <color name="color_bacfe1">#bacfe1</color>
+
+
+    <color name="color_84cb44">#84cb44</color>
+    <color name="color_c8c7cc">#c8c7cc</color>
+    <color name="color_eb6100">#eb6100</color>
+    <color name="color_434343">#434343</color>
+    <color name="color_00a4ff">#00a4ff</color>
+    <color name="color_cc000000">#cc000000</color>
+    <color name="color_80313131">#80313131</color>
+    <color name="color_353535">#353535</color>
+
+
+
+    <color name="color_1cc666">#1cc666</color>
+    <color name="color_fee034">#fee034</color>
+    <color name="color_FFB700FE">#FFB700FE</color>
+    <color name="color_CD02FA">#CD02FA</color>
+    <color name="color_8ee5ee">#8EE5EE</color>
+    <color name="common_red">#EB0000</color>
+    <color name="common_line_two">#dcdcdc</color>
+
+    <color name="title_tool_bar_bg">@color/tab_selected_bg</color>
+    <color name="gray">#DCDCDC</color>
+</resources>

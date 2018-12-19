@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/item_title_bar" />
+
+    <TextView
+        style="@style/no_font_padding_text_view"
+        android:layout_marginLeft="@dimen/dp_22"
+        android:layout_marginTop="@dimen/dp_31"
+        android:text="拥有访客密码只可以浏览图库已有图片信息【非隐私】"
+        android:textColor="@color/color_333"
+        android:textSize="@dimen/text_size_14" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:layout_marginLeft="@dimen/dp_23"
+        android:layout_marginRight="@dimen/dp_23"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@color/main_bg" />
+
+
+    <TextView
+        style="@style/no_font_padding_text_view"
+        android:layout_marginLeft="@dimen/dp_22"
+        android:layout_marginTop="@dimen/dp_29"
+        android:text="管理密码"
+        android:textColor="@color/color_333"
+        android:textSize="@dimen/text_size_20" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_38"
+        android:layout_marginLeft="@dimen/dp_23"
+        android:layout_marginRight="@dimen/dp_23"
+        android:layout_marginTop="@dimen/dp_16">
+
+        <EditText
+            android:id="@+id/pwd_et"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@mipmap/ic_input_bg"
+            android:inputType="textPassword"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_10" />
+
+        <ImageView
+            android:id="@+id/eye"
+            android:layout_width="@dimen/dp_35"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:paddingLeft="@dimen/dp_6"
+            android:paddingRight="@dimen/dp_7"
+            android:src="@mipmap/ic_eye" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

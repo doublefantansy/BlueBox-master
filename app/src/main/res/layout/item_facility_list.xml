@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_100"
+    android:background="@color/color_fff"
+    android:layout_marginTop="@dimen/dp_15"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_10">
+
+    <TextView
+        android:id="@+id/box_nick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="昵称"
+        android:textColor="@color/color_000"
+        android:textSize="@dimen/text_size_13" />
+
+    <TextView
+        android:id="@+id/box_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:text="名称"
+        android:textColor="@color/color_000"
+        android:textSize="@dimen/text_size_15"
+        android:textStyle="bold" />
+
+
+    <ImageView
+        android:layout_width="@dimen/dp_15"
+        android:layout_height="@dimen/dp_15"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/ic_right_raw" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/set_nick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/dp_5"
+            android:text="自定义名称"
+            android:textColor="@color/mainColor"
+            android:textSize="@dimen/text_size_12" />
+
+        <TextView
+            android:id="@+id/code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:paddingTop="@dimen/dp_5"
+            android:text="硬件code"
+            android:textColor="@color/mainColor"
+            android:textSize="@dimen/text_size_12" />
+
+        <TextView
+            android:id="@+id/delete_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:paddingTop="@dimen/dp_5"
+            android:text="删除硬件"
+            android:textColor="@color/mainColor"
+            android:textSize="@dimen/text_size_12" />
+
+        <TextView
+            android:id="@+id/net_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:paddingTop="@dimen/dp_5"
+            android:text="网络信息"
+            android:textColor="@color/mainColor"
+            android:textSize="@dimen/text_size_12" />
+
+    </LinearLayout>
+
+</RelativeLayout>

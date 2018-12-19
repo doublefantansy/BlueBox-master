@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">FramworkLib</string>
+    <string name="base_btn_confirm">确定</string>
+    <string name="base_btn_cancel">取消</string>
+</resources>

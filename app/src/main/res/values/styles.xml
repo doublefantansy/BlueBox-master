@@ -1,0 +1,31 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!--popuwindow 顶部弹出动画-->
+    <style name="popuwindow_bottom_anim_style" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/pop_top_enter_anim</item>
+        <item name="android:windowExitAnimation">@anim/pop_top_exit_anim</item>
+    </style>
+
+    <!--启动页-->
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar" >
+        <item name="android:windowBackground">@drawable/background_splash</item>
+    </style>
+
+    
+    <!--自定义textView属性-->
+    <style name="no_font_padding_text_view">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+
+</resources>

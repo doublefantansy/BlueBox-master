@@ -1,0 +1,394 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:2:1-128:12
+INJECTED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:2:1-128:12
+INJECTED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:2:1-128:12
+INJECTED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:2:1-128:12
+MERGED from [:framworklib] /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/framworklib/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:2:1-17:12
+MERGED from [com.android.support:design:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/cfad87e2684c1bf51040f377a25bfa83/AndroidManifest.xml:17:1-31:12
+MERGED from [cn.youngkaaa:yviewpager:0.4] /Users/cc/.gradle/caches/transforms-1/files-1.1/yviewpager-0.4.aar/e887a6c0ebe46e71dc71ff1afd6b78d3/AndroidManifest.xml:2:1-17:12
+MERGED from [cn.finalteam.rxgalleryfinal:library:1.1.2] /Users/cc/.gradle/caches/transforms-1/files-1.1/library-1.1.2.aar/a43e09753443094aa8353cb078612c38/AndroidManifest.xml:2:1-12:12
+MERGED from [com.afollestad.material-dialogs:core:0.9.6.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/core-0.9.6.0.aar/340a9e605b8eb7e34021792d3eaeb81f/AndroidManifest.xml:2:1-15:12
+MERGED from [com.yalantis:ucrop:2.2.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/ucrop-2.2.0.aar/d4ddd7dcf83850f2eef508edbef10edc/AndroidManifest.xml:2:1-12:12
+MERGED from [me.zhanghai.android.materialprogressbar:library:1.4.2] /Users/cc/.gradle/caches/transforms-1/files-1.1/library-1.4.2.aar/13403dee5ab4cd7d8cf65e2a0d3a0b51/AndroidManifest.xml:6:1-16:12
+MERGED from [com.android.support:appcompat-v7:27.0.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/0b79fb72e096fc2bcf454b26461e3cc2/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/cc/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/a4092aded18da7b00b77934ed3896648/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:percent:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/percent-26.1.0.aar/5f6cb1d8ec64c22df6196d9090ad70aa/AndroidManifest.xml:17:1-28:12
+MERGED from [com.jakewharton:butterknife:8.6.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/butterknife-8.6.0.aar/5924a74461269696404175b255c069ee/AndroidManifest.xml:2:1-7:12
+MERGED from [:easyrecyclerview] /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/easyrecyclerview/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:2:1-17:12
+MERGED from [com.android.support:multidex:1.0.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/multidex-1.0.0.aar/3e555ab124280c275d7705dc3e9e5952/AndroidManifest.xml:16:1-19:12
+MERGED from [com.github.hotchemi:permissionsdispatcher:3.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/permissionsdispatcher-3.1.0.aar/b95cd8dc7cbc503c9d263435346e8d35/AndroidManifest.xml:2:1-10:12
+MERGED from [com.tencent:mmkv:1.0.10] /Users/cc/.gradle/caches/transforms-1/files-1.1/mmkv-1.0.10.aar/3738e69105708bae7c1f945cf773f57c/AndroidManifest.xml:2:1-9:12
+MERGED from [com.noober.background:core:1.3.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/core-1.3.0.aar/a40dfb1065b941b881bd56ee4c9fc2c8/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:transition:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/eda4f5dd403bfcd90350275cc287e3fd/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:exifinterface:25.3.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/exifinterface-25.3.1.aar/e7bac22eb0357e4e1159cea1071b6220/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-v4:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/2fd7eb0aaa21a45c9e440e9ab180d5c8/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/458513ca32be302fd91cdac6728346ff/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:recyclerview-v7:27.0.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.0.1.aar/86d564308567bd54b563e98bd039b7c3/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.0.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/support-fragment-27.0.1.aar/a6248fdb67e478dadbd6180225a433e8/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.0.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.0.1.aar/1076704b7fa79d5291be29e8b634d8d1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.0.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.0.1.aar/f8e5773af1cb447480da51391fc18de0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.0.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.0.1.aar/e4d8f735e64402d62e0c0e1bc1d37949/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.0.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.0.1.aar/b92c2c002ad498251e7a6aed752b1e1a/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.0.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.1.aar/ba9bda0e59b888eec0ce644c7420b3d4/AndroidManifest.xml:17:1-22:12
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/rxandroid-2.0.1.aar/72cbeab3e2c8a740a859461fd506d413/AndroidManifest.xml:15:1-21:12
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/9739a42063006655fbcf82481270cf20/AndroidManifest.xml:17:1-30:12
+INJECTED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:2:1-128:12
+INJECTED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:2:1-128:12
+INJECTED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:2:1-128:12
+	package
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:3:5-35
+		INJECTED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:2:1-128:12
+		INJECTED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:2:1-128:12
+		INJECTED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:5:5-87
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:5:22-68
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:6:5-76
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:6:22-73
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:7:5-76
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:7:22-73
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:8:5-79
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:8:22-76
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:9:5-80
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:9:22-77
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:10:5-75
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:10:22-72
+uses-permission#android.permission.CAMERA
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:11:5-65
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:11:22-62
+uses-permission#android.permission.INTERNET
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:12:5-67
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:12:22-64
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:14:5-81
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:14:22-78
+uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:16:5-84
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:16:22-81
+application
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:17:5-127:19
+MERGED from [:framworklib] /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/framworklib/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:11:5-15:19
+MERGED from [:framworklib] /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/framworklib/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:11:5-15:19
+MERGED from [com.android.support:design:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/cfad87e2684c1bf51040f377a25bfa83/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:design:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/cfad87e2684c1bf51040f377a25bfa83/AndroidManifest.xml:25:5-29:19
+MERGED from [cn.youngkaaa:yviewpager:0.4] /Users/cc/.gradle/caches/transforms-1/files-1.1/yviewpager-0.4.aar/e887a6c0ebe46e71dc71ff1afd6b78d3/AndroidManifest.xml:11:5-15:19
+MERGED from [cn.youngkaaa:yviewpager:0.4] /Users/cc/.gradle/caches/transforms-1/files-1.1/yviewpager-0.4.aar/e887a6c0ebe46e71dc71ff1afd6b78d3/AndroidManifest.xml:11:5-15:19
+MERGED from [com.afollestad.material-dialogs:core:0.9.6.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/core-0.9.6.0.aar/340a9e605b8eb7e34021792d3eaeb81f/AndroidManifest.xml:13:5-20
+MERGED from [com.afollestad.material-dialogs:core:0.9.6.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/core-0.9.6.0.aar/340a9e605b8eb7e34021792d3eaeb81f/AndroidManifest.xml:13:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/cc/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/a4092aded18da7b00b77934ed3896648/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/cc/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/a4092aded18da7b00b77934ed3896648/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:percent:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/percent-26.1.0.aar/5f6cb1d8ec64c22df6196d9090ad70aa/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:percent:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/percent-26.1.0.aar/5f6cb1d8ec64c22df6196d9090ad70aa/AndroidManifest.xml:22:5-26:19
+MERGED from [:easyrecyclerview] /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/easyrecyclerview/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:11:5-15:19
+MERGED from [:easyrecyclerview] /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/easyrecyclerview/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:11:5-15:19
+MERGED from [com.android.support:transition:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/eda4f5dd403bfcd90350275cc287e3fd/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:transition:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/eda4f5dd403bfcd90350275cc287e3fd/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:exifinterface:25.3.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/exifinterface-25.3.1.aar/e7bac22eb0357e4e1159cea1071b6220/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:exifinterface:25.3.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/exifinterface-25.3.1.aar/e7bac22eb0357e4e1159cea1071b6220/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-v4:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/2fd7eb0aaa21a45c9e440e9ab180d5c8/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-v4:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/2fd7eb0aaa21a45c9e440e9ab180d5c8/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/458513ca32be302fd91cdac6728346ff/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/458513ca32be302fd91cdac6728346ff/AndroidManifest.xml:25:5-29:19
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/9739a42063006655fbcf82481270cf20/AndroidManifest.xml:24:5-28:19
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/9739a42063006655fbcf82481270cf20/AndroidManifest.xml:24:5-28:19
+	android:supportsRtl
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:23:9-35
+	android:label
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:21:9-41
+	android:roundIcon
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:22:9-54
+	android:icon
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:20:9-43
+	android:allowBackup
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:19:9-35
+	android:theme
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:24:9-65
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:18:9-49
+activity#com.languang.bluebox.activity.SplashActivity
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:25:9-32:20
+	android:theme
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:27:13-47
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:26:13-52
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:28:13-31:29
+action#android.intent.action.MAIN
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:29:17-69
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:29:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:30:17-77
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:30:27-74
+activity#com.languang.bluebox.activity.login.LoginActivity
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:34:9-37:57
+	android:screenOrientation
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:36:13-49
+	android:windowSoftInputMode
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:37:13-54
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:35:13-57
+activity#com.languang.bluebox.activity.login.RegisterActivity
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:39:9-42:57
+	android:screenOrientation
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:41:13-49
+	android:windowSoftInputMode
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:42:13-54
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:40:13-60
+activity#com.languang.bluebox.activity.login.FacilityListActivity
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:44:9-46:52
+	android:screenOrientation
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:46:13-49
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:45:13-64
+activity#com.languang.bluebox.activity.login.NoWifiActivity
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:48:9-50:52
+	android:screenOrientation
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:50:13-49
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:49:13-58
+activity#com.languang.bluebox.activity.initialize.SettingWanActivity
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:52:9-55:57
+	android:screenOrientation
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:54:13-49
+	android:windowSoftInputMode
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:55:13-54
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:53:13-67
+activity#com.languang.bluebox.activity.initialize.SettingPwdActivity
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:57:9-60:57
+	android:screenOrientation
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:59:13-49
+	android:windowSoftInputMode
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:60:13-54
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:58:13-67
+activity#com.languang.bluebox.AddPicActivity
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:63:9-52
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:63:19-49
+activity#com.languang.bluebox.MainActivity
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:64:9-68:57
+	android:screenOrientation
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:67:13-49
+	android:launchMode
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:66:13-44
+	android:windowSoftInputMode
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:68:13-54
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:65:13-41
+activity#com.languang.bluebox.activity.picturestorege.UsbActivity
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:70:9-72:52
+	android:screenOrientation
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:72:13-49
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:71:13-64
+activity#com.languang.bluebox.activity.picturestorege.BrowseSdActivity
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:74:9-76:52
+	android:screenOrientation
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:76:13-49
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:75:13-69
+activity#com.languang.bluebox.activity.picturestorege.PhotoAlbumActivity
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:78:9-80:52
+	android:screenOrientation
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:80:13-49
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:79:13-71
+activity#com.languang.bluebox.activity.picturestorege.ShareActivity
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:82:9-84:52
+	android:screenOrientation
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:84:13-49
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:83:13-66
+activity#com.languang.bluebox.activity.picturestorege.CompilePictureActivity
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:86:9-88:52
+	android:screenOrientation
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:88:13-49
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:87:13-75
+activity#com.languang.bluebox.activity.property.ExportFacilityActivity
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:91:9-93:52
+	android:screenOrientation
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:93:13-49
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:92:13-69
+activity#com.languang.bluebox.activity.facility.MyWifiActivity
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:96:9-99:57
+	android:screenOrientation
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:98:13-49
+	android:windowSoftInputMode
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:99:13-54
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:97:13-61
+activity#com.languang.bluebox.activity.FacilityInfoActivity
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:101:9-103:52
+	android:screenOrientation
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:103:13-49
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:102:13-58
+activity#com.languang.bluebox.activity.facility.DiskManageActivity
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:105:9-107:52
+	android:screenOrientation
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:107:13-49
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:106:13-65
+activity#com.languang.bluebox.activity.facility.AdminPwdActivity
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:109:9-112:57
+	android:screenOrientation
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:111:13-49
+	android:windowSoftInputMode
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:112:13-54
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:110:13-63
+activity#com.languang.bluebox.activity.facility.VisitorPwdActivity
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:114:9-117:57
+	android:screenOrientation
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:116:13-49
+	android:windowSoftInputMode
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:117:13-54
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:115:13-65
+activity#com.languang.bluebox.activity.facility.MobileActivity
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:118:9-70
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:118:19-67
+activity#cn.finalteam.rxgalleryfinal.ui.activity.MediaActivity
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:119:9-122:52
+	android:screenOrientation
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:122:13-49
+	android:exported
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:121:13-36
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:120:13-81
+activity#com.yalantis.ucrop.UCropActivity
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:123:9-125:52
+	android:screenOrientation
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:125:13-49
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:124:13-60
+activity#com.languang.bluebox.WaiSeActivity
+ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:126:9-60
+	android:name
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml:126:19-48
+uses-sdk
+INJECTED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml
+INJECTED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml
+MERGED from [:framworklib] /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/framworklib/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:7:5-9:41
+MERGED from [:framworklib] /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/framworklib/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:design:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/cfad87e2684c1bf51040f377a25bfa83/AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:design:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/cfad87e2684c1bf51040f377a25bfa83/AndroidManifest.xml:21:5-23:62
+MERGED from [cn.youngkaaa:yviewpager:0.4] /Users/cc/.gradle/caches/transforms-1/files-1.1/yviewpager-0.4.aar/e887a6c0ebe46e71dc71ff1afd6b78d3/AndroidManifest.xml:7:5-9:41
+MERGED from [cn.youngkaaa:yviewpager:0.4] /Users/cc/.gradle/caches/transforms-1/files-1.1/yviewpager-0.4.aar/e887a6c0ebe46e71dc71ff1afd6b78d3/AndroidManifest.xml:7:5-9:41
+MERGED from [cn.finalteam.rxgalleryfinal:library:1.1.2] /Users/cc/.gradle/caches/transforms-1/files-1.1/library-1.1.2.aar/a43e09753443094aa8353cb078612c38/AndroidManifest.xml:8:5-10:41
+MERGED from [cn.finalteam.rxgalleryfinal:library:1.1.2] /Users/cc/.gradle/caches/transforms-1/files-1.1/library-1.1.2.aar/a43e09753443094aa8353cb078612c38/AndroidManifest.xml:8:5-10:41
+MERGED from [com.afollestad.material-dialogs:core:0.9.6.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/core-0.9.6.0.aar/340a9e605b8eb7e34021792d3eaeb81f/AndroidManifest.xml:8:5-11:75
+MERGED from [com.afollestad.material-dialogs:core:0.9.6.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/core-0.9.6.0.aar/340a9e605b8eb7e34021792d3eaeb81f/AndroidManifest.xml:8:5-11:75
+MERGED from [com.yalantis:ucrop:2.2.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/ucrop-2.2.0.aar/d4ddd7dcf83850f2eef508edbef10edc/AndroidManifest.xml:8:5-10:41
+MERGED from [com.yalantis:ucrop:2.2.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/ucrop-2.2.0.aar/d4ddd7dcf83850f2eef508edbef10edc/AndroidManifest.xml:8:5-10:41
+MERGED from [me.zhanghai.android.materialprogressbar:library:1.4.2] /Users/cc/.gradle/caches/transforms-1/files-1.1/library-1.4.2.aar/13403dee5ab4cd7d8cf65e2a0d3a0b51/AndroidManifest.xml:12:5-14:41
+MERGED from [me.zhanghai.android.materialprogressbar:library:1.4.2] /Users/cc/.gradle/caches/transforms-1/files-1.1/library-1.4.2.aar/13403dee5ab4cd7d8cf65e2a0d3a0b51/AndroidManifest.xml:12:5-14:41
+MERGED from [com.android.support:appcompat-v7:27.0.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/0b79fb72e096fc2bcf454b26461e3cc2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.0.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/0b79fb72e096fc2bcf454b26461e3cc2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/cc/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/a4092aded18da7b00b77934ed3896648/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/cc/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/a4092aded18da7b00b77934ed3896648/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:percent:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/percent-26.1.0.aar/5f6cb1d8ec64c22df6196d9090ad70aa/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:percent:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/percent-26.1.0.aar/5f6cb1d8ec64c22df6196d9090ad70aa/AndroidManifest.xml:20:5-44
+MERGED from [com.jakewharton:butterknife:8.6.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/butterknife-8.6.0.aar/5924a74461269696404175b255c069ee/AndroidManifest.xml:5:5-43
+MERGED from [com.jakewharton:butterknife:8.6.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/butterknife-8.6.0.aar/5924a74461269696404175b255c069ee/AndroidManifest.xml:5:5-43
+MERGED from [:easyrecyclerview] /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/easyrecyclerview/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:7:5-9:41
+MERGED from [:easyrecyclerview] /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/easyrecyclerview/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:multidex:1.0.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/multidex-1.0.0.aar/3e555ab124280c275d7705dc3e9e5952/AndroidManifest.xml:18:5-42
+MERGED from [com.android.support:multidex:1.0.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/multidex-1.0.0.aar/3e555ab124280c275d7705dc3e9e5952/AndroidManifest.xml:18:5-42
+MERGED from [com.github.hotchemi:permissionsdispatcher:3.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/permissionsdispatcher-3.1.0.aar/b95cd8dc7cbc503c9d263435346e8d35/AndroidManifest.xml:6:5-8:41
+MERGED from [com.github.hotchemi:permissionsdispatcher:3.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/permissionsdispatcher-3.1.0.aar/b95cd8dc7cbc503c9d263435346e8d35/AndroidManifest.xml:6:5-8:41
+MERGED from [com.tencent:mmkv:1.0.10] /Users/cc/.gradle/caches/transforms-1/files-1.1/mmkv-1.0.10.aar/3738e69105708bae7c1f945cf773f57c/AndroidManifest.xml:5:5-7:41
+MERGED from [com.tencent:mmkv:1.0.10] /Users/cc/.gradle/caches/transforms-1/files-1.1/mmkv-1.0.10.aar/3738e69105708bae7c1f945cf773f57c/AndroidManifest.xml:5:5-7:41
+MERGED from [com.noober.background:core:1.3.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/core-1.3.0.aar/a40dfb1065b941b881bd56ee4c9fc2c8/AndroidManifest.xml:7:5-9:41
+MERGED from [com.noober.background:core:1.3.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/core-1.3.0.aar/a40dfb1065b941b881bd56ee4c9fc2c8/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:transition:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/eda4f5dd403bfcd90350275cc287e3fd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/eda4f5dd403bfcd90350275cc287e3fd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:exifinterface:25.3.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/exifinterface-25.3.1.aar/e7bac22eb0357e4e1159cea1071b6220/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:exifinterface:25.3.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/exifinterface-25.3.1.aar/e7bac22eb0357e4e1159cea1071b6220/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/2fd7eb0aaa21a45c9e440e9ab180d5c8/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/2fd7eb0aaa21a45c9e440e9ab180d5c8/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/458513ca32be302fd91cdac6728346ff/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/458513ca32be302fd91cdac6728346ff/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:recyclerview-v7:27.0.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.0.1.aar/86d564308567bd54b563e98bd039b7c3/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.0.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.0.1.aar/86d564308567bd54b563e98bd039b7c3/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.0.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/support-fragment-27.0.1.aar/a6248fdb67e478dadbd6180225a433e8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.0.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/support-fragment-27.0.1.aar/a6248fdb67e478dadbd6180225a433e8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.0.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.0.1.aar/1076704b7fa79d5291be29e8b634d8d1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.0.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.0.1.aar/1076704b7fa79d5291be29e8b634d8d1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.0.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.0.1.aar/f8e5773af1cb447480da51391fc18de0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.0.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.0.1.aar/f8e5773af1cb447480da51391fc18de0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.0.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.0.1.aar/e4d8f735e64402d62e0c0e1bc1d37949/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.0.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.0.1.aar/e4d8f735e64402d62e0c0e1bc1d37949/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.0.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.0.1.aar/b92c2c002ad498251e7a6aed752b1e1a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.0.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.0.1.aar/b92c2c002ad498251e7a6aed752b1e1a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.0.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.1.aar/ba9bda0e59b888eec0ce644c7420b3d4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.0.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.1.aar/ba9bda0e59b888eec0ce644c7420b3d4/AndroidManifest.xml:20:5-44
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/rxandroid-2.0.1.aar/72cbeab3e2c8a740a859461fd506d413/AndroidManifest.xml:19:5-43
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] /Users/cc/.gradle/caches/transforms-1/files-1.1/rxandroid-2.0.1.aar/72cbeab3e2c8a740a859461fd506d413/AndroidManifest.xml:19:5-43
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/9739a42063006655fbcf82481270cf20/AndroidManifest.xml:20:5-22:41
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/9739a42063006655fbcf82481270cf20/AndroidManifest.xml:20:5-22:41
+INJECTED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml
+INJECTED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml
+	tools:overrideLibrary
+		ADDED from [com.android.support:design:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/cfad87e2684c1bf51040f377a25bfa83/AndroidManifest.xml:23:9-59
+	android:targetSdkVersion
+		INJECTED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml
+		ADDED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/AndroidManifest.xml
+meta-data#android.support.VERSION
+ADDED from [com.android.support:design:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/cfad87e2684c1bf51040f377a25bfa83/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:percent:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/percent-26.1.0.aar/5f6cb1d8ec64c22df6196d9090ad70aa/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:percent:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/percent-26.1.0.aar/5f6cb1d8ec64c22df6196d9090ad70aa/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:transition:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/eda4f5dd403bfcd90350275cc287e3fd/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:transition:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/eda4f5dd403bfcd90350275cc287e3fd/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-v4:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/2fd7eb0aaa21a45c9e440e9ab180d5c8/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-v4:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/2fd7eb0aaa21a45c9e440e9ab180d5c8/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/458513ca32be302fd91cdac6728346ff/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/458513ca32be302fd91cdac6728346ff/AndroidManifest.xml:26:9-28:38
+	android:value
+		ADDED from [com.android.support:design:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/cfad87e2684c1bf51040f377a25bfa83/AndroidManifest.xml:28:13-35
+	android:name
+		ADDED from [com.android.support:design:26.1.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/cfad87e2684c1bf51040f377a25bfa83/AndroidManifest.xml:27:13-51
+meta-data#android.arch.lifecycle.VERSION
+ADDED from [android.arch.lifecycle:runtime:1.0.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/9739a42063006655fbcf82481270cf20/AndroidManifest.xml:25:9-27:47
+	android:value
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/9739a42063006655fbcf82481270cf20/AndroidManifest.xml:27:13-44
+	android:name
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] /Users/cc/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/9739a42063006655fbcf82481270cf20/AndroidManifest.xml:26:13-58

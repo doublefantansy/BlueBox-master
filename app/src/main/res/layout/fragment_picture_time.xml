@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/color_fff"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_30"
+        android:layout_marginLeft="@dimen/dp_11"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_19"
+        android:orientation="horizontal">
+
+
+        <com.languang.bluebox.coustomview.CustomEditText
+            android:id="@+id/search_et"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@mipmap/ic_input_bg"
+            android:drawableLeft="@mipmap/ic_search"
+            android:hint="搜索"
+            android:padding="@dimen/dp_5"
+            android:textColor="@color/color_999999"
+            android:textSize="@dimen/text_size_15" />
+
+
+        <ImageView
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_25"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:src="@mipmap/ic_sort" />
+
+
+    </LinearLayout>
+
+    <com.luck.easyrecyclerview.EasyRecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_empty="@layout/view_empty"
+        android:layout_marginTop="@dimen/dp_12">
+
+    </com.luck.easyrecyclerview.EasyRecyclerView>
+
+</LinearLayout>

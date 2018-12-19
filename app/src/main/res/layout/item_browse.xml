@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_18"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="@dimen/dp_1"
+            android:layout_weight="1"
+            android:background="@color/main_bg" />
+
+        <TextView
+            style="@style/no_font_padding_text_view"
+            android:layout_marginLeft="@dimen/dp_9"
+            android:layout_marginRight="@dimen/dp_9"
+            android:text="2017年"
+            android:textColor="@color/color_000"
+            android:textSize="@dimen/text_size_15" />
+
+        <View
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="@dimen/dp_1"
+            android:layout_weight="1"
+            android:background="@color/main_bg" />
+
+    </LinearLayout>
+
+    <com.languang.bluebox.coustomview.MyListView
+        android:id="@+id/my_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@color/transparent"
+        android:dividerHeight="@dimen/dp_0">
+
+    </com.languang.bluebox.coustomview.MyListView>
+
+</LinearLayout>
