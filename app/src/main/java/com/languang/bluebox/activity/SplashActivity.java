@@ -9,23 +9,19 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.languang.bluebox.activity.facility.MobileActivity;
+import com.languang.bluebox.TimeUtils;
 import com.languang.bluebox.activity.initialize.SettingPwdActivity;
-import com.languang.bluebox.activity.initialize.SettingWanActivity;
 import com.languang.bluebox.activity.login.LoginActivity;
 import com.languang.bluebox.basework.costom.DefaultCode;
 import com.languang.bluebox.basework.net.OkHttpUtils;
 import com.languang.bluebox.constant.ApiConstant;
-import com.languang.bluebox.constant.Constant;
 import com.languang.bluebox.entity.NetPort;
 import com.languang.bluebox.entity.ResponseMessage;
 import com.languang.bluebox.entity.SpeRes;
 import com.languang.bluebox.entity.login.LoginRes;
-import com.languang.bluebox.presenter.IFacilityInfo;
 import com.languang.bluebox.utils.MyUtil;
 import com.mrj.framworklib.utils.OkHttpCallBack;
 import com.mrj.framworklib.utils.ScreenUtilBase;
@@ -64,6 +60,7 @@ public class SplashActivity extends AppCompatActivity {
 
     private void checkInfo() {
         String url = ApiConstant.WLAN_INFO;
+        Log.d("ccnb", TimeUtils.getGateway(this));
         OkHttpUtils.getInstance()
                 .okPost(this, url, null, new OkHttpCallBack() {
                     @Override
@@ -71,8 +68,11 @@ public class SplashActivity extends AppCompatActivity {
                         ResponseMessage<NetPort> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<NetPort>>() {
                         }.getType());
                         NetPort netPort = responseMessage.getData();
-//                        responseMessage.setRet();
-                        if (responseMessage.getRet() == 404) {
+                        Log.d("ccnb", response);
+//
+                        if (responseMessage.getData()
+                                .getStatus()
+                                .equals("404")) {
                             OkHttpUtils.getInstance()
                                     .okPost(SplashActivity.this, ApiConstant.CLOUD_WLAN_INFO, null, new OkHttpCallBack() {
                                         @Override
@@ -89,14 +89,16 @@ public class SplashActivity extends AppCompatActivity {
                                         public void onFailed() {
                                         }
                                     });
-                        } else if (responseMessage.getRet() == 200) {
+                        } else if (responseMessage.getData()
+                                .getStatus()
+                                .equals("9999")) {
                             MMKV.defaultMMKV()
                                     .encode("user", new Gson().toJson(netPort));
-                        }
-                        if (netPort.isActivate()) {
-                            manLogin(true);
-                        } else {
-                            manLogin(false);
+                            if (netPort.isActivate()) {
+                                manLogin(true);
+                            } else {
+                                manLogin(false);
+                            }
                         }
                     }
 
@@ -113,11 +115,16 @@ public class SplashActivity extends AppCompatActivity {
             params.put("type", "pwd");
             params.put("pwd", "111");
             params.put("imei", MyUtil.getImei(this));
+            Log.d("ccnb", MyUtil.getImei(this));
         } else {
             params.put("type", "new");
         }
+//        Log.d("ccnbaa", ApiConstant.WLAN_SYS_LOGIN);
+
+        ApiConstant.BOX_BASE_URL = "https://" + TimeUtils.getGateway(this);
+        Log.d("ccnblsy",ApiConstant.BOX_BASE_URL + "/setbox");
         OkHttpUtils.getInstance()
-                .okPost(this, ApiConstant.WLAN_SYS_LOGIN, params, new OkHttpCallBack() {
+                .okPost(this, ApiConstant.BOX_BASE_URL + "/syslogin", params, new OkHttpCallBack() {
                     @Override
                     public void onSucceed(String requestUrl, String response) {
                         ResponseMessage<LoginRes> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<LoginRes>>() {
@@ -135,7 +142,7 @@ public class SplashActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailed() {
-                        Log.d("ccnb", "fail");
+                        Log.d("ccnbaaa", "fail");
                     }
                 });
     }
