@@ -1,5 +1,6 @@
 package com.languang.bluebox;
 
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
@@ -11,9 +12,9 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.languang.bluebox.activity.SplashActivity;
 import com.languang.bluebox.basework.base.BaseFragmentActivity;
 import com.languang.bluebox.basework.net.OkHttpUtils;
-import com.languang.bluebox.constant.ApiConstant;
 import com.languang.bluebox.constant.Constant;
 import com.languang.bluebox.coustomview.tabview.MainViewAdapter;
 import com.languang.bluebox.coustomview.tabview.TabContainerView;
@@ -56,9 +57,9 @@ public class MainActivity extends BaseFragmentActivity implements FAInterface {
     @BindView(R.id.bottom_tv)
     TextView bottomTv;
     @BindView(R.id.biaozhus)
-    TextView biaozhus;
+    LinearLayout biaozhus;
     @BindView(R.id.del)
-    TextView del;
+    LinearLayout del;
     private WiFiStateReceiver wiFiStateReceiver;
     private ScanResultReceiver scanResultReceiver;
     private ConnectedStateReceiver connectedStateReceiver;
@@ -72,11 +73,18 @@ public class MainActivity extends BaseFragmentActivity implements FAInterface {
     FacilityFragment fragment5;
     List<Fragment> fragments = new ArrayList<>();
     List<ImgEntity> chose = new ArrayList<>();
+    int count1 = 0;
     private In in = new In() {
         @Override
         public void click() {
         }
     };
+
+    public void clear() {
+        chose.clear();
+        ss.setVisibility(View.INVISIBLE);
+        tabContainer.setTabTextGone(false);
+    }
 
     @Override
     protected int getLayoutResId() {
@@ -102,14 +110,62 @@ public class MainActivity extends BaseFragmentActivity implements FAInterface {
         mainViewAdapter = new MainViewAdapter(getSupportFragmentManager(),
                 fragments);
         tabContainer.setAdapter(mainViewAdapter);
+        biaozhus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, BiaoZhuActivity.class);
+                intent.putExtra("json", new Gson().toJson(chose));
+                startActivity(intent);
+//                String[] strings = new String[chose.size()];
+//                Map<String, Object> map = new HashMap<>();
+//                for (int i = 0; i < chose.size(); i++) {
+//                    strings[i] = chose.get(i)
+//                            .getUuid();
+//                }
+//                map.put("files", strings);
+//                OkHttpUtils.getInstance()
+//                        .okPost(MainActivity.this, ApiConstant.BOX_TAG_FILES, map, new OkHttpCallBack() {
+//                            @Override
+//                            public void onSucceed(String requestUrl, String response) {
+//                                Log.d("ccnb", response);
+//                            }
+//
+//                            @Override
+//                            public void onFailed() {
+//                                Log.d("ccnb", "failed");
+//                            }
+//                        });
+            }
+//            }
+        });
         del.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Map<String, String> map = new HashMap<>();
                 Log.d("ccnb", chose.size() + "");
-//                map.put("file", );
-//                OkHttpUtils.getInstance()
-//                        .okPost(this, ApiConstant.BOX_DELETE_FILES, );
+                for (final ImgEntity imgEntity : chose) {
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("file", imgEntity.getUuid());
+                    OkHttpUtils.getInstance()
+                            .okPost(MainActivity.this, SplashActivity.wlanIp + "/deletefiles", map, new OkHttpCallBack() {
+                                @Override
+                                public void onSucceed(String requestUrl, String response) {
+                                    count1++;
+                                    Log.d("ccnbsss", count1 + "");
+                                    if (count1 == chose.size()) {
+                                        Log.d("ccnbsss", count1 + "end");
+                                        count1 = 0;
+                                        fragment1.refresh();
+                                        chose.clear();
+                                        fragment1.title.setText("宝盒新增文件");
+                                    }
+                                }
+
+                                @Override
+                                public void onFailed() {
+                                    Log.d("ccnb", "fa");
+                                }
+                            });
+                }
             }
         });
     }
@@ -125,7 +181,7 @@ public class MainActivity extends BaseFragmentActivity implements FAInterface {
 
     private void getCountImg() {
         OkHttpUtils.getInstance()
-                .okPost(this, ApiConstant.BOX_COUNT_IMG, null, new OkHttpCallBack() {
+                .okPost(this, TimeUtils.getWlanIp() + "/countimg", null, new OkHttpCallBack() {
                     @Override
                     public void onSucceed(String requestUrl, String response) {
                         Log.d("ccnb", "lsy2");
@@ -208,14 +264,14 @@ public class MainActivity extends BaseFragmentActivity implements FAInterface {
         if (t) {
             ss.setVisibility(View.VISIBLE);
             tabContainer.setTabTextGone(true);
+            if (isadd) {
+                chose.add(imgEntity);
+            } else {
+                chose.remove(imgEntity);
+            }
         } else {
             ss.setVisibility(View.INVISIBLE);
             tabContainer.setTabTextGone(false);
-//            if (isadd) {
-//                chose.add(imgEntity);
-//            } else {
-//                chose.remove(imgEntity);
-//            }
         }
 //        tabContainer.setTabTextGone(t);
 //        tabContainer.setVisibility(View.INVISIBLE);

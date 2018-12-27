@@ -14,13 +14,13 @@ import java.lang.Override;
 public class LoginActivity_ViewBinding extends BaseFragmentActivity_ViewBinding {
   private LoginActivity target;
 
-  private View view2131230855;
+  private View view2131230858;
 
-  private View view2131230925;
+  private View view2131230931;
 
-  private View view2131231127;
+  private View view2131231135;
 
-  private View view2131231072;
+  private View view2131231078;
 
   @UiThread
   public LoginActivity_ViewBinding(LoginActivity target) {
@@ -37,7 +37,7 @@ public class LoginActivity_ViewBinding extends BaseFragmentActivity_ViewBinding 
     target.userPhoneEt = Utils.findRequiredViewAsType(source, R.id.user_phone_et, "field 'userPhoneEt'", EditText.class);
     target.pwdEt = Utils.findRequiredViewAsType(source, R.id.pwd_et, "field 'pwdEt'", EditText.class);
     view = Utils.findRequiredView(source, R.id.find_pwd, "method 'onViewClicked'");
-    view2131230855 = view;
+    view2131230858 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -45,7 +45,7 @@ public class LoginActivity_ViewBinding extends BaseFragmentActivity_ViewBinding 
       }
     });
     view = Utils.findRequiredView(source, R.id.login_submit, "method 'onViewClicked'");
-    view2131230925 = view;
+    view2131230931 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -53,7 +53,7 @@ public class LoginActivity_ViewBinding extends BaseFragmentActivity_ViewBinding 
       }
     });
     view = Utils.findRequiredView(source, R.id.to_register, "method 'onViewClicked'");
-    view2131231127 = view;
+    view2131231135 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -61,7 +61,7 @@ public class LoginActivity_ViewBinding extends BaseFragmentActivity_ViewBinding 
       }
     });
     view = Utils.findRequiredView(source, R.id.sms_login, "method 'onViewClicked'");
-    view2131231072 = view;
+    view2131231078 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -79,14 +79,14 @@ public class LoginActivity_ViewBinding extends BaseFragmentActivity_ViewBinding 
     target.userPhoneEt = null;
     target.pwdEt = null;
 
-    view2131230855.setOnClickListener(null);
-    view2131230855 = null;
-    view2131230925.setOnClickListener(null);
-    view2131230925 = null;
-    view2131231127.setOnClickListener(null);
-    view2131231127 = null;
-    view2131231072.setOnClickListener(null);
-    view2131231072 = null;
+    view2131230858.setOnClickListener(null);
+    view2131230858 = null;
+    view2131230931.setOnClickListener(null);
+    view2131230931 = null;
+    view2131231135.setOnClickListener(null);
+    view2131231135 = null;
+    view2131231078.setOnClickListener(null);
+    view2131231078 = null;
 
     super.unbind();
   }

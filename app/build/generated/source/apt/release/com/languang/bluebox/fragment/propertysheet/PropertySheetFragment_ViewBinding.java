@@ -15,9 +15,9 @@ import java.lang.Override;
 public class PropertySheetFragment_ViewBinding implements Unbinder {
   private PropertySheetFragment target;
 
-  private View view2131230891;
+  private View view2131230897;
 
-  private View view2131230888;
+  private View view2131230894;
 
   @UiThread
   public PropertySheetFragment_ViewBinding(final PropertySheetFragment target, View source) {
@@ -26,7 +26,7 @@ public class PropertySheetFragment_ViewBinding implements Unbinder {
     View view;
     target.recyclerView = Utils.findRequiredViewAsType(source, R.id.recycler_view, "field 'recyclerView'", EasyRecyclerView.class);
     view = Utils.findRequiredView(source, R.id.item_title_right_layout, "method 'onViewClicked'");
-    view2131230891 = view;
+    view2131230897 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -34,7 +34,7 @@ public class PropertySheetFragment_ViewBinding implements Unbinder {
       }
     });
     view = Utils.findRequiredView(source, R.id.item_title_left_layout, "method 'onViewClicked'");
-    view2131230888 = view;
+    view2131230894 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -52,9 +52,9 @@ public class PropertySheetFragment_ViewBinding implements Unbinder {
 
     target.recyclerView = null;
 
-    view2131230891.setOnClickListener(null);
-    view2131230891 = null;
-    view2131230888.setOnClickListener(null);
-    view2131230888 = null;
+    view2131230897.setOnClickListener(null);
+    view2131230897 = null;
+    view2131230894.setOnClickListener(null);
+    view2131230894 = null;
   }
 }

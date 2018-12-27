@@ -68,9 +68,17 @@ public class ImgEntity {
     private Object idcdrom;
     private Object cdsn;
     private String meta;
-    private TagsBean tags;
+    private String tags;
     private String location;
     private VoiceBean voice;
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
 
     public boolean isChecked() {
         return checked;
@@ -312,13 +320,13 @@ public class ImgEntity {
         this.meta = meta;
     }
 
-    public TagsBean getTags() {
-        return tags;
-    }
-
-    public void setTags(TagsBean tags) {
-        this.tags = tags;
-    }
+//    public TagsBean getTags() {
+//        return tags;
+//    }
+//
+//    public void setTags(TagsBean tags) {
+//        this.tags = tags;
+//    }
 
     public String getLocation() {
         return location;
@@ -336,8 +344,17 @@ public class ImgEntity {
         this.voice = voice;
     }
 
-    public static class TagsBean {
-    }
+//    public static class TagsBean {
+//        List<String> map;
+//
+//        public void setMap(List<String> map) {
+//            this.map = map;
+//        }
+//
+//        public List<String> getMap() {
+//            return map;
+//        }
+//    }
 
     public static class VoiceBean {
         /**

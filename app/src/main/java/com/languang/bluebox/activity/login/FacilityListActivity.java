@@ -1,8 +1,6 @@
 package com.languang.bluebox.activity.login;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.os.Looper;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,7 +8,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -20,7 +17,6 @@ import com.google.gson.reflect.TypeToken;
 import com.languang.bluebox.MainActivity;
 import com.languang.bluebox.R;
 import com.languang.bluebox.adapter.FacilityListAdapter;
-import com.languang.bluebox.adapter.picturestorege.PictureTimeAdapter;
 import com.languang.bluebox.basework.base.BaseFragmentActivity;
 import com.languang.bluebox.basework.utils.SharedPrefsUtil;
 import com.languang.bluebox.constant.ApiConstant;
@@ -42,7 +38,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**

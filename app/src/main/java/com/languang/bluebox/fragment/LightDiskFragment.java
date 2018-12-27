@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -14,25 +13,21 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.languang.bluebox.MainActivity;
 import com.languang.bluebox.R;
+import com.languang.bluebox.TimeUtils;
+import com.languang.bluebox.activity.SplashActivity;
 import com.languang.bluebox.basework.base.BaseFragment;
 import com.languang.bluebox.basework.net.OkHttpUtils;
-import com.languang.bluebox.constant.ApiConstant;
 import com.languang.bluebox.constant.Constant;
 import com.languang.bluebox.entity.Device;
 import com.languang.bluebox.entity.ResponseMessage;
 import com.languang.bluebox.entity.Test;
-import com.languang.bluebox.model.LightDiskModel;
-import com.languang.bluebox.presenter.ILightDisk;
 import com.mrj.framworklib.utils.OkHttpCallBack;
-
-import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
@@ -75,7 +70,7 @@ public class LightDiskFragment extends BaseFragment {
         Map<String, Object> params = new HashMap<>(1);
         params.put("type", "cdrom");
         OkHttpUtils.getInstance()
-                .okPost(getActivity(), ApiConstant.BOX_WAISHE_INFO, params, new OkHttpCallBack() {
+                .okPost(getActivity(), TimeUtils.getWlanIp()+"/waisheinfo", params, new OkHttpCallBack() {
                     @Override
                     public void onSucceed(String requestUrl, String response) {
                         ResponseMessage<Device> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<Device>>() {
@@ -100,7 +95,7 @@ public class LightDiskFragment extends BaseFragment {
             @Override
             public void onClick(View view) {
                 OkHttpUtils.getInstance()
-                        .okPost(getActivity(), ApiConstant.BOX_START_GUIDANG, null, new OkHttpCallBack() {
+                        .okPost(getActivity(), SplashActivity.wlanIp+"/startguidang", null, new OkHttpCallBack() {
                             @Override
                             public void onSucceed(String requestUrl, String response) {
                                 ResponseMessage<Test> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<Test>>() {

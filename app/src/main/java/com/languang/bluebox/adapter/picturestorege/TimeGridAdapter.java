@@ -55,7 +55,7 @@ public class TimeGridAdapter extends BaseAdapter {
                     .inflate(R.layout.item_time_grid, null);
             holder = new ViewHolder();
             holder.frameLayout = convertView.findViewById(R.id.frame);
-            holder.gou = convertView.findViewById(R.id.gou);
+//            holder.gou = convertView.findViewById(R.id.gou);
 //            holder.gou.setAlpha(0f);
             holder.imageView = convertView.findViewById(R.id.image);
             convertView.setTag(holder);
@@ -75,29 +75,29 @@ public class TimeGridAdapter extends BaseAdapter {
 //                .setGou(holder.gou);
 //        newList.get(position)
 //                .setImageView(holder.imageView);
-        list.get(position)
-                .setChecked(list.get(position)
-                        .isChecked());
-        holder.frameLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                list.get(position)
-                        .setChecked(!list.get(position)
-                                .isChecked());
-                if (list.get(position)
-                        .isChecked()) {
-                    holder.gou.setVisibility(View.VISIBLE);
-                    count++;
-//                    countInterface.click(count);
-                } else {
-                    count--;
-//                    countInterface.click(count);
-                    holder.gou.setVisibility(View.INVISIBLE);
-                }
+//        list.get(position)
+//                .setChecked(list.get(position)
+//                        .isChecked());
+//        holder.frameLayout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                list.get(position)
+//                        .setChecked(!list.get(position)
+//                                .isChecked());
+//                if (list.get(position)
+//                        .isChecked()) {
+//                    holder.gou.setVisibility(View.VISIBLE);
+//                    count++;
+////                    countInterface.click(count);
+//                } else {
+//                    count--;
+////                    countInterface.click(count);
+////                    holder.gou.setVisibility(View.INVISIBLE);
+//                }
 //                holder.gou.setChecked(list.get(position)
 //                        .isChecked());
-            }
-        });
+//            }
+//        });
         return convertView;
     }
 //    public void open(final int p) {
@@ -129,6 +129,6 @@ public class TimeGridAdapter extends BaseAdapter {
     class ViewHolder {
         RelativeLayout frameLayout;
         ImageView imageView;
-        ImageView gou;
+//        ImageView gou;
     }
 }

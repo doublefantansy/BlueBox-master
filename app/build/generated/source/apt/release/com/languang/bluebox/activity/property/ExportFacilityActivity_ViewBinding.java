@@ -13,9 +13,9 @@ import java.lang.Override;
 public class ExportFacilityActivity_ViewBinding extends BaseFragmentActivity_ViewBinding {
   private ExportFacilityActivity target;
 
-  private View view2131230773;
+  private View view2131230775;
 
-  private View view2131230774;
+  private View view2131230776;
 
   @UiThread
   public ExportFacilityActivity_ViewBinding(ExportFacilityActivity target) {
@@ -30,7 +30,7 @@ public class ExportFacilityActivity_ViewBinding extends BaseFragmentActivity_Vie
 
     View view;
     view = Utils.findRequiredView(source, R.id.browse_1, "method 'onViewClicked'");
-    view2131230773 = view;
+    view2131230775 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -38,7 +38,7 @@ public class ExportFacilityActivity_ViewBinding extends BaseFragmentActivity_Vie
       }
     });
     view = Utils.findRequiredView(source, R.id.browse_2, "method 'onViewClicked'");
-    view2131230774 = view;
+    view2131230776 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -53,10 +53,10 @@ public class ExportFacilityActivity_ViewBinding extends BaseFragmentActivity_Vie
     target = null;
 
 
-    view2131230773.setOnClickListener(null);
-    view2131230773 = null;
-    view2131230774.setOnClickListener(null);
-    view2131230774 = null;
+    view2131230775.setOnClickListener(null);
+    view2131230775 = null;
+    view2131230776.setOnClickListener(null);
+    view2131230776 = null;
 
     super.unbind();
   }

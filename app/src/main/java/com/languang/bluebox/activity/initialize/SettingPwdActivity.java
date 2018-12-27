@@ -1,31 +1,23 @@
 package com.languang.bluebox.activity.initialize;
 
 import android.content.Intent;
-import android.support.v7.view.menu.ActionMenuItemView;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
-import com.languang.bluebox.activity.SplashActivity;
+import com.languang.bluebox.R;
+import com.languang.bluebox.TimeUtils;
 import com.languang.bluebox.activity.facility.AdminPwdActivity;
+import com.languang.bluebox.basework.base.BaseFragmentActivity;
+import com.languang.bluebox.basework.net.OkHttpUtils;
 import com.languang.bluebox.entity.NetPort;
-import com.languang.bluebox.utils.MyUtil;
 import com.mrj.framworklib.utils.OkHttpCallBack;
-import com.mrj.framworklib.utils.ToastUtilsBase;
+import com.tencent.mmkv.MMKV;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import com.languang.bluebox.R;
-import com.languang.bluebox.activity.facility.MyWifiActivity;
-import com.languang.bluebox.basework.base.BaseFragmentActivity;
-import com.languang.bluebox.basework.net.OkHttpUtils;
-import com.languang.bluebox.constant.ApiConstant;
-import com.languang.bluebox.constant.Constant;
-import com.languang.bluebox.entity.ResponseMessage;
-import com.tencent.mmkv.MMKV;
 
 /**
  * 初始化密码
@@ -84,7 +76,7 @@ public class SettingPwdActivity extends BaseFragmentActivity {
                 params.put("token", MMKV.defaultMMKV()
                         .decodeString("token"));
                 OkHttpUtils.getInstance()
-                        .okPost(SettingPwdActivity.this, ApiConstant.WLAN_SET_BOX, null, new OkHttpCallBack() {
+                        .okPost(SettingPwdActivity.this, TimeUtils.getGateway(SettingPwdActivity.this) + "/setbox", null, new OkHttpCallBack() {
                             @Override
                             public void onSucceed(String requestUrl, String response) {
                                 Intent intent = new Intent(SettingPwdActivity.this, AdminPwdActivity.class);

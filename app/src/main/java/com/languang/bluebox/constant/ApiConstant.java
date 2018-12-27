@@ -14,7 +14,7 @@ public class ApiConstant {
     /**
      * 盒子基础地址
      */
-    public static final String BOX_BASE_URL = "http://box.haotuwei.com";
+    public static  String BOX_BASE_URL = "http://box.haotuwei.com";
     //云端api
     /**
      * 刷新
@@ -154,7 +154,7 @@ public class ApiConstant {
     /**
      * 设置盒子
      */
-    public static final String WLAN_SET_BOX =BOX_BASE_URL+ "/setbox";
+    public static final String WLAN_SET_BOX = BOX_BASE_URL + "/setbox";
     //(域名为手机的硬件网关，将最后一位改为1(例如192.168.0.1),后拼
     // 接/info进行是否连接判断，配对盒子连接盒子后设置盒子的登录密码、昵称等)
     /**

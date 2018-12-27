@@ -8,9 +8,11 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 
+import com.languang.bluebox.FFInterface;
 import com.languang.bluebox.R;
 import com.languang.bluebox.adapter.PictureFragmentAdapter;
 import com.languang.bluebox.basework.base.BaseFragment;
+import com.languang.bluebox.entity.ImgListEntity;
 import com.languang.bluebox.popupwd.AddPicturePopupWindow;
 
 import java.util.ArrayList;
@@ -25,19 +27,19 @@ import butterknife.OnClick;
  * @author 49829
  * @date 2018/3/26
  */
-
 public class MapStorageFragment extends BaseFragment {
-
     @BindView(R.id.item_title_add_layout)
     LinearLayout itemTitleAddLayout;
-
     @BindView(R.id.radio_group)
     RadioGroup radioGroup;
     @BindView(R.id.view_pager)
     ViewPager viewPager;
-
-
+    PictureTimeFragment fragment1;
+    PictureAddressFragment fragment2;
+    PictureTagFragment fragment3;
     private List<Fragment> fragments = new ArrayList<>(3);
+    //    FFInterface ffInterface;
+    public List<ImgListEntity> imgEntities;
 
     @Override
     protected int getLayoutResId() {
@@ -46,28 +48,33 @@ public class MapStorageFragment extends BaseFragment {
 
     @Override
     protected void initView(View view) {
-
         initRadioGroup();
-
         initViewPager();
-
     }
 
     /**
      * 初始化碎片
      */
     private void initViewPager() {
-        fragments.add(new PictureTimeFragment());
-        fragments.add(new PictureAddressFragment());
-        fragments.add(new PictureTagFragment());
-
+        fragment1 = new PictureTimeFragment();
+        fragments.add(fragment1);
+        fragment2 = new PictureAddressFragment();
+        fragments.add(fragment2);
+        fragment3 = new PictureTagFragment();
+        fragments.add(fragment3);
+        fragment1.setFF(new FFInterface() {
+            @Override
+            public void click(List<ImgListEntity> imgEntities) {
+                MapStorageFragment.this.imgEntities = imgEntities;
+                fragment2.setList(imgEntities);
+                fragment3.setList(imgEntities);
+            }
+        });
         PictureFragmentAdapter adapter = new PictureFragmentAdapter(getChildFragmentManager(), fragments);
         viewPager.setAdapter(adapter);
-
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
             }
 
             @Override
@@ -89,10 +96,8 @@ public class MapStorageFragment extends BaseFragment {
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
             }
         });
-
     }
 
     /**
@@ -120,17 +125,13 @@ public class MapStorageFragment extends BaseFragment {
         });
     }
 
-
     @Override
     protected void initData() {
-
     }
-
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-
     }
 
     @OnClick({R.id.item_title_left_layout, R.id.item_title_add_layout})
@@ -144,7 +145,8 @@ public class MapStorageFragment extends BaseFragment {
             case R.id.item_title_add_layout:
                 WindowManager m = getActivity().getWindowManager();
                 DisplayMetrics outMetrics = new DisplayMetrics();
-                m.getDefaultDisplay().getMetrics(outMetrics);
+                m.getDefaultDisplay()
+                        .getMetrics(outMetrics);
                 int width = (int) (outMetrics.widthPixels * 0.6);
                 AddPicturePopupWindow picturePopupWindow = new AddPicturePopupWindow(getActivity(), width);
                 picturePopupWindow.showAsDropDown(itemTitleAddLayout);
@@ -153,6 +155,4 @@ public class MapStorageFragment extends BaseFragment {
                 break;
         }
     }
-
-
 }

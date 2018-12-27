@@ -67,6 +67,7 @@
             android:name="com.languang.bluebox.activity.initialize.SettingWanActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
+        <activity android:name="com.languang.bluebox.AddPic1Activity" />
         <!-- 设置WAN -->
         <activity
             android:name="com.languang.bluebox.activity.initialize.SettingPwdActivity"
@@ -138,6 +139,8 @@
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait" />
         <activity android:name="com.languang.bluebox.WaiSeActivity" />
+        <activity android:name="com.languang.bluebox.BiaoZhuActivity" />
+        <activity android:name="com.languang.bluebox.adapter.picturestorege.ShareActivity1" />
 
         <meta-data
             android:name="android.support.VERSION"

@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.languang.bluebox">
 
-    <uses-permission android:name="android.permission.RECORD_AUDIO"></uses-permission>
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -53,6 +53,7 @@
             android:name=".activity.initialize.SettingWanActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".AddPic1Activity"></activity>
         <!-- 设置WAN -->
         <activity
             android:name=".activity.initialize.SettingPwdActivity"
@@ -123,6 +124,8 @@
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".WaiSeActivity"></activity>
+        <activity android:name=".WaiSeActivity" />
+        <activity android:name=".BiaoZhuActivity"></activity>
+        <activity android:name=".adapter.picturestorege.ShareActivity1"></activity>
     </application>
 </manifest>

@@ -2,7 +2,6 @@ package com.languang;
 
 import com.languang.bluebox.entity.ImgEntity;
 
-import java.util.List;
 import java.util.Map;
 
 public class NewPicture {

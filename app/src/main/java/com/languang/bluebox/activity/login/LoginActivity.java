@@ -1,15 +1,12 @@
 package com.languang.bluebox.activity.login;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.languang.bluebox.MainActivity;
 import com.languang.bluebox.R;
 import com.languang.bluebox.basework.base.BaseFragmentActivity;
 import com.languang.bluebox.basework.utils.SharedPrefsUtil;
@@ -19,6 +16,7 @@ import com.languang.bluebox.entity.ResponseMessage;
 import com.languang.bluebox.entity.login.LoginRes;
 import com.languang.bluebox.model.LoginModel;
 import com.languang.bluebox.presenter.ILogin;
+import com.languang.bluebox.utils.MyUtil;
 import com.mrj.framworklib.utils.OkHttpCallBack;
 import com.mrj.framworklib.utils.ToastUtilsBase;
 
@@ -26,7 +24,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -49,7 +46,7 @@ public class LoginActivity extends BaseFragmentActivity implements OkHttpCallBac
 
     @Override
     protected void initView() {
-        userPhoneEt.setText("15801653609");
+            userPhoneEt.setText("15801653609");
         pwdEt.setText("123");
     }
 
@@ -84,11 +81,14 @@ public class LoginActivity extends BaseFragmentActivity implements OkHttpCallBac
         params.put("pwd", pwdEt.getText()
                 .toString());
         params.put("type", "pwd");
-        model.matchBox(ApiConstant.CLOUD_LOGIN, params, this);
+        params.put("imei", MyUtil.getImei(this));
+        model.matchBox(ApiConstant.LOGIN_URL, params, this);
+//        model.matchBox(ApiConstant.WLAN_SYS_LOGIN, params, this);
     }
 
     @Override
     public void onSucceed(String requestUrl, String response) {
+        Log.d("ccnb1111", response);
         ResponseMessage<LoginRes> resResponseMessage = new Gson().fromJson(response,
                 new TypeToken<ResponseMessage<LoginRes>>() {
                 }.getType());
@@ -115,6 +115,7 @@ public class LoginActivity extends BaseFragmentActivity implements OkHttpCallBac
 
     @Override
     public void onFailed() {
+        Log.d("ccnb", "11");
     }
 
     @OnClick({R.id.find_pwd, R.id.login_submit, R.id.to_register, R.id.sms_login})

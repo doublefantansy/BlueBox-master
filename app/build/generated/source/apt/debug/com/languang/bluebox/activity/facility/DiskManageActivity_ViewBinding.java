@@ -15,7 +15,7 @@ import java.lang.Override;
 public class DiskManageActivity_ViewBinding extends BaseFragmentActivity_ViewBinding {
   private DiskManageActivity target;
 
-  private View view2131230790;
+  private View view2131230793;
 
   @UiThread
   public DiskManageActivity_ViewBinding(DiskManageActivity target) {
@@ -35,7 +35,7 @@ public class DiskManageActivity_ViewBinding extends BaseFragmentActivity_ViewBin
     target.diskReduce = Utils.findRequiredViewAsType(source, R.id.disk_reduce, "field 'diskReduce'", TextView.class);
     target.diskTotal = Utils.findRequiredViewAsType(source, R.id.disk_total, "field 'diskTotal'", TextView.class);
     view = Utils.findRequiredView(source, R.id.clear_cache, "method 'onViewClicked'");
-    view2131230790 = view;
+    view2131230793 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -56,8 +56,8 @@ public class DiskManageActivity_ViewBinding extends BaseFragmentActivity_ViewBin
     target.diskReduce = null;
     target.diskTotal = null;
 
-    view2131230790.setOnClickListener(null);
-    view2131230790 = null;
+    view2131230793.setOnClickListener(null);
+    view2131230793 = null;
 
     super.unbind();
   }

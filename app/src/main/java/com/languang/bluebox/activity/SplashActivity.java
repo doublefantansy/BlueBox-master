@@ -37,6 +37,8 @@ import java.util.Map;
  * @date 2018/4/16
  */
 public class SplashActivity extends AppCompatActivity {
+    public static String wlanIp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +64,7 @@ public class SplashActivity extends AppCompatActivity {
         String url = ApiConstant.WLAN_INFO;
         Log.d("ccnb", TimeUtils.getGateway(this));
         OkHttpUtils.getInstance()
-                .okPost(this, url, null, new OkHttpCallBack() {
+                .okPost(this, TimeUtils.getGateway(this)+"/info", null, new OkHttpCallBack() {
                     @Override
                     public void onSucceed(String requestUrl, String response) {
                         ResponseMessage<NetPort> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<NetPort>>() {
@@ -92,6 +94,8 @@ public class SplashActivity extends AppCompatActivity {
                         } else if (responseMessage.getData()
                                 .getStatus()
                                 .equals("9999")) {
+                            TimeUtils.setWlanIp("https://" + netPort.getWlanip());
+//                            Log.d("ccnb", wlanIp);
                             MMKV.defaultMMKV()
                                     .encode("user", new Gson().toJson(netPort));
                             if (netPort.isActivate()) {
@@ -120,11 +124,10 @@ public class SplashActivity extends AppCompatActivity {
             params.put("type", "new");
         }
 //        Log.d("ccnbaa", ApiConstant.WLAN_SYS_LOGIN);
-
-        ApiConstant.BOX_BASE_URL = "https://" + TimeUtils.getGateway(this);
-        Log.d("ccnblsy",ApiConstant.BOX_BASE_URL + "/setbox");
+//        ApiConstant.BOX_BASE_URL = "https://" + TimeUtils.getGateway(this);
+        Log.d("ccnblsy", ApiConstant.BOX_BASE_URL + "/setbox");
         OkHttpUtils.getInstance()
-                .okPost(this, ApiConstant.BOX_BASE_URL + "/syslogin", params, new OkHttpCallBack() {
+                .okPost(this, TimeUtils.getGateway(this) + "/syslogin", params, new OkHttpCallBack() {
                     @Override
                     public void onSucceed(String requestUrl, String response) {
                         ResponseMessage<LoginRes> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<LoginRes>>() {

@@ -2,40 +2,35 @@ package com.languang.bluebox.activity.initialize;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.view.menu.ActionMenuItemView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
-import com.languang.bluebox.activity.facility.AdminPwdActivity;
+import com.languang.bluebox.R;
+import com.languang.bluebox.TimeUtils;
 import com.languang.bluebox.activity.facility.MobileActivity;
 import com.languang.bluebox.adapter.ImgOnClickListenner;
 import com.languang.bluebox.adapter.PopListAdapter;
-import com.languang.bluebox.entity.NetPort;
-import com.mrj.framworklib.utils.OkHttpCallBack;
-import com.mrj.framworklib.utils.ToastUtilsBase;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
-import com.languang.bluebox.R;
 import com.languang.bluebox.basework.base.BaseFragmentActivity;
 import com.languang.bluebox.basework.net.OkHttpUtils;
 import com.languang.bluebox.constant.ApiConstant;
 import com.languang.bluebox.constant.Constant;
+import com.languang.bluebox.entity.NetPort;
 import com.languang.bluebox.entity.ResponseMessage;
+import com.mrj.framworklib.utils.OkHttpCallBack;
+import com.mrj.framworklib.utils.ToastUtilsBase;
 import com.tencent.mmkv.MMKV;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 
@@ -147,7 +142,7 @@ public class SettingWanActivity extends BaseFragmentActivity implements OkHttpCa
                 params.put("token", MMKV.defaultMMKV()
                         .decodeString("token"));
                 OkHttpUtils.getInstance()
-                        .okPost(SettingWanActivity.this, ApiConstant.WLAN_SET_BOX, null, new OkHttpCallBack() {
+                        .okPost(SettingWanActivity.this, TimeUtils.getGateway(SettingWanActivity.this) + "/setbox", null, new OkHttpCallBack() {
                             @Override
                             public void onSucceed(String requestUrl, String response) {
                                 Intent intent = new Intent(SettingWanActivity.this, MobileActivity.class);

@@ -4,6 +4,7 @@ package com.languang.bluebox.fragment.mapstorage;
 import android.support.annotation.CallSuper;
 import android.support.annotation.UiThread;
 import android.view.View;
+import android.widget.TextView;
 import butterknife.Unbinder;
 import butterknife.internal.Utils;
 import com.languang.bluebox.R;
@@ -21,6 +22,7 @@ public class PictureTimeFragment_ViewBinding implements Unbinder {
 
     target.searchEt = Utils.findRequiredViewAsType(source, R.id.search_et, "field 'searchEt'", CustomEditText.class);
     target.recyclerView = Utils.findRequiredViewAsType(source, R.id.recycler_view, "field 'recyclerView'", EasyRecyclerView.class);
+    target.search = Utils.findRequiredViewAsType(source, R.id.search, "field 'search'", TextView.class);
   }
 
   @Override
@@ -32,5 +34,6 @@ public class PictureTimeFragment_ViewBinding implements Unbinder {
 
     target.searchEt = null;
     target.recyclerView = null;
+    target.search = null;
   }
 }

@@ -5,15 +5,13 @@
     android:background="@color/color_fff"
     android:orientation="vertical">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_30"
         android:layout_marginLeft="@dimen/dp_11"
-        android:layout_marginRight="@dimen/dp_10"
         android:layout_marginTop="@dimen/dp_19"
+        android:layout_marginRight="@dimen/dp_10"
         android:orientation="horizontal">
-
 
         <com.languang.bluebox.coustomview.CustomEditText
             android:id="@+id/search_et"
@@ -27,15 +25,13 @@
             android:textColor="@color/color_999999"
             android:textSize="@dimen/text_size_15" />
 
-
-        <ImageView
-            android:layout_width="@dimen/dp_24"
+        <TextView
+            android:id="@+id/search"
+            android:layout_width="@dimen/dp_34"
             android:layout_height="@dimen/dp_25"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/dp_10"
-            android:src="@mipmap/ic_sort" />
-
-
+            android:text="搜索" />
     </LinearLayout>
 
     <GridView
@@ -45,12 +41,9 @@
         android:layout_marginTop="@dimen/dp_12"
         android:horizontalSpacing="@dimen/dp_10"
         android:numColumns="2"
-        android:scrollbars="none"
         android:paddingLeft="@dimen/dp_12"
-        android:verticalSpacing="@dimen/dp_10">
-
-    </GridView>
-
+        android:scrollbars="none"
+        android:verticalSpacing="@dimen/dp_10"></GridView>
 </LinearLayout>
 
 

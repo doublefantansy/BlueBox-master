@@ -5,35 +5,46 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import java.util.List;
-
+import com.bumptech.glide.Glide;
 import com.languang.bluebox.R;
+import com.languang.bluebox.TimeUtils;
+import com.languang.bluebox.entity.ImgEntity;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by 49829 on 2018/4/16.
  */
-
 public class PictureTagAdapter extends BaseAdapter {
     private Context context;
-    private List<String> list;
     private LayoutInflater inflater;
+    List<String> strings = new ArrayList<>();
+    List<ImgEntity> imgEntityList = new ArrayList<>();
+    Map<String, ImgEntity> imgEntities;
 
-    public PictureTagAdapter(Context context, List<String> list) {
+    public PictureTagAdapter(Context context, Map<String, ImgEntity> imgEntities) {
         this.context = context;
-        this.list = list;
+        this.imgEntities = imgEntities;
+        for (Map.Entry<String, ImgEntity> entry : imgEntities.entrySet()) {
+            strings.add(entry.getKey());
+            imgEntityList.add(entry.getValue());
+        }
         inflater = LayoutInflater.from(context);
     }
 
-
     @Override
     public int getCount() {
-        return list.size();
+        return imgEntityList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return list.get(position);
+        return imgEntityList.get(position);
     }
 
     @Override
@@ -47,13 +58,23 @@ public class PictureTagAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.item_tag_grid, null);
             holder = new ViewHolder();
+            holder.textView = convertView.findViewById(R.id.text);
+            holder.imageView = convertView.findViewById(R.id.iam);
             convertView.setTag(holder);
         }
-
+        holder = (ViewHolder) convertView.getTag();
+        holder.textView.setText("#" + strings.get(position));
+        Glide.with(context)
+                .asBitmap()
+                .load(TimeUtils.getWlanIp() + "/public/" + imgEntityList.get(position)
+                        .getSmallpath() + imgEntityList.get(position)
+                        .getSmallname())
+                .into(holder.imageView);
         return convertView;
     }
 
     class ViewHolder {
-
+        TextView textView;
+        ImageView imageView;
     }
 }

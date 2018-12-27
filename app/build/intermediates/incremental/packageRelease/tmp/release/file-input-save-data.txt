@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon Dec 17 17:24:05 CST 2018
+#Thu Dec 27 14:44:08 CST 2018
 4.path=lib/x86_64/libmmkv.so
 8.set=NATIVE_RESOURCE
 6.path=lib/x86/libmmkv.so

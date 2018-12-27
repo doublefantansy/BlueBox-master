@@ -5,6 +5,7 @@ import android.support.annotation.CallSuper;
 import android.support.annotation.UiThread;
 import android.view.View;
 import android.widget.GridView;
+import android.widget.TextView;
 import butterknife.Unbinder;
 import butterknife.internal.Utils;
 import com.languang.bluebox.R;
@@ -21,6 +22,7 @@ public class PictureAddressFragment_ViewBinding implements Unbinder {
 
     target.searchEt = Utils.findRequiredViewAsType(source, R.id.search_et, "field 'searchEt'", CustomEditText.class);
     target.addressGrid = Utils.findRequiredViewAsType(source, R.id.address_grid, "field 'addressGrid'", GridView.class);
+    target.search = Utils.findRequiredViewAsType(source, R.id.search, "field 'search'", TextView.class);
   }
 
   @Override
@@ -32,5 +34,6 @@ public class PictureAddressFragment_ViewBinding implements Unbinder {
 
     target.searchEt = null;
     target.addressGrid = null;
+    target.search = null;
   }
 }

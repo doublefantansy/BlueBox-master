@@ -10,13 +10,14 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.GravityEnum;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.gson.Gson;
 import com.google.gson.internal.LinkedTreeMap;
 import com.google.gson.reflect.TypeToken;
 import com.languang.NewPicture;
 import com.languang.bluebox.basework.base.BaseFragment;
 import com.languang.bluebox.basework.net.OkHttpUtils;
-import com.languang.bluebox.constant.ApiConstant;
 import com.languang.bluebox.entity.ImgEntity;
 import com.languang.bluebox.entity.ResponseMessage;
 import com.mrj.framworklib.utils.OkHttpCallBack;
@@ -46,6 +47,7 @@ public class PictureStoreageFragment extends BaseFragment implements CountInterf
     CountInterface countInterface;
     LinearLayoutManager layoutManager;
     FAInterface faInterface;
+    private MaterialDialog dialog;
 
     @Override
     protected int getLayoutResId() {
@@ -64,6 +66,13 @@ public class PictureStoreageFragment extends BaseFragment implements CountInterf
                 adapter.begin();
             }
         });
+        dialog = new MaterialDialog.Builder(getActivity()).title("正在加载中")
+                .titleGravity(GravityEnum.CENTER)
+                .progress(true, 0)
+                .progressIndeterminateStyle(true)
+                .canceledOnTouchOutside(false)
+                .cancelable(false)
+                .build();
     }
 
     @Override
@@ -71,11 +80,13 @@ public class PictureStoreageFragment extends BaseFragment implements CountInterf
         super.onDestroy();
         count = 0;
     }
-
     void refresh() {
-//        title.setText("宝盒新增文件");
+        dialog.show();
+        ((MainActivity) getActivity()).clear();
+//        title.setText();
+        title.setText("宝盒新增文件");
         OkHttpUtils.getInstance()
-                .okPost(getActivity(), ApiConstant.BOX_NEW_LIST, null, new OkHttpCallBack() {
+                .okPost(getActivity(), TimeUtils.getWlanIp() + "/newlist", null, new OkHttpCallBack() {
                     @Override
                     public void onSucceed(String requestUrl, String response) {
                         ResponseMessage<NewPicture> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<NewPicture>>() {
@@ -93,6 +104,7 @@ public class PictureStoreageFragment extends BaseFragment implements CountInterf
                             recyclerView.setVisibility(View.GONE);
                             none.setVisibility(View.VISIBLE);
                         }
+                        dialog.dismiss();
                     }
 
                     @Override
@@ -105,7 +117,7 @@ public class PictureStoreageFragment extends BaseFragment implements CountInterf
     @Override
     public void onResume() {
         super.onResume();
-//        refresh();
+        refresh();
     }
 
     @Override

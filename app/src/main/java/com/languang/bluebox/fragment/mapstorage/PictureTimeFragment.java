@@ -1,42 +1,35 @@
 package com.languang.bluebox.fragment.mapstorage;
 
 import android.graphics.drawable.Drawable;
-import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.languang.bluebox.FFInterface;
+import com.languang.bluebox.R;
+import com.languang.bluebox.TimeUtils;
+import com.languang.bluebox.adapter.picturestorege.PictureTimeAdapter;
+import com.languang.bluebox.basework.base.BaseFragment;
 import com.languang.bluebox.basework.net.OkHttpUtils;
+import com.languang.bluebox.basework.utils.SoftKeyBoardListener;
 import com.languang.bluebox.constant.ApiConstant;
-import com.languang.bluebox.entity.ImgEntity;
+import com.languang.bluebox.coustomview.CustomEditText;
 import com.languang.bluebox.entity.ImgListEntity;
 import com.languang.bluebox.utils.ImgUtil;
 import com.luck.easyrecyclerview.EasyRecyclerView;
-import com.luck.easyrecyclerview.decoration.RecycleViewDivider;
+import com.mrj.framworklib.utils.OkHttpCallBack;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.languang.bluebox.R;
-import com.languang.bluebox.adapter.picturestorege.PictureTimeAdapter;
-import com.languang.bluebox.basework.base.BaseFragment;
-import com.languang.bluebox.basework.utils.SoftKeyBoardListener;
-import com.languang.bluebox.coustomview.CustomEditText;
-import com.languang.bluebox.coustomview.tabview.Display;
-import com.mrj.framworklib.utils.OkHttpCallBack;
-import com.mrj.framworklib.utils.ToastUtilsBase;
-
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * 时间分类图片
@@ -44,18 +37,21 @@ import butterknife.Unbinder;
  * @author 49829
  * @date 2018/3/29
  */
-
 public class PictureTimeFragment extends BaseFragment implements OkHttpCallBack {
-
     @BindView(R.id.search_et)
     CustomEditText searchEt;
     @BindView(R.id.recycler_view)
     EasyRecyclerView recyclerView;
-
-
+    @BindView(R.id.search)
+    TextView search;
     private List<String> stringList = new ArrayList<>();
     private PictureTimeAdapter adapter;
     private List<ImgListEntity> imgEntities = new ArrayList<>();
+    FFInterface ffInterface;
+
+    public void setFF(FFInterface ff) {
+        this.ffInterface = ff;
+    }
 
     @Override
     protected int getLayoutResId() {
@@ -68,9 +64,7 @@ public class PictureTimeFragment extends BaseFragment implements OkHttpCallBack 
         if (!isSoftShowing()) {
             searchEt.setCursorVisible(false);
         }
-
         SoftKeyBoardListener.setListener(getActivity(), searchEt);
-
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(manager);
@@ -86,12 +80,10 @@ public class PictureTimeFragment extends BaseFragment implements OkHttpCallBack 
         searchEt.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
 
             @Override
@@ -113,8 +105,9 @@ public class PictureTimeFragment extends BaseFragment implements OkHttpCallBack 
     @Override
     protected void initData() {
         Map<String, Object> params = new HashMap<>();
-        params.put("cdate", "");
-        OkHttpUtils.getInstance().okPost(getActivity(), ApiConstant.BOX_LIST_IMG, params, this);
+//        params.put("cdate", "");
+        OkHttpUtils.getInstance()
+                .okPost(getActivity(), TimeUtils.getWlanIp() + "/listimg", params, this);
     }
 
     @Override
@@ -125,19 +118,28 @@ public class PictureTimeFragment extends BaseFragment implements OkHttpCallBack 
 
     @Override
     public void onSucceed(String requestUrl, String response) {
-        Log.d("ccnb1",response);
+        Log.d("ccnb1", response);
+//        ResponseMessage<img>
         if (ApiConstant.BOX_LIST_IMG.equals(requestUrl)) {
             imgEntities = ImgUtil.getTimeImg(response);
+//            ResponseMessage<NewPicture1> imgListEntityResponseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<NewPicture1>>() {
+//            }.getType());
+//            ffInterface.click(imgListEntityResponseMessage.getData().);
+//            ((MainActivity) getActivity()).imgEntities = imgEntities;
+//            imgEntities.get(0). getImgEntityList().get(0).getTags()
             if (null != imgEntities) {
-               adapter.clear();
-               adapter.addAll(imgEntities);
-               adapter.notifyDataSetChanged();
+                adapter.clear();
+                adapter.addAll(imgEntities);
+                adapter.notifyDataSetChanged();
+//            }
+//        }
             }
+            ffInterface.click(imgEntities);
         }
     }
 
     @Override
     public void onFailed() {
-        Log.d("ccnb1","in");
+        Log.d("ccnb1", "in");
     }
 }

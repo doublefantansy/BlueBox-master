@@ -1409,18 +1409,29 @@ drawable gallery_ic_corner_gray
 drawable gallery_ic_corner_selector
 drawable gallery_ic_cross
 drawable gou
+drawable ic_erweima
+drawable ic_fenxiang
 drawable ic_gou
 drawable ic_home_add
 drawable ic_icon_2
+drawable ic_iconfontjiantou5
+drawable ic_laji
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_left_back
+drawable ic_meihua
+drawable ic_mima_2
 drawable ic_pop_add_picture
 drawable ic_right
+drawable ic_set
 drawable ic_shanchu
+drawable ic_shanchu_2
 drawable ic_voice
+drawable ic_wangluo
 drawable ic_yinsi
 drawable ic_zhibiaozhushibiaozhu
+drawable ic_zhushibiaozhui
+drawable ic_zidingyi
 drawable icon_iamge_java
 drawable md_btn_selected
 drawable md_btn_selected_dark
@@ -1492,6 +1503,7 @@ drawable ucrop_vector_loader
 drawable ucrop_vector_loader_animated
 id ALT
 id CTRL
+id CropImageView
 id FILL
 id FUNCTION
 id META
@@ -1536,6 +1548,7 @@ id avatar_iv
 id back_to_login
 id basic
 id beginning
+id biaozhu
 id biaozhus
 id blocking
 id bottom
@@ -1547,6 +1560,7 @@ id browse_1
 id browse_2
 id browse_grid_rl
 id button
+id button1
 id buttonPanel
 id cancel
 id cancel_action
@@ -1574,6 +1588,7 @@ id content
 id contentPanel
 id contrast
 id coordinator
+id count
 id create_time
 id custom
 id customPanel
@@ -1584,6 +1599,7 @@ id date
 id decor_content_parent
 id default_activity_button
 id del
+id del2
 id delete_box
 id des
 id design_bottom_sheet
@@ -1594,7 +1610,6 @@ id design_navigation_view
 id disableHome
 id disk
 id disk_iv
-id disk_manage_ll
 id disk_name
 id disk_num
 id disk_reduce
@@ -1617,7 +1632,6 @@ id expand_activities_button
 id expanded_menu
 id export_all
 id eye
-id facility_info_ll
 id facility_info_name
 id file_ll
 id file_name
@@ -1640,10 +1654,13 @@ id home
 id homeAsUp
 id horizontal
 id hostName
+id iam
 id icon
 id icon_group
 id ifRoom
+id ima
 id image
+id imageView
 id image_view
 id image_view_crop
 id image_view_logo
@@ -1717,6 +1734,7 @@ id md_title
 id md_titleFrame
 id measure_size
 id media_actions
+id meihua
 id menu_crop
 id menu_loader
 id message
@@ -1726,7 +1744,6 @@ id mobile
 id multiply
 id my_grid
 id my_list
-id my_wifi_rl
 id name
 id navigation_header_container
 id net
@@ -1760,6 +1777,7 @@ id photo_album_iv
 id photo_album_tv
 id pic_tag
 id picture_state
+id piliang
 id pin
 id popList
 id privacy
@@ -1771,7 +1789,6 @@ id progress_position
 id ptr_layout
 id pwd_et
 id pwd_iv
-id pwd_manage_ll
 id radial
 id radio
 id radio_group
@@ -1782,7 +1799,6 @@ id rectangle
 id recycler_view
 id refresh
 id register_submit
-id restart
 id right
 id right_icon
 id right_iv
@@ -1818,6 +1834,7 @@ id scrollable
 id sd_name
 id sd_name_1
 id sd_name_2
+id search
 id search_badge
 id search_bar
 id search_button
@@ -1856,6 +1873,8 @@ id src_atop
 id src_in
 id src_over
 id ss
+id ss1
+id ss3
 id start
 id start_archive
 id state
@@ -1941,7 +1960,6 @@ id view_pager
 id view_pager_page
 id viewpager_tab
 id visible
-id visitor_pwd_ll
 id waishe
 id watermark
 id wifi
@@ -1995,6 +2013,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout activity_admin_pwd
+layout activity_biao_zhu
 layout activity_browse_sd
 layout activity_compile_picture
 layout activity_disk_manage
@@ -2019,6 +2038,7 @@ layout base_dialog_big_toast
 layout base_dialog_progress_dark
 layout base_dialog_progress_light
 layout base_dialog_toast
+layout cropactivity
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar
@@ -2052,8 +2072,11 @@ layout gallery_fragment_media_page
 layout gallery_fragment_media_preview
 layout gallery_loading_view_final_footer_default
 layout gallery_media_image_preview_item
+layout infolist
+layout infolist1
 layout item
 layout item1
+layout item2
 layout item_address
 layout item_browse
 layout item_browse_grid

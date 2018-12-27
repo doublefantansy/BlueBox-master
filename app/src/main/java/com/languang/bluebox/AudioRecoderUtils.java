@@ -57,7 +57,7 @@ public class AudioRecoderUtils {
              * ，H263视频/ARM音频编码)、MPEG-4、RAW_AMR(只支持音频且音频编码要求为AMR_NB)
              */
             mMediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-            filePath = FolderPath + TimeUtils.getCurrentTime() + ".amr";
+            filePath = FolderPath + TimeUtils.getCurrentTime() + ".mp3";
             /* ③准备 */
             mMediaRecorder.setOutputFile(filePath);
             mMediaRecorder.setMaxDuration(MAX_LENGTH);

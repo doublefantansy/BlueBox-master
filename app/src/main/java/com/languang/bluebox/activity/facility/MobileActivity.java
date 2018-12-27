@@ -1,8 +1,6 @@
 package com.languang.bluebox.activity.facility;
 
-import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,12 +8,11 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.languang.bluebox.R;
-import com.languang.bluebox.activity.initialize.SettingWanActivity;
+import com.languang.bluebox.TimeUtils;
 import com.languang.bluebox.activity.login.LoginActivity;
 import com.languang.bluebox.basework.base.BaseFragmentActivity;
 import com.languang.bluebox.basework.net.OkHttpUtils;
 import com.languang.bluebox.constant.ApiConstant;
-import com.languang.bluebox.coustomview.tabview.Tab;
 import com.languang.bluebox.entity.NetPort;
 import com.languang.bluebox.entity.SpeRes;
 import com.mrj.framworklib.utils.OkHttpCallBack;
@@ -65,7 +62,7 @@ public class MobileActivity extends BaseFragmentActivity {
                 params.put("token", MMKV.defaultMMKV()
                         .decodeString("token"));
                 OkHttpUtils.getInstance()
-                        .okPost(MobileActivity.this, ApiConstant.WLAN_SET_BOX, null, new OkHttpCallBack() {
+                        .okPost(MobileActivity.this, TimeUtils.getGateway(MobileActivity.this) + "/setbox", null, new OkHttpCallBack() {
                             @Override
                             public void onSucceed(String requestUrl, String response) {
                                 OkHttpUtils.getInstance()

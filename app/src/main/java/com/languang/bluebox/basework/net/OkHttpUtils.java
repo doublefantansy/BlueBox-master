@@ -123,7 +123,6 @@ public class OkHttpUtils {
         this.context = context;
     }
 
-
     public void uploadFile(Context context, final String url, String filePath, final OkHttpCallBack callBack) {
         OkHttpClient client = new OkHttpClient();
         RequestBody requestBody = new MultipartBody.Builder()

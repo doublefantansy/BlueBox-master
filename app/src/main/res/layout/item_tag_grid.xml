@@ -5,11 +5,13 @@
 
 
     <ImageView
+        android:id="@+id/iam"
         android:layout_width="@dimen/dp_123"
         android:layout_height="@dimen/dp_123"
-        android:src="@mipmap/meinv" />
+        />
 
     <TextView
+        android:id="@+id/text"
         android:layout_width="@dimen/dp_123"
         android:layout_height="@dimen/dp_123"
         android:background="@color/color_80313131"

@@ -6,21 +6,22 @@
 
 
     <ImageView
+        android:id="@+id/ima"
         android:layout_width="@dimen/dp_165"
         android:layout_height="@dimen/dp_165"
-        android:src="@mipmap/meinv" />
+         />
 
     <TextView
+        android:id="@+id/text"
         style="@style/no_font_padding_text_view"
         android:layout_marginTop="@dimen/dp_12"
-        android:text="#北京"
         android:textColor="@color/color_333"
         android:textSize="@dimen/text_size_17" />
 
     <TextView
+        android:id="@+id/count"
         style="@style/no_font_padding_text_view"
         android:layout_marginTop="@dimen/dp_8"
-        android:text="55张"
         android:textColor="@color/color_999999"
         android:textSize="@dimen/text_size_15" />
 
