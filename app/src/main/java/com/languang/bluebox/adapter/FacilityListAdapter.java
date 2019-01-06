@@ -14,7 +14,6 @@ import com.luck.easyrecyclerview.adapter.BaseViewHolder;
 import com.luck.easyrecyclerview.adapter.RecyclerArrayAdapter;
 
 public class FacilityListAdapter extends RecyclerArrayAdapter<FacilityListInfo> {
-
     private Context context;
     private String uid;
 
@@ -45,6 +44,13 @@ public class FacilityListAdapter extends RecyclerArrayAdapter<FacilityListInfo> 
         public void setData(FacilityListInfo data, int position) {
             nickName.setText(data.getNikename());
             boxName.setText(data.getBluename());
+            if (data.isOnline()) {
+                boxName.setTextColor(context.getResources()
+                        .getColor(R.color.myBlue));
+            } else {
+                boxName.setTextColor(context.getResources()
+                        .getColor(R.color.gray));
+            }
             uid = data.getBlueuuid();
             setNick.setOnClickListener(this);
             code.setOnClickListener(this);
@@ -63,19 +69,21 @@ public class FacilityListAdapter extends RecyclerArrayAdapter<FacilityListInfo> 
                     break;
                 case R.id.delete_box:
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                    builder.setTitle("提示").setMessage("是否确认删除？")
+                    builder.setTitle("提示")
+                            .setMessage("是否确认删除？")
                             .setPositiveButton("确认", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     activity.deleteBox(uid);
                                     dialog.dismiss();
                                 }
-                            }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
+                            })
+                            .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
                     AlertDialog alertDialog = builder.create();
                     alertDialog.show();
                     break;
@@ -89,6 +97,4 @@ public class FacilityListAdapter extends RecyclerArrayAdapter<FacilityListInfo> 
     public int getPosition(FacilityListInfo item) {
         return super.getPosition(item);
     }
-
-
 }

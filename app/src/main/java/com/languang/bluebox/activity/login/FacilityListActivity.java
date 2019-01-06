@@ -18,6 +18,7 @@ import com.google.gson.reflect.TypeToken;
 import com.languang.bluebox.ErrorActivity;
 import com.languang.bluebox.MainActivity;
 import com.languang.bluebox.R;
+import com.languang.bluebox.TimeUtils;
 import com.languang.bluebox.adapter.FacilityListAdapter;
 import com.languang.bluebox.basework.base.BaseFragmentActivity;
 import com.languang.bluebox.basework.utils.SharedPrefsUtil;
@@ -76,13 +77,18 @@ public class FacilityListActivity extends BaseFragmentActivity implements OkHttp
         adapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position, View v) {
-                String token = SharedPrefsUtil.getValue("InitialInfo", "AccessToken", "");
-                Log.d("ccnb", token);
-                facilityListModel.boxLogin(token, MobileInfoUtils.getIMEI(FacilityListActivity.this),
-                        listInfos.get(position)
-                                .getPwdmd5(), listInfos.get(position)
-                                .getMobile(),
-                        FacilityListActivity.this);
+                if (listInfos.get(position)
+                        .isOnline()) {
+                    String token = SharedPrefsUtil.getValue("InitialInfo", "AccessToken", "");
+                    Log.d("ccnb", token);
+                    TimeUtils.setWlanIp("http://" + listInfos.get(position)
+                            .getWlanip());
+                    facilityListModel.boxLogin(token, MobileInfoUtils.getIMEI(FacilityListActivity.this),
+                            listInfos.get(position)
+                                    .getPwdmd5(), listInfos.get(position)
+                                    .getMobile(),
+                            FacilityListActivity.this);
+                }
             }
         });
     }
@@ -103,6 +109,11 @@ public class FacilityListActivity extends BaseFragmentActivity implements OkHttp
                         }.getType());
                 if (Constant.SUCCEED_CODE == listResponseMessage.getRet()) {
                     listInfos = listResponseMessage.getData();
+                    for (FacilityListInfo listInfo : listInfos) {
+                        listInfo.setOnline(TimeUtils.isOnline(this, listInfo.getWlanip()));
+                        Log.d("cctag", TimeUtils.isOnline(this, listInfo.getWlanip()) + "");
+//                        listInfo.setOnline(TimeUtils.isOnline(this,listInfo.getWlanip()));
+                    }
                     adapter.clear();
                     adapter.addAll(listInfos);
                     adapter.notifyDataSetChanged();
@@ -122,7 +133,7 @@ public class FacilityListActivity extends BaseFragmentActivity implements OkHttp
                     ToastUtilsBase.showToastCenter(this, refreshInfoResponseMessage.getData()
                             .getMsg());
                 }
-            } else if (ApiConstant.BOX_LOGIN.equals(requestUrl)) {
+            } else if ((TimeUtils.getWlanIp()+"/boxlogin").equals(requestUrl)) {
                 ResponseMessage<LoginBean> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<LoginBean>>() {
                 }.getType());
                 if (Constant.SUCCEED_CODE == responseMessage.getRet()) {

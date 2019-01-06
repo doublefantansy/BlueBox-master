@@ -64,6 +64,11 @@ public class SplashActivity extends AppCompatActivity {
 
     private void checkInfo() {
         //网关/info
+        Log.d("cctag", TimeUtils.getIp(this));
+        Log.d("cctag", TimeUtils.getGateway(this));
+        if (TimeUtils.getIp(this)
+                .equals(TimeUtils.getGateway(this))) {
+        }
         OkHttpUtils.getInstance()
                 .okPost(this, TimeUtils.getGateway(this) + "/info", null, new OkHttpCallBack() {
                     @Override
@@ -77,7 +82,7 @@ public class SplashActivity extends AppCompatActivity {
                                     .getStatus()
                                     .equals("9999")) {
                                 //设定wlanip
-                                TimeUtils.setWlanIp("http://" + netPort.getWlanip());
+
                                 MMKV.defaultMMKV()
                                         .encode("user", new Gson().toJson(netPort));
                                 if (netPort.isActivate()) {
@@ -97,7 +102,9 @@ public class SplashActivity extends AppCompatActivity {
                                             public void onSucceed(String requestUrl, String response) {
                                                 SpeRes<SpeRes.DataBean> speRes = new Gson().fromJson(response, new TypeToken<SpeRes.DataBean>() {
                                                 }.getType());
-                                                if (speRes.getRet() == 200) {
+                                                if (speRes.getData()
+                                                        .getStatus()
+                                                        .equals("9999")) {
                                                     Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
                                                     startActivity(intent);
                                                 }
@@ -118,7 +125,24 @@ public class SplashActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailed() {
-                        Log.d("ccnb", "fail");
+                        OkHttpUtils.getInstance()
+                                .okPost(SplashActivity.this, ApiConstant.CLOUD_WLAN_INFO, null, new OkHttpCallBack() {
+                                    @Override
+                                    public void onSucceed(String requestUrl, String response) {
+                                        SpeRes<SpeRes.DataBean> speRes = new Gson().fromJson(response, new TypeToken<SpeRes.DataBean>() {
+                                        }.getType());
+                                        if (speRes.getData()
+                                                .getStatus()
+                                                .equals("9999")) {
+                                            Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                                            startActivity(intent);
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onFailed() {
+                                    }
+                                });
                     }
                 });
     }

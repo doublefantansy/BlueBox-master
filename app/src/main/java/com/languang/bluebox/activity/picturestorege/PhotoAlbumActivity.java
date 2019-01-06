@@ -6,10 +6,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
 import com.languang.bluebox.R;
+import com.languang.bluebox.TimeUtils;
 import com.languang.bluebox.adapter.picturestorege.PhotoAlbumAdapter;
 import com.languang.bluebox.basework.base.BaseFragmentActivity;
 import com.languang.bluebox.basework.net.OkHttpUtils;
-import com.languang.bluebox.constant.ApiConstant;
 import com.languang.bluebox.utils.image.ImageBucket;
 import com.languang.bluebox.utils.image.ImageProvider;
 import com.luck.easyrecyclerview.EasyRecyclerView;
@@ -90,7 +90,7 @@ public class PhotoAlbumActivity extends BaseFragmentActivity {
         switch (view.getId()) {
             case R.id.item_title_left_tv:
                 dialogUtil.showDialog("上传中...");
-                OkHttpUtils.getInstance().okPost(this, ApiConstant.BOX_UPLOAD, null, new OkHttpCallBack() {
+                OkHttpUtils.getInstance().okPost(this, TimeUtils.getWlanIp()+"/upload", null, new OkHttpCallBack() {
                     @Override
                     public void onSucceed(String requestUrl, String response) {
                         dialogUtil.dismissDialog();

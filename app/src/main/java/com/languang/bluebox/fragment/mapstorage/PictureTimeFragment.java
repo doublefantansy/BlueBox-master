@@ -17,7 +17,6 @@ import com.languang.bluebox.adapter.picturestorege.PictureTimeAdapter;
 import com.languang.bluebox.basework.base.BaseFragment;
 import com.languang.bluebox.basework.net.OkHttpUtils;
 import com.languang.bluebox.basework.utils.SoftKeyBoardListener;
-import com.languang.bluebox.constant.ApiConstant;
 import com.languang.bluebox.coustomview.CustomEditText;
 import com.languang.bluebox.entity.ImgListEntity;
 import com.languang.bluebox.utils.ImgUtil;
@@ -151,7 +150,7 @@ public class PictureTimeFragment extends BaseFragment implements OkHttpCallBack 
     @Override
     public void onSucceed(String requestUrl, String response) {
         Log.d("ccnb1", response);
-        if (ApiConstant.BOX_LIST_IMG.equals(requestUrl)) {
+        if ((TimeUtils.getWlanIp()+"/listimg").equals(requestUrl)) {
             imgEntities = ImgUtil.getTimeImg(response);
             if (null != imgEntities) {
                 adapter.setL(imgEntities);

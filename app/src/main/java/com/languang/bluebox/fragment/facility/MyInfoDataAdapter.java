@@ -41,13 +41,13 @@ public class MyInfoDataAdapter extends RecyclerView.Adapter<MyInfoDataAdapter.Vi
     @Override
     public int getItemViewType(int position) {
         return list.get(position)
-                .isOnline();
+                .isOnline()==true?1:0;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         if (list.get(position)
-                .isOnline() == 1) {
+                .isOnline()) {
             holder.title.setText(list.get(position)
                     .getBluename() + "(在线)");
         } else {

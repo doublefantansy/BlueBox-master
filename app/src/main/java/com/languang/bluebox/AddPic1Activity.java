@@ -21,7 +21,6 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.languang.bluebox.basework.net.OkHttpUtils;
-import com.languang.bluebox.constant.ApiConstant;
 import com.languang.bluebox.entity.ImgEntity;
 import com.languang.bluebox.entity.ResponseMessage;
 import com.mrj.framworklib.utils.OkHttpCallBack;
@@ -160,7 +159,7 @@ public class AddPic1Activity extends AppCompatActivity {
                                     map.put("camera", camera.getText()
                                             .toString());
                                     OkHttpUtils.getInstance()
-                                            .okPost(AddPic1Activity.this, ApiConstant.BOX_TAG_FILES, map, new OkHttpCallBack() {
+                                            .okPost(AddPic1Activity.this, TimeUtils.getWlanIp()+"tagfiles", map, new OkHttpCallBack() {
                                                 @Override
                                                 public void onSucceed(String requestUrl, String response) {
                                                     Log.d("ccnb", response);

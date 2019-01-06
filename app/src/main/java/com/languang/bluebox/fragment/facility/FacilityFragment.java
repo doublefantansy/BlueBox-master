@@ -51,7 +51,7 @@ public class FacilityFragment extends BaseFragment {
                         }.getType());
                         if (responseMessage.getRet() == 200) {
                             for (FacilityListInfo facilityListInfo : responseMessage.getData()) {
-                                facilityListInfo.setOnline(TimeUtils.isOnline(FacilityFragment.this.getActivity(), "15.16.22.24") ? 1 : 0);
+                                facilityListInfo.setOnline(TimeUtils.isOnline(FacilityFragment.this.getActivity(), "15.16.22.24"));
                             }
                             listInfos.addAll(responseMessage.getData());
                             adapter.notifyDataSetChanged();
