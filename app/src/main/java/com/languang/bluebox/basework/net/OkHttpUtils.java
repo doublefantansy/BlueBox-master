@@ -2,10 +2,12 @@ package com.languang.bluebox.basework.net;
 
 import android.content.Context;
 import android.os.Handler;
+import android.util.Log;
 
 import com.languang.bluebox.basework.utils.SharedPrefsUtil;
 import com.languang.bluebox.utils.MobileInfoUtils;
 import com.mrj.framworklib.utils.OkHttpCallBack;
+import com.tencent.mmkv.MMKV;
 
 import java.io.File;
 import java.io.IOException;
@@ -73,7 +75,7 @@ public class OkHttpUtils {
                     int cacheSize = 10 * 1024 * 1024;
                     singleton = new OkHttpClient.Builder()
                             //连接超时(单位:秒)
-                            .connectTimeout(15, TimeUnit.SECONDS)
+                            .connectTimeout(60, TimeUnit.SECONDS)
                             //写入超时(单位:秒)
                             .writeTimeout(20, TimeUnit.SECONDS)
                             //读取超时(单位:秒)
@@ -184,10 +186,67 @@ public class OkHttpUtils {
         getSingleton(context).newCall(request)
                 .enqueue(new Callback() {
                     @Override
-                    public void onFailure(Call call, IOException e) {
+                    public void onFailure(final Call call, final IOException e) {
                         mHandler.post(new Runnable() {
                             @Override
                             public void run() {
+                                Log.d("ccnb", e.getMessage());
+                                callBack.onFailed();
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        final String res = response.body()
+                                .string();
+                        mHandler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                callBack.onSucceed(url, res);
+                            }
+                        });
+                    }
+                });
+    }
+
+    public void okPost1(Context context
+            , final String url
+            , Map<String, Object> map
+            , final OkHttpCallBack callBack
+    ) {
+        FormBody.Builder builder = new FormBody.Builder();
+        /**
+         * 遍历key
+         */
+        if (null != map) {
+            for (Map.Entry<String, Object> entry : map.entrySet()) {
+                builder.add(entry.getKey(), entry.getValue()
+                        .toString());
+            }
+        }
+        Request request = new Request.Builder()
+                //addHeader，可添加多个请求头  header，唯一，会覆盖
+                .addHeader("Connection", "keep-alive")
+//                .addHeader("Token",
+//                        MMKV.defaultMMKV()
+//                                .decodeString("token"))
+                .addHeader("Token",
+                        MMKV.defaultMMKV()
+                                .decodeString("Token1"))
+                .addHeader("Imei", MobileInfoUtils.getIMEI(context))
+                .url(url)
+                .tag(context)
+                .post(builder.build())
+                .build();
+        getSingleton(context).newCall(request)
+                .enqueue(new Callback() {
+                    @Override
+                    public void onFailure(final Call call, final IOException e) {
+                        mHandler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                Log.d("ccnb", e.getMessage());
                                 callBack.onFailed();
                             }
                         });
@@ -217,6 +276,9 @@ public class OkHttpUtils {
         builder = new Request.Builder()
                 //addHeader，可添加多个请求头  header，唯一，会覆盖
                 .addHeader("Connection", "keep-alive")
+//                .addHeader("Token",
+//                        MMKV.defaultMMKV()
+//                                .decodeString("token"))
                 .addHeader("Token",
                         SharedPrefsUtil.getValue("InitialInfo", "AccessToken", ""))
                 .addHeader("Imei", MobileInfoUtils.getIMEI(context));

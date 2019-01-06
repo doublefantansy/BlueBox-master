@@ -12,8 +12,10 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.languang.bluebox.ErrorActivity;
 import com.languang.bluebox.TimeUtils;
 import com.languang.bluebox.activity.initialize.SettingPwdActivity;
+import com.languang.bluebox.activity.login.BoxLoginActivity;
 import com.languang.bluebox.activity.login.LoginActivity;
 import com.languang.bluebox.basework.costom.DefaultCode;
 import com.languang.bluebox.basework.net.OkHttpUtils;
@@ -55,54 +57,62 @@ public class SplashActivity extends AppCompatActivity {
                     Manifest.permission.READ_EXTERNAL_STORAGE
             }, 10001);
         } else {
-            loginOrMain();
+            checkInfo();
+//            loginOrMain();
         }
-        checkInfo();
     }
 
     private void checkInfo() {
-        String url = ApiConstant.WLAN_INFO;
-        Log.d("ccnb", TimeUtils.getGateway(this));
+        //网关/info
         OkHttpUtils.getInstance()
-                .okPost(this, TimeUtils.getGateway(this)+"/info", null, new OkHttpCallBack() {
+                .okPost(this, TimeUtils.getGateway(this) + "/info", null, new OkHttpCallBack() {
                     @Override
                     public void onSucceed(String requestUrl, String response) {
-                        ResponseMessage<NetPort> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<NetPort>>() {
-                        }.getType());
-                        NetPort netPort = responseMessage.getData();
-                        Log.d("ccnb", response);
-//
-                        if (responseMessage.getData()
-                                .getStatus()
-                                .equals("404")) {
-                            OkHttpUtils.getInstance()
-                                    .okPost(SplashActivity.this, ApiConstant.CLOUD_WLAN_INFO, null, new OkHttpCallBack() {
-                                        @Override
-                                        public void onSucceed(String requestUrl, String response) {
-                                            Log.d("ccnb", response);
-                                            SpeRes speRes = new Gson().fromJson(response, SpeRes.class);
-                                            if (speRes.getRet() == 200) {
-                                                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
-                                                startActivity(intent);
-                                            }
-                                        }
-
-                                        @Override
-                                        public void onFailed() {
-                                        }
-                                    });
-                        } else if (responseMessage.getData()
-                                .getStatus()
-                                .equals("9999")) {
-                            TimeUtils.setWlanIp("https://" + netPort.getWlanip());
-//                            Log.d("ccnb", wlanIp);
-                            MMKV.defaultMMKV()
-                                    .encode("user", new Gson().toJson(netPort));
-                            if (netPort.isActivate()) {
-                                manLogin(true);
+                        try {
+                            ResponseMessage<NetPort> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<NetPort>>() {
+                            }.getType());
+                            NetPort netPort = responseMessage.getData();
+                            //如果为9999
+                            if (responseMessage.getData()
+                                    .getStatus()
+                                    .equals("9999")) {
+                                //设定wlanip
+                                TimeUtils.setWlanIp("http://" + netPort.getWlanip());
+                                MMKV.defaultMMKV()
+                                        .encode("user", new Gson().toJson(netPort));
+                                if (netPort.isActivate()) {
+                                    Intent intent = new Intent(SplashActivity.this, BoxLoginActivity.class);
+                                    startActivity(intent);
+                                    //已激活
+//                                    manLogin(true)
+                                } else {
+                                    //未激活
+                                    manLogin();
+                                }
                             } else {
-                                manLogin(false);
+                                //cloud登录
+                                OkHttpUtils.getInstance()
+                                        .okPost(SplashActivity.this, ApiConstant.CLOUD_WLAN_INFO, null, new OkHttpCallBack() {
+                                            @Override
+                                            public void onSucceed(String requestUrl, String response) {
+                                                SpeRes<SpeRes.DataBean> speRes = new Gson().fromJson(response, new TypeToken<SpeRes.DataBean>() {
+                                                }.getType());
+                                                if (speRes.getRet() == 200) {
+                                                    Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                                                    startActivity(intent);
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onFailed() {
+                                            }
+                                        });
                             }
+                        } catch (Exception e) {
+                            Intent intent = new Intent(SplashActivity.this, ErrorActivity.class);
+                            intent.putExtra("req", requestUrl);
+                            intent.putExtra("res", response);
+                            startActivity(intent);
                         }
                     }
 
@@ -113,32 +123,41 @@ public class SplashActivity extends AppCompatActivity {
                 });
     }
 
-    private void manLogin(boolean isActive) {
+    private void manLogin() {
         Map<String, Object> params = new HashMap<>(1);
-        if (isActive) {
-            params.put("type", "pwd");
-            params.put("pwd", "111");
-            params.put("imei", MyUtil.getImei(this));
-            Log.d("ccnb", MyUtil.getImei(this));
-        } else {
-            params.put("type", "new");
-        }
-//        Log.d("ccnbaa", ApiConstant.WLAN_SYS_LOGIN);
-//        ApiConstant.BOX_BASE_URL = "https://" + TimeUtils.getGateway(this);
-        Log.d("ccnblsy", ApiConstant.BOX_BASE_URL + "/setbox");
+//        if (isActive) {
+//            params.put("type", "pwd");
+//            params.put("pwd", "111");
+        params.put("imei", MyUtil.getImei(this));
+        params.put("type", "new");
+//        }
+        //box login
         OkHttpUtils.getInstance()
                 .okPost(this, TimeUtils.getGateway(this) + "/syslogin", params, new OkHttpCallBack() {
                     @Override
                     public void onSucceed(String requestUrl, String response) {
-                        ResponseMessage<LoginRes> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<LoginRes>>() {
-                        }.getType());
-                        LoginRes loginRes = responseMessage.getData();
-                        if (loginRes.getToken() == null) {
-                            manLogin(true);
-                        } else {
-                            MMKV.defaultMMKV()
-                                    .encode("token", loginRes.getToken());
-                            Intent intent = new Intent(SplashActivity.this, SettingPwdActivity.class);
+                        try {
+                            ResponseMessage<LoginRes> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<LoginRes>>() {
+                            }.getType());
+                            LoginRes loginRes = responseMessage.getData();
+                            //如果为9999
+                            if (loginRes.getStatus()
+                                    .equals("9999")) {
+                                if (loginRes.getToken() == null) {
+                                    Intent intent = new Intent(SplashActivity.this, BoxLoginActivity.class);
+                                    startActivity(intent);
+                                } else {
+                                    MMKV.defaultMMKV()
+                                            .encode("token", loginRes.getToken());
+                                    // config页面
+                                    Intent intent = new Intent(SplashActivity.this, SettingPwdActivity.class);
+                                    startActivity(intent);
+                                }
+                            }
+                        } catch (Exception e) {
+                            Intent intent = new Intent(SplashActivity.this, ErrorActivity.class);
+                            intent.putExtra("req", requestUrl);
+                            intent.putExtra("res", response);
                             startActivity(intent);
                         }
                     }
@@ -149,12 +168,12 @@ public class SplashActivity extends AppCompatActivity {
                     }
                 });
     }
-//    private void checkCloudInfo() {
+
+    //    private void checkCloudInfo() {
 //        String url = ApiConstant.CLOUD_WLAN_INFO;
 //        OkHttpUtils.getInstance()
 //                .okPost(this, url, null, this);
 //    }
-
     private void loginOrMain() {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
@@ -177,7 +196,8 @@ public class SplashActivity extends AppCompatActivity {
      * 第 3 步: 申请权限结果返回处理
      */
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == 10001) {
             boolean isAllGranted = true;
@@ -188,6 +208,7 @@ public class SplashActivity extends AppCompatActivity {
                     break;
                 }
             }
+//            OkHttpUtils
             if (isAllGranted) {
             }
             loginOrMain();

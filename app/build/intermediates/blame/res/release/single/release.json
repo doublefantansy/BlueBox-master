@@ -12,6 +12,10 @@
         "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-xxhdpi/ic_launcher_background.png"
     },
     {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable_i512512.png.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/res/drawable/i512512.png"
+    },
+    {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-ldpi_ic_meihua.png.flat",
         "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-ldpi/ic_meihua.png"
     },
@@ -124,6 +128,14 @@
         "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/res/layout/activity_login.xml"
     },
     {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-ldpi_ic_yinsi_2.png.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-ldpi/ic_yinsi_2.png"
+    },
+    {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-xxxhdpi_ic_yinsi_2.png.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-xxxhdpi/ic_yinsi_2.png"
+    },
+    {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-mdpi-v4_notification_bg_low_pressed.9.png.flat",
         "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.1.aar/ba9bda0e59b888eec0ce644c7420b3d4/res/drawable-mdpi-v4/notification_bg_low_pressed.9.png"
     },
@@ -144,6 +156,10 @@
         "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/0b79fb72e096fc2bcf454b26461e3cc2/res/drawable-v21/abc_btn_colored_material.xml"
     },
     {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-ldpi_ic_ziyuan.png.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-ldpi/ic_ziyuan.png"
+    },
+    {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-xxxhdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
         "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/0b79fb72e096fc2bcf454b26461e3cc2/res/drawable-xxxhdpi-v4/abc_ic_menu_share_mtrl_alpha.png"
     },
@@ -158,6 +174,10 @@
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-anydpi-v21_ic_zidingyi.xml.flat",
         "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-anydpi-v21/ic_zidingyi.xml"
+    },
+    {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-xxhdpi_ic_ziyuan.png.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-xxhdpi/ic_ziyuan.png"
     },
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-xhdpi-v4_abc_btn_radio_to_on_mtrl_015.png.flat",
@@ -262,6 +282,10 @@
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/anim_tooltip_exit.xml.flat",
         "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/0b79fb72e096fc2bcf454b26461e3cc2/res/anim/tooltip_exit.xml"
+    },
+    {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-xhdpi_ic_ziyuan.png.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-xhdpi/ic_ziyuan.png"
     },
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-xxxhdpi-v4_ucrop_ic_crop.png.flat",
@@ -370,6 +394,10 @@
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable_selector_offline.xml.flat",
         "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/res/drawable/selector_offline.xml"
+    },
+    {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable_i10241024.png.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/res/drawable/i10241024.png"
     },
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-xxhdpi-v4_abc_ab_share_pack_mtrl_alpha.9.png.flat",
@@ -490,6 +518,10 @@
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/mipmap-xhdpi_p2.jpg.flat",
         "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/res/mipmap-xhdpi/p2.jpg"
+    },
+    {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/layout_activity_login1.xml.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/res/layout/activity_login1.xml"
     },
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-mdpi-v4_abc_list_longpressed_holo.9.png.flat",
@@ -756,6 +788,10 @@
         "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-anydpi-v21/ic_icon_2.xml"
     },
     {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/layout_activity_dao_chu.xml.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/res/layout/activity_dao_chu.xml"
+    },
+    {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable_md_item_selected.xml.flat",
         "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/core-0.9.6.0.aar/340a9e605b8eb7e34021792d3eaeb81f/res/drawable/md_item_selected.xml"
     },
@@ -786,6 +822,10 @@
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/layout_md_stub_titleframe.xml.flat",
         "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/core-0.9.6.0.aar/340a9e605b8eb7e34021792d3eaeb81f/res/layout/md_stub_titleframe.xml"
+    },
+    {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-hdpi_ic_icon_test.png.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-hdpi/ic_icon_test.png"
     },
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-hdpi_ic_zhibiaozhushibiaozhu.png.flat",
@@ -948,8 +988,16 @@
         "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/res/mipmap-xhdpi/ic_write.png"
     },
     {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-ldpi_ic_daochu.png.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-ldpi/ic_daochu.png"
+    },
+    {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable_base_bg_alertdlg_right_btn_pressed.xml.flat",
         "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/framworklib/build/intermediates/packaged_res/release/drawable/base_bg_alertdlg_right_btn_pressed.xml"
+    },
+    {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-xhdpi_ic_daochu.png.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-xhdpi/ic_daochu.png"
     },
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-anydpi-v21_ic_iconfontjiantou5.xml.flat",
@@ -962,6 +1010,10 @@
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-xxxhdpi-v4_ucrop_ic_angle.png.flat",
         "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/ucrop-2.2.0.aar/d4ddd7dcf83850f2eef508edbef10edc/res/drawable-xxxhdpi-v4/ucrop_ic_angle.png"
+    },
+    {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-xhdpi_ic_icon_test.png.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-xhdpi/ic_icon_test.png"
     },
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable_abc_dialog_material_background.xml.flat",
@@ -1024,6 +1076,10 @@
         "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.1.aar/ba9bda0e59b888eec0ce644c7420b3d4/res/drawable/notification_bg.xml"
     },
     {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-xxhdpi_ic_daochu.png.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-xxhdpi/ic_daochu.png"
+    },
+    {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-ldpi_ic_set.png.flat",
         "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-ldpi/ic_set.png"
     },
@@ -1050,6 +1106,10 @@
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-xxxhdpi-v4_md_nav_back.png.flat",
         "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/core-0.9.6.0.aar/340a9e605b8eb7e34021792d3eaeb81f/res/drawable-xxxhdpi-v4/md_nav_back.png"
+    },
+    {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-anydpi-v21_ic_yinsi_2.xml.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-anydpi-v21/ic_yinsi_2.xml"
     },
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable_selector_person_tab.xml.flat",
@@ -1080,6 +1140,10 @@
         "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/res/layout/activity_compile_picture.xml"
     },
     {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-xhdpi_ic_yinsi_2.png.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-xhdpi/ic_yinsi_2.png"
+    },
+    {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-v21_design_bottom_navigation_item_background.xml.flat",
         "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/cfad87e2684c1bf51040f377a25bfa83/res/drawable-v21/design_bottom_navigation_item_background.xml"
     },
@@ -1090,6 +1154,10 @@
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/layout_base_dialog_toast.xml.flat",
         "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/framworklib/build/intermediates/packaged_res/release/layout/base_dialog_toast.xml"
+    },
+    {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-ldpi_ic_icon_test.png.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-ldpi/ic_icon_test.png"
     },
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-xxhdpi_ic_set.png.flat",
@@ -1112,6 +1180,10 @@
         "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/res/layout/item.xml"
     },
     {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/layout_roor.xml.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/res/layout/roor.xml"
+    },
+    {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/layout-v14_md_stub_progress_indeterminate_horizontal.xml.flat",
         "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/core-0.9.6.0.aar/340a9e605b8eb7e34021792d3eaeb81f/res/layout-v14/md_stub_progress_indeterminate_horizontal.xml"
     },
@@ -1122,6 +1194,10 @@
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/color_abc_primary_text_disable_only_material_dark.xml.flat",
         "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/0b79fb72e096fc2bcf454b26461e3cc2/res/color/abc_primary_text_disable_only_material_dark.xml"
+    },
+    {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-hdpi_ic_daochu.png.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-hdpi/ic_daochu.png"
     },
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-mdpi-v4_gallery_ic_cross.png.flat",
@@ -1308,6 +1384,10 @@
         "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/0b79fb72e096fc2bcf454b26461e3cc2/res/drawable-hdpi-v4/abc_ic_commit_search_api_mtrl_alpha.png"
     },
     {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-mdpi_ic_icon_test.png.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-mdpi/ic_icon_test.png"
+    },
+    {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-xxxhdpi-v4_abc_text_select_handle_left_mtrl_dark.png.flat",
         "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/0b79fb72e096fc2bcf454b26461e3cc2/res/drawable-xxxhdpi-v4/abc_text_select_handle_left_mtrl_dark.png"
     },
@@ -1448,6 +1528,10 @@
         "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/res/layout/fragment_light_disk.xml"
     },
     {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-xxxhdpi_ic_daochu.png.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-xxxhdpi/ic_daochu.png"
+    },
+    {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable_shape_raw_circle.xml.flat",
         "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/res/drawable/shape_raw_circle.xml"
     },
@@ -1562,6 +1646,10 @@
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-xhdpi_ic_gou.png.flat",
         "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-xhdpi/ic_gou.png"
+    },
+    {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-xxhdpi_ic_yinsi_2.png.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-xxhdpi/ic_yinsi_2.png"
     },
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/mipmap-xhdpi_ic_delete.png.flat",
@@ -1722,6 +1810,10 @@
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/layout_design_menu_item_action_area.xml.flat",
         "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/cfad87e2684c1bf51040f377a25bfa83/res/layout/design_menu_item_action_area.xml"
+    },
+    {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-xxxhdpi_ic_ziyuan.png.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-xxxhdpi/ic_ziyuan.png"
     },
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/mipmap-xhdpi_p4.jpg.flat",
@@ -1904,16 +1996,16 @@
         "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/0b79fb72e096fc2bcf454b26461e3cc2/res/drawable-mdpi-v4/abc_tab_indicator_mtrl_alpha.9.png"
     },
     {
-        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/layout_abc_action_mode_bar.xml.flat",
-        "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/0b79fb72e096fc2bcf454b26461e3cc2/res/layout/abc_action_mode_bar.xml"
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/mipmap-xhdpi_ic_filter.png.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/res/mipmap-xhdpi/ic_filter.png"
     },
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-xhdpi-v4_ucrop_ic_crop.png.flat",
         "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/ucrop-2.2.0.aar/d4ddd7dcf83850f2eef508edbef10edc/res/drawable-xhdpi-v4/ucrop_ic_crop.png"
     },
     {
-        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/mipmap-xhdpi_ic_filter.png.flat",
-        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/res/mipmap-xhdpi/ic_filter.png"
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/layout_abc_action_mode_bar.xml.flat",
+        "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/0b79fb72e096fc2bcf454b26461e3cc2/res/layout/abc_action_mode_bar.xml"
     },
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-mdpi-v4_abc_ic_commit_search_api_mtrl_alpha.png.flat",
@@ -2288,6 +2380,10 @@
         "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/cfad87e2684c1bf51040f377a25bfa83/res/anim/design_bottom_sheet_slide_out.xml"
     },
     {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-mdpi_ic_daochu.png.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-mdpi/ic_daochu.png"
+    },
+    {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable_notification_bg_low.xml.flat",
         "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.1.aar/ba9bda0e59b888eec0ce644c7420b3d4/res/drawable/notification_bg_low.xml"
     },
@@ -2332,12 +2428,20 @@
         "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/0b79fb72e096fc2bcf454b26461e3cc2/res/drawable-xhdpi-v4/abc_menu_hardkey_panel_mtrl_mult.9.png"
     },
     {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-hdpi_ic_ziyuan.png.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-hdpi/ic_ziyuan.png"
+    },
+    {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-xhdpi-v4_abc_ic_star_half_black_16dp.png.flat",
         "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/0b79fb72e096fc2bcf454b26461e3cc2/res/drawable-xhdpi-v4/abc_ic_star_half_black_16dp.png"
     },
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/layout_abc_search_view.xml.flat",
         "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/0b79fb72e096fc2bcf454b26461e3cc2/res/layout/abc_search_view.xml"
+    },
+    {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-anydpi-v21_ic_daochu.xml.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-anydpi-v21/ic_daochu.xml"
     },
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/layout_item_picture_time.xml.flat",
@@ -2580,6 +2684,10 @@
         "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/0b79fb72e096fc2bcf454b26461e3cc2/res/anim/abc_slide_in_top.xml"
     },
     {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-anydpi-v21_ic_icon_test.xml.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-anydpi-v21/ic_icon_test.xml"
+    },
+    {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/color_abc_secondary_text_material_light.xml.flat",
         "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/0b79fb72e096fc2bcf454b26461e3cc2/res/color/abc_secondary_text_material_light.xml"
     },
@@ -2598,6 +2706,14 @@
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/color_abc_primary_text_material_light.xml.flat",
         "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/0b79fb72e096fc2bcf454b26461e3cc2/res/color/abc_primary_text_material_light.xml"
+    },
+    {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-hdpi_ic_yinsi_2.png.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-hdpi/ic_yinsi_2.png"
+    },
+    {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-mdpi_ic_ziyuan.png.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-mdpi/ic_ziyuan.png"
     },
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/layout_layout_progress_recyclerview.xml.flat",
@@ -2828,6 +2944,10 @@
         "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/0b79fb72e096fc2bcf454b26461e3cc2/res/layout/abc_list_menu_item_radio.xml"
     },
     {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-xxhdpi_ic_icon_test.png.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-xxhdpi/ic_icon_test.png"
+    },
+    {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable_base_bg_alertdlg_left_btn_pressed.xml.flat",
         "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/framworklib/build/intermediates/packaged_res/release/drawable/base_bg_alertdlg_left_btn_pressed.xml"
     },
@@ -2960,6 +3080,10 @@
         "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/res/layout/pop.xml"
     },
     {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable_i180180.png.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/res/drawable/i180180.png"
+    },
+    {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/mipmap-xxxhdpi_ic_launcher.png.flat",
         "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
     },
@@ -3080,16 +3204,16 @@
         "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/res/mipmap-xhdpi/ic_voice.png"
     },
     {
-        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/layout_activity_share.xml.flat",
-        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/res/layout/activity_share.xml"
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable_md_item_selected_dark.xml.flat",
+        "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/core-0.9.6.0.aar/340a9e605b8eb7e34021792d3eaeb81f/res/drawable/md_item_selected_dark.xml"
     },
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-hdpi_ic_zhushibiaozhui.png.flat",
         "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-hdpi/ic_zhushibiaozhui.png"
     },
     {
-        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable_md_item_selected_dark.xml.flat",
-        "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/core-0.9.6.0.aar/340a9e605b8eb7e34021792d3eaeb81f/res/drawable/md_item_selected_dark.xml"
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/layout_activity_share.xml.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/res/layout/activity_share.xml"
     },
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-xhdpi-v4_ucrop_ic_rotate.png.flat",
@@ -3340,6 +3464,10 @@
         "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/0b79fb72e096fc2bcf454b26461e3cc2/res/layout/abc_action_bar_title_item.xml"
     },
     {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-anydpi-v21_ic_ziyuan.xml.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-anydpi-v21/ic_ziyuan.xml"
+    },
+    {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/layout_abc_list_menu_item_checkbox.xml.flat",
         "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/0b79fb72e096fc2bcf454b26461e3cc2/res/layout/abc_list_menu_item_checkbox.xml"
     },
@@ -3410,6 +3538,10 @@
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable_btn_check.xml.flat",
         "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/src/main/res/drawable/btn_check.xml"
+    },
+    {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-mdpi_ic_yinsi_2.png.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-mdpi/ic_yinsi_2.png"
     },
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/layout_abc_action_menu_layout.xml.flat",
@@ -3558,6 +3690,10 @@
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-xhdpi-v4_ucrop_ic_done.png.flat",
         "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/ucrop-2.2.0.aar/d4ddd7dcf83850f2eef508edbef10edc/res/drawable-xhdpi-v4/ucrop_ic_done.png"
+    },
+    {
+        "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/drawable-xxxhdpi_ic_icon_test.png.flat",
+        "source": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/generated/res/pngs/release/drawable-xxxhdpi/ic_icon_test.png"
     },
     {
         "merged": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/res/merged/release/layout_md_dialog_basic.xml.flat",

@@ -4,6 +4,7 @@ package com.languang.bluebox.activity.login;
 import android.support.annotation.UiThread;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import butterknife.internal.DebouncingOnClickListener;
 import butterknife.internal.Utils;
 import com.languang.bluebox.R;
@@ -14,13 +15,13 @@ import java.lang.Override;
 public class LoginActivity_ViewBinding extends BaseFragmentActivity_ViewBinding {
   private LoginActivity target;
 
-  private View view2131230858;
+  private View view2131231083;
 
-  private View view2131230931;
+  private View view2131230860;
 
-  private View view2131231135;
+  private View view2131230934;
 
-  private View view2131231078;
+  private View view2131231142;
 
   @UiThread
   public LoginActivity_ViewBinding(LoginActivity target) {
@@ -36,8 +37,18 @@ public class LoginActivity_ViewBinding extends BaseFragmentActivity_ViewBinding 
     View view;
     target.userPhoneEt = Utils.findRequiredViewAsType(source, R.id.user_phone_et, "field 'userPhoneEt'", EditText.class);
     target.pwdEt = Utils.findRequiredViewAsType(source, R.id.pwd_et, "field 'pwdEt'", EditText.class);
-    view = Utils.findRequiredView(source, R.id.find_pwd, "method 'onViewClicked'");
-    view2131230858 = view;
+    view = Utils.findRequiredView(source, R.id.sms_login, "field 'sms_login' and method 'onViewClicked'");
+    target.sms_login = Utils.castView(view, R.id.sms_login, "field 'sms_login'", TextView.class);
+    view2131231083 = view;
+    view.setOnClickListener(new DebouncingOnClickListener() {
+      @Override
+      public void doClick(View p0) {
+        target.onViewClicked(p0);
+      }
+    });
+    view = Utils.findRequiredView(source, R.id.find_pwd, "field 'find_pwd' and method 'onViewClicked'");
+    target.find_pwd = Utils.castView(view, R.id.find_pwd, "field 'find_pwd'", TextView.class);
+    view2131230860 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -45,7 +56,7 @@ public class LoginActivity_ViewBinding extends BaseFragmentActivity_ViewBinding 
       }
     });
     view = Utils.findRequiredView(source, R.id.login_submit, "method 'onViewClicked'");
-    view2131230931 = view;
+    view2131230934 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -53,15 +64,7 @@ public class LoginActivity_ViewBinding extends BaseFragmentActivity_ViewBinding 
       }
     });
     view = Utils.findRequiredView(source, R.id.to_register, "method 'onViewClicked'");
-    view2131231135 = view;
-    view.setOnClickListener(new DebouncingOnClickListener() {
-      @Override
-      public void doClick(View p0) {
-        target.onViewClicked(p0);
-      }
-    });
-    view = Utils.findRequiredView(source, R.id.sms_login, "method 'onViewClicked'");
-    view2131231078 = view;
+    view2131231142 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -78,15 +81,17 @@ public class LoginActivity_ViewBinding extends BaseFragmentActivity_ViewBinding 
 
     target.userPhoneEt = null;
     target.pwdEt = null;
+    target.sms_login = null;
+    target.find_pwd = null;
 
-    view2131230858.setOnClickListener(null);
-    view2131230858 = null;
-    view2131230931.setOnClickListener(null);
-    view2131230931 = null;
-    view2131231135.setOnClickListener(null);
-    view2131231135 = null;
-    view2131231078.setOnClickListener(null);
-    view2131231078 = null;
+    view2131231083.setOnClickListener(null);
+    view2131231083 = null;
+    view2131230860.setOnClickListener(null);
+    view2131230860 = null;
+    view2131230934.setOnClickListener(null);
+    view2131230934 = null;
+    view2131231142.setOnClickListener(null);
+    view2131231142 = null;
 
     super.unbind();
   }

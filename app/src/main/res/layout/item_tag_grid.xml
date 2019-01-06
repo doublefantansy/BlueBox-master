@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
-
 
     <ImageView
         android:id="@+id/iam"
         android:layout_width="@dimen/dp_123"
-        android:layout_height="@dimen/dp_123"
-        />
+        android:layout_height="@dimen/dp_123" />
 
     <TextView
         android:id="@+id/text"
@@ -20,4 +19,12 @@
         android:textColor="@color/color_fff"
         android:textSize="@dimen/text_size_17" />
 
+    <ImageView
+        android:id="@+id/gou"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/ic_gou"
+        android:visibility="invisible" />
 </RelativeLayout>

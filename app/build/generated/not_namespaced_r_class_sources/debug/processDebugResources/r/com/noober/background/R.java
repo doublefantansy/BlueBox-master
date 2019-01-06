@@ -86,15 +86,15 @@ public final class R {
     public static final class id {
         private id() {}
 
-        public static final int line = 0x7f0800c5;
-        public static final int linear = 0x7f0800cb;
-        public static final int match_parent = 0x7f0800d6;
-        public static final int oval = 0x7f080105;
-        public static final int radial = 0x7f080120;
-        public static final int rectangle = 0x7f080126;
-        public static final int ring = 0x7f08012f;
-        public static final int sweep = 0x7f080184;
-        public static final int wrap_content = 0x7f0801d1;
+        public static final int line = 0x7f0800cb;
+        public static final int linear = 0x7f0800d1;
+        public static final int match_parent = 0x7f0800dd;
+        public static final int oval = 0x7f08010d;
+        public static final int radial = 0x7f08012a;
+        public static final int rectangle = 0x7f080130;
+        public static final int ring = 0x7f08013b;
+        public static final int sweep = 0x7f080190;
+        public static final int wrap_content = 0x7f0801de;
     }
     public static final class styleable {
         private styleable() {}

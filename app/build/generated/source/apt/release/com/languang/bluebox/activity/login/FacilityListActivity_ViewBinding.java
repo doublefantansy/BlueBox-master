@@ -15,13 +15,13 @@ import java.lang.Override;
 public class FacilityListActivity_ViewBinding extends BaseFragmentActivity_ViewBinding {
   private FacilityListActivity target;
 
-  private View view2131230978;
+  private View view2131230981;
 
-  private View view2131230977;
+  private View view2131230980;
 
-  private View view2131230909;
+  private View view2131230911;
 
-  private View view2131231152;
+  private View view2131231159;
 
   @UiThread
   public FacilityListActivity_ViewBinding(FacilityListActivity target) {
@@ -37,7 +37,7 @@ public class FacilityListActivity_ViewBinding extends BaseFragmentActivity_ViewB
     View view;
     view = Utils.findRequiredView(source, R.id.online, "field 'online' and method 'onViewClicked'");
     target.online = Utils.castView(view, R.id.online, "field 'online'", TextView.class);
-    view2131230978 = view;
+    view2131230981 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -46,7 +46,7 @@ public class FacilityListActivity_ViewBinding extends BaseFragmentActivity_ViewB
     });
     view = Utils.findRequiredView(source, R.id.offline, "field 'offline' and method 'onViewClicked'");
     target.offline = Utils.castView(view, R.id.offline, "field 'offline'", TextView.class);
-    view2131230977 = view;
+    view2131230980 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -55,7 +55,7 @@ public class FacilityListActivity_ViewBinding extends BaseFragmentActivity_ViewB
     });
     target.recyclerView = Utils.findRequiredViewAsType(source, R.id.recycler_view, "field 'recyclerView'", EasyRecyclerView.class);
     view = Utils.findRequiredView(source, R.id.iv_refresh, "method 'onViewClicked'");
-    view2131230909 = view;
+    view2131230911 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -63,7 +63,7 @@ public class FacilityListActivity_ViewBinding extends BaseFragmentActivity_ViewB
       }
     });
     view = Utils.findRequiredView(source, R.id.tv_new, "method 'onViewClicked'");
-    view2131231152 = view;
+    view2131231159 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -82,14 +82,14 @@ public class FacilityListActivity_ViewBinding extends BaseFragmentActivity_ViewB
     target.offline = null;
     target.recyclerView = null;
 
-    view2131230978.setOnClickListener(null);
-    view2131230978 = null;
-    view2131230977.setOnClickListener(null);
-    view2131230977 = null;
-    view2131230909.setOnClickListener(null);
-    view2131230909 = null;
-    view2131231152.setOnClickListener(null);
-    view2131231152 = null;
+    view2131230981.setOnClickListener(null);
+    view2131230981 = null;
+    view2131230980.setOnClickListener(null);
+    view2131230980 = null;
+    view2131230911.setOnClickListener(null);
+    view2131230911 = null;
+    view2131231159.setOnClickListener(null);
+    view2131231159 = null;
 
     super.unbind();
   }

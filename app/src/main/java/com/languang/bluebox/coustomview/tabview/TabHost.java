@@ -1,13 +1,13 @@
 package com.languang.bluebox.coustomview.tabview;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.languang.bluebox.R;
+import com.languang.bluebox.coustomview.CustomViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ public class TabHost {
      * tab集合
      */
     private List<Tab> tabList = new ArrayList<>();
-    private ViewPager contentViewPager;
+    private CustomViewPager contentViewPager;
     OnTabSelectedListener onTabSelectedListener;
 
     public TabHost(Context context) {
@@ -75,8 +75,9 @@ public class TabHost {
         }
     }
 
-    public void setContentViewPager(ViewPager contentViewPager) {
+    public void setContentViewPager(CustomViewPager contentViewPager) {
         this.contentViewPager = contentViewPager;
+        this.contentViewPager.setScroll(false);
     }
 
     public LinearLayout getRootView() {

@@ -50,11 +50,11 @@ public class FacilityFragment extends BaseFragment {
                         ResponseMessage1<List<FacilityListInfo>> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage1<List<FacilityListInfo>>>() {
                         }.getType());
                         if (responseMessage.getRet() == 200) {
+                            for (FacilityListInfo facilityListInfo : responseMessage.getData()) {
+                                facilityListInfo.setOnline(TimeUtils.isOnline(FacilityFragment.this.getActivity(), "15.16.22.24") ? 1 : 0);
+                            }
                             listInfos.addAll(responseMessage.getData());
                             adapter.notifyDataSetChanged();
-                            TimeUtils.isOnline(getActivity(), responseMessage.getData()
-                                    .get(0)
-                                    .getWlanip());
                         }
                     }
 

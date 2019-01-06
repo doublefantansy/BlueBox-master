@@ -20,13 +20,13 @@ import java.lang.Override;
 public class ShareActivity_ViewBinding extends BaseFragmentActivity_ViewBinding {
   private ShareActivity target;
 
-  private View view2131231071;
+  private View view2131231082;
 
   private View view2131230750;
 
-  private View view2131231084;
+  private View view2131231095;
 
-  private View view2131230999;
+  private View view2131231007;
 
   @UiThread
   public ShareActivity_ViewBinding(ShareActivity target) {
@@ -49,7 +49,7 @@ public class ShareActivity_ViewBinding extends BaseFragmentActivity_ViewBinding 
     target.rl1 = Utils.findRequiredViewAsType(source, R.id.rl_1, "field 'rl1'", RelativeLayout.class);
     target.sv = Utils.findRequiredViewAsType(source, R.id.sv_1, "field 'sv'", MyScrollView.class);
     view = Utils.findRequiredView(source, R.id.share, "method 'onViewClicked'");
-    view2131231071 = view;
+    view2131231082 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -65,7 +65,7 @@ public class ShareActivity_ViewBinding extends BaseFragmentActivity_ViewBinding 
       }
     });
     view = Utils.findRequiredView(source, R.id.speak, "method 'onViewClicked'");
-    view2131231084 = view;
+    view2131231095 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -73,7 +73,7 @@ public class ShareActivity_ViewBinding extends BaseFragmentActivity_ViewBinding 
       }
     });
     view = Utils.findRequiredView(source, R.id.privacy, "method 'onViewClicked'");
-    view2131230999 = view;
+    view2131231007 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -97,14 +97,14 @@ public class ShareActivity_ViewBinding extends BaseFragmentActivity_ViewBinding 
     target.rl1 = null;
     target.sv = null;
 
-    view2131231071.setOnClickListener(null);
-    view2131231071 = null;
+    view2131231082.setOnClickListener(null);
+    view2131231082 = null;
     view2131230750.setOnClickListener(null);
     view2131230750 = null;
-    view2131231084.setOnClickListener(null);
-    view2131231084 = null;
-    view2131230999.setOnClickListener(null);
-    view2131230999 = null;
+    view2131231095.setOnClickListener(null);
+    view2131231095 = null;
+    view2131231007.setOnClickListener(null);
+    view2131231007 = null;
 
     super.unbind();
   }

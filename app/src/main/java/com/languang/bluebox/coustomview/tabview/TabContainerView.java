@@ -27,6 +27,7 @@ public class TabContainerView extends RelativeLayout {
      * 中间ViewPager
      */
     private CustomViewPager contentViewPager;
+    TabViewPagerAdapter adapter;
     /**
      * 文本属性
      */
@@ -41,7 +42,7 @@ public class TabContainerView extends RelativeLayout {
     private int iconWidth;
     /**
      * 分割线
-     */
+     */BaseAdapter baseAdapter;
     private int divideLineColor;
     private int divideLineHeight;
     private OnTabSelectedListener onTabSelectedListener;
@@ -114,7 +115,6 @@ public class TabContainerView extends RelativeLayout {
     private void initViewPager(final Context context) {
         contentViewPager = new CustomViewPager(context);
         contentViewPager.setOffscreenPageLimit(3);
-        contentViewPager.setScanScroll(false);
         LayoutParams contentVpLp = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         contentVpLp.addRule(RelativeLayout.ABOVE, R.id.divide_tab);
         contentViewPager.setLayoutParams(contentVpLp);
@@ -128,13 +128,9 @@ public class TabContainerView extends RelativeLayout {
             public void onPageSelected(int position) {
                 tabHost.onChangeTabHostStatus(position);
                 Tab selectedTab = tabHost.getTabForIndex(position);
-                System.out.println("高度是====" + px2dip(context, selectedTab.getRootView()
-                        .getHeight()));
-                if (onTabSelectedListener != null && selectedTab != null)
-                {
+                if (onTabSelectedListener != null && selectedTab != null) {
                     onTabSelectedListener.onTabSelected(selectedTab);
                 }
-
             }
 
             @Override
@@ -150,8 +146,10 @@ public class TabContainerView extends RelativeLayout {
 
     public void setAdapter(BaseAdapter baseAdapter, int index) {
         if (baseAdapter == null) return;
+        this.baseAdapter=baseAdapter;
         tabHost.addTabs(baseAdapter, textSize, textColor, selectedTextColor, drawablePadding, iconWidth, iconHeight);
-        contentViewPager.setAdapter(new TabViewPagerAdapter(baseAdapter.getFragmentManager(), baseAdapter.getFragmentArray()));
+        adapter = new TabViewPagerAdapter(baseAdapter.getFragmentManager(), baseAdapter.getFragmentArray());
+        contentViewPager.setAdapter(adapter);
         setCurrentItem(index);
     }
 
@@ -167,7 +165,6 @@ public class TabContainerView extends RelativeLayout {
 
     public void setTabTextGone(boolean t) {
         tabHost.setGone(t);
-
 //        tabHost.getTabForIndex(index).setTabText("zhende");
     }
 

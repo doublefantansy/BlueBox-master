@@ -2,6 +2,8 @@ package com.languang.bluebox.adapter.picturestorege;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -10,12 +12,16 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.languang.bluebox.CountInterface;
-import com.languang.bluebox.GridAdapter;
+import com.languang.bluebox.MapGridAdapter;
 import com.languang.bluebox.R;
 import com.languang.bluebox.entity.ImgEntity;
 import com.languang.bluebox.entity.ImgListEntity;
-import com.luck.easyrecyclerview.adapter.BaseViewHolder;
-import com.luck.easyrecyclerview.adapter.RecyclerArrayAdapter;
+import com.languang.bluebox.fragment.mapstorage.FF1Interface;
+
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * 时间图库适配器
@@ -23,59 +29,88 @@ import com.luck.easyrecyclerview.adapter.RecyclerArrayAdapter;
  * @author 49829
  * @date 2018/4/12
  */
-public class PictureTimeAdapter extends RecyclerArrayAdapter<ImgListEntity> {
+public class PictureTimeAdapter extends RecyclerView.Adapter<PictureTimeAdapter.CouponViewHolder> {
     private Context context;
-    private GridAdapter adapter;
-//    private List<ImgListEntity> list;
+    public MapGridAdapter adapter;
+    FF1Interface ff1Interface1;
+    private List<ImgListEntity> list;
 
-    public PictureTimeAdapter(Context context) {
-        super(context);
+    /**
+     * @param context
+     * @param ff1Interface
+     * @param imgEntities
+     */
+    public PictureTimeAdapter(Context context, FF1Interface ff1Interface, List<ImgListEntity> imgEntities) {
+        super();
         this.context = context;
-//        this.list = list;
+        this.ff1Interface1 = ff1Interface;
+        this.list = imgEntities;
+    }
+
+    public void setL(List<ImgListEntity> list) {
+        this.list = list;
+        notifyDataSetChanged();
     }
 
     @Override
-    public BaseViewHolder OnCreateViewHolder(ViewGroup parent, int viewType) {
-        return new CouponViewHolder(parent);
+    public CouponViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context)
+                .inflate(R.layout.item_picture_time, parent, false);
+        return new PictureTimeAdapter.CouponViewHolder(view);
     }
 
-    public class CouponViewHolder extends BaseViewHolder<ImgListEntity> {
+    @Override
+    public void onBindViewHolder(CouponViewHolder holder, int position) {
+        holder.time.setText(list.get(position)
+                .getTime()
+                .split("-")[0] + "年" + list.get(position)
+                .getTime()
+                .split("-")[1] + "月" + list.get(position)
+                .getTime()
+                .split("-")[2] + "日");
+        adapter = new MapGridAdapter(context, new CountInterface() {
+            @Override
+            public void click(boolean isadd, int count, ImgEntity imgEntity) {
+                if (isadd) {
+                    ff1Interface1.click(false, isadd, imgEntity);
+                } else {
+                    if (count == 0) {
+                        ff1Interface1.click(true, isadd, imgEntity);
+                    } else {
+                        ff1Interface1.click(false, isadd, imgEntity);
+                    }
+                }
+            }
+        }, list.get(position)
+                .getImgEntityList());
+        holder.myGridView.setAdapter(adapter);
+        holder.myGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(context, ShareActivity1.class);
+                intent.putExtra("ima", new Gson().toJson(list.get(position)));
+                context.startActivity(intent);
+//                    for (ImgEntity imgEntity : adapter.list) {
+//                        imgEntity
+//                    }
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return list.size();
+    }
+
+    public class CouponViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.time)
         TextView time;
+        @BindView(R.id.my_grid)
         GridView myGridView;
 
-        public CouponViewHolder(ViewGroup parent) {
-            super(parent, R.layout.item_picture_time);
-            time = $(R.id.time);
-            myGridView = $(R.id.my_grid);
+        CouponViewHolder(View view) {
+            super(view);
+            ButterKnife.bind(this, view);
         }
-
-        @Override
-        public void setData(final ImgListEntity data, int position) {
-            time.setText(data.getTime()
-                    .split("-")[0] + "年" + data.getTime()
-                    .split("-")[1] + "月" + data.getTime()
-                    .split("-")[2] + "日");
-            adapter = new GridAdapter(context, data.getImgEntityList(), new CountInterface() {
-                @Override
-                public void click(boolean isadd, int count, ImgEntity imgEntity) {
-                }
-            });
-            myGridView.setAdapter(adapter);
-//            final int headerP = position;
-            myGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                    Log.d("ccnb", data.getImgEntityList() + "");
-                    Intent intent = new Intent(context, ShareActivity1.class);
-                    intent.putExtra("ima", new Gson().toJson(data));
-                    context.startActivity(intent);
-                }
-            });
-        }
-    }
-
-    @Override
-    public int getPosition(ImgListEntity item) {
-        return super.getPosition(item);
     }
 }

@@ -5,6 +5,7 @@ import android.support.annotation.CallSuper;
 import android.support.annotation.UiThread;
 import android.view.View;
 import android.widget.GridView;
+import android.widget.TextView;
 import butterknife.Unbinder;
 import butterknife.internal.Utils;
 import com.languang.bluebox.R;
@@ -20,6 +21,7 @@ public class PictureTagFragment_ViewBinding implements Unbinder {
     this.target = target;
 
     target.searchEt = Utils.findRequiredViewAsType(source, R.id.search_et, "field 'searchEt'", CustomEditText.class);
+    target.search = Utils.findRequiredViewAsType(source, R.id.search, "field 'search'", TextView.class);
     target.tagGrid = Utils.findRequiredViewAsType(source, R.id.tag_grid, "field 'tagGrid'", GridView.class);
   }
 
@@ -31,6 +33,7 @@ public class PictureTagFragment_ViewBinding implements Unbinder {
     this.target = null;
 
     target.searchEt = null;
+    target.search = null;
     target.tagGrid = null;
   }
 }

@@ -8,9 +8,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_44"
+        android:background="@color/myBlue"
         android:gravity="center"
         android:text="设备"
-        android:textColor="@color/color_000"
+        android:textColor="@color/color_fff"
         android:textSize="@dimen/text_size_17" />
 
     <View

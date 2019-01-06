@@ -21,6 +21,7 @@ import com.languang.bluebox.coustomview.tabview.TabContainerView;
 import com.languang.bluebox.entity.AccessPoint;
 import com.languang.bluebox.entity.CountImgInfo;
 import com.languang.bluebox.entity.ImgEntity;
+import com.languang.bluebox.entity.ImgListEntity;
 import com.languang.bluebox.entity.ResponseMessage;
 import com.languang.bluebox.fragment.LightDiskFragment;
 import com.languang.bluebox.fragment.facility.FacilityFragment;
@@ -35,8 +36,10 @@ import com.mrj.framworklib.utils.OkHttpCallBack;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -51,6 +54,8 @@ public class MainActivity extends BaseFragmentActivity implements FAInterface {
     TabContainerView tabContainer;
     @BindView(R.id.ss)
     LinearLayout ss;
+    @BindView(R.id.ss1)
+    LinearLayout ss1;
     public static int count;
     public static int count2;
     protected MainViewAdapter mainViewAdapter;
@@ -60,6 +65,10 @@ public class MainActivity extends BaseFragmentActivity implements FAInterface {
     LinearLayout biaozhus;
     @BindView(R.id.del)
     LinearLayout del;
+    @BindView(R.id.ss2)
+    LinearLayout ss2;
+    @BindView(R.id.tianjiadaochu)
+    LinearLayout out;
     private WiFiStateReceiver wiFiStateReceiver;
     private ScanResultReceiver scanResultReceiver;
     private ConnectedStateReceiver connectedStateReceiver;
@@ -73,6 +82,8 @@ public class MainActivity extends BaseFragmentActivity implements FAInterface {
     FacilityFragment fragment5;
     List<Fragment> fragments = new ArrayList<>();
     List<ImgEntity> chose = new ArrayList<>();
+    List<ImgEntity> mapChose;
+    List<ImgListEntity> mapChose1;
     int count1 = 0;
     private In in = new In() {
         @Override
@@ -96,6 +107,13 @@ public class MainActivity extends BaseFragmentActivity implements FAInterface {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+//        mapChose.clear();
+//        fragment2.fragment1.adapter.adapter.clear();
+    }
+
+    @Override
     protected void initView() {
         fragment1 = new PictureStoreageFragment(this);
         fragment2 = new MapStorageFragment();
@@ -107,6 +125,16 @@ public class MainActivity extends BaseFragmentActivity implements FAInterface {
         fragments.add(fragment3);
         fragments.add(fragment4);
         fragments.add(fragment5);
+        out.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, DaoChuActivity.class);
+                intent.putExtra("spe", new Gson().toJson(mapChose));
+                startActivity(intent);
+                mapChose.clear();
+//                PictureAddressAdapter.clear();
+            }
+        });
         mainViewAdapter = new MainViewAdapter(getSupportFragmentManager(),
                 fragments);
         tabContainer.setAdapter(mainViewAdapter);
@@ -184,7 +212,7 @@ public class MainActivity extends BaseFragmentActivity implements FAInterface {
                 .okPost(this, TimeUtils.getWlanIp() + "/countimg", null, new OkHttpCallBack() {
                     @Override
                     public void onSucceed(String requestUrl, String response) {
-                        Log.d("ccnb", "lsy2");
+                        Log.d("cccccccccccc", response);
                         ResponseMessage<CountImgInfo> responseMessage = new Gson().fromJson(response,
                                 new TypeToken<ResponseMessage<CountImgInfo>>() {
                                 }.getType());
@@ -259,8 +287,52 @@ public class MainActivity extends BaseFragmentActivity implements FAInterface {
         ButterKnife.bind(this);
     }
 
+    //    public void setGoneTag(boolean t, List<ImgListEntity> imgEntities1) {
+//        Log.d("ccnbccnb", imgEntities1.size() + "");
+//        mapChose1 = imgEntities1;
+//        ss1.setVisibility(View.GONE);
+//        ss2.setVisibility(View.VISIBLE);
+//        if (!t) {
+//            ss.setVisibility(View.VISIBLE);
+//            tabContainer.setTabTextGone(true);
+//        } else {
+//            ss.setVisibility(View.INVISIBLE);
+//            tabContainer.setTabTextGone(false);
+//        }
+//    }
+    public void setGone(boolean t, List<ImgEntity> imgEntities1) {
+            Set<ImgEntity> set = new LinkedHashSet<ImgEntity>();
+            set.addAll(imgEntities1);
+            List<ImgEntity> list2 = new ArrayList<ImgEntity>();
+            list2.addAll(set);
+            Log.d("ccnbccnb", list2.size() + "");
+            mapChose = list2;
+            ss1.setVisibility(View.GONE);
+            ss2.setVisibility(View.VISIBLE);
+        if (!t) {
+            ss.setVisibility(View.VISIBLE);
+            tabContainer.setTabTextGone(true);
+        } else {
+            ss.setVisibility(View.INVISIBLE);
+            tabContainer.setTabTextGone(false);
+        }
+    }
+
+    public void setGone2(boolean t) {
+        ss1.setVisibility(View.GONE);
+        ss2.setVisibility(View.VISIBLE);
+        if (t) {
+            ss.setVisibility(View.VISIBLE);
+            tabContainer.setTabTextGone(true);
+        } else {
+            ss.setVisibility(View.INVISIBLE);
+            tabContainer.setTabTextGone(false);
+        }
+    }
     @Override
     public void click(boolean t, boolean isadd, ImgEntity imgEntity) {
+        ss1.setVisibility(View.VISIBLE);
+        ss2.setVisibility(View.GONE);
         if (t) {
             ss.setVisibility(View.VISIBLE);
             tabContainer.setTabTextGone(true);

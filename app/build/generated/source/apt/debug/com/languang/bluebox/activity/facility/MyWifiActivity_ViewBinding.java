@@ -15,9 +15,9 @@ import java.lang.Override;
 public class MyWifiActivity_ViewBinding extends BaseFragmentActivity_ViewBinding {
   private MyWifiActivity target;
 
-  private View view2131230850;
+  private View view2131230854;
 
-  private View view2131231041;
+  private View view2131231053;
 
   @UiThread
   public MyWifiActivity_ViewBinding(MyWifiActivity target) {
@@ -34,7 +34,7 @@ public class MyWifiActivity_ViewBinding extends BaseFragmentActivity_ViewBinding
     target.pwdEt = Utils.findRequiredViewAsType(source, R.id.pwd_et, "field 'pwdEt'", EditText.class);
     view = Utils.findRequiredView(source, R.id.eye, "field 'eye' and method 'onViewClicked'");
     target.eye = Utils.castView(view, R.id.eye, "field 'eye'", ImageView.class);
-    view2131230850 = view;
+    view2131230854 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -42,7 +42,7 @@ public class MyWifiActivity_ViewBinding extends BaseFragmentActivity_ViewBinding
       }
     });
     view = Utils.findRequiredView(source, R.id.save_or_restart, "method 'onViewClicked'");
-    view2131231041 = view;
+    view2131231053 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -60,10 +60,10 @@ public class MyWifiActivity_ViewBinding extends BaseFragmentActivity_ViewBinding
     target.pwdEt = null;
     target.eye = null;
 
-    view2131230850.setOnClickListener(null);
-    view2131230850 = null;
-    view2131231041.setOnClickListener(null);
-    view2131231041 = null;
+    view2131230854.setOnClickListener(null);
+    view2131230854 = null;
+    view2131231053.setOnClickListener(null);
+    view2131231053 = null;
 
     super.unbind();
   }

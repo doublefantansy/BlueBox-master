@@ -98,4 +98,7 @@ dependencies {
     implementation 'cn.finalteam.rxgalleryfinal:library:1.1.2'
     implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
+    implementation 'com.tencent.bugly:crashreport:latest.release'
+    implementation 'com.tencent.bugly:nativecrashreport:latest.release'
+
 }

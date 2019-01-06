@@ -17,15 +17,15 @@ public class CompilePictureActivity_ViewBinding extends BaseFragmentActivity_Vie
 
   private View view2131230781;
 
-  private View view2131231118;
+  private View view2131231124;
 
-  private View view2131230857;
+  private View view2131230859;
 
-  private View view2131230805;
+  private View view2131230806;
 
-  private View view2131231180;
+  private View view2131231188;
 
-  private View view2131230800;
+  private View view2131230801;
 
   @UiThread
   public CompilePictureActivity_ViewBinding(CompilePictureActivity target) {
@@ -51,7 +51,7 @@ public class CompilePictureActivity_ViewBinding extends BaseFragmentActivity_Vie
     });
     view = Utils.findRequiredView(source, R.id.tailor, "field 'tailor' and method 'onViewClicked'");
     target.tailor = Utils.castView(view, R.id.tailor, "field 'tailor'", ImageView.class);
-    view2131231118 = view;
+    view2131231124 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -60,7 +60,7 @@ public class CompilePictureActivity_ViewBinding extends BaseFragmentActivity_Vie
     });
     view = Utils.findRequiredView(source, R.id.filter, "field 'filter' and method 'onViewClicked'");
     target.filter = Utils.castView(view, R.id.filter, "field 'filter'", ImageView.class);
-    view2131230857 = view;
+    view2131230859 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -69,7 +69,7 @@ public class CompilePictureActivity_ViewBinding extends BaseFragmentActivity_Vie
     });
     view = Utils.findRequiredView(source, R.id.contrast, "field 'contrast' and method 'onViewClicked'");
     target.contrast = Utils.castView(view, R.id.contrast, "field 'contrast'", ImageView.class);
-    view2131230805 = view;
+    view2131230806 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -78,7 +78,7 @@ public class CompilePictureActivity_ViewBinding extends BaseFragmentActivity_Vie
     });
     view = Utils.findRequiredView(source, R.id.watermark, "field 'watermark' and method 'onViewClicked'");
     target.watermark = Utils.castView(view, R.id.watermark, "field 'watermark'", ImageView.class);
-    view2131231180 = view;
+    view2131231188 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -87,7 +87,7 @@ public class CompilePictureActivity_ViewBinding extends BaseFragmentActivity_Vie
     });
     view = Utils.findRequiredView(source, R.id.complete, "field 'complete' and method 'onViewClicked'");
     target.complete = Utils.castView(view, R.id.complete, "field 'complete'", TextView.class);
-    view2131230800 = view;
+    view2131230801 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -112,16 +112,16 @@ public class CompilePictureActivity_ViewBinding extends BaseFragmentActivity_Vie
 
     view2131230781.setOnClickListener(null);
     view2131230781 = null;
-    view2131231118.setOnClickListener(null);
-    view2131231118 = null;
-    view2131230857.setOnClickListener(null);
-    view2131230857 = null;
-    view2131230805.setOnClickListener(null);
-    view2131230805 = null;
-    view2131231180.setOnClickListener(null);
-    view2131231180 = null;
-    view2131230800.setOnClickListener(null);
-    view2131230800 = null;
+    view2131231124.setOnClickListener(null);
+    view2131231124 = null;
+    view2131230859.setOnClickListener(null);
+    view2131230859 = null;
+    view2131230806.setOnClickListener(null);
+    view2131230806 = null;
+    view2131231188.setOnClickListener(null);
+    view2131231188 = null;
+    view2131230801.setOnClickListener(null);
+    view2131230801 = null;
 
     super.unbind();
   }

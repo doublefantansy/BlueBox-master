@@ -3,6 +3,7 @@ package com.languang.bluebox;
 import android.content.Context;
 import android.net.DhcpInfo;
 import android.net.wifi.WifiManager;
+import android.util.Log;
 
 import java.text.SimpleDateFormat;
 
@@ -24,28 +25,59 @@ public class TimeUtils {
         WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
         DhcpInfo info = wifiManager.getDhcpInfo();
         String ip = intToIp1(info.gateway);
-//        return "https://" + ip;
-        return "http://box.haotuwei.com";
+        return "http://" + ip;
+//        return "http://box.haotuwei.com";
+//        ApiConstant.BOX_BASE_URL
     }
 
     public static boolean isOnline(Context context, String wlanIp) {
-        String[] wlanIps = wlanIp.split("\\.");
-        if (1 == 1) {
-            return true;
+        Log.d("ccnbccnbccnb", intToIp1(mask(context)));
+        String[] ips = getIp(context).split("\\.");
+        String[] wlans = wlanIp.split("\\.");
+        String[] masks = intToIp1(mask(context)).split("\\.");
+        long[] longIps = new long[4];
+        long[] longWlans = new long[4];
+        long[] longMasks = new long[4];
+        boolean[] result = new boolean[4];
+        for (int i = 0; i < ips.length; i++) {
+            longMasks[i] = (Long.valueOf(masks[i]));
         }
-        return false;
+        for (int i = 0; i < ips.length; i++) {
+            longIps[i] = (Long.valueOf(ips[i]));
+        }
+        for (int i = 0; i < wlans.length; i++) {
+            longWlans[i] = (Long.valueOf(wlans[i]));
+        }
+        for (int i = 0; i < 4; i++) {
+            long temp1 = longMasks[i] & longIps[i];
+            long temp2 = longMasks[i] & longWlans[i];
+            Log.d("ccnbccnbccnbccnb", temp1 + "");
+            Log.d("ccnbccnbccnbccnb", temp2 + "");
+            if (temp1 == temp2) {
+                result[i] = true;
+            } else {
+                result[i] = false;
+            }
+        }
+        for (boolean b : result) {
+            if (!b) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static int mask(Context context) {
         WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
         DhcpInfo info = wifiManager.getDhcpInfo();
+//        OkHttpUtils
         return info.netmask;
 //        return "http://box.haotuwei.com";
     }
 
     public static String getWlanIp() {
-//        return wlanIp;
-        return "http://box.haotuwei.com";
+        return wlanIp;
+//        return "http://box.haotuwei.com";
     }
 
     public static void setWlanIp(String wlanIp) {

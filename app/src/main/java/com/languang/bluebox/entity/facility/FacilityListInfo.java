@@ -20,7 +20,7 @@ public class FacilityListInfo {
      * updatetime : 2018-11-22 15:35:58
      * pwdmd5 : e10adc3949ba59abbe56e057f20f883e
      */
-
+    private int isOnline;
     private String idmb;
     private String mobile;
     private String bluename;
@@ -37,6 +37,14 @@ public class FacilityListInfo {
     private String lanip;
     private String updatetime;
     private String pwdmd5;
+
+    public int isOnline() {
+        return isOnline;
+    }
+
+    public void setOnline(int online) {
+        isOnline = online;
+    }
 
     public String getIdmb() {
         return idmb;

@@ -10,6 +10,7 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,12 +20,14 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.languang.bluebox.basework.net.OkHttpUtils;
-import com.languang.bluebox.constant.ApiConstant;
 import com.languang.bluebox.entity.ImgInfo;
 import com.languang.bluebox.entity.ResponseMessage;
 import com.mrj.framworklib.utils.OkHttpCallBack;
 
+import java.io.File;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import cn.finalteam.rxgalleryfinal.bean.MediaBean;
 
@@ -40,7 +43,17 @@ public class AddPicActivity extends AppCompatActivity {
     int count = 0;
     private MaterialDialog dialog;
     MyCallBack myCallBack;
+    File file;
     In in;
+    private String voiceUuid;
+    String uuid;
+    EditText desc;
+    EditText private1;
+    EditText title;
+    EditText meta;
+    EditText location;
+    EditText camera;
+//    int count2 = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,6 +68,11 @@ public class AddPicActivity extends AppCompatActivity {
                 .cancelable(false)
                 .build();
         button = findViewById(R.id.button);
+        desc = findViewById(R.id.desc);
+        title = findViewById(R.id.title);
+        meta = findViewById(R.id.meta);
+        location = findViewById(R.id.location);
+        camera = findViewById(R.id.camera);
         linearLayout = findViewById(R.id.rl);
         recyclerView = findViewById(R.id.suoliue);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -89,8 +107,14 @@ public class AddPicActivity extends AppCompatActivity {
             public void onStop(String filePath) {
 //                Toast.makeText(MainActivity.this, "录音保存在：" + filePath, Toast.LENGTH_SHORT).show();
                 mTextView.setText(TimeUtils.long2String(0));
+                file = new File(filePath);
             }
         });
+//        List<String> strings = new ArrayList<>();
+//        for (int i = 0; i < mediaBeans.size(); i++) {
+//            strings.add(mediaBeans.get(i)
+//                    .getUuid());
+//        }
         button.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -114,38 +138,95 @@ public class AddPicActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 dialog.show();
-                for (MediaBean mediaBean : mediaBeans) {
-                    OkHttpUtils.getInstance()
-                            .uploadFile(AddPicActivity.this, ApiConstant.BOX_UPLOAD, mediaBean.getOriginalPath(), new OkHttpCallBack() {
-                                @Override
-                                public void onSucceed(String requestUrl, String response) {
-                                    Log.d("ccnb", response);
-                                    ResponseMessage<ImgInfo> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<ImgInfo>>() {
-                                    }.getType());
-                                    if (responseMessage.getRet()
-                                            == 200) {
-//
-                                        count++;
-                                        if (count == mediaBeans
-                                                .size()) {
-                                            dialog.dismiss();
-                                            finish();
-                                            PopView.getCallBack()
-                                                    .callback();
-//                                            myCallBack.callback();
-                                        }
-                                    } else {
-//                                                        Toast.makeText(context, "上传失败", Toast.LENGTH_SHORT)
-//                                                                .show();
-                                    }
-                                }
+//                OkHttpUtils.getInstance()
+////                        .uploadFile(AddPicActivity.this, TimeUtils.getWlanIp()+"/upload", file.getPath(), new OkHttpCallBack() {
+////                            @Override
+////                            public void onSucceed(String requestUrl, String response) {
+////                                ResponseMessage<SpeVoiceBean> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<SpeVoiceBean>>() {
+////                                }.getType());
+////                                voiceUuid = responseMessage.getData().vocuuid;
+////
+////
+////
+////                            }
+////
+////                            @Override
+////                            public void onFailed() {
+////                            }
+////                        });
+                OkHttpUtils.getInstance()
+                        .uploadFile(AddPicActivity.this, TimeUtils.getWlanIp() + "/upload", file.getPath(), new OkHttpCallBack() {
+                            @Override
+                            public void onSucceed(String requestUrl, String response) {
+                                Log.d("ccnb", response);
+                                ResponseMessage<SpeVoiceBean> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<SpeVoiceBean>>() {
+                                }.getType());
+                                voiceUuid = responseMessage.getData().vocuuid;
+                                if (responseMessage.getRet()
+                                        == 200) {
+                                    for (final MediaBean mediaBean : mediaBeans) {
+//                                         final String uuid = responseMessage.getData()
+//                                                .getUuid();
+                                        OkHttpUtils.getInstance()
+                                                .uploadFile(AddPicActivity.this, TimeUtils.getWlanIp() + "/upload", mediaBean.getOriginalPath(), new OkHttpCallBack() {
+                                                    @Override
+                                                    public void onSucceed(String requestUrl, String response) {
+                                                        ResponseMessage<ImgInfo> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<ImgInfo>>() {
+                                                        }.getType());
+                                                        uuid = responseMessage.getData()
+                                                                .getUuid();
+                                                        Map<String, Object> map = new HashMap<>();
+                                                        map.put("files", uuid);
+                                                        map.put("vocuuid", voiceUuid);
+                                                        map.put("desc", desc.getText()
+                                                                .toString());
+                                                        map.put("private", "11");
+                                                        map.put("title", title.getText()
+                                                                .toString());
+                                                        map.put("meta", meta.getText()
+                                                                .toString());
+                                                        map.put("location", location.getText()
+                                                                .toString());
+                                                        map.put("camera", camera.getText()
+                                                                .toString());
+                                                        OkHttpUtils.getInstance()
+                                                                .okPost(AddPicActivity.this, TimeUtils.getWlanIp() + "/tagfiles", map, new OkHttpCallBack() {
+                                                                    @Override
+                                                                    public void onSucceed(String requestUrl, String response) {
+                                                                        Log.d("ccnb", response);
+                                                                        count++;
+                                                                        if (count == mediaBeans
+                                                                                .size()) {
+                                                                            dialog.dismiss();
+                                                                            finish();
+                                                                            PopView.getCallBack()
+                                                                                    .callback();
+                                                                        } else {
+                                                                        }
+                                                                    }
 
-                                @Override
-                                public void onFailed() {
-                                    Log.d("ccnb", "shibai");
+                                                                    @Override
+                                                                    public void onFailed() {
+                                                                        Log.d("ccnb", "ccnb");
+                                                                    }
+                                                                });
+                                                    }
+
+                                                    @Override
+                                                    public void onFailed() {
+                                                    }
+                                                });
+                                    }
+//
+//
                                 }
-                            });
-                }
+                            }
+
+                            @Override
+                            public void onFailed() {
+                                Log.d("ccnb", "shibai");
+                            }
+                        });
             }
         });
 //        Log.d("ccnb",getIntent().getStringExtra("spe")+"");

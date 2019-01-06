@@ -6,6 +6,7 @@ import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
+import com.tencent.bugly.Bugly;
 import com.tencent.mmkv.MMKV;
 
 import cn.finalteam.rxgalleryfinal.utils.ModelUtils;
@@ -36,6 +37,6 @@ public class BaseApplication extends MultiDexApplication {
         config.diskCacheSize(50 * 1024 * 1024); // 50 MiB
         config.tasksProcessingOrder(QueueProcessingType.LIFO);
         ImageLoader.getInstance().init(config.build());
-
+        Bugly.init(getApplicationContext(), "fcfd6d8984", false);
     }
 }

@@ -2,7 +2,7 @@ package com.languang.bluebox.entity;
 
 import java.util.List;
 
-public class SpeRes {
+public class SpeRes<T> {
     /**
      * ret : 200
      * data : {"status":"9999","ip":"125.85.184.200","version":"1970-01-01 08:00:00"}
@@ -10,7 +10,7 @@ public class SpeRes {
      * debug : {"stack":["[#0 - 0ms - PHALAPI_INIT]/web/www/cloud/webapi/public/index.php(6)","[#1 - 1.3ms - PHALAPI_RESPONSE]/web/www/cloud/webapi/vendor/phalapi/kernal/src/PhalApi.php(46)","[#2 - 1.7ms - PHALAPI_FINISH]/web/www/cloud/webapi/vendor/phalapi/kernal/src/PhalApi.php(74)"],"sqls":[],"version":"2.2.3"}
      */
     private int ret;
-    private DataBean data;
+    private T data;
     private String msg;
     private DebugBean debug;
 
@@ -22,11 +22,11 @@ public class SpeRes {
         this.ret = ret;
     }
 
-    public DataBean getData() {
+    public T getData() {
         return data;
     }
 
-    public void setData(DataBean data) {
+    public void setData(T data) {
         this.data = data;
     }
 

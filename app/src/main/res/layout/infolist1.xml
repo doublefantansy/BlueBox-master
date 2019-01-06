@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/dp_5"
         android:text="我的设备"
-        android:textColor="@color/myBlue" />
+        android:textColor="@color/gray" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -23,7 +23,7 @@
             android:layout_height="@dimen/dp_30"
             android:layout_centerVertical="true"
             android:text="我家的小盒子"
-            android:textColor="@color/myBlue"
+            android:textColor="@color/gray"
             android:textSize="24sp" />
 
         <ImageView

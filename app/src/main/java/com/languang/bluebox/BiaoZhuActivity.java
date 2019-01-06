@@ -14,7 +14,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.languang.bluebox.constant.ApiConstant;
 import com.languang.bluebox.entity.ImgEntity;
 
 import java.util.ArrayList;
@@ -83,7 +82,7 @@ public class BiaoZhuActivity extends AppCompatActivity {
                     BiaoZhuActivity.this.imgEntity = imgEntity;
                     Glide.with(BiaoZhuActivity.this)
                             .asBitmap()
-                            .load(ApiConstant.BOX_BASE_URL + "/public/" + imgEntity
+                            .load(TimeUtils.getWlanIp() + "/public/" + imgEntity
                                     .getSrcpath() + imgEntity
                                     .getSrcname())
                             .into(imageView);

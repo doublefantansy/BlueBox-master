@@ -13,9 +13,9 @@ import java.lang.Override;
 public class NoWifiActivity_ViewBinding extends BaseFragmentActivity_ViewBinding {
   private NoWifiActivity target;
 
-  private View view2131230781;
+  private View view2131230782;
 
-  private View view2131231016;
+  private View view2131231026;
 
   @UiThread
   public NoWifiActivity_ViewBinding(NoWifiActivity target) {
@@ -30,7 +30,7 @@ public class NoWifiActivity_ViewBinding extends BaseFragmentActivity_ViewBinding
 
     View view;
     view = Utils.findRequiredView(source, R.id.cancel, "method 'onViewClicked'");
-    view2131230781 = view;
+    view2131230782 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -38,7 +38,7 @@ public class NoWifiActivity_ViewBinding extends BaseFragmentActivity_ViewBinding
       }
     });
     view = Utils.findRequiredView(source, R.id.refresh, "method 'onViewClicked'");
-    view2131231016 = view;
+    view2131231026 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -53,10 +53,10 @@ public class NoWifiActivity_ViewBinding extends BaseFragmentActivity_ViewBinding
     target = null;
 
 
-    view2131230781.setOnClickListener(null);
-    view2131230781 = null;
-    view2131231016.setOnClickListener(null);
-    view2131231016 = null;
+    view2131230782.setOnClickListener(null);
+    view2131230782 = null;
+    view2131231026.setOnClickListener(null);
+    view2131231026 = null;
 
     super.unbind();
   }

@@ -28,9 +28,8 @@
     <application
         android:name="com.languang.bluebox.basework.BaseApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/i512512"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         <activity
@@ -114,6 +113,7 @@
         <activity
             android:name="com.languang.bluebox.activity.FacilityInfoActivity"
             android:screenOrientation="portrait" />
+        <activity android:name="com.languang.bluebox.ErrorActivity" />
         <!-- 硬盘信息 -->
         <activity
             android:name="com.languang.bluebox.activity.facility.DiskManageActivity"
@@ -139,6 +139,8 @@
         <activity android:name="com.languang.bluebox.WaiSeActivity" />
         <activity android:name="com.languang.bluebox.BiaoZhuActivity" />
         <activity android:name="com.languang.bluebox.adapter.picturestorege.ShareActivity1" />
+        <activity android:name="com.languang.bluebox.DaoChuActivity" />
+        <activity android:name="com.languang.bluebox.activity.login.BoxLoginActivity" />
 
         <meta-data
             android:name="android.support.VERSION"

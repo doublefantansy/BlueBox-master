@@ -22,6 +22,15 @@ public class LoginRes {
     private String token;
     private String type;
     private String msg;
+//    private String power;
+
+//    public String getPower() {
+//        return power;
+//    }
+//
+//    public void setPower(String power) {
+//        this.power = power;
+//    }
 
     public String getStatus() {
         return status;

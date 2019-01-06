@@ -14,9 +14,9 @@ import java.lang.Override;
 public class RegisterActivity_ViewBinding extends BaseFragmentActivity_ViewBinding {
   private RegisterActivity target;
 
-  private View view2131230866;
+  private View view2131230868;
 
-  private View view2131231017;
+  private View view2131231020;
 
   private View view2131230764;
 
@@ -37,7 +37,7 @@ public class RegisterActivity_ViewBinding extends BaseFragmentActivity_ViewBindi
     target.pwdEt = Utils.findRequiredViewAsType(source, R.id.pwd_et, "field 'pwdEt'", EditText.class);
     target.consumePwdEt = Utils.findRequiredViewAsType(source, R.id.consume_pwd_et, "field 'consumePwdEt'", EditText.class);
     view = Utils.findRequiredView(source, R.id.get_code, "method 'onViewClicked'");
-    view2131230866 = view;
+    view2131230868 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -45,7 +45,7 @@ public class RegisterActivity_ViewBinding extends BaseFragmentActivity_ViewBindi
       }
     });
     view = Utils.findRequiredView(source, R.id.register_submit, "method 'onViewClicked'");
-    view2131231017 = view;
+    view2131231020 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -73,10 +73,10 @@ public class RegisterActivity_ViewBinding extends BaseFragmentActivity_ViewBindi
     target.pwdEt = null;
     target.consumePwdEt = null;
 
-    view2131230866.setOnClickListener(null);
-    view2131230866 = null;
-    view2131231017.setOnClickListener(null);
-    view2131231017 = null;
+    view2131230868.setOnClickListener(null);
+    view2131230868 = null;
+    view2131231020.setOnClickListener(null);
+    view2131231020 = null;
     view2131230764.setOnClickListener(null);
     view2131230764 = null;
 

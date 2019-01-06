@@ -2,7 +2,6 @@ package com.languang.bluebox.coustomview;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -22,19 +21,19 @@ public class CustomPercentView extends View {
     /**
      * 系统文件占比
      */
-    private double systemFile = 0;
+    private double used = 0;
     /**
      * 图片文件占比
      */
-    private double pictureFile = 0;
+    private double unused = 0;
     /**
      * 待归档文件占比
-     */
-    private double rawFile = 0;
-    /**
-     * 临时文件占比
-     */
-    private double temporaryFile = 0;
+//     */
+//    private double rawFile = 0;
+//    /**
+//     * 临时文件占比
+//     */
+//    private double temporaryFile = 0;
 
     public CustomPercentView(Context context) {
         super(context);
@@ -58,16 +57,16 @@ public class CustomPercentView extends View {
         canvas.drawRect(0, 0, getWidth(), getHeight()-1, strokePaint);
         Paint myPaint = new Paint();
         myPaint.setColor(getResources().getColor(R.color.color_84cb44));
-        canvas.drawRect(0, 0, (float) (systemFile * getWidth()), getHeight(), myPaint);
-        myPaint.setColor(getResources().getColor(R.color.color_eb6100));
-        canvas.drawRect((float) (systemFile * getWidth())
-                , 0, (float) ((systemFile + pictureFile) * getWidth()), getHeight(), myPaint);
-        myPaint.setColor(getResources().getColor(R.color.color_00a4ff));
-        canvas.drawRect((float) ((systemFile + pictureFile) * getWidth())
-                , 0, (float) ((systemFile + pictureFile + rawFile) * getWidth()), getHeight(), myPaint);
-        myPaint.setColor(getResources().getColor(R.color.color_434343));
-        canvas.drawRect((float) ((systemFile + pictureFile + rawFile) * getWidth()),
-                0, (float) ((systemFile + pictureFile + rawFile + temporaryFile) * getWidth()), getHeight(), myPaint);
+        canvas.drawRect(0, 0, (float) (used/(used+unused) * getWidth()), getHeight(), myPaint);
+//        myPaint.setColor(getResources().getColor(R.color.color_eb6100));
+//        canvas.drawRect((float) (systemFile * getWidth())
+//                , 0, (float) ((systemFile + pictureFile) * getWidth()), getHeight(), myPaint);
+//        myPaint.setColor(getResources().getColor(R.color.color_00a4ff));
+//        canvas.drawRect((float) ((systemFile + pictureFile) * getWidth())
+//                , 0, (float) ((systemFile + pictureFile + rawFile) * getWidth()), getHeight(), myPaint);
+//        myPaint.setColor(getResources().getColor(R.color.color_434343));
+//        canvas.drawRect((float) ((systemFile + pictureFile + rawFile) * getWidth()),
+//                0, (float) ((systemFile + pictureFile + rawFile + temporaryFile) * getWidth()), getHeight(), myPaint);
     }
 
     /**
@@ -76,10 +75,8 @@ public class CustomPercentView extends View {
      * @param percents 各区域占的百分比数组
      */
     public void setPercent(double[] percents) {
-        systemFile = percents[0];
-        pictureFile = percents[1];
-        rawFile = percents[2];
-        temporaryFile = percents[3];
+        used = percents[0];
+        unused = percents[1];
         invalidate();
     }
 }

@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.languang.bluebox.constant.ApiConstant;
 import com.languang.bluebox.entity.ImgEntity;
 
 import java.util.List;
@@ -39,7 +38,7 @@ public class SuoLueAdapter1 extends RecyclerView.Adapter<SuoLueAdapter1.ViewHold
     public void onBindViewHolder(final SuoLueAdapter1.ViewHolder holder, final int position) {
         Glide.with(context)
                 .asBitmap()
-                .load(ApiConstant.BOX_BASE_URL + "/public/" + imgEntities.get(position)
+                .load(TimeUtils.getWlanIp() + "/public/" + imgEntities.get(position)
                         .getSmallpath() + imgEntities.get(position)
                         .getSmallname())
                 .into(holder.image);
@@ -65,7 +64,7 @@ public class SuoLueAdapter1 extends RecyclerView.Adapter<SuoLueAdapter1.ViewHold
         return imgEntities.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.image)
         ImageView image;
         @BindView(R.id.gou)

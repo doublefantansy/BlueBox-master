@@ -17,9 +17,8 @@
     <application
         android:name=".basework.BaseApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/i512512"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
@@ -53,7 +52,7 @@
             android:name=".activity.initialize.SettingWanActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".AddPic1Activity"></activity>
+        <activity android:name=".AddPic1Activity" />
         <!-- 设置WAN -->
         <activity
             android:name=".activity.initialize.SettingPwdActivity"
@@ -102,6 +101,7 @@
         <activity
             android:name=".activity.FacilityInfoActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".ErrorActivity" />
         <!-- 硬盘信息 -->
         <activity
             android:name=".activity.facility.DiskManageActivity"
@@ -125,7 +125,11 @@
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".WaiSeActivity" />
-        <activity android:name=".BiaoZhuActivity"></activity>
-        <activity android:name=".adapter.picturestorege.ShareActivity1"></activity>
+        <activity android:name=".BiaoZhuActivity" />
+        <activity android:name=".adapter.picturestorege.ShareActivity1" />
+        <activity android:name=".DaoChuActivity" />
+        <activity android:name=".activity.login.BoxLoginActivity" />
+        <activity android:name=".XieYiActivity" />
+        <activity android:name=".LookForPasswordActivity"></activity>
     </application>
 </manifest>

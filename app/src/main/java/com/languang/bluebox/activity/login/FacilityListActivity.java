@@ -11,9 +11,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.languang.bluebox.ErrorActivity;
 import com.languang.bluebox.MainActivity;
 import com.languang.bluebox.R;
 import com.languang.bluebox.adapter.FacilityListAdapter;
@@ -93,37 +95,53 @@ public class FacilityListActivity extends BaseFragmentActivity implements OkHttp
 
     @Override
     public void onSucceed(String requestUrl, String response) {
-        Log.d("ccnb", response);
-        if (ApiConstant.CLOUD_BLUES.equals(requestUrl)) {
-            ResponseMessage<List<FacilityListInfo>> listResponseMessage = new Gson().fromJson(response,
-                    new TypeToken<ResponseMessage<List<FacilityListInfo>>>() {
-                    }.getType());
-            if (Constant.SUCCEED_CODE == listResponseMessage.getRet()) {
-                listInfos = listResponseMessage.getData();
-                adapter.clear();
-                adapter.addAll(listInfos);
-                adapter.notifyDataSetChanged();
+        Log.d("ccnbccnb", response);
+        try {
+            if (ApiConstant.CLOUD_BLUES.equals(requestUrl)) {
+                ResponseMessage<List<FacilityListInfo>> listResponseMessage = new Gson().fromJson(response,
+                        new TypeToken<ResponseMessage<List<FacilityListInfo>>>() {
+                        }.getType());
+                if (Constant.SUCCEED_CODE == listResponseMessage.getRet()) {
+                    listInfos = listResponseMessage.getData();
+                    adapter.clear();
+                    adapter.addAll(listInfos);
+                    adapter.notifyDataSetChanged();
+                }
+            } else if (ApiConstant.CLOUD_BLUE_INSERT.equals(requestUrl)) {
+            } else if (ApiConstant.CLOUD_BLUE_DEL.equals(requestUrl)) {
+            } else if (ApiConstant.CLOUD_BLUE_SET.equals(requestUrl)) {
+                ResponseMessage responseMessage = new Gson().fromJson(response, ResponseMessage.class);
+                if (Constant.SUCCEED_CODE == responseMessage.getRet()) {
+                    facilityListModel.getBoxList(this);
+                }
+            } else if (ApiConstant.CLOUD_REFRESH.equals(requestUrl)) {
+                ResponseMessage<RefreshInfo> refreshInfoResponseMessage = new Gson().fromJson(response,
+                        new TypeToken<ResponseMessage<RefreshInfo>>() {
+                        }.getType());
+                if (Constant.SUCCEED_CODE == refreshInfoResponseMessage.getRet()) {
+                    ToastUtilsBase.showToastCenter(this, refreshInfoResponseMessage.getData()
+                            .getMsg());
+                }
+            } else if (ApiConstant.BOX_LOGIN.equals(requestUrl)) {
+                ResponseMessage<LoginBean> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<LoginBean>>() {
+                }.getType());
+                if (Constant.SUCCEED_CODE == responseMessage.getRet()) {
+                    if (responseMessage.getData()
+                            .getStatus()
+                            .equals("9999")) {
+                        startActivity(new Intent(FacilityListActivity.this, MainActivity.class));
+                    } else {
+                        Toast.makeText(FacilityListActivity.this, responseMessage.getData()
+                                .getMsg(), Toast.LENGTH_SHORT)
+                                .show();
+                    }
+                }
             }
-        } else if (ApiConstant.CLOUD_BLUE_INSERT.equals(requestUrl)) {
-        } else if (ApiConstant.CLOUD_BLUE_DEL.equals(requestUrl)) {
-        } else if (ApiConstant.CLOUD_BLUE_SET.equals(requestUrl)) {
-            ResponseMessage responseMessage = new Gson().fromJson(response, ResponseMessage.class);
-            if (Constant.SUCCEED_CODE == responseMessage.getRet()) {
-                facilityListModel.getBoxList(this);
-            }
-        } else if (ApiConstant.CLOUD_REFRESH.equals(requestUrl)) {
-            ResponseMessage<RefreshInfo> refreshInfoResponseMessage = new Gson().fromJson(response,
-                    new TypeToken<ResponseMessage<RefreshInfo>>() {
-                    }.getType());
-            if (Constant.SUCCEED_CODE == refreshInfoResponseMessage.getRet()) {
-                ToastUtilsBase.showToastCenter(this, refreshInfoResponseMessage.getData()
-                        .getMsg());
-            }
-        } else if (ApiConstant.BOX_LOGIN.equals(requestUrl)) {
-            ResponseMessage responseMessage = new Gson().fromJson(response, ResponseMessage.class);
-            if (Constant.SUCCEED_CODE == responseMessage.getRet()) {
-                startActivity(new Intent(FacilityListActivity.this, MainActivity.class));
-            }
+        } catch (Exception e) {
+            Intent intent = new Intent(FacilityListActivity.this, ErrorActivity.class);
+            intent.putExtra("req", requestUrl);
+            intent.putExtra("res", response);
+            startActivity(intent);
         }
     }
 

@@ -15,7 +15,7 @@ public class NoWifiActivity_ViewBinding extends BaseFragmentActivity_ViewBinding
 
   private View view2131230781;
 
-  private View view2131231016;
+  private View view2131231019;
 
   @UiThread
   public NoWifiActivity_ViewBinding(NoWifiActivity target) {
@@ -38,7 +38,7 @@ public class NoWifiActivity_ViewBinding extends BaseFragmentActivity_ViewBinding
       }
     });
     view = Utils.findRequiredView(source, R.id.refresh, "method 'onViewClicked'");
-    view2131231016 = view;
+    view2131231019 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -55,8 +55,8 @@ public class NoWifiActivity_ViewBinding extends BaseFragmentActivity_ViewBinding
 
     view2131230781.setOnClickListener(null);
     view2131230781 = null;
-    view2131231016.setOnClickListener(null);
-    view2131231016 = null;
+    view2131231019.setOnClickListener(null);
+    view2131231019 = null;
 
     super.unbind();
   }

@@ -1,4 +1,4 @@
-#Thu Dec 27 14:39:11 CST 2018
+#Sun Jan 06 10:05:17 CST 2019
 base.0=/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
 renamed.0=classes.dex

@@ -22,7 +22,8 @@ public class RegisterModel implements IRegister {
         Map<String, Object> params = new HashMap<>(2);
         params.put("mobile", mobile);
         params.put("type", "signup");
-        OkHttpUtils.getInstance().okPost(context, ApiConstant.CLOUD_SENSMS, params, callBack);
+        OkHttpUtils.getInstance()
+                .okPost(context, ApiConstant.CLOUD_SENSMS, params, callBack);
     }
 
     @Override
@@ -30,6 +31,7 @@ public class RegisterModel implements IRegister {
         Map<String, Object> params = new HashMap<>(2);
         params.put("mobile", mobile);
         params.put("pwd", pwd);
-        OkHttpUtils.getInstance().okPost(context, ApiConstant.CLOUD_SIGNUP, params, callBack);
+        OkHttpUtils.getInstance()
+                .okPost(context, ApiConstant.CLOUD_SIGNUP, params, callBack);
     }
 }

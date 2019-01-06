@@ -15,7 +15,7 @@ import java.lang.Override;
 public class VisitorPwdActivity_ViewBinding extends BaseFragmentActivity_ViewBinding {
   private VisitorPwdActivity target;
 
-  private View view2131230850;
+  private View view2131230852;
 
   @UiThread
   public VisitorPwdActivity_ViewBinding(VisitorPwdActivity target) {
@@ -32,7 +32,7 @@ public class VisitorPwdActivity_ViewBinding extends BaseFragmentActivity_ViewBin
     target.pwdEt = Utils.findRequiredViewAsType(source, R.id.pwd_et, "field 'pwdEt'", EditText.class);
     view = Utils.findRequiredView(source, R.id.eye, "field 'eye' and method 'onViewClicked'");
     target.eye = Utils.castView(view, R.id.eye, "field 'eye'", ImageView.class);
-    view2131230850 = view;
+    view2131230852 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -50,8 +50,8 @@ public class VisitorPwdActivity_ViewBinding extends BaseFragmentActivity_ViewBin
     target.pwdEt = null;
     target.eye = null;
 
-    view2131230850.setOnClickListener(null);
-    view2131230850 = null;
+    view2131230852.setOnClickListener(null);
+    view2131230852 = null;
 
     super.unbind();
   }

@@ -2,6 +2,7 @@ package com.languang.bluebox.model;
 
 import android.content.Context;
 
+import com.languang.bluebox.TimeUtils;
 import com.languang.bluebox.basework.net.OkHttpUtils;
 import com.languang.bluebox.constant.ApiConstant;
 import com.languang.bluebox.presenter.IPropertySheet;
@@ -20,7 +21,7 @@ public class PropertySheetModel implements IPropertySheet {
 
     @Override
     public void getOutList(OkHttpCallBack callBack) {
-        OkHttpUtils.getInstance().okPost(context, ApiConstant.BOX_LIST_OUT, null, callBack);
+        OkHttpUtils.getInstance().okPost(context, TimeUtils.getWlanIp()+"/listout", null, callBack);
     }
 
     @Override
@@ -42,6 +43,6 @@ public class PropertySheetModel implements IPropertySheet {
     public void facilityList(String type, OkHttpCallBack callBack) {
         Map<String, Object> params = new HashMap<>(1);
         params.put("type", type);
-        OkHttpUtils.getInstance().okPost(context, ApiConstant.BOX_WAISHE_INFO, params, callBack);
+        OkHttpUtils.getInstance().okPost(context, TimeUtils.getWlanIp()+"/waisheinfo", params, callBack);
     }
 }

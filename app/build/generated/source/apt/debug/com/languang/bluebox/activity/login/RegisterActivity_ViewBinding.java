@@ -4,6 +4,7 @@ package com.languang.bluebox.activity.login;
 import android.support.annotation.UiThread;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import butterknife.internal.DebouncingOnClickListener;
 import butterknife.internal.Utils;
 import com.languang.bluebox.R;
@@ -14,9 +15,9 @@ import java.lang.Override;
 public class RegisterActivity_ViewBinding extends BaseFragmentActivity_ViewBinding {
   private RegisterActivity target;
 
-  private View view2131230866;
+  private View view2131230871;
 
-  private View view2131231017;
+  private View view2131231027;
 
   private View view2131230764;
 
@@ -36,8 +37,9 @@ public class RegisterActivity_ViewBinding extends BaseFragmentActivity_ViewBindi
     target.codeEt = Utils.findRequiredViewAsType(source, R.id.code_et, "field 'codeEt'", EditText.class);
     target.pwdEt = Utils.findRequiredViewAsType(source, R.id.pwd_et, "field 'pwdEt'", EditText.class);
     target.consumePwdEt = Utils.findRequiredViewAsType(source, R.id.consume_pwd_et, "field 'consumePwdEt'", EditText.class);
+    target.xieyi = Utils.findRequiredViewAsType(source, R.id.xieyi, "field 'xieyi'", TextView.class);
     view = Utils.findRequiredView(source, R.id.get_code, "method 'onViewClicked'");
-    view2131230866 = view;
+    view2131230871 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -45,7 +47,7 @@ public class RegisterActivity_ViewBinding extends BaseFragmentActivity_ViewBindi
       }
     });
     view = Utils.findRequiredView(source, R.id.register_submit, "method 'onViewClicked'");
-    view2131231017 = view;
+    view2131231027 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -72,11 +74,12 @@ public class RegisterActivity_ViewBinding extends BaseFragmentActivity_ViewBindi
     target.codeEt = null;
     target.pwdEt = null;
     target.consumePwdEt = null;
+    target.xieyi = null;
 
-    view2131230866.setOnClickListener(null);
-    view2131230866 = null;
-    view2131231017.setOnClickListener(null);
-    view2131231017 = null;
+    view2131230871.setOnClickListener(null);
+    view2131230871 = null;
+    view2131231027.setOnClickListener(null);
+    view2131231027 = null;
     view2131230764.setOnClickListener(null);
     view2131230764 = null;
 

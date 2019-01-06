@@ -1,13 +1,11 @@
 package com.languang.bluebox.entity;
 
 public class CountImgInfo {
-
     /**
      * status : 9999
      * tagimg : {"videoCount":1,"size":90134033,"imageCount":34}
      * outimg : {"videoCount":0,"size":0,"imageCount":0}
      */
-
     private String status;
     private TagimgBean tagimg;
     private OutimgBean outimg;
@@ -42,7 +40,6 @@ public class CountImgInfo {
          * size : 90134033
          * imageCount : 34
          */
-
         private int videoCount;
         private int size;
         private int imageCount;
@@ -78,7 +75,6 @@ public class CountImgInfo {
          * size : 0
          * imageCount : 0
          */
-
         private int videoCount;
         private int size;
         private int imageCount;

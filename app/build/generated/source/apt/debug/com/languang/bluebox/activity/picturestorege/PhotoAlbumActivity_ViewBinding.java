@@ -14,9 +14,9 @@ import java.lang.Override;
 public class PhotoAlbumActivity_ViewBinding extends BaseFragmentActivity_ViewBinding {
   private PhotoAlbumActivity target;
 
-  private View view2131230895;
+  private View view2131230900;
 
-  private View view2131230898;
+  private View view2131230903;
 
   @UiThread
   public PhotoAlbumActivity_ViewBinding(PhotoAlbumActivity target) {
@@ -32,7 +32,7 @@ public class PhotoAlbumActivity_ViewBinding extends BaseFragmentActivity_ViewBin
     View view;
     target.recyclerView = Utils.findRequiredViewAsType(source, R.id.recycler_view, "field 'recyclerView'", EasyRecyclerView.class);
     view = Utils.findRequiredView(source, R.id.item_title_left_tv, "method 'onViewClicked'");
-    view2131230895 = view;
+    view2131230900 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -40,7 +40,7 @@ public class PhotoAlbumActivity_ViewBinding extends BaseFragmentActivity_ViewBin
       }
     });
     view = Utils.findRequiredView(source, R.id.item_title_right_tv, "method 'onViewClicked'");
-    view2131230898 = view;
+    view2131230903 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -57,10 +57,10 @@ public class PhotoAlbumActivity_ViewBinding extends BaseFragmentActivity_ViewBin
 
     target.recyclerView = null;
 
-    view2131230895.setOnClickListener(null);
-    view2131230895 = null;
-    view2131230898.setOnClickListener(null);
-    view2131230898 = null;
+    view2131230900.setOnClickListener(null);
+    view2131230900 = null;
+    view2131230903.setOnClickListener(null);
+    view2131230903 = null;
 
     super.unbind();
   }

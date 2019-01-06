@@ -45,12 +45,20 @@ public class PictureTimeFragment extends BaseFragment implements OkHttpCallBack 
     @BindView(R.id.search)
     TextView search;
     private List<String> stringList = new ArrayList<>();
-    private PictureTimeAdapter adapter;
+    public PictureTimeAdapter adapter;
     private List<ImgListEntity> imgEntities = new ArrayList<>();
     FFInterface ffInterface;
+    FF1Interface ff1Interface;
+    List<ImgListEntity> list = new ArrayList<>();
+    //    Map<String,ImgListEntity>searchMap=new HashMap<>();
+    private boolean isfirs = true;
 
     public void setFF(FFInterface ff) {
         this.ffInterface = ff;
+    }
+
+    public void setFF1(FF1Interface ff) {
+        this.ff1Interface = ff;
     }
 
     @Override
@@ -64,12 +72,33 @@ public class PictureTimeFragment extends BaseFragment implements OkHttpCallBack 
         if (!isSoftShowing()) {
             searchEt.setCursorVisible(false);
         }
+        searchEt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                list.clear();
+                for (ImgListEntity imgEntity : imgEntities) {
+                    if (imgEntity.getTime()
+                            .contains(charSequence)) {
+                        list.add(imgEntity);
+                    }
+                    adapter.setL(list);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+            }
+        });
         SoftKeyBoardListener.setListener(getActivity(), searchEt);
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(manager);
-        adapter = new PictureTimeAdapter(getActivity());
-        adapter.addAll(imgEntities);
+        adapter = new PictureTimeAdapter(getActivity(), ff1Interface, imgEntities);
+//        adapter.addAll(imgEntities);
         recyclerView.setAdapter(adapter);
     }
 
@@ -114,25 +143,18 @@ public class PictureTimeFragment extends BaseFragment implements OkHttpCallBack 
     public void onResume() {
         super.onResume();
         searchEt.setCursorVisible(false);
+        Map<String, Object> params = new HashMap<>();
+        OkHttpUtils.getInstance()
+                .okPost(getActivity(), TimeUtils.getWlanIp() + "/listimg", params, this);
     }
 
     @Override
     public void onSucceed(String requestUrl, String response) {
         Log.d("ccnb1", response);
-//        ResponseMessage<img>
         if (ApiConstant.BOX_LIST_IMG.equals(requestUrl)) {
             imgEntities = ImgUtil.getTimeImg(response);
-//            ResponseMessage<NewPicture1> imgListEntityResponseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<NewPicture1>>() {
-//            }.getType());
-//            ffInterface.click(imgListEntityResponseMessage.getData().);
-//            ((MainActivity) getActivity()).imgEntities = imgEntities;
-//            imgEntities.get(0). getImgEntityList().get(0).getTags()
             if (null != imgEntities) {
-                adapter.clear();
-                adapter.addAll(imgEntities);
-                adapter.notifyDataSetChanged();
-//            }
-//        }
+                adapter.setL(imgEntities);
             }
             ffInterface.click(imgEntities);
         }

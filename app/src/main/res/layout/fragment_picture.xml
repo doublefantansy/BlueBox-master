@@ -28,6 +28,7 @@
             android:textSize="@dimen/text_size_17" />
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/choose"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dp_44"

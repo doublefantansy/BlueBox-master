@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 import com.bumptech.glide.Glide;
 import com.languang.bluebox.CountInterface;
 import com.languang.bluebox.R;
-import com.languang.bluebox.constant.ApiConstant;
+import com.languang.bluebox.TimeUtils;
 import com.languang.bluebox.entity.ImgEntity;
 
 import java.util.List;
@@ -65,7 +65,7 @@ public class TimeGridAdapter extends BaseAdapter {
 //        checkBoxes.add(holder.gou);
         Glide.with(context)
                 .asBitmap()
-                .load(ApiConstant.BOX_BASE_URL + "/public/" + list.get(position)
+                .load(TimeUtils.getWlanIp() + "/public/" + list.get(position)
                         .getSmallpath() + list.get(position)
                         .getSmallname())
                 .into(holder.imageView);

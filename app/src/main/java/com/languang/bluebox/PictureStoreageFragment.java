@@ -45,6 +45,7 @@ public class PictureStoreageFragment extends BaseFragment implements CountInterf
     List list = new ArrayList();
     Myadapter adapter;
     CountInterface countInterface;
+    List<ImgEntity> imgEntities = new ArrayList<>();
     LinearLayoutManager layoutManager;
     FAInterface faInterface;
     private MaterialDialog dialog;
@@ -78,9 +79,11 @@ public class PictureStoreageFragment extends BaseFragment implements CountInterf
     @Override
     public void onDestroy() {
         super.onDestroy();
-        count = 0;
+
     }
+
     void refresh() {
+        count = 0;
         dialog.show();
         ((MainActivity) getActivity()).clear();
 //        title.setText();
@@ -92,19 +95,24 @@ public class PictureStoreageFragment extends BaseFragment implements CountInterf
                         ResponseMessage<NewPicture> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<NewPicture>>() {
                         }.getType());
                         if (responseMessage.getData()
-                                .getFiles()
-                                .size() > 0) {
-                            none.setVisibility(View.GONE);
-                            recyclerView.setVisibility(View.VISIBLE);
-                            adapter = new Myadapter(getActivity(), responseMessage.getData()
-                                    .getFiles(), PictureStoreageFragment.this);
-                            recyclerView.setAdapter(adapter);
-                            adapter.notifyDataSetChanged();
+                                .getFiles() != null) {
+                            if (responseMessage.getData()
+                                    .getFiles()
+                                    .size() > 0) {
+                                none.setVisibility(View.GONE);
+                                recyclerView.setVisibility(View.VISIBLE);
+                                adapter = new Myadapter(getActivity(), responseMessage.getData()
+                                        .getFiles(), PictureStoreageFragment.this);
+                                recyclerView.setAdapter(adapter);
+                                adapter.notifyDataSetChanged();
+                            } else {
+                                recyclerView.setVisibility(View.GONE);
+                                none.setVisibility(View.VISIBLE);
+                            }
+                            dialog.dismiss();
                         } else {
-                            recyclerView.setVisibility(View.GONE);
-                            none.setVisibility(View.VISIBLE);
+                            dialog.dismiss();
                         }
-                        dialog.dismiss();
                     }
 
                     @Override
@@ -179,10 +187,15 @@ public class PictureStoreageFragment extends BaseFragment implements CountInterf
         } else {
             title.setText("已选择" + count + "张照片");
         }
+//      imgEntities.add(imgEntity);
+//        imgEntities.remove(imgEntity);
         if (isadd) {
+//            imgEntities.add(imgEntity);
             faInterface.click(true, isadd, imgEntity);
         } else {
+            imgEntities.remove(imgEntity);
             if (count == 0) {
+//                PictureStoreageFragment.count = 0;
                 faInterface.click(false, isadd, imgEntity);
             } else {
                 faInterface.click(true, isadd, imgEntity);

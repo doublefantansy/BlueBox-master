@@ -4,12 +4,14 @@ import android.graphics.drawable.Drawable;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.TextView;
 
 import com.languang.bluebox.R;
+import com.languang.bluebox.TimeUtils;
 import com.languang.bluebox.adapter.picturestorege.PictureAddressAdapter;
 import com.languang.bluebox.basework.base.BaseFragment;
 import com.languang.bluebox.basework.net.OkHttpUtils;
@@ -18,6 +20,7 @@ import com.languang.bluebox.constant.ApiConstant;
 import com.languang.bluebox.coustomview.CustomEditText;
 import com.languang.bluebox.entity.ImgEntity;
 import com.languang.bluebox.entity.ImgListEntity;
+import com.languang.bluebox.utils.ImgUtil;
 import com.mrj.framworklib.utils.OkHttpCallBack;
 
 import java.util.ArrayList;
@@ -38,53 +41,26 @@ public class PictureAddressFragment extends BaseFragment implements OkHttpCallBa
     CustomEditText searchEt;
     @BindView(R.id.address_grid)
     GridView addressGrid;
-//    @BindView(R.id.search_et)
+    //    @BindView(R.id.search_et)
 //    CustomEditText searchEditText;
     @BindView(R.id.search)
     TextView search;
     PictureAddressAdapter addressAdapter;
-    private Map<String, Integer> list = new HashMap<>();
-    List<ImgEntity> imgEntityList = new ArrayList<>();
-    List<ImgListEntity> imgEntities;
+    //    private Map<String, Integer> list = new HashMap<>();
+//    Map<String, ImgEntity> imgEntityList = new HashMap<>();
+    List<ImgEntity> choose = new ArrayList<>();
+    //    List<Integer> choosei = new ArrayList<>();
+    List<ImgListEntity> getImgEntities;
+    List<ImgListEntity> imgEntities = new ArrayList<>();
+    Map<String, List<ImgEntity>> imgListEntityMap = new HashMap<>();
+    Map<String, List<ImgEntity>> searchMap = new HashMap<>();
+    Map<String, Integer> si = new HashMap<>();
+    AdressInterface adressInterface;
+    List<String> strings=new ArrayList<>();
+    boolean isfirst = true;
 
-    public void setList(List<ImgListEntity> imgEntities) {
-        this.imgEntities = imgEntities;
-        for (ImgListEntity imgEntity : imgEntities) {
-            for (ImgEntity entity : imgEntity.getImgEntityList()) {
-//                Log.d("ccnb11", entity.getLocation() + "");
-                boolean isCon = false;
-                if (entity.getLocation() != null) {
-                    for (String s : list.keySet()) {
-                        if (entity.getLocation()
-                                .equals(s)) {
-                            isCon = true;
-                        }
-                    }
-                    if (!isCon) {
-                        if (list.containsKey(entity.getLocation())) {
-                            int c = list.get(entity.getLocation());
-                            list.put(entity.getLocation(), ++c);
-                        } else {
-                            imgEntityList.add(entity);
-                            list.put(entity.getLocation(), 1);
-                        }
-                    }
-                }
-            }
-        }
-        addressAdapter = new PictureAddressAdapter(getActivity(), list, imgEntityList);
-        addressGrid.setAdapter(addressAdapter);
-//        addressGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                startActivity(new Intent(getActivity(), ShareActivity.class));
-//            }
-//        });
-//        for (String s : list) {
-//        Log.d("ccnb11", imgEntities.size() + "");
-//        Log.d("ccnb11", list.size() + "");
-//        }
-        addressAdapter.notifyDataSetChanged();
+    public void setIn(AdressInterface adressInterface) {
+        this.adressInterface = adressInterface;
     }
 
     @Override
@@ -95,6 +71,29 @@ public class PictureAddressFragment extends BaseFragment implements OkHttpCallBa
     @Override
     protected void initView(View view) {
         initEdit();
+        searchEt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                searchMap.clear();
+                for (Map.Entry<String, List<ImgEntity>> entry : imgListEntityMap.entrySet()) {
+                    if (entry.getKey()
+                            .contains(charSequence)) {
+                        List<ImgEntity> list = new ArrayList();
+                        list.addAll(entry.getValue());
+                        searchMap.put(entry.getKey(), list);
+                    }
+                }
+                addressAdapter.setImgEntities(searchMap);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+            }
+        });
         SoftKeyBoardListener.setListener(getActivity(), searchEt);
         search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,6 +101,47 @@ public class PictureAddressFragment extends BaseFragment implements OkHttpCallBa
 //              for (Map.Entry<String,Integer> entry:)
             }
         });
+        OkHttpUtils.getInstance()
+                .okPost(getActivity(), TimeUtils.getWlanIp() + "/listimg", null, new OkHttpCallBack() {
+                    @Override
+                    public void onSucceed(String requestUrl, String response) {
+                        getImgEntities = ImgUtil.getTimeImg(response);
+                        for (ImgListEntity imgEntity : getImgEntities) {
+                            for (ImgEntity entity : imgEntity.getImgEntityList()) {
+//                if (entity.getLocation() != null) {
+                                if (imgListEntityMap.containsKey(entity.getLocation())) {
+                                    List<ImgEntity> list = imgListEntityMap.get(entity.getLocation());
+                                    list.add(entity);
+                                    imgListEntityMap.put(entity.getLocation(), list);
+                                    int b = si.get(entity.getLocation());
+                                    b++;
+                                    si.put(entity.getLocation(), b);
+                                } else {
+//                                    imgEntityList.put(entity.getLocation(), entity);
+                                    List<ImgEntity> imgEntities1 = new ArrayList<>();
+                                    imgEntities1.add(entity);
+                                    si.put(entity.getLocation(), 1);
+                                    imgListEntityMap.put(entity.getLocation(), imgEntities1);
+                                }
+//                }
+                            }
+                        }
+                        Log.d("ccnbccnb", imgListEntityMap.size() + "");
+//                        List<Integer> integers = new ArrayList<>();
+                       strings  = new ArrayList<>();
+                        for (Map.Entry<String, Integer> entry : si.entrySet()) {
+                            strings.add(entry.getKey());
+//                            integers.add(entry.getValue());
+                        }
+//                        Log.d("ccnbccnbccnb1", integers.size() + "");
+                        addressAdapter = new PictureAddressAdapter(getActivity(), imgListEntityMap, strings, adressInterface);
+                        addressGrid.setAdapter(addressAdapter);
+                    }
+
+                    @Override
+                    public void onFailed() {
+                    }
+                });
 //        imgEntities = ((MainActivity) getActivity()).imgEntities;
     }
 
@@ -109,6 +149,12 @@ public class PictureAddressFragment extends BaseFragment implements OkHttpCallBa
     public void onResume() {
         super.onResume();
         searchEt.setCursorVisible(false);
+        if (!isfirst) {
+            addressAdapter.clear();
+        } else {
+            isfirst = false;
+        }
+//        addressAdapter.notifyDataSetChanged();
     }
 
     /**

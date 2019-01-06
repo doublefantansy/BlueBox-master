@@ -10,6 +10,7 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -48,6 +49,12 @@ public class AddPic1Activity extends AppCompatActivity {
     int count2 = 0;
     String voiceUuid;
     List<String> strings;
+    EditText desc;
+    EditText private1;
+    EditText title;
+    EditText meta;
+    EditText location;
+    EditText camera;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -129,7 +136,7 @@ public class AddPic1Activity extends AppCompatActivity {
             public void onClick(View view) {
                 Log.d("ccnb", file.getAbsolutePath());
                 OkHttpUtils.getInstance()
-                        .uploadFile(AddPic1Activity.this, ApiConstant.BOX_UPLOAD, file.getPath(), new OkHttpCallBack() {
+                        .uploadFile(AddPic1Activity.this, TimeUtils.getWlanIp() + "/upload", file.getPath(), new OkHttpCallBack() {
                             @Override
                             public void onSucceed(String requestUrl, String response) {
                                 ResponseMessage<SpeVoiceBean> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<SpeVoiceBean>>() {
@@ -141,12 +148,17 @@ public class AddPic1Activity extends AppCompatActivity {
                                     map.put("files", string);
 //                                }
                                     map.put("vocuuid", voiceUuid);
-                                    map.put("desc", "11");
+                                    map.put("desc", desc.getText()
+                                            .toString());
                                     map.put("private", "11");
-                                    map.put("title", "11");
-                                    map.put("meta", "11");
-                                    map.put("location", "11");
-                                    map.put("camera", "11");
+                                    map.put("title", title.getText()
+                                            .toString());
+                                    map.put("meta", meta.getText()
+                                            .toString());
+                                    map.put("location", location.getText()
+                                            .toString());
+                                    map.put("camera", camera.getText()
+                                            .toString());
                                     OkHttpUtils.getInstance()
                                             .okPost(AddPic1Activity.this, ApiConstant.BOX_TAG_FILES, map, new OkHttpCallBack() {
                                                 @Override
@@ -170,39 +182,6 @@ public class AddPic1Activity extends AppCompatActivity {
                             public void onFailed() {
                             }
                         });
-//                dialog.show();
-//                for (ImgEntity mediaBean : mediaBeans) {
-//                    OkHttpUtils.getInstance()
-//                            .uploadFile(AddPic1Activity.this, ApiConstant.BOX_UPLOAD, mediaBean.getOriginalPath(), new OkHttpCallBack() {
-//                                @Override
-//                                public void onSucceed(String requestUrl, String response) {
-//                                    Log.d("ccnb", response);
-//                                    ResponseMessage<ImgInfo> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<ImgInfo>>() {
-//                                    }.getType());
-//                                    if (responseMessage.getRet()
-//                                            == 200) {
-////
-//                                        count++;
-//                                        if (count == mediaBeans
-//                                                .size()) {
-//                                            dialog.dismiss();
-//                                            finish();
-//                                            PopView.getCallBack()
-//                                                    .callback();
-////                                            myCallBack.callback();
-//                                        }
-//                                    } else {
-////                                                        Toast.makeText(context, "上传失败", Toast.LENGTH_SHORT)
-////                                                                .show();
-//                                    }
-//                                }
-//
-//                                @Override
-//                                public void onFailed() {
-//                                    Log.d("ccnb", "shibai");
-//                                }
-//                            });
-//                }
             }
         });
 //        Log.d("ccnb",getIntent().getStringExtra("spe")+"");

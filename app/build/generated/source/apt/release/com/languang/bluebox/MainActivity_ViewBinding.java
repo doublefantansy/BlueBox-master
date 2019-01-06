@@ -27,9 +27,12 @@ public class MainActivity_ViewBinding extends BaseFragmentActivity_ViewBinding {
 
     target.tabContainer = Utils.findRequiredViewAsType(source, R.id.tab_container, "field 'tabContainer'", TabContainerView.class);
     target.ss = Utils.findRequiredViewAsType(source, R.id.ss, "field 'ss'", LinearLayout.class);
+    target.ss1 = Utils.findRequiredViewAsType(source, R.id.ss1, "field 'ss1'", LinearLayout.class);
     target.bottomTv = Utils.findRequiredViewAsType(source, R.id.bottom_tv, "field 'bottomTv'", TextView.class);
     target.biaozhus = Utils.findRequiredViewAsType(source, R.id.biaozhus, "field 'biaozhus'", LinearLayout.class);
     target.del = Utils.findRequiredViewAsType(source, R.id.del, "field 'del'", LinearLayout.class);
+    target.ss2 = Utils.findRequiredViewAsType(source, R.id.ss2, "field 'ss2'", LinearLayout.class);
+    target.out = Utils.findRequiredViewAsType(source, R.id.tianjiadaochu, "field 'out'", LinearLayout.class);
   }
 
   @Override
@@ -40,9 +43,12 @@ public class MainActivity_ViewBinding extends BaseFragmentActivity_ViewBinding {
 
     target.tabContainer = null;
     target.ss = null;
+    target.ss1 = null;
     target.bottomTv = null;
     target.biaozhus = null;
     target.del = null;
+    target.ss2 = null;
+    target.out = null;
 
     super.unbind();
   }

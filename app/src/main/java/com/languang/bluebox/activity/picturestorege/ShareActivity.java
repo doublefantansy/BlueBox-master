@@ -3,7 +3,6 @@ package com.languang.bluebox.activity.picturestorege;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,7 +13,6 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -24,8 +22,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.languang.bluebox.R;
+import com.languang.bluebox.TimeUtils;
 import com.languang.bluebox.adapter.BaseDataAdapter;
 import com.languang.bluebox.adapter.picturestorege.ShareHorizontalAdapter;
 import com.languang.bluebox.basework.base.BaseFragmentActivity;
@@ -111,7 +109,7 @@ public class ShareActivity extends BaseFragmentActivity implements OkHttpCallBac
         for (ImgEntity imgEntity : url.getImgEntityList()) {
             Glide.with(this)
                     .asBitmap()
-                    .load(ApiConstant.BOX_BASE_URL + "/public/" + imgEntity.getSrcpath() + imgEntity.getSrcname())
+                    .load(TimeUtils.getWlanIp() + "/public/" + imgEntity.getSrcpath() + imgEntity.getSrcname())
                     .into(new SimpleTarget<Bitmap>() {
                         @Override
                         public void onResourceReady(Bitmap resource, Transition<? super Bitmap> transition) {

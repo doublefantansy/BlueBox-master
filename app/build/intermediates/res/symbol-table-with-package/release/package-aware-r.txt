@@ -1409,11 +1409,16 @@ drawable gallery_ic_corner_gray
 drawable gallery_ic_corner_selector
 drawable gallery_ic_cross
 drawable gou
+drawable i10241024
+drawable i180180
+drawable i512512
+drawable ic_daochu
 drawable ic_erweima
 drawable ic_fenxiang
 drawable ic_gou
 drawable ic_home_add
 drawable ic_icon_2
+drawable ic_icon_test
 drawable ic_iconfontjiantou5
 drawable ic_laji
 drawable ic_launcher_background
@@ -1429,9 +1434,11 @@ drawable ic_shanchu_2
 drawable ic_voice
 drawable ic_wangluo
 drawable ic_yinsi
+drawable ic_yinsi_2
 drawable ic_zhibiaozhushibiaozhu
 drawable ic_zhushibiaozhui
 drawable ic_zidingyi
+drawable ic_ziyuan
 drawable icon_iamge_java
 drawable md_btn_selected
 drawable md_btn_selected_dark
@@ -1577,6 +1584,7 @@ id circular
 id clear_cache
 id clip_horizontal
 id clip_vertical
+id co
 id code
 id code_et
 id collapseActionView
@@ -1595,6 +1603,7 @@ id customPanel
 id custom_percent_view
 id custom_percent_view_1
 id custom_percent_view_2
+id daochu
 id date
 id decor_content_parent
 id default_activity_button
@@ -1692,6 +1701,7 @@ id iv_media_image
 id iv_recording_icon
 id iv_refresh
 id largeLabel
+id layout
 id layout_aspect_ratio
 id layout_rotate_wheel
 id layout_scale_wheel
@@ -1799,6 +1809,8 @@ id rectangle
 id recycler_view
 id refresh
 id register_submit
+id req
+id res
 id right
 id right_icon
 id right_iv
@@ -1874,6 +1886,7 @@ id src_in
 id src_over
 id ss
 id ss1
+id ss2
 id ss3
 id start
 id start_archive
@@ -1910,6 +1923,7 @@ id text_view_scale
 id textinput_counter
 id textinput_error
 id third_image
+id tianjiadaochu
 id time
 id time_radio
 id title
@@ -1960,6 +1974,7 @@ id view_pager
 id view_pager_page
 id viewpager_tab
 id visible
+id voice
 id waishe
 id watermark
 id wifi
@@ -1972,6 +1987,7 @@ id wrapper_reset_rotate
 id wrapper_rotate_by_angle
 id wrapper_states
 id xiangce
+id yuyin
 integer abc_config_activityDefaultDur
 integer abc_config_activityShortDur
 integer app_bar_elevation_anim_duration
@@ -2016,11 +2032,13 @@ layout activity_admin_pwd
 layout activity_biao_zhu
 layout activity_browse_sd
 layout activity_compile_picture
+layout activity_dao_chu
 layout activity_disk_manage
 layout activity_export_facility
 layout activity_facility_info
 layout activity_facility_list
 layout activity_login
+layout activity_login1
 layout activity_main
 layout activity_mobile
 layout activity_my_wifi
@@ -2137,6 +2155,7 @@ layout pop
 layout poplist
 layout popup_add_picture
 layout popup_add_picture1
+layout roor
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material

@@ -3,44 +3,26 @@ package com.languang.bluebox.fragment.propertysheet;
 
 import android.support.annotation.CallSuper;
 import android.support.annotation.UiThread;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import butterknife.Unbinder;
-import butterknife.internal.DebouncingOnClickListener;
 import butterknife.internal.Utils;
 import com.languang.bluebox.R;
-import com.luck.easyrecyclerview.EasyRecyclerView;
 import java.lang.IllegalStateException;
 import java.lang.Override;
 
 public class PropertySheetFragment_ViewBinding implements Unbinder {
   private PropertySheetFragment target;
 
-  private View view2131230897;
-
-  private View view2131230894;
-
   @UiThread
-  public PropertySheetFragment_ViewBinding(final PropertySheetFragment target, View source) {
+  public PropertySheetFragment_ViewBinding(PropertySheetFragment target, View source) {
     this.target = target;
 
-    View view;
-    target.recyclerView = Utils.findRequiredViewAsType(source, R.id.recycler_view, "field 'recyclerView'", EasyRecyclerView.class);
-    view = Utils.findRequiredView(source, R.id.item_title_right_layout, "method 'onViewClicked'");
-    view2131230897 = view;
-    view.setOnClickListener(new DebouncingOnClickListener() {
-      @Override
-      public void doClick(View p0) {
-        target.onViewClicked(p0);
-      }
-    });
-    view = Utils.findRequiredView(source, R.id.item_title_left_layout, "method 'onViewClicked'");
-    view2131230894 = view;
-    view.setOnClickListener(new DebouncingOnClickListener() {
-      @Override
-      public void doClick(View p0) {
-        target.onViewClicked(p0);
-      }
-    });
+    target.recyclerView = Utils.findRequiredViewAsType(source, R.id.recycler_view, "field 'recyclerView'", RecyclerView.class);
+    target.layout = Utils.findRequiredViewAsType(source, R.id.item_title_right_layout, "field 'layout'", LinearLayout.class);
+    target.del = Utils.findRequiredViewAsType(source, R.id.item_title_left_tv, "field 'del'", TextView.class);
   }
 
   @Override
@@ -51,10 +33,7 @@ public class PropertySheetFragment_ViewBinding implements Unbinder {
     this.target = null;
 
     target.recyclerView = null;
-
-    view2131230897.setOnClickListener(null);
-    view2131230897 = null;
-    view2131230894.setOnClickListener(null);
-    view2131230894 = null;
+    target.layout = null;
+    target.del = null;
   }
 }

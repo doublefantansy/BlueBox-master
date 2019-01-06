@@ -26,11 +26,11 @@ public class MyInfoDataAdapter extends RecyclerView.Adapter<MyInfoDataAdapter.Vi
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if (viewType == 0) {
+        if (viewType == 1) {
             View view = LayoutInflater.from(context)
                     .inflate(R.layout.infolist, parent, false);
             return new MyInfoDataAdapter.ViewHolder(view);
-        } else if (viewType == 1) {
+        } else if (viewType == 0) {
             View view = LayoutInflater.from(context)
                     .inflate(R.layout.infolist1, parent, false);
             return new MyInfoDataAdapter.ViewHolder(view);
@@ -40,15 +40,22 @@ public class MyInfoDataAdapter extends RecyclerView.Adapter<MyInfoDataAdapter.Vi
 
     @Override
     public int getItemViewType(int position) {
-        return 0;
+        return list.get(position)
+                .isOnline();
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        if (list.get(position)
+                .isOnline() == 1) {
+            holder.title.setText(list.get(position)
+                    .getBluename() + "(在线)");
+        } else {
+            holder.title.setText(list.get(position)
+                    .getBluename() + "(离线)");
+        }
         holder.name.setText(list.get(position)
                 .getNikename());
-        holder.title.setText(list.get(position)
-                .getBluename());
     }
 
     @Override

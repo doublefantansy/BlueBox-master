@@ -66,6 +66,7 @@
             android:textSize="18sp" />
 
         <EditText
+            android:id="@+id/desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -75,7 +76,7 @@
             android:background="@null"
             android:hint="说说你的拍摄经历"
             android:maxLines="10"
-            android:text="11111111111111111111111111111111111111111111111111111111111111111"
+            android:text=""
             android:textSize="18sp" />
     </RelativeLayout>
 
@@ -99,6 +100,7 @@
             android:textSize="18sp" />
 
         <EditText
+            android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -130,6 +132,7 @@
             android:textSize="18sp" />
 
         <EditText
+            android:id="@+id/meta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -191,6 +194,7 @@
             android:textSize="18sp" />
 
         <EditText
+            android:id="@+id/location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -221,6 +225,7 @@
             android:textSize="18sp" />
 
         <EditText
+            android:id="@+id/camera"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
