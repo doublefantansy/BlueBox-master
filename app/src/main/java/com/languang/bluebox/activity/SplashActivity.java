@@ -8,11 +8,14 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.languang.bluebox.ErrorActivity;
+import com.languang.bluebox.LogFiles;
 import com.languang.bluebox.TimeUtils;
 import com.languang.bluebox.activity.initialize.SettingPwdActivity;
 import com.languang.bluebox.activity.login.BoxLoginActivity;
@@ -29,7 +32,9 @@ import com.mrj.framworklib.utils.OkHttpCallBack;
 import com.mrj.framworklib.utils.ScreenUtilBase;
 import com.tencent.mmkv.MMKV;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -40,10 +45,29 @@ import java.util.Map;
  */
 public class SplashActivity extends AppCompatActivity {
     public static String wlanIp;
+    MaterialDialog.Builder dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        List<String> strings = new ArrayList<>();
+        strings.add("线上模拟");
+        strings.add("真实盒子");
+        dialog = new MaterialDialog.Builder(this).items(strings)
+                .itemsCallback(new MaterialDialog.ListCallback() {
+                    @Override
+                    public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
+                        if (position == 0) {
+                            TimeUtils.setGateway(SplashActivity.this, false);
+                            TimeUtils.setWlanIp(false, null);
+                        } else {
+                            TimeUtils.setGateway(SplashActivity.this, true);
+                        }
+                        checkInfo();
+                    }
+                })
+        ;
+        dialog.show();
         ScreenUtilBase.setStatusBarColor(this, DefaultCode.G_STATUS_BAR_COLOR);
         if (!checkPermissionAllGranted(
                 new String[]{
@@ -57,56 +81,51 @@ public class SplashActivity extends AppCompatActivity {
                     Manifest.permission.READ_EXTERNAL_STORAGE
             }, 10001);
         } else {
-            checkInfo();
-//            loginOrMain();
         }
     }
 
     private void checkInfo() {
-        //网关/info
-        Log.d("cctag", TimeUtils.getIp(this));
-        Log.d("cctag", TimeUtils.getGateway(this));
-        if (TimeUtils.getIp(this)
-                .equals(TimeUtils.getGateway(this))) {
-        }
         OkHttpUtils.getInstance()
-                .okPost(this, TimeUtils.getGateway(this) + "/info", null, new OkHttpCallBack() {
+                .okPost(this, TimeUtils.getGateway() + "/info", null, new OkHttpCallBack() {
                     @Override
                     public void onSucceed(String requestUrl, String response) {
+                        LogFiles.d("cctag", requestUrl + ":" + response);
                         try {
                             ResponseMessage<NetPort> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<NetPort>>() {
                             }.getType());
+                            int a;
+                         
                             NetPort netPort = responseMessage.getData();
-                            //如果为9999
                             if (responseMessage.getData()
                                     .getStatus()
                                     .equals("9999")) {
-                                //设定wlanip
-
+                                Toast.makeText(SplashActivity.this, "访问网关成功" + response, Toast.LENGTH_SHORT)
+                                        .show();
                                 MMKV.defaultMMKV()
                                         .encode("user", new Gson().toJson(netPort));
                                 if (netPort.isActivate()) {
                                     Intent intent = new Intent(SplashActivity.this, BoxLoginActivity.class);
                                     startActivity(intent);
-                                    //已激活
-//                                    manLogin(true)
+                                    finish();
                                 } else {
-                                    //未激活
                                     manLogin();
                                 }
                             } else {
-                                //cloud登录
                                 OkHttpUtils.getInstance()
                                         .okPost(SplashActivity.this, ApiConstant.CLOUD_WLAN_INFO, null, new OkHttpCallBack() {
                                             @Override
                                             public void onSucceed(String requestUrl, String response) {
-                                                SpeRes<SpeRes.DataBean> speRes = new Gson().fromJson(response, new TypeToken<SpeRes.DataBean>() {
+                                                LogFiles.d("cctag", requestUrl + ":" + response);
+                                                SpeRes<SpeRes.DataBean> speRes = new Gson().fromJson(response, new TypeToken<SpeRes<SpeRes.DataBean>>() {
                                                 }.getType());
                                                 if (speRes.getData()
                                                         .getStatus()
                                                         .equals("9999")) {
+                                                    Toast.makeText(SplashActivity.this, "访问云端成功", Toast.LENGTH_SHORT)
+                                                            .show();
                                                     Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
                                                     startActivity(intent);
+                                                    finish();
                                                 }
                                             }
 
@@ -116,10 +135,33 @@ public class SplashActivity extends AppCompatActivity {
                                         });
                             }
                         } catch (Exception e) {
-                            Intent intent = new Intent(SplashActivity.this, ErrorActivity.class);
-                            intent.putExtra("req", requestUrl);
-                            intent.putExtra("res", response);
-                            startActivity(intent);
+                            OkHttpUtils.getInstance()
+                                    .okPost(SplashActivity.this, ApiConstant.CLOUD_WLAN_INFO, null, new OkHttpCallBack() {
+                                        @Override
+                                        public void onSucceed(String requestUrl, String response) {
+                                            LogFiles.d("cctag", requestUrl + ":" + response);
+                                            SpeRes<SpeRes.DataBean> speRes = new Gson().fromJson(response, new TypeToken<SpeRes<SpeRes.DataBean>>() {
+                                            }.getType());
+                                            if (speRes.getData()
+                                                    .getStatus()
+                                                    .equals("9999")) {
+                                                Toast.makeText(SplashActivity.this, "访问外网成功" + response, Toast.LENGTH_SHORT)
+                                                        .show();
+                                                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                                                startActivity(intent);
+                                                finish();
+                                            } else {
+                                                Toast.makeText(SplashActivity.this, "访问网关失败" + response, Toast.LENGTH_SHORT)
+                                                        .show();
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onFailed() {
+                                            Toast.makeText(SplashActivity.this, "访问网关未响应", Toast.LENGTH_SHORT)
+                                                    .show();
+                                        }
+                                    });
                         }
                     }
 
@@ -129,18 +171,27 @@ public class SplashActivity extends AppCompatActivity {
                                 .okPost(SplashActivity.this, ApiConstant.CLOUD_WLAN_INFO, null, new OkHttpCallBack() {
                                     @Override
                                     public void onSucceed(String requestUrl, String response) {
-                                        SpeRes<SpeRes.DataBean> speRes = new Gson().fromJson(response, new TypeToken<SpeRes.DataBean>() {
+                                        LogFiles.d("cctag", requestUrl + ":" + response);
+                                        SpeRes<SpeRes.DataBean> speRes = new Gson().fromJson(response, new TypeToken<SpeRes<SpeRes.DataBean>>() {
                                         }.getType());
                                         if (speRes.getData()
                                                 .getStatus()
                                                 .equals("9999")) {
+                                            Toast.makeText(SplashActivity.this, "访问外网成功" + response, Toast.LENGTH_SHORT)
+                                                    .show();
                                             Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
                                             startActivity(intent);
+                                            finish();
+                                        } else {
+                                            Toast.makeText(SplashActivity.this, "访问网关失败" + response, Toast.LENGTH_SHORT)
+                                                    .show();
                                         }
                                     }
 
                                     @Override
                                     public void onFailed() {
+                                        Toast.makeText(SplashActivity.this, "访问网关未响应", Toast.LENGTH_SHORT)
+                                                .show();
                                     }
                                 });
                     }
@@ -154,12 +205,11 @@ public class SplashActivity extends AppCompatActivity {
 //            params.put("pwd", "111");
         params.put("imei", MyUtil.getImei(this));
         params.put("type", "new");
-//        }
-        //box login
         OkHttpUtils.getInstance()
-                .okPost(this, TimeUtils.getGateway(this) + "/syslogin", params, new OkHttpCallBack() {
+                .okPost(this, TimeUtils.getGateway() + "/syslogin", params, new OkHttpCallBack() {
                     @Override
                     public void onSucceed(String requestUrl, String response) {
+                        LogFiles.d("cctag", requestUrl + ":" + response);
                         try {
                             ResponseMessage<LoginRes> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<LoginRes>>() {
                             }.getType());
@@ -167,28 +217,34 @@ public class SplashActivity extends AppCompatActivity {
                             //如果为9999
                             if (loginRes.getStatus()
                                     .equals("9999")) {
+                                Toast.makeText(SplashActivity.this, "登录盒子成功" + response, Toast.LENGTH_SHORT)
+                                        .show();
                                 if (loginRes.getToken() == null) {
                                     Intent intent = new Intent(SplashActivity.this, BoxLoginActivity.class);
                                     startActivity(intent);
                                 } else {
+                                    Toast.makeText(SplashActivity.this, "登录盒子失败" + response, Toast.LENGTH_SHORT)
+                                            .show();
                                     MMKV.defaultMMKV()
                                             .encode("token", loginRes.getToken());
-                                    // config页面
                                     Intent intent = new Intent(SplashActivity.this, SettingPwdActivity.class);
                                     startActivity(intent);
                                 }
+                                finish();
                             }
                         } catch (Exception e) {
                             Intent intent = new Intent(SplashActivity.this, ErrorActivity.class);
                             intent.putExtra("req", requestUrl);
                             intent.putExtra("res", response);
                             startActivity(intent);
+                            finish();
                         }
                     }
 
                     @Override
                     public void onFailed() {
-                        Log.d("ccnbaaa", "fail");
+                        Toast.makeText(SplashActivity.this, "登录失败", Toast.LENGTH_SHORT)
+                                .show();
                     }
                 });
     }
