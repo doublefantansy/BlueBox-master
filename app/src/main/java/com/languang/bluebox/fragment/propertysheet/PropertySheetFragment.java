@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -45,9 +44,9 @@ import butterknife.Unbinder;
 public class PropertySheetFragment extends BaseFragment implements OkHttpCallBack, SwipeRefreshLayout.OnRefreshListener, RecyclerArrayAdapter.OnLoadMoreListener {
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
-    @BindView(R.id.item_title_right_layout)
-    LinearLayout layout;
-    @BindView(R.id.item_title_left_tv)
+    @BindView(R.id.allout)
+    TextView allout;
+    @BindView(R.id.del)
     TextView del;
     Unbinder unbinder;
     /**
@@ -60,11 +59,12 @@ public class PropertySheetFragment extends BaseFragment implements OkHttpCallBac
     private List<String> list = new ArrayList<>();
     private PropertySheetAdapter adapter;
     private IPropertySheet propertySheetModel;
-    Map<String, OutBean.Nocd> map;
+    //    map;
     Map<String, Map<String, OutBean.Nocd.ImgEntitysp>> newMap = new HashMap<>();
     List<OutBean.Nocd.ImgEntitysp> newlist = new ArrayList<>();
     List<OutBean.Nocd.ImgEntitysp> chooseList = new ArrayList<>();
     boolean isDel = true;
+    private boolean first = true;
 //    int count = 0;
 
     @Override
@@ -75,7 +75,7 @@ public class PropertySheetFragment extends BaseFragment implements OkHttpCallBac
     @Override
     public void onResume() {
         super.onResume();
-        newlist.clear();
+        Log.d("lsy", "inin");
         propertySheetModel = new PropertySheetModel(getActivity());
         propertySheetModel.getOutList(this);
     }
@@ -115,7 +115,7 @@ public class PropertySheetFragment extends BaseFragment implements OkHttpCallBac
 //        recyclerView.setItemAnimator(new DefaultItemAnimator());
 //        recyclerView.addItemDecoration(new RecycleViewDivider(
 //                getActivity(), LinearLayoutManager.HORIZONTAL, ScreenUtilBase.dip2px(getActivity(), 0.5F), getResources().getColor(R.color.color_fff)));
-        layout.setOnClickListener(new View.OnClickListener() {
+        allout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), ExportFacilityActivity.class);
@@ -125,21 +125,6 @@ public class PropertySheetFragment extends BaseFragment implements OkHttpCallBac
 //                count = 0;
             }
         });
-//        adapter.clear();
-//        adapter.notifyDataSetChanged();
-//        recyclerView.showEmpty();
-//        list.add("第一个");
-//        list.add("第二个");
-//        list.add("第三个");
-//        adapter.clear();
-//        adapter.addAll(newlist);
-//        adapter.notifyDataSetChanged();
-//        adapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(int position, View v) {
-//                startActivity(new Intent(getActivity(), ExportFacilityActivity.class));
-//            }
-//        });
     }
 
     @Override
@@ -153,11 +138,11 @@ public class PropertySheetFragment extends BaseFragment implements OkHttpCallBac
     @Override
     public void onSucceed(String requestUrl, String response) {
         Log.d("ccnb", response);
+        newlist.clear();
+        newMap.clear();
         ResponseMessage<OutBean> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<OutBean>>() {
         }.getType());
-//        count1=(responseMessage.getData().files..getValue().count);
-//        if (map != null) {
-        map = responseMessage.getData().files;
+        Map<String, OutBean.Nocd> map = responseMessage.getData().files;
         if (map != null) {
             for (Map.Entry<String, OutBean.Nocd> entry : map.entrySet()) {
                 newMap.put(entry.getKey(), entry.getValue().files);
@@ -166,38 +151,21 @@ public class PropertySheetFragment extends BaseFragment implements OkHttpCallBac
                     newlist.add(entityspEntry.getValue());
                 }
             }
-            adapter = new PropertySheetAdapter(getActivity(), newMap, new Onclick1() {
-                @Override
-                public void click(int p, int count, boolean isadd, OutBean.Nocd.ImgEntitysp imgEntity) {
-                    if (count == 0) {
-                        chooseList.clear();
-                    } else {
-                        chooseList.add(imgEntity);
-                    }
-                }
-            });
-            recyclerView.setAdapter(adapter);
-            adapter.notifyDataSetChanged();
-//        newMap = new HashMap<>();
-//        List<OutBean.File.Nocd.ImgEntitysp> imgs = new ArrayList<>();
-//        for (Map.Entry<String, OutBean.File.Nocd.ImgEntitysp> entityspEntry : map.entrySet()) {
-//            newlist.add(entityspEntry.getValue());
-//            if (newMap.containsKey(entityspEntry.getValue()
-//                    .getAddid())) {
-//                newMap.get(entityspEntry.getValue()
-//                        .getAddid());
-//                newMap.put(entityspEntry.getValue()
-//                        .getAddid(), imgs);
-//            } else {
-//                imgs.add(entityspEntry.getValue());
-//                newMap.put(entityspEntry.getValue()
-//                        .getAddid(), imgs);
-//            }
-//        }
-//        for (Map.Entry<String, OutBean.File.Nocd.ImgEntitysp> entityspEntry : map.entrySet()) {
 //
-            adapter.notifyDataSetChanged();
+//            adapter.notifyDataSetChanged();
         }
+        adapter = new PropertySheetAdapter(getActivity(), newMap, new Onclick1() {
+            @Override
+            public void click(int p, int count, boolean isadd, OutBean.Nocd.ImgEntitysp imgEntity) {
+                if (count == 0) {
+                    chooseList.clear();
+                } else {
+                    chooseList.add(imgEntity);
+                }
+            }
+        });
+        recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
 //        }?
     }
 

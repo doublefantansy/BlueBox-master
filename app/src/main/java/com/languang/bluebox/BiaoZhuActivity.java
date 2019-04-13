@@ -1,6 +1,8 @@
 package com.languang.bluebox;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,12 +12,17 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.languang.CropActivity;
 import com.languang.bluebox.entity.ImgEntity;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,29 +36,54 @@ public class BiaoZhuActivity extends AppCompatActivity {
     LinearLayout meihua;
     LinearLayout biaozhu;
     LinearLayout piliang;
+    LinearLayout share;
     List<ImgEntity> imgEntities;
     List<ImgEntity> imgEntityArrayList = new ArrayList<>();
     ImgEntity imgEntity;
+    private int count = 0;
+    private ArrayList<Uri> imageUris = new ArrayList<Uri>();
+    private Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_biao_zhu);
         recyclerView = findViewById(R.id.recycler_view);
-        meihua = findViewById(R.id.meihua);
+        share = findViewById(R.id.share);
         piliang = findViewById(R.id.piliang);
         biaozhu = findViewById(R.id.biaozhu);
         imageView = findViewById(R.id.image);
         title = findViewById(R.id.title);
         ss = findViewById(R.id.ss);
         ss1 = findViewById(R.id.ss1);
-        piliang.setOnClickListener(new View.OnClickListener() {
+        share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(BiaoZhuActivity.this, AddPic1Activity.class);
-                intent.putExtra("spe", new Gson().toJson(imgEntityArrayList));
-                startActivity(intent);
-                finish();
+                count = 0;
+                imageUris.clear();
+                for (ImgEntity imgEntity : imgEntityArrayList) {
+                    Glide.with(BiaoZhuActivity.this)
+                            .asBitmap()
+                            .load(TimeUtils.getWlanIp() + "/public/" + imgEntity
+                                    .getSrcpath() + imgEntity
+                                    .getSrcname())
+                            .into(new SimpleTarget<Bitmap>() {
+                                @Override
+                                public void onResourceReady(Bitmap resource, Transition<? super Bitmap> transition) {
+                                    bitmap = resource;
+                                    count++;
+                                    File file = new File(CropActivity.saveBitmap(BiaoZhuActivity.this, bitmap));
+                                    imageUris.add(Uri.fromFile(file));
+                                    if (count == imgEntityArrayList.size()) {
+                                        Intent shareIntent = new Intent();
+                                        shareIntent.setAction(Intent.ACTION_SEND_MULTIPLE);
+                                        shareIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, imageUris);
+                                        shareIntent.setType("image/*");
+                                        startActivity(Intent.createChooser(shareIntent, "分享图片"));
+                                    }
+                                }
+                            });
+                }
             }
         });
         biaozhu.setOnClickListener(new View.OnClickListener() {
@@ -63,18 +95,38 @@ public class BiaoZhuActivity extends AppCompatActivity {
                 finish();
             }
         });
+//        biaozhu.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(BiaoZhuActivity.this, AddPic1Activity.class);
+//                intent.putExtra("spe", new Gson().toJson(imgEntityArrayList));
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
+        meihua = findViewById(R.id.meihua11);
         meihua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(BiaoZhuActivity.this, CropImageActivity.class);
-//                startActivity(intent);
-//                intent.putExtra(IMGEditActivity.EXTRA_IMAGE_SAVE_PATH, saveToPath);
+                if (imgEntityArrayList.size() == 1) {
+                    Intent intent = new Intent(BiaoZhuActivity.this, CropActivity.class);
+                    intent.putExtra("img", new Gson().toJson(imgEntityArrayList));
+                    startActivityForResult(intent, 1);
+                } else if (imgEntityArrayList.size() == 0) {
+                    Toast.makeText(BiaoZhuActivity.this, "请选择图片", Toast.LENGTH_SHORT)
+                            .show();
+                } else {
+                    Toast.makeText(BiaoZhuActivity.this, "只能选择1张图片", Toast.LENGTH_SHORT)
+                            .show();
+                }
+//                Log.d("cctagcctag", "in");
+//                Intent intent = new Intent(BiaoZhuActivity.this, CropActivity.class);
+//                intent.putExtra("img", new Gson().toJson(imgEntityArrayList));
+//                startActivityForResult(intent, 1);
             }
         });
         imgEntities = new Gson().fromJson(getIntent().getStringExtra("json"), new TypeToken<List<ImgEntity>>() {
         }.getType());
-//        title.setText(imgEntities.get(0)
-//                .getCdate());
         adapter = new SuoLueAdapter1(this, imgEntities, new Onclick() {
             @Override
             public void click(int p, int count, boolean isadd, ImgEntity imgEntity) {
@@ -93,13 +145,13 @@ public class BiaoZhuActivity extends AppCompatActivity {
                     imgEntityArrayList.remove(imgEntity);
                 }
                 Log.d("ccnb", imgEntityArrayList.size() + "");
-                if (count == 1 | count == 0) {
-                    ss.setVisibility(View.VISIBLE);
-                    ss1.setVisibility(View.GONE);
-                } else {
-                    ss1.setVisibility(View.VISIBLE);
-                    ss.setVisibility(View.GONE);
-                }
+//            if ( count == 0) {
+//                    ss.setVisibility(View.VISIBLE);
+//                    ss1.setVisibility(View.GONE);
+//                } else {
+//                    ss1.setVisibility(View.VISIBLE);
+//                    ss.setVisibility(View.GONE);
+//                }
             }
         });
 //        Glide.with(this)

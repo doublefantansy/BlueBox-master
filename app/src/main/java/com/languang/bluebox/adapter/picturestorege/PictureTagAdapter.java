@@ -1,6 +1,7 @@
 package com.languang.bluebox.adapter.picturestorege;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
+import com.languang.bluebox.DaoChuActivity;
 import com.languang.bluebox.R;
 import com.languang.bluebox.TimeUtils;
 import com.languang.bluebox.entity.ImgEntity;
@@ -25,7 +28,6 @@ import java.util.Map;
  */
 public class PictureTagAdapter extends BaseAdapter {
     private Context context;
-    private LayoutInflater inflater;
     List<String> strings = new ArrayList<>();
     List<ImgEntity> imgEntityList = new ArrayList<>();
     Map<String, ImgListEntity> imgEntities;
@@ -85,12 +87,10 @@ public class PictureTagAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-//        removeDuplicate(imgEntityList);
-//        removeDuplicate(strings);
-        inflater = LayoutInflater.from(context);
         ViewHolder holder = null;
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.item_tag_grid, null);
+            convertView = LayoutInflater.from(context)
+                    .inflate(R.layout.item_tag_grid, null);
             holder = new ViewHolder();
             holder.textView = convertView.findViewById(R.id.text);
             holder.imageView = convertView.findViewById(R.id.iam);
@@ -126,25 +126,28 @@ public class PictureTagAdapter extends BaseAdapter {
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(context, DaoChuActivity.class);
+                intent.putExtra("spe", new Gson().toJson(imgEntities.get(strings.get(position))));
+                context.startActivity(intent);
 //                boolean isCheak = false;
 //                         {
 //                    Log.d("ccmn", imgEntity.isChecked() + "");
-                imgEntities.get(strings.get(position))
-                        .setChecked(!imgEntities.get(strings.get(position))
-                                .isChecked());
-                is = imgEntities.get(strings.get(position))
-                        .isChecked();
-                if (!imgEntities.get(strings.get(position))
-                        .isChecked()) {
-//                        allCheak = false;
-                    count--;
-//                        break;
-                } else {
-//                        allCheak = true;
-                    count++;
-                }
-                adressInterface.click(is, count, imgEntities.get(strings.get(position)));
-                notifyDataSetChanged();
+//                imgEntities.get(strings.get(position))
+//                        .setChecked(!imgEntities.get(strings.get(position))
+//                                .isChecked());
+//                is = imgEntities.get(strings.get(position))
+//                        .isChecked();
+//                if (!imgEntities.get(strings.get(position))
+//                        .isChecked()) {
+////                        allCheak = false;
+//                    count--;
+////                        break;
+//                } else {
+////                        allCheak = true;
+//                    count++;
+//                }
+//                adressInterface.click(is, count, imgEntities.get(strings.get(position)));
+//                notifyDataSetChanged();
             }
         });
         return convertView;

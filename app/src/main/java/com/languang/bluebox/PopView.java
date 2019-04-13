@@ -1,19 +1,24 @@
 package com.languang.bluebox;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.languang.bluebox.basework.base.BasePopupWindow;
+import com.languang.bluebox.basework.net.OkHttpUtils;
+import com.languang.bluebox.entity.ImgInfo;
+import com.languang.bluebox.entity.ResponseMessage;
+import com.mrj.framworklib.utils.OkHttpCallBack;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.finalteam.rxgalleryfinal.RxGalleryFinal;
+import cn.finalteam.rxgalleryfinal.bean.MediaBean;
 import cn.finalteam.rxgalleryfinal.imageloader.ImageLoaderType;
 import cn.finalteam.rxgalleryfinal.rxbus.RxBusResultDisposable;
 import cn.finalteam.rxgalleryfinal.rxbus.event.ImageMultipleResultEvent;
@@ -21,14 +26,14 @@ import cn.finalteam.rxgalleryfinal.rxbus.event.ImageMultipleResultEvent;
 public class PopView extends BasePopupWindow {
     private View contentView;
     private Context context;
-    MaterialDialog dialog;
-    static  MyCallBack myCallBack;
+//    MaterialDialog dialog;
+    static MyCallBack myCallBack;
     int count = 0;
 
-   public static MyCallBack getCallBack()
-    {
+    public static MyCallBack getCallBack() {
         return myCallBack;
     }
+
     public PopView(Context context, int width, MyCallBack myCallBack) {
         super(context);
         this.myCallBack = myCallBack;
@@ -81,9 +86,35 @@ public class PopView extends BasePopupWindow {
                             protected void onEvent(final ImageMultipleResultEvent imageMultipleResultEvent) throws Exception {
 //                                dialog.show();
 //                                for (MediaBean mediaBean : imageMultipleResultEvent.getResult()) {
-                                Intent intent = new Intent(context, AddPicActivity.class);
-                                intent.putExtra("spe", new Gson().toJson(imageMultipleResultEvent.getResult()));
-                                context.startActivity(intent);
+//                                Intent intent = new Intent(context, AddPicActivity.class);
+//                                intent.putExtra("spe", new Gson().toJson(imageMultipleResultEvent.getResult()));
+//                                context.startActivity(intent);
+                                count = 0;
+                                for (MediaBean mediaBean : imageMultipleResultEvent.getResult()) {
+                                    OkHttpUtils.getInstance()
+                                            .uploadFile(context, TimeUtils.getWlanIp() + "/upload", mediaBean.getOriginalPath(), new OkHttpCallBack() {
+                                                @Override
+                                                public void onSucceed(String requestUrl, String response) {
+                                                    ResponseMessage<ImgInfo> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<ImgInfo>>() {
+                                                    }.getType());
+                                                    Log.d("ccnbccnb", response);
+//                                                    count = 0;
+                                                    count++;
+                                                    if (count == imageMultipleResultEvent.getResult()
+                                                            .size()) {
+                                                        dismiss();
+                                                        PopView.getCallBack()
+                                                                .callback();
+                                                    }
+//                                                    dialog.dismiss();
+//
+                                                }
+
+                                                @Override
+                                                public void onFailed() {
+                                                }
+                                            });
+                                }
 //                                }
 //
                             }

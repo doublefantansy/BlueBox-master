@@ -42,7 +42,7 @@ public class AddPic1Activity extends AppCompatActivity {
     AudioRecoderUtils mAudioRecoderUtils;
     File file;
     int count = 0;
-    private MaterialDialog dialog;
+    private com.afollestad.materialdialogs.MaterialDialog dialog;
     MyCallBack myCallBack;
     In in;
     int count2 = 0;
@@ -138,6 +138,7 @@ public class AddPic1Activity extends AppCompatActivity {
                         .uploadFile(AddPic1Activity.this, TimeUtils.getWlanIp() + "/upload", file.getPath(), new OkHttpCallBack() {
                             @Override
                             public void onSucceed(String requestUrl, String response) {
+                                Log.d("cctagtag", response);
                                 ResponseMessage<SpeVoiceBean> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<SpeVoiceBean>>() {
                                 }.getType());
                                 voiceUuid = responseMessage.getData().vocuuid;
@@ -147,22 +148,17 @@ public class AddPic1Activity extends AppCompatActivity {
                                     map.put("files", string);
 //                                }
                                     map.put("vocuuid", voiceUuid);
-                                    map.put("desc", desc.getText()
-                                            .toString());
+                                    map.put("desc", "11");
                                     map.put("private", "11");
-                                    map.put("title", title.getText()
-                                            .toString());
-                                    map.put("meta", meta.getText()
-                                            .toString());
-                                    map.put("location", location.getText()
-                                            .toString());
-                                    map.put("camera", camera.getText()
-                                            .toString());
+                                    map.put("title", "11");
+                                    map.put("meta", "11");
+                                    map.put("location", "11");
+                                    map.put("camera", "11");
                                     OkHttpUtils.getInstance()
-                                            .okPost(AddPic1Activity.this, TimeUtils.getWlanIp()+"tagfiles", map, new OkHttpCallBack() {
+                                            .okPost(AddPic1Activity.this, TimeUtils.getWlanIp() + "/tagfiles", map, new OkHttpCallBack() {
                                                 @Override
                                                 public void onSucceed(String requestUrl, String response) {
-                                                    Log.d("ccnb", response);
+                                                    Log.d("cctagtag", response);
                                                     count2++;
                                                     if (count2 == strings.size()) {
                                                         finish();

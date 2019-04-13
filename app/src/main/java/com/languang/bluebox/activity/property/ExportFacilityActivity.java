@@ -1,15 +1,22 @@
 package com.languang.bluebox.activity.property;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Environment;
 import android.os.StatFs;
+import android.provider.MediaStore;
+import android.support.v4.app.NotificationCompat;
 import android.text.format.Formatter;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.languang.bluebox.DonwloadSaveImg;
@@ -57,9 +64,14 @@ public class ExportFacilityActivity extends BaseFragmentActivity implements OkHt
     TextView room_reduce;
     double total;
     double avail;
+    double sum = 0;
+    String danwei;
     int c = 0;
     //    private MaterialDialog mSaveDialog;
     DownInteface downInteface;
+    private NotificationManager notificationManager;
+    private NotificationCompat.Builder builder;
+    private Notification notification;
 
     //    room_reduce_1
     @Override
@@ -83,11 +95,46 @@ public class ExportFacilityActivity extends BaseFragmentActivity implements OkHt
 //        room_reduce.setText("Sd卡的总的容量是" + totalStr + "\n" + "SD卡的可用容量是" + availStr);
     }
 
+    private void initNotification() {
+        builder = new NotificationCompat.Builder(ExportFacilityActivity.this)
+                .setSmallIcon(R.drawable.i512512)
+                .setContentTitle("图片下载");
+        Notification notification = builder.build();
+        notification.flags = Notification.FLAG_ONGOING_EVENT;
+        notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        //封装一个Intent
+        Intent resultIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        resultIntent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/");
+        PendingIntent resultPendingIntent = PendingIntent.getActivity(
+                this, 0, resultIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+        // 设置通知主题的意图
+        builder.setContentIntent(resultPendingIntent);
+        notificationManager.notify(1, notification);
+    }
+
     @Override
     protected void initView() {
+        ImageView add = findViewById(R.id.add);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         setTitle("导出设备");
         imgEntitysps = new Gson().fromJson(getIntent().getStringExtra("spe"), new TypeToken<List<OutBean.Nocd.ImgEntitysp>>() {
         }.getType());
+        for (OutBean.Nocd.ImgEntitysp imgEntitysp : imgEntitysps) {
+            sum += Float.valueOf(imgEntitysp.getImgsize()) / 1024 / 1024;
+        }
+        if (sum >= 1024) {
+            sum = sum / 1024;
+            danwei = "G";
+        } else {
+            danwei = "M";
+        }
+        DecimalFormat decimalFormat = new DecimalFormat("0.0");
         sd_name = findViewById(R.id.sd_name);
         room_reduce = findViewById(R.id.room_reduce);
         getSd();
@@ -97,7 +144,7 @@ public class ExportFacilityActivity extends BaseFragmentActivity implements OkHt
         customPercentView2 = findViewById(R.id.custom_percent_view_2);
         download = findViewById(R.id.export_all);
         co = findViewById(R.id.co);
-        co.setText("已读取照片" + discount + "张、视频0段共计0.0G请选择相关设备导出");
+        co.setText("已读取照片" + discount + "张、" + "共计" + decimalFormat.format(sum) + danwei + "请选择相关设备导出");
         sd2 = findViewById(R.id.sd_name_2);
         room1 = findViewById(R.id.room_reduce_1);
         room2 = findViewById(R.id.room_reduce_2);
@@ -106,11 +153,7 @@ public class ExportFacilityActivity extends BaseFragmentActivity implements OkHt
         download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final MaterialDialog mSaveDialog = new MaterialDialog.Builder(ExportFacilityActivity.this).title("图片正在下载中")
-                        .progress(false, imgEntitysps.size(), true)
-                        .cancelable(false)
-                        .build();
-                mSaveDialog.show();
+                initNotification();
                 for (final OutBean.Nocd.ImgEntitysp imgEntitysp : imgEntitysps) {
                     final Map<String, Object> map = new HashMap<>();
                     map.put("files", imgEntitysp.getUuid());
@@ -124,10 +167,6 @@ public class ExportFacilityActivity extends BaseFragmentActivity implements OkHt
                                     if (imgEntityspResponseMessage.getData()
                                             .getStatus()
                                             .equals("9999")) {
-//                                        c++;
-//                                        if (c == imgEntitysps.size()) {
-//                                            mSaveDialog.dismiss();
-//                                        }
                                         for (Map.Entry<String, DownloadBean.FilesBean> entry : imgEntityspResponseMessage.getData()
                                                 .getFiles()
                                                 .entrySet()) {
@@ -136,12 +175,42 @@ public class ExportFacilityActivity extends BaseFragmentActivity implements OkHt
                                                     .getSrcname(), new DownInteface() {
                                                 @Override
                                                 public void click(int a) {
-                                                    mSaveDialog.setProgress(a);
+                                                    double s = (float) a / (float) imgEntitysps.size();
+                                                    Log.d("cctag", s + "");
+                                                    builder.setProgress(100, (int) (s * 100), false);
+                                                    builder.setContentText("正在下载");
                                                     if (a == imgEntitysps.size()) {
-                                                        mSaveDialog.dismiss();
+                                                        builder.setContentText("下载完成");
+                                                        Toast.makeText(ExportFacilityActivity.this, "下载完成", Toast.LENGTH_SHORT)
+                                                                .show();
+                                                        for (final OutBean.Nocd.ImgEntitysp entitysp : imgEntitysps) {
+                                                            Map<String, Object> map1 = new HashMap<>();
+                                                            map1.put("files", entitysp.getUuid());
+                                                            OkHttpUtils.getInstance()
+                                                                    .okPost(ExportFacilityActivity.this, TimeUtils.getWlanIp() + "/delout", map1, new OkHttpCallBack() {
+                                                                        @Override
+                                                                        public void onSucceed(String requestUrl, String response) {
+                                                                            ResponseMessage<DeLOutBean> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<DeLOutBean>>() {
+                                                                            }.getType());
+                                                                            if (responseMessage.getData()
+                                                                                    .getStatus()
+                                                                                    .equals("9999")) {
+                                                                                c++;
+                                                                                if (c == imgEntitysps.size()) {
+                                                                                    finish();
+                                                                                }
+                                                                            }
+                                                                        }
+
+                                                                        @Override
+                                                                        public void onFailed() {
+                                                                        }
+                                                                    });
+                                                        }
                                                     }
+                                                    notificationManager.notify(1, builder.build());
                                                 }
-                                            });
+                                            }, imgEntitysps.size());
                                         }
                                     }
                                 }

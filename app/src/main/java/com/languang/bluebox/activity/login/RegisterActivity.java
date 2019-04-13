@@ -18,6 +18,7 @@ import com.languang.bluebox.presenter.IRegister;
 import com.mrj.framworklib.utils.OkHttpCallBack;
 import com.mrj.framworklib.utils.ToastUtilsBase;
 import com.tencent.mmkv.MMKV;
+import com.xuexiang.xui.widget.actionbar.TitleBar;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -42,6 +43,8 @@ public class RegisterActivity extends BaseFragmentActivity {
     EditText consumePwdEt;
     @BindView(R.id.xieyi)
     TextView xieyi;
+    @BindView(R.id.bar)
+    TitleBar bar;
     private IRegister registerModel;
 
     @Override
@@ -60,6 +63,12 @@ public class RegisterActivity extends BaseFragmentActivity {
 
     @Override
     protected void initData() {
+        bar.setLeftClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     @OnClick({R.id.get_code, R.id.register_submit, R.id.back_to_login})

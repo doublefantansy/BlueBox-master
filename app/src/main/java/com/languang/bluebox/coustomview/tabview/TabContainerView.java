@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
@@ -42,7 +43,8 @@ public class TabContainerView extends RelativeLayout {
     private int iconWidth;
     /**
      * 分割线
-     */BaseAdapter baseAdapter;
+     */
+    BaseAdapter baseAdapter;
     private int divideLineColor;
     private int divideLineHeight;
     private OnTabSelectedListener onTabSelectedListener;
@@ -146,7 +148,7 @@ public class TabContainerView extends RelativeLayout {
 
     public void setAdapter(BaseAdapter baseAdapter, int index) {
         if (baseAdapter == null) return;
-        this.baseAdapter=baseAdapter;
+        this.baseAdapter = baseAdapter;
         tabHost.addTabs(baseAdapter, textSize, textColor, selectedTextColor, drawablePadding, iconWidth, iconHeight);
         adapter = new TabViewPagerAdapter(baseAdapter.getFragmentManager(), baseAdapter.getFragmentArray());
         contentViewPager.setAdapter(adapter);
@@ -163,7 +165,12 @@ public class TabContainerView extends RelativeLayout {
                 .setTabText("zhende");
     }
 
+    public void notmove(boolean t) {
+        tabHost.notmove(t);
+    }
+
     public void setTabTextGone(boolean t) {
+        Log.d("cctag", t + "");
         tabHost.setGone(t);
 //        tabHost.getTabForIndex(index).setTabText("zhende");
     }

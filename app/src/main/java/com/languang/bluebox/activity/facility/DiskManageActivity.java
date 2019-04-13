@@ -1,20 +1,15 @@
 package com.languang.bluebox.activity.facility;
 
-import android.view.View;
 import android.widget.TextView;
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.mrj.framworklib.utils.OkHttpCallBack;
 
 import com.languang.bluebox.R;
 import com.languang.bluebox.basework.base.BaseFragmentActivity;
 import com.languang.bluebox.constant.ApiConstant;
 import com.languang.bluebox.coustomview.CustomPercentView;
-import com.languang.bluebox.entity.ResponseMessage;
-import com.languang.bluebox.entity.facility.DiskInfo;
-import com.languang.bluebox.presenter.IDiskManageInfo;
 import com.languang.bluebox.model.DiskManageInfoModel;
+import com.languang.bluebox.presenter.IDiskManageInfo;
+import com.mrj.framworklib.utils.OkHttpCallBack;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -48,13 +43,13 @@ public class DiskManageActivity extends BaseFragmentActivity implements OkHttpCa
     @Override
     protected void initView() {
         setTitle("硬盘信息");
-        setRightText("保存");
-        setRightOnclick(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+//        setRightText("保存");
+//        setRightOnclick(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
 
     }
 

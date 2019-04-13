@@ -1,5 +1,7 @@
 package com.languang.bluebox.entity;
 
+import com.languang.bluebox.activity.VoiceBean;
+
 public class ImgEntity {
     /**
      * idimg : 36
@@ -71,6 +73,23 @@ public class ImgEntity {
     private String tags;
     private String location;
     private VoiceBean voice;
+    private String voice1;
+
+    public String getVoice1() {
+        return voice1;
+    }
+
+    public void setVoice1(String voice1) {
+        this.voice1 = voice1;
+    }
+
+    public VoiceBean getVoice() {
+        return voice;
+    }
+
+    public void setVoice(VoiceBean voice1) {
+        this.voice = voice1;
+    }
 
     public String getTags() {
         return tags;
@@ -319,7 +338,6 @@ public class ImgEntity {
     public void setMeta(String meta) {
         this.meta = meta;
     }
-
 //    public TagsBean getTags() {
 //        return tags;
 //    }
@@ -335,15 +353,6 @@ public class ImgEntity {
     public void setLocation(String location) {
         this.location = location;
     }
-
-    public VoiceBean getVoice() {
-        return voice;
-    }
-
-    public void setVoice(VoiceBean voice) {
-        this.voice = voice;
-    }
-
 //    public static class TagsBean {
 //        List<String> map;
 //
@@ -356,68 +365,68 @@ public class ImgEntity {
 //        }
 //    }
 
-    public static class VoiceBean {
-        /**
-         * idvc : 5
-         * vocuuid : 0B786CFB-E23E-D717-81F4-E8B58CA58866
-         * vcpath : uploads/audio/20181114/
-         * duration : 0
-         * ctime : 2018-11-14 15:36:05
-         * vcname : 20181114153605_3191.m4a
-         */
-        private String idvc;
-        private String vocuuid;
-        private String vcpath;
-        private String duration;
-        private String ctime;
-        private String vcname;
-
-        public String getIdvc() {
-            return idvc;
-        }
-
-        public void setIdvc(String idvc) {
-            this.idvc = idvc;
-        }
-
-        public String getVocuuid() {
-            return vocuuid;
-        }
-
-        public void setVocuuid(String vocuuid) {
-            this.vocuuid = vocuuid;
-        }
-
-        public String getVcpath() {
-            return vcpath;
-        }
-
-        public void setVcpath(String vcpath) {
-            this.vcpath = vcpath;
-        }
-
-        public String getDuration() {
-            return duration;
-        }
-
-        public void setDuration(String duration) {
-            this.duration = duration;
-        }
-
-        public String getCtime() {
-            return ctime;
-        }
-
-        public void setCtime(String ctime) {
-            this.ctime = ctime;
-        }
-
-        public String getVcname() {
-            return vcname;
-        }
-
-        public void setVcname(String vcname) {
-            this.vcname = vcname;
-        }
-    }
+//    public static class VoiceBean {
+//        /**
+//         * idvc : 5
+//         * vocuuid : 0B786CFB-E23E-D717-81F4-E8B58CA58866
+//         * vcpath : uploads/audio/20181114/
+//         * duration : 0
+//         * ctime : 2018-11-14 15:36:05
+//         * vcname : 20181114153605_3191.m4a
+//         */
+//        private String idvc;
+//        private String vocuuid;
+//        private String vcpath;
+//        private String duration;
+//        private String ctime;
+//        private String vcname;
+//
+//        public String getIdvc() {
+//            return idvc;
+//        }
+//
+//        public void setIdvc(String idvc) {
+//            this.idvc = idvc;
+//        }
+//
+//        public String getVocuuid() {
+//            return vocuuid;
+//        }
+//
+//        public void setVocuuid(String vocuuid) {
+//            this.vocuuid = vocuuid;
+//        }
+//
+//        public String getVcpath() {
+//            return vcpath;
+//        }
+//
+//        public void setVcpath(String vcpath) {
+//            this.vcpath = vcpath;
+//        }
+//
+//        public String getDuration() {
+//            return duration;
+//        }
+//
+//        public void setDuration(String duration) {
+//            this.duration = duration;
+//        }
+//
+//        public String getCtime() {
+//            return ctime;
+//        }
+//
+//        public void setCtime(String ctime) {
+//            this.ctime = ctime;
+//        }
+//
+//        public String getVcname() {
+//            return vcname;
+//        }
+//
+//        public void setVcname(String vcname) {
+//            this.vcname = vcname;
+//        }
+//    }
 }

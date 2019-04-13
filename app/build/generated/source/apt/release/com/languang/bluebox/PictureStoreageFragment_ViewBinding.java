@@ -21,7 +21,6 @@ public class PictureStoreageFragment_ViewBinding implements Unbinder {
 
     target.none = Utils.findRequiredViewAsType(source, R.id.none, "field 'none'", TextView.class);
     target.add = Utils.findRequiredViewAsType(source, R.id.add, "field 'add'", ImageView.class);
-    target.choose = Utils.findRequiredViewAsType(source, R.id.choose, "field 'choose'", TextView.class);
     target.recyclerView = Utils.findRequiredViewAsType(source, R.id.recycler_view, "field 'recyclerView'", RecyclerView.class);
     target.title = Utils.findRequiredViewAsType(source, R.id.title, "field 'title'", TextView.class);
   }
@@ -35,7 +34,6 @@ public class PictureStoreageFragment_ViewBinding implements Unbinder {
 
     target.none = null;
     target.add = null;
-    target.choose = null;
     target.recyclerView = null;
     target.title = null;
   }

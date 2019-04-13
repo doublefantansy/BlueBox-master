@@ -1,0 +1,2 @@
+# Referenced at /Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/merged_manifests/release/processReleaseManifest/merged/AndroidManifest.xml:35
+-keep class com.languang.bluebox.basework.BaseApplication { <init>(...); }

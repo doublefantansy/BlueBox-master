@@ -1,7 +1,7 @@
 package com.languang.bluebox.adapter.picturestorege;
 
 import android.content.Context;
-import android.util.Log;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +11,15 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
+import com.languang.bluebox.DaoChuActivity;
 import com.languang.bluebox.R;
 import com.languang.bluebox.TimeUtils;
 import com.languang.bluebox.entity.ImgEntity;
+import com.languang.bluebox.entity.ImgListEntity;
 import com.languang.bluebox.fragment.mapstorage.AdressInterface;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -30,7 +34,8 @@ public class PictureAddressAdapter extends BaseAdapter {
     private LayoutInflater inflater;
     //    List<String> strings1;
     //    List<Integer> integers;
-    Map<String, List<ImgEntity>> imgEntities;
+//    Map<String, List<ImgEntity>> imgEntities;
+    Map<String, ImgListEntity> listEntity = new HashMap<>();
     List<String> strings;
     AdressInterface ffInterface;
     boolean allCheak;
@@ -40,7 +45,12 @@ public class PictureAddressAdapter extends BaseAdapter {
     public PictureAddressAdapter(Context context, Map<String, List<ImgEntity>> imgEntities, List<String> strings, AdressInterface ff1Interface) {
 //        super();
         this.context = context;
-        this.imgEntities = imgEntities;
+//        this.imgEntities = imgEntities;
+        for (Map.Entry<String, List<ImgEntity>> entry : imgEntities.entrySet()) {
+            ImgListEntity imgListEntity = new ImgListEntity();
+            imgListEntity.setImgEntityList(entry.getValue());
+            listEntity.put(entry.getKey(), imgListEntity);
+        }
         this.strings = strings;
 //        this.integers = integers;
         this.ffInterface = ff1Interface;
@@ -49,10 +59,10 @@ public class PictureAddressAdapter extends BaseAdapter {
 //        Log.d("ccnbccc", "in");
     }
 
-    public void setImgEntities(Map<String, List<ImgEntity>> imgEntities) {
-        this.imgEntities = imgEntities;
+    public void setImgEntities(Map<String, ImgListEntity> imgEntities) {
+        this.listEntity = imgEntities;
         strings.clear();
-        for (Map.Entry<String, List<ImgEntity>> entry : this.imgEntities.entrySet()) {
+        for (Map.Entry<String, ImgListEntity> entry : this.listEntity.entrySet()) {
             strings.add(entry.getKey());
         }
         notifyDataSetChanged();
@@ -74,8 +84,10 @@ public class PictureAddressAdapter extends BaseAdapter {
     }
 
     public void clear() {
-        for (Map.Entry<String, List<ImgEntity>> entry : imgEntities.entrySet()) {
-            for (ImgEntity imgEntity : entry.getValue()) {
+        for (Map.Entry<String, ImgListEntity> entry : listEntity.entrySet()) {
+            for (ImgEntity imgEntity : entry.getValue()
+                    .getImgEntityList()
+                    ) {
                 imgEntity.setChecked(false);
             }
         }
@@ -102,87 +114,57 @@ public class PictureAddressAdapter extends BaseAdapter {
             view = convertView;
             holder = (ViewHolder) view.getTag();
         }
-//        if (((YourGridView) parent).isOnMeasure()) {
-//            //如果是onMeasure调用的就立即返回
-//            return convertView;
-//        }
         holder.textView.setText(strings.get(position));
-        holder.count.setText(imgEntities.get(strings.get(position))
+        holder.count.setText(listEntity.get(strings.get(position))
+                .getImgEntityList()
                 .size()
                 + "张");
         Glide.with(context)
                 .asBitmap()
-                .load(TimeUtils.getWlanIp() + "/public/" + imgEntities.get(strings.get(position))
+                .load(TimeUtils.getWlanIp() + "/public/" + listEntity.get(strings.get(position))
+                        .getImgEntityList()
                         .get(0)
-                        .getSmallpath() + imgEntities.get(strings.get(position))
+                        .getSmallpath() + listEntity.get(strings.get(position))
+                        .getImgEntityList()
                         .get(0)
                         .getSmallname())
                 .into(holder.ima);
         allCheak = false;
-        for (ImgEntity imgEntity : imgEntities.get(strings.get(position))) {
+        for (ImgEntity imgEntity : listEntity.get(strings.get(position))
+                .getImgEntityList()) {
             if (!imgEntity.isChecked()) {
                 allCheak = false;
-//                count--;
                 break;
             } else {
                 allCheak = true;
-//                count++;
             }
         }
-//        if (allCheak) {
+//            Log.d("cctag", "in");
         holder.gou.setVisibility(allCheak == true ? View.VISIBLE : View.INVISIBLE);
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                boolean isCheak = false;
-                for (ImgEntity imgEntity : imgEntities.get(strings.get(position))
-                        ) {
-                    Log.d("ccmn", imgEntity.isChecked() + "");
-                    imgEntity.setChecked(!imgEntity.isChecked());
-                    is = imgEntity.isChecked();
-                    if (!imgEntity.isChecked()) {
-//                        allCheak = false;
-                        count--;
-//                        break;
-                    } else {
-//                        allCheak = true;
-                        count++;
-                    }
-//                    if (!imgEntity.isChecked()) {
-//                        isCheak = false;
-//                        break;
-//                    } else {
-//                        isCheak = true;
+                Intent intent = new Intent(context, DaoChuActivity.class);
+                intent.putExtra("spe", new Gson().toJson(listEntity.get(strings.get(position))));
+                context.startActivity(intent);
+//                    for (ImgEntity imgEntity : listEntity.get(strings.get(position))
+//                            .getImgEntityList()
+//                            ) {
+//                        Log.d("ccmn", imgEntity.isChecked() + "");
+//                        imgEntity.setChecked(!imgEntity.isChecked());
+//                        is = imgEntity.isChecked();
+//                        if (!imgEntity.isChecked()) {
+////                        allCheak = false;
+//                            count--;
+//                        } else {
+//                            count++;
+//                        }
 //                    }
-                }
-                ffInterface.click(is, count, imgEntities.get(strings.get(position)));
-                notifyDataSetChanged();
+//                    ffInterface.click(is, count, listEntity.get(strings.get(position))
+//                            .getImgEntityList());
+//                    notifyDataSetChanged();
             }
         });
-//        }
-//        System.out.println("xcqw getView  2***position" + position);
-//        holder.gou.setVisibility(list.get(position)
-//                .isChecked() == true ? View.VISIBLE : View.INVISIBLE);
-//        holder.frameLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                list.get(position)
-//                        .setChecked(!list.get(position)
-//                                .isChecked());
-//                if (list.get(position)
-//                        .isChecked()) {
-//                    holder.gou.setVisibility(View.VISIBLE);
-//                    MapStorageFragment.count++;
-//                    countInterface.click(true, MapStorageFragment.count, list.get(position));
-//                } else {
-//                    MapStorageFragment.count--;
-//                    countInterface.click(false, MapStorageFragment.count, list.get(position));
-//                    holder.gou.setVisibility(View.INVISIBLE);
-//                }
-////                holder.gou.setChecked(list.get(position)
-////                        .isChecked());
-//            }
-//        });
         return view;
     }
 

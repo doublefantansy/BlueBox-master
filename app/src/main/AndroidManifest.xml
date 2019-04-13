@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.languang.bluebox">
 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
@@ -17,8 +18,10 @@
     <application
         android:name=".basework.BaseApplication"
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@drawable/i512512"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
@@ -34,7 +37,6 @@
             android:name=".activity.login.LoginActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
-        <!-- 注册页面 -->
         <activity
             android:name=".activity.login.RegisterActivity"
             android:screenOrientation="portrait"
@@ -80,6 +82,9 @@
             android:screenOrientation="portrait" />
         <!-- 分享界面 -->
         <activity
+            android:name=".InfoActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
             android:name=".activity.picturestorege.ShareActivity"
             android:screenOrientation="portrait" />
         <!-- 编辑图片 -->
@@ -103,6 +108,8 @@
             android:screenOrientation="portrait" />
         <activity android:name=".ErrorActivity" />
         <!-- 硬盘信息 -->
+        <activity android:name=".SettingNetActivity"></activity>
+        <activity android:name=".SettingPassWordActivity"></activity>
         <activity
             android:name=".activity.facility.DiskManageActivity"
             android:screenOrientation="portrait" />
@@ -131,5 +138,7 @@
         <activity android:name=".activity.login.BoxLoginActivity" />
         <activity android:name=".XieYiActivity" />
         <activity android:name=".LookForPasswordActivity"></activity>
+        <activity android:name="com.languang.CropActivity"></activity>
+        <activity android:name=".activity.login.ForgetActivity"></activity>
     </application>
 </manifest>

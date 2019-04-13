@@ -5,10 +5,28 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/myBlue">
+
+        <com.xuexiang.xui.widget.actionbar.TitleBar
+            android:id="@+id/ssssss"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            app:tb_actionPadding="20dp"
+            app:tb_barHeight="65dp"
+            app:tb_sideTextPadding="20dp"
+            app:tb_titleText="管理设备"
+            app:tb_titleTextColor="@color/white1" />
+    </LinearLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_65"
-        android:layout_marginTop="@dimen/dp_20">
+        android:layout_marginTop="@dimen/dp_20"
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/iv_refresh"
@@ -28,10 +46,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/selector_online"
-                android:paddingBottom="@dimen/dp_5"
                 android:paddingLeft="@dimen/dp_20"
-                android:paddingRight="@dimen/dp_20"
                 android:paddingTop="@dimen/dp_5"
+                android:paddingRight="@dimen/dp_20"
+                android:paddingBottom="@dimen/dp_5"
                 android:text="在线"
                 android:textColor="@drawable/selector_online_text_color" />
 
@@ -40,14 +58,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/selector_offline"
-                android:paddingBottom="@dimen/dp_5"
                 android:paddingLeft="@dimen/dp_20"
-                android:paddingRight="@dimen/dp_20"
                 android:paddingTop="@dimen/dp_5"
+                android:paddingRight="@dimen/dp_20"
+                android:paddingBottom="@dimen/dp_5"
                 android:text="离线"
                 android:textColor="@drawable/selector_online_text_color" />
-
-
         </LinearLayout>
 
         <TextView
@@ -60,18 +76,12 @@
             android:text="+新增"
             android:textColor="@color/color_000"
             android:textSize="@dimen/text_size_13" />
-
     </RelativeLayout>
-
 
     <com.luck.easyrecyclerview.EasyRecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/main_bg"
-        app:layout_empty="@layout/view_empty">
-
-    </com.luck.easyrecyclerview.EasyRecyclerView>
-
-
+        app:layout_empty="@layout/view_empty"></com.luck.easyrecyclerview.EasyRecyclerView>
 </LinearLayout>

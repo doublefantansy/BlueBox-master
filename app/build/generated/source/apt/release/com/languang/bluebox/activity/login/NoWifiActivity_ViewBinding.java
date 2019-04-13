@@ -1,21 +1,22 @@
 // Generated code from Butter Knife. Do not modify!
 package com.languang.bluebox.activity.login;
 
+import android.support.annotation.CallSuper;
 import android.support.annotation.UiThread;
 import android.view.View;
+import butterknife.Unbinder;
 import butterknife.internal.DebouncingOnClickListener;
 import butterknife.internal.Utils;
 import com.languang.bluebox.R;
-import com.languang.bluebox.basework.base.BaseFragmentActivity_ViewBinding;
 import java.lang.IllegalStateException;
 import java.lang.Override;
 
-public class NoWifiActivity_ViewBinding extends BaseFragmentActivity_ViewBinding {
+public class NoWifiActivity_ViewBinding implements Unbinder {
   private NoWifiActivity target;
 
-  private View view2131230781;
+  private View view2131230853;
 
-  private View view2131231019;
+  private View view2131231180;
 
   @UiThread
   public NoWifiActivity_ViewBinding(NoWifiActivity target) {
@@ -24,13 +25,11 @@ public class NoWifiActivity_ViewBinding extends BaseFragmentActivity_ViewBinding
 
   @UiThread
   public NoWifiActivity_ViewBinding(final NoWifiActivity target, View source) {
-    super(target, source);
-
     this.target = target;
 
     View view;
     view = Utils.findRequiredView(source, R.id.cancel, "method 'onViewClicked'");
-    view2131230781 = view;
+    view2131230853 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -38,7 +37,7 @@ public class NoWifiActivity_ViewBinding extends BaseFragmentActivity_ViewBinding
       }
     });
     view = Utils.findRequiredView(source, R.id.refresh, "method 'onViewClicked'");
-    view2131231019 = view;
+    view2131231180 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -48,16 +47,15 @@ public class NoWifiActivity_ViewBinding extends BaseFragmentActivity_ViewBinding
   }
 
   @Override
+  @CallSuper
   public void unbind() {
     if (target == null) throw new IllegalStateException("Bindings already cleared.");
     target = null;
 
 
-    view2131230781.setOnClickListener(null);
-    view2131230781 = null;
-    view2131231019.setOnClickListener(null);
-    view2131231019 = null;
-
-    super.unbind();
+    view2131230853.setOnClickListener(null);
+    view2131230853 = null;
+    view2131231180.setOnClickListener(null);
+    view2131231180 = null;
   }
 }

@@ -10,14 +10,18 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.languang.bluebox.FFInterface;
 import com.languang.bluebox.R;
 import com.languang.bluebox.TimeUtils;
+import com.languang.bluebox.activity.VoiceBean;
 import com.languang.bluebox.adapter.picturestorege.PictureTimeAdapter;
 import com.languang.bluebox.basework.base.BaseFragment;
 import com.languang.bluebox.basework.net.OkHttpUtils;
 import com.languang.bluebox.basework.utils.SoftKeyBoardListener;
 import com.languang.bluebox.coustomview.CustomEditText;
+import com.languang.bluebox.entity.ImgEntity;
 import com.languang.bluebox.entity.ImgListEntity;
 import com.languang.bluebox.utils.ImgUtil;
 import com.luck.easyrecyclerview.EasyRecyclerView;
@@ -49,7 +53,6 @@ public class PictureTimeFragment extends BaseFragment implements OkHttpCallBack 
     FFInterface ffInterface;
     FF1Interface ff1Interface;
     List<ImgListEntity> list = new ArrayList<>();
-    //    Map<String,ImgListEntity>searchMap=new HashMap<>();
     private boolean isfirs = true;
 
     public void setFF(FFInterface ff) {
@@ -150,12 +153,24 @@ public class PictureTimeFragment extends BaseFragment implements OkHttpCallBack 
     @Override
     public void onSucceed(String requestUrl, String response) {
         Log.d("ccnb1", response);
-        if ((TimeUtils.getWlanIp()+"/listimg").equals(requestUrl)) {
+        if ((TimeUtils.getWlanIp() + "/listimg").equals(requestUrl)) {
             imgEntities = ImgUtil.getTimeImg(response);
-            if (null != imgEntities) {
-                adapter.setL(imgEntities);
+//            imgEntities=new Gson().fromJson(response,new )
+            if (imgEntities != null) {
+                for (ImgListEntity imgEntity : imgEntities) {
+                    for (ImgEntity entity : imgEntity.getImgEntityList()) {
+                        if (!entity.getVoice1()
+                                .equals("false")) {
+                            entity.setVoice((VoiceBean) new Gson().fromJson(entity.getVoice1(), new TypeToken<VoiceBean>() {
+                            }.getType()));
+                        }
+                    }
+                }
+                if (null != imgEntities) {
+                    adapter.setL(imgEntities);
+                }
+                ffInterface.click(imgEntities);
             }
-            ffInterface.click(imgEntities);
         }
     }
 

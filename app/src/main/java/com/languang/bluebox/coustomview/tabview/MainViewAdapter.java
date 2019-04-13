@@ -38,7 +38,7 @@ public class MainViewAdapter extends BaseAdapter {
     @Override
     public String[] getTextArray() {
         return new String[]{
-                "新增文件", "图库", "光盘", "回迁单", "设备"
+                "新增文件", "图库", "归档", "迁出单", "设备"
         };
     }
 

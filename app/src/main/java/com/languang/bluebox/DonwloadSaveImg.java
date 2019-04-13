@@ -9,9 +9,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import android.util.Log;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.languang.bluebox.activity.property.DownInteface;
 
 import java.io.BufferedOutputStream;
@@ -29,14 +27,16 @@ public class DonwloadSaveImg {
     private static String mSaveMessage = "失败";
     private final static String TAG = "PictureActivity";
     private static int counts = 1;
+    static int temp = 0;
     private static int tars = 0;
-    private static MaterialDialog mSaveDialog = null;
+    private static com.afollestad.materialdialogs.MaterialDialog mSaveDialog = null;
     static DownInteface downIntefaces;
 
-    public static void donwloadImg(Context contexts, String filePaths, DownInteface downInteface) {
+    public static void donwloadImg(Context contexts, String filePaths, DownInteface downInteface, int count) {
         context = contexts;
         filePath = filePaths;
         downIntefaces = downInteface;
+        counts = count;
 //        tars = tar;
         new Thread(saveFileRunnable).start();
 //        mSaveDialog = new MaterialDialog.Builder(context).title("图片正在保存中")
@@ -48,35 +48,37 @@ public class DonwloadSaveImg {
     private static Runnable saveFileRunnable = new Runnable() {
         @Override
         public void run() {
-            try {
-                if (!TextUtils.isEmpty(filePath)) { //网络图片
-                    // 对资源链接
-                    URL url = new URL(filePath);
-                    //打开输入流
-                    InputStream inputStream = url.openStream();
-                    //对网上资源进行下载转换位图图片
-                    mBitmap = BitmapFactory.decodeStream(inputStream);
-                    inputStream.close();
+                try {
+                    if (!TextUtils.isEmpty(filePath)) { //网络图片
+                        // 对资源链接
+                        URL url = new URL(filePath);
+                        //打开输入流
+                        InputStream inputStream = url.openStream();
+                        //对网上资源进行下载转换位图图片
+                        mBitmap = BitmapFactory.decodeStream(inputStream);
+                        inputStream.close();
+                    }
+                    saveFile(mBitmap);
+                    mSaveMessage = "图片保存成功！";
+                } catch (IOException e) {
+                    mSaveMessage = "图片保存失败！";
+                    e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-                saveFile(mBitmap);
-                mSaveMessage = "图片保存成功！";
-            } catch (IOException e) {
-                mSaveMessage = "图片保存失败！";
-                e.printStackTrace();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            messageHandler.sendMessage(messageHandler.obtainMessage());
+                messageHandler.sendMessage(messageHandler.obtainMessage());
+
         }
     };
     private static Handler messageHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
+            temp++;
+            downIntefaces.click(temp);
 //            if (tars == counts) {
-            downIntefaces.click(counts);
-//            }
-            counts++;
-            Log.d(TAG, mSaveMessage);
+            if (temp == counts) {
+                temp = 0;
+            }
         }
     };
 

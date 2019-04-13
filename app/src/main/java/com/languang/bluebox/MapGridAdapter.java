@@ -1,6 +1,7 @@
 package com.languang.bluebox;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,36 +10,38 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
 import com.languang.bluebox.entity.ImgEntity;
-import com.languang.bluebox.fragment.mapstorage.MapStorageFragment;
-
-import java.util.List;
+import com.languang.bluebox.entity.ImgListEntity;
 
 public class MapGridAdapter extends BaseAdapter {
     private Context context;
-    public List<ImgEntity> list;
+    public ImgListEntity list;
     CountInterface countInterface;
 //    List<CheckBox> checkBoxes = new ArrayList<>();
 
-    public MapGridAdapter(Context context, CountInterface countInterface,List<ImgEntity> list) {
+    public MapGridAdapter(Context context, CountInterface countInterface) {
         this.context = context;
         this.countInterface = countInterface;
         this.list = list;
     }
 
-    public void setList(List<ImgEntity> list) {
+    public void setList(ImgListEntity list) {
         this.list = list;
+        clear();
         notifyDataSetChanged();
     }
 
     @Override
     public int getCount() {
-        return list.size();
+        return list.getImgEntityList()
+                .size();
     }
 
     @Override
     public Object getItem(int position) {
-        return list.get(position);
+        return list.getImgEntityList()
+                .get(position);
     }
 
     @Override
@@ -47,7 +50,7 @@ public class MapGridAdapter extends BaseAdapter {
     }
 
     public void clear() {
-        for (ImgEntity imgEntity : list) {
+        for (ImgEntity imgEntity : list.getImgEntityList()) {
             imgEntity.setChecked(false);
         }
         notifyDataSetChanged();
@@ -68,70 +71,44 @@ public class MapGridAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-//        checkBoxes.add(holder.gou);
         Glide.with(context)
                 .asBitmap()
-                .load(TimeUtils.getWlanIp() + "/public/" + list.get(position)
-                        .getSmallpath() + list.get(position)
+                .load(TimeUtils.getWlanIp() + "/public/" + list.getImgEntityList()
+                        .get(position)
+                        .getSmallpath() + list.getImgEntityList()
+                        .get(position)
                         .getSmallname())
                 .into(holder.imageView);
-//        list.get(position)
-//                .setLinearLayout(holder.frameLayout);
-//        newList.get(position)
-//                .setGou(holder.gou);
-//        newList.get(position)
-//                .setImageView(holder.imageView);
-//        list.get(position)
-//                .setChecked(list.get(position)
-//                        .isChecked());
-        holder.gou.setVisibility(list.get(position)
+        holder.gou.setVisibility(list.getImgEntityList()
+                .get(position)
                 .isChecked() == true ? View.VISIBLE : View.INVISIBLE);
         holder.frameLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                list.get(position)
-                        .setChecked(!list.get(position)
-                                .isChecked());
-                if (list.get(position)
-                        .isChecked()) {
-                    holder.gou.setVisibility(View.VISIBLE);
-                    MapStorageFragment.count++;
-                    countInterface.click(true, MapStorageFragment.count, list.get(position));
-                } else {
-                    MapStorageFragment.count--;
-                    countInterface.click(false, MapStorageFragment.count, list.get(position));
-                    holder.gou.setVisibility(View.INVISIBLE);
-                }
-//                holder.gou.setChecked(list.get(position)
-//                        .isChecked());
+                Intent intent=new Intent(context,DaoChuActivity.class);
+                intent.putExtra("spe",new Gson().toJson(list));
+                context.startActivity(intent);
+//                list.getImgEntityList()
+//                        .get(position)
+//                        .setChecked(!list.getImgEntityList()
+//                                .get(position)
+//                                .isChecked());
+//                if (list.getImgEntityList()
+//                        .get(position)
+//                        .isChecked()) {
+//                    holder.gou.setVisibility(View.VISIBLE);
+//                    MapStorageFragment.count++;
+//                    countInterface.click(true, MapStorageFragment.count, list.getImgEntityList()
+//                            .get(position));
+//                } else {
+//                    MapStorageFragment.count--;
+//                    countInterface.click(false, MapStorageFragment.count, list.getImgEntityList()
+//                            .get(position));
+//                    holder.gou.setVisibility(View.INVISIBLE);
+//                }
             }
         });
         return convertView;
-    }
-//    public void open(final int p) {
-//        Log.d("ccnb", p + "");
-////        Log.d("ccnb", list.get(p)
-////                .isCheaked() + "");
-////        notifyDataSetChanged();
-////        if (newList.get(p)
-////                .isCheaked()) {
-////        } else {
-////            newList.get(p)
-////                    .getGou()
-////                    .setAlpha(1f);
-////        }
-////        list.get(p)
-////                .setCheaked(!list.get(p)
-////                        .isCheaked());
-//        notifyDataSetChanged();
-//    }
-
-    public void begin() {
-//            Log.d("ccnb",   "int");
-//            for (CheckBox checkBox : checkBoxes) {
-//                checkBox.setVisibility(View.VISIBLE);
-//                checkBox.setClickable(true);
-//            }
     }
 
     class ViewHolder {

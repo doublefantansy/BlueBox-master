@@ -1,7 +1,6 @@
 package com.languang.bluebox.activity.picturestorege;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.os.Bundle;
@@ -98,13 +97,13 @@ public class ShareActivity extends BaseFragmentActivity implements OkHttpCallBac
     @Override
     protected void initView() {
         setTitle("图片");
-        setRightText("编辑");
-        setRightOnclick(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(mContext, CompilePictureActivity.class));
-            }
-        });
+//        setRightText("编辑");
+//        setRightOnclick(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(mContext, CompilePictureActivity.class));
+//            }
+//        });
         ImgListEntity url = new Gson().fromJson(getIntent().getStringExtra("ima"), ImgListEntity.class);
         for (ImgEntity imgEntity : url.getImgEntityList()) {
             Glide.with(this)

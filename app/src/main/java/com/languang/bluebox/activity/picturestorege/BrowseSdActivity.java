@@ -3,17 +3,15 @@ package com.languang.bluebox.activity.picturestorege;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
-import android.view.View;
 
+import com.languang.bluebox.R;
+import com.languang.bluebox.adapter.picturestorege.BrowseAdapter;
+import com.languang.bluebox.basework.base.BaseFragmentActivity;
 import com.luck.easyrecyclerview.EasyRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.languang.bluebox.R;
-import com.languang.bluebox.adapter.picturestorege.BrowseAdapter;
-import com.languang.bluebox.adapter.picturestorege.UsbAdapter;
-import com.languang.bluebox.basework.base.BaseFragmentActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -39,13 +37,13 @@ public class BrowseSdActivity extends BaseFragmentActivity {
     @Override
     protected void initView() {
         setTitle("SD卡1");
-        setRightText("选择");
-        setRightOnclick(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+//        setRightText("选择");
+//        setRightOnclick(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
         LinearLayoutManager manager = new LinearLayoutManager(mContext);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(manager);

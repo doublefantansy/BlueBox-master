@@ -10,8 +10,6 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.afollestad.materialdialogs.GravityEnum;
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.gson.Gson;
 import com.google.gson.internal.LinkedTreeMap;
 import com.google.gson.reflect.TypeToken;
@@ -34,8 +32,6 @@ public class PictureStoreageFragment extends BaseFragment implements CountInterf
     TextView none;
     @BindView(R.id.add)
     ImageView add;
-    @BindView(R.id.choose)
-    TextView choose;
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
     @BindView(R.id.title)
@@ -48,7 +44,7 @@ public class PictureStoreageFragment extends BaseFragment implements CountInterf
     List<ImgEntity> imgEntities = new ArrayList<>();
     LinearLayoutManager layoutManager;
     FAInterface faInterface;
-    private MaterialDialog dialog;
+    private com.afollestad.materialdialogs.MaterialDialog dialog;
 
     @Override
     protected int getLayoutResId() {
@@ -61,14 +57,14 @@ public class PictureStoreageFragment extends BaseFragment implements CountInterf
 
     @Override
     protected void initView(View view) {
-        choose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                adapter.begin();
-            }
-        });
-        dialog = new MaterialDialog.Builder(getActivity()).title("正在加载中")
-                .titleGravity(GravityEnum.CENTER)
+//        choose.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                adapter.begin();
+//            }
+//        });
+        dialog = new com.afollestad.materialdialogs.MaterialDialog.Builder(getActivity()).title("正在加载中")
+                .titleGravity(com.afollestad.materialdialogs.GravityEnum.CENTER)
                 .progress(true, 0)
                 .progressIndeterminateStyle(true)
                 .canceledOnTouchOutside(false)
@@ -79,7 +75,6 @@ public class PictureStoreageFragment extends BaseFragment implements CountInterf
     @Override
     public void onDestroy() {
         super.onDestroy();
-
     }
 
     void refresh() {
@@ -87,11 +82,12 @@ public class PictureStoreageFragment extends BaseFragment implements CountInterf
         dialog.show();
         ((MainActivity) getActivity()).clear();
 //        title.setText();
-        title.setText("宝盒新增文件");
+        title.setText("新增文件");
         OkHttpUtils.getInstance()
                 .okPost(getActivity(), TimeUtils.getWlanIp() + "/newlist", null, new OkHttpCallBack() {
                     @Override
                     public void onSucceed(String requestUrl, String response) {
+                        Log.d("cctag", response);
                         ResponseMessage<NewPicture> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<NewPicture>>() {
                         }.getType());
                         if (responseMessage.getData()
@@ -150,56 +146,27 @@ public class PictureStoreageFragment extends BaseFragment implements CountInterf
         layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
-//        OkHttpUtils.getInstance()
-//                .okPost(getActivity(), ApiConstant.BOX_NEW_LIST, null, new OkHttpCallBack() {
-//                    @Override
-//                    public void onSucceed(String requestUrl, String response) {
-//
-//                        ResponseMessage<NewPicture> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<NewPicture>>() {
-//                        }.getType());
-//                        if (responseMessage.getData()
-//                                .getFiles()
-//                                .size() > 0) {
-//                            none.setVisibility(View.GONE);
-//                            recyclerView.setVisibility(View.VISIBLE);
-//                            adapter = new Myadapter(getActivity(), responseMessage.getData()
-//                                    .getFiles());
-//                            recyclerView.setAdapter(adapter);
-//                            adapter.notifyDataSetChanged();
-//                        } else {
-//                            recyclerView.setVisibility(View.GONE);
-//                            none.setVisibility(View.VISIBLE);
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onFailed() {
-//                        Log.d("ccnb", "fail");
-//                    }
-//                });
         refresh();
     }
 
     @Override
     public void click(boolean isadd, int count, ImgEntity imgEntity) {
         if (count == 0) {
-            title.setText("宝盒新增文件");
+            title.setText("新增文件");
         } else {
             title.setText("已选择" + count + "张照片");
         }
-//      imgEntities.add(imgEntity);
-//        imgEntities.remove(imgEntity);
+        Log.d("cctagg", imgEntities.size() + "");
         if (isadd) {
-//            imgEntities.add(imgEntity);
             faInterface.click(true, isadd, imgEntity);
         } else {
-            imgEntities.remove(imgEntity);
+            faInterface.click(true, isadd, imgEntity);
             if (count == 0) {
-//                PictureStoreageFragment.count = 0;
                 faInterface.click(false, isadd, imgEntity);
-            } else {
-                faInterface.click(true, isadd, imgEntity);
             }
+//            else {
+//                faInterface.click(true, isadd, imgEntity);
+//            }
         }
     }
 }

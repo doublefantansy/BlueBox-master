@@ -2,14 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:clipToPadding="true"
-    android:fitsSystemWindows="true">
+    android:layout_height="match_parent">
 
     <com.languang.bluebox.coustomview.tabview.TabContainerView
         android:id="@+id/tab_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         android:isScrollContainer="false"
         app:divideLineColor="@color/common_line_two"
         app:divideLineHeight="0.3dp"
@@ -158,8 +157,16 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/ani"
+                    android:layout_width="@dimen/dp_24"
+                    android:layout_height="@dimen/dp_24"
+                    android:background="@drawable/yuyin"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/ani1"
+                    android:layout_width="@dimen/dp_24"
+                    android:layout_height="@dimen/dp_24"
                     android:src="@drawable/ic_ziyuan" />
 
                 <TextView
@@ -169,11 +176,13 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/meihua"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <ImageView
                     android:layout_width="wrap_content"

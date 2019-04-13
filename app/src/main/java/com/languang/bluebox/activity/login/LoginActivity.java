@@ -9,8 +9,12 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.languang.bluebox.LoadingPopView;
+import com.languang.bluebox.LogFiles;
 import com.languang.bluebox.LookForPasswordActivity;
+import com.languang.bluebox.MainActivity;
 import com.languang.bluebox.R;
+import com.languang.bluebox.TimeUtils;
 import com.languang.bluebox.basework.base.BaseFragmentActivity;
 import com.languang.bluebox.basework.net.OkHttpUtils;
 import com.languang.bluebox.basework.utils.SharedPrefsUtil;
@@ -18,14 +22,17 @@ import com.languang.bluebox.constant.ApiConstant;
 import com.languang.bluebox.constant.Constant;
 import com.languang.bluebox.entity.ResponseMessage;
 import com.languang.bluebox.entity.SpeRes;
+import com.languang.bluebox.entity.facility.FacilityListInfo;
 import com.languang.bluebox.entity.login.LoginRes;
 import com.languang.bluebox.model.LoginModel;
 import com.languang.bluebox.presenter.ILogin;
+import com.languang.bluebox.utils.MobileInfoUtils;
 import com.languang.bluebox.utils.MyUtil;
 import com.mrj.framworklib.utils.OkHttpCallBack;
 import com.mrj.framworklib.utils.ToastUtilsBase;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -48,6 +55,7 @@ public class LoginActivity extends BaseFragmentActivity implements OkHttpCallBac
     TextView find_pwd;
     private ILogin model;
     boolean issms = false;
+    LoadingPopView popView;
 
     @Override
     protected int getLayoutResId() {
@@ -56,7 +64,7 @@ public class LoginActivity extends BaseFragmentActivity implements OkHttpCallBac
 
     @Override
     protected void initView() {
-//        Log.d("lsy", TimeUtils.getWlanIp());
+        popView = new LoadingPopView(this);
         userPhoneEt.setText("15801653609");
         pwdEt.setText("123");
         find_pwd.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +79,7 @@ public class LoginActivity extends BaseFragmentActivity implements OkHttpCallBac
                             .okPost(LoginActivity.this, ApiConstant.SEND_SMS_URL, map, new OkHttpCallBack() {
                                 @Override
                                 public void onSucceed(String requestUrl, String response) {
+                                    LogFiles.d("cctag", requestUrl + ":" + response);
                                     SpeRes<MesBean> m = new Gson().fromJson(response, new TypeToken<SpeRes<MesBean>>() {
                                     }.getType());
                                     Toast.makeText(LoginActivity.this, m.getData()
@@ -144,31 +153,108 @@ public class LoginActivity extends BaseFragmentActivity implements OkHttpCallBac
         }
         params.put("imei", MyUtil.getImei(this));
         model.matchBox(ApiConstant.LOGIN_URL, params, this);
-//        model.matchBox(ApiConstant.WLAN_SYS_LOGIN, params, this);
     }
 
     @Override
     public void onSucceed(String requestUrl, String response) {
-        Log.d("ccnb1111", response);
+        LogFiles.d("cctag", requestUrl + ":" + response);
         ResponseMessage<LoginRes> resResponseMessage = new Gson().fromJson(response,
                 new TypeToken<ResponseMessage<LoginRes>>() {
                 }.getType());
         if (Constant.SUCCEED_CODE == resResponseMessage.getRet() && resResponseMessage.getData()
                 .getStatus()
                 .equals("9999")) {
-//            if (resResponseMessage.getData().)
-            String token = SharedPrefsUtil.getValue("InitialInfo", "AccessToken", "");
-            if (token.equals(resResponseMessage.getData()
-                    .getToken())) {
-                startActivity(new Intent(this, FacilityListActivity.class));
-                finish();
-            } else {
-                SharedPrefsUtil.putValue("InitialInfo", "AccessToken", resResponseMessage.getData()
-                        .getToken());
-                startActivity(new Intent(this, FacilityListActivity.class));
-                finish();
-            }
+            SharedPrefsUtil.putValue("InitialInfo", "AccessToken", resResponseMessage.getData()
+                    .getToken());
+            OkHttpUtils.getInstance()
+                    .okPost(LoginActivity.this, ApiConstant.CLOUD_BLUES, null, new OkHttpCallBack() {
+                        @Override
+                        public void onSucceed(String requestUrl, String response) {
+                            LogFiles.d("cctag", requestUrl + ":" + response);
+                            try {
+                                ResponseMessage<List<FacilityListInfo>> listResponseMessage = new Gson().fromJson(response,
+                                        new TypeToken<ResponseMessage<List<FacilityListInfo>>>() {
+                                        }.getType());
+                                List<FacilityListInfo> listInfos = listResponseMessage.getData();
+                                for (FacilityListInfo listInfo : listInfos) {
+                                    if (!TimeUtils.getGateway()
+                                            .equals("http://box.haotuwei.com")) {
+                                        listInfo.setOnline(TimeUtils.isOnline(LoginActivity.this, listInfo.getLanip()));
+                                    } else {
+                                        listInfo.setOnline(true);
+                                    }
+//                                    listInfo.setOnline(TimeUtils.isOnline(LoginActivity.this, listInfo.getLanip()));
+//                                    Log.d("cctag", TimeUtils.isOnline(LoginActivity.this, listInfo.getLanip()) + "");
+                                }
+                                if (listResponseMessage.getRet() == 200) {
+                                    if (listInfos.size() == 1) {
+                                        if (listInfos.get(0)
+                                                .isOnline()) {
+                                            String token = SharedPrefsUtil.getValue("InitialInfo", "AccessToken", "");
+                                            if (!TimeUtils.getGateway()
+                                                    .equals("http://box.haotuwei.com")) {
+                                                TimeUtils.setWlanIp(true, "http://" + listInfos.get(0)
+                                                        .getLanip());
+                                            }
+                                            Map<String, Object> params = new HashMap<>(2);
+                                            params.put("token", token);
+                                            params.put("imei", MobileInfoUtils.getIMEI(LoginActivity.this));
+                                            params.put("pwdmd5", listInfos.get(0)
+                                                    .getPwdmd5());
+                                            params.put("mobile", listInfos.get(0)
+                                                    .getMobile());
+//                                            Log.d("ccnb", params + "");
+                                            OkHttpUtils.getInstance()
+                                                    .okPost(LoginActivity.this, TimeUtils.getWlanIp() + "/boxlogin", params, new OkHttpCallBack() {
+                                                        @Override
+                                                        public void onSucceed(String requestUrl, String response) {
+                                                            LogFiles.d("cctag", requestUrl + ":" + response);
+                                                            ResponseMessage<LoginBean> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<LoginBean>>() {
+                                                            }.getType());
+                                                            if (Constant.SUCCEED_CODE == responseMessage.getRet()) {
+                                                                if (responseMessage.getData()
+                                                                        .getStatus()
+                                                                        .equals("9999")) {
+                                                                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                                                    finish();
+                                                                } else {
+                                                                    Toast.makeText(LoginActivity.this, responseMessage.getData()
+                                                                            .getMsg(), Toast.LENGTH_SHORT)
+                                                                            .show();
+                                                                    popView.dissmiss();
+                                                                }
+                                                            }
+                                                        }
+
+                                                        @Override
+                                                        public void onFailed() {
+                                                            popView.dissmiss();
+                                                        }
+                                                    });
+                                        } else {
+                                            popView.dissmiss();
+                                            startActivity(new Intent(LoginActivity.this, FacilityListActivity.class));
+                                            finish();
+                                        }
+                                    } else {
+                                        startActivity(new Intent(LoginActivity.this, FacilityListActivity.class));
+                                        finish();
+                                    }
+                                }
+                            } catch (Exception e) {
+                                popView.dissmiss();
+                                Toast.makeText(LoginActivity.this, "没有关联的设备", Toast.LENGTH_SHORT)
+                                        .show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailed() {
+                            popView.dissmiss();
+                        }
+                    });
         } else {
+            popView.dissmiss();
             ToastUtilsBase.showToastCenter(this, resResponseMessage.getData()
                     .getMsg());
         }
@@ -177,6 +263,7 @@ public class LoginActivity extends BaseFragmentActivity implements OkHttpCallBac
     @Override
     public void onFailed() {
         Log.d("ccnb", "11");
+        popView.dissmiss();
     }
 
     @OnClick({R.id.find_pwd, R.id.login_submit, R.id.to_register, R.id.sms_login})
@@ -185,14 +272,7 @@ public class LoginActivity extends BaseFragmentActivity implements OkHttpCallBac
             case R.id.find_pwd:
                 break;
             case R.id.login_submit:
-//                if (TextUtils.isEmpty(userPhoneEt.getText().toString())) {
-//                    ToastUtilsBase.showToastCenter(this, "手机号不能为空");
-//                    return;
-//                }
-//                if (TextUtils.isEmpty(pwdEt.getText().toString())) {
-//                    ToastUtilsBase.showToastCenter(this, "密码不能为空");
-//                    return;
-//                }
+                popView.show();
                 login(userPhoneEt.getText()
                         .toString(), pwdEt.getText()
                         .toString());

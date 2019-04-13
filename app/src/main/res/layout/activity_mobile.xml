@@ -4,12 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_fff"
+    android:background="@color/white"
     android:clipToPadding="true"
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <include layout="@layout/item_title_bar" />
+    <com.xuexiang.xui.widget.actionbar.TitleBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/white"
+        app:tb_actionPadding="20dp"
+        app:tb_barHeight="65dp"
+        app:tb_sideTextPadding="20dp"
+        app:tb_titleText="登录到设备"
+        app:tb_titleTextColor="@color/balck" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,25 +29,17 @@
         android:orientation="horizontal">
 
         <TextView
-            android:textColor="@color/balck"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="主机名称:" />
+            android:text="主机名称:"
+            android:textColor="@color/balck" />
 
         <TextView
-            android:textColor="@color/balck"
             android:id="@+id/hostName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/balck" />
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_1"
-        android:layout_marginLeft="@dimen/dp_23"
-        android:layout_marginTop="@dimen/dp_10"
-        android:layout_marginRight="@dimen/dp_23"
-        android:background="@color/main_bg" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,25 +50,17 @@
         android:orientation="horizontal">
 
         <TextView
-            android:textColor="@color/balck"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="硬件类型:" />
+            android:text="硬件类型:"
+            android:textColor="@color/balck" />
 
         <TextView
-            android:textColor="@color/balck"
             android:id="@+id/type"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/balck" />
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_1"
-        android:layout_marginLeft="@dimen/dp_23"
-        android:layout_marginTop="@dimen/dp_10"
-        android:layout_marginRight="@dimen/dp_23"
-        android:background="@color/main_bg" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -78,25 +71,17 @@
         android:orientation="horizontal">
 
         <TextView
-            android:textColor="@color/balck"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="激活状态:" />
+            android:text="激活状态:"
+            android:textColor="@color/balck" />
 
         <TextView
-            android:textColor="@color/balck"
             android:id="@+id/status"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/balck" />
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_1"
-        android:layout_marginLeft="@dimen/dp_23"
-        android:layout_marginTop="@dimen/dp_10"
-        android:layout_marginRight="@dimen/dp_23"
-        android:background="@color/main_bg" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -110,22 +95,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="硬件SN:"
-            android:textColor="@color/balck"/>
+            android:textColor="@color/balck" />
 
         <TextView
-            android:textColor="@color/balck"
             android:id="@+id/sn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/balck" />
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_1"
-        android:layout_marginLeft="@dimen/dp_23"
-        android:layout_marginTop="@dimen/dp_10"
-        android:layout_marginRight="@dimen/dp_23"
-        android:background="@color/main_bg" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -136,65 +113,44 @@
         android:orientation="horizontal">
 
         <TextView
-            android:textColor="@color/balck"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="网络:" />
+            android:text="网络:"
+            android:textColor="@color/balck" />
 
         <TextView
-            android:textColor="@color/balck"
             android:id="@+id/net"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/balck" />
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_1"
-        android:layout_marginLeft="@dimen/dp_23"
-        android:layout_marginTop="@dimen/dp_10"
-        android:layout_marginRight="@dimen/dp_23"
-        android:background="@color/main_bg" />
-    <!--<TextView-->
-    <!--style="@style/no_font_padding_text_view"-->
-    <!--android:layout_marginLeft="@dimen/dp_23"-->
-    <!--android:layout_marginTop="@dimen/dp_51"-->
-    <!--android:text="拥有管理密码可以导入标注归档所有图片和视频"-->
-    <!--android:textColor="@color/color_333"-->
-    <!--android:textSize="@dimen/text_size_14" />-->
-    <!--<View-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="@dimen/dp_1"-->
-    <!--android:layout_marginLeft="@dimen/dp_23"-->
-    <!--android:layout_marginRight="@dimen/dp_23"-->
-    <!--android:layout_marginTop="@dimen/dp_10"-->
-    <!--android:background="@color/main_bg" />-->
     <TextView
         style="@style/no_font_padding_text_view"
         android:layout_marginLeft="@dimen/dp_23"
         android:layout_marginTop="@dimen/dp_19"
         android:text="绑定手机"
         android:textColor="@color/color_333"
-        android:textSize="@dimen/text_size_20" />
+        android:textSize="@dimen/text_size_20"
+        android:visibility="gone" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_58"
         android:layout_marginLeft="@dimen/dp_23"
         android:layout_marginTop="@dimen/dp_16"
-        android:layout_marginRight="@dimen/dp_23">
+        android:layout_marginRight="@dimen/dp_23"
+        android:visibility="gone">
 
-
-            <EditText
-                android:id="@+id/mobile"
-                android:hint="请输入绑定手机号"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@mipmap/ic_input_bg"
-                android:inputType="textPassword"
-                android:padding="@dimen/dp_1"
-                android:paddingRight="@dimen/dp_10" />
-
+        <EditText
+            android:id="@+id/mobile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@mipmap/ic_input_bg"
+            android:hint="请输入绑定手机号"
+            android:inputType="textPassword"
+            android:padding="@dimen/dp_1"
+            android:paddingRight="@dimen/dp_10" />
     </RelativeLayout>
 
     <View
@@ -208,37 +164,37 @@
     <TextView
         style="@style/no_font_padding_text_view"
         android:layout_marginLeft="@dimen/dp_23"
-        android:layout_marginTop="@dimen/dp_19"
+        android:layout_marginTop="@dimen/dp_69"
         android:text="自定义名称"
         android:textColor="@color/color_333"
-        android:textSize="@dimen/text_size_20" />
+        android:textSize="18sp" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_58"
+        android:layout_height="@dimen/dp_38"
         android:layout_marginLeft="@dimen/dp_23"
         android:layout_marginTop="@dimen/dp_16"
         android:layout_marginRight="@dimen/dp_23">
 
-
-
-            <EditText
-                android:id="@+id/name"
-                android:hint="请自定义设备昵称"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@mipmap/ic_input_bg"
-                android:inputType="textPassword"
-                android:paddingRight="@dimen/dp_10" />
-
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white1"
+            android:hint="请自定义设备昵称"
+            android:inputType="text"
+            android:paddingRight="@dimen/dp_10" />
     </RelativeLayout>
- <TextView
-     android:layout_width="match_parent"
-     android:layout_height="wrap_content"
-     android:gravity="center"
-     android:textSize="12sp"
-     android:layout_marginTop="@dimen/dp_5"
-     android:text="提示:绑定手机或修改昵称后，请重新连接WIFI并重新启动盒子"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+        android:text="提示:绑定手机或修改昵称后，请重新连接WIFI并重新启动盒子"
+        android:textColor="@color/common_red"
+        android:textSize="12sp" />
+
     <TextView
         android:id="@+id/next"
         android:layout_width="@dimen/dp_200"
@@ -246,7 +202,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_margin="@dimen/dp_20"
         android:gravity="center"
-        android:text="下一步"
+        android:text="保存并重启"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:bl_corners_radius="5dp"

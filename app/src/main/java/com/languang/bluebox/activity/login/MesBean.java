@@ -1,6 +1,6 @@
 package com.languang.bluebox.activity.login;
 
-class MesBean {
+public class MesBean {
     /**
      * status : 9999
      * msg : 短息发送成功

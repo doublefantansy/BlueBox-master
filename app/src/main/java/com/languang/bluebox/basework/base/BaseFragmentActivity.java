@@ -13,23 +13,18 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.mrj.framworklib.utils.AppManager;
-import com.mrj.framworklib.utils.ScreenUtilBase;
-import com.mrj.framworklib.view.CustomProgressDialog;
-
-import java.util.List;
-
-import com.languang.bluebox.R;
 import com.languang.bluebox.basework.costom.DefaultCode;
 import com.languang.bluebox.basework.utils.HideInputUtils;
 import com.languang.bluebox.basework.utils.ProgressDialogUtil;
+import com.mrj.framworklib.utils.AppManager;
+import com.mrj.framworklib.utils.ScreenUtilBase;
+import com.mrj.framworklib.view.CustomProgressDialog;
 import com.noober.background.BackgroundLibrary;
+import com.xuexiang.xui.XUI;
 
-import butterknife.BindView;
+import java.util.List;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -46,28 +41,28 @@ public abstract class BaseFragmentActivity extends AppCompatActivity {
 
     protected Activity mContext;
     protected String TAG = "marj";
-    //title返回
-    @Nullable
-    @BindView(R.id.item_title_back_layout)
-    LinearLayout backLayout;
-    //title标题
-    @Nullable
-    @BindView(R.id.item_title_name)
-    TextView titleName;
-
-    //titleSmall标题
-    @Nullable
-    @BindView(R.id.item_title_small_name)
-    TextView titleSmallName;
-    //title右边文字
-    @Nullable
-    @BindView(R.id.item_title_right_tv)
-    TextView rightText;
-
-    //title右边文字Layout
-    @Nullable
-    @BindView(R.id.item_title_right_layout)
-    LinearLayout rightLayout;
+//    //title返回
+//    @Nullable
+//    @BindView(R.id.item_title_back_layout)
+//    LinearLayout backLayout;
+//    //title标题
+//    @Nullable
+//    @BindView(R.id.item_title_name)
+//    TextView titleName;
+//
+//    //titleSmall标题
+//    @Nullable
+//    @BindView(R.id.item_title_small_name)
+//    TextView titleSmallName;
+//    //title右边文字
+//    @Nullable
+//    @BindView(R.id.item_title_right_tv)
+//    TextView rightText;
+//
+//    //title右边文字Layout
+//    @Nullable
+//    @BindView(R.id.item_title_right_layout)
+//    LinearLayout rightLayout;
 
     private BaseActivityReceiver receiver;
 
@@ -93,6 +88,7 @@ public abstract class BaseFragmentActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         try {
+            XUI.initTheme(this);
             BackgroundLibrary.inject(this);
             super.onCreate(savedInstanceState);
         } catch (Exception e) {
@@ -100,79 +96,87 @@ public abstract class BaseFragmentActivity extends AppCompatActivity {
         }
         setContentView(getLayoutResId());
         AppManager.getAppManager().addActivity(this);
+//        setStatusBarColor(this,getResources().getColor(R.color.myBlue));
 
-        initBackClick();
+//        initBackClick();
 
     }
-
+//    public static void setStatusBarColor(Activity activity, int colorId) {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            Window window = activity.getWindow();
+//            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+//            window.setStatusBarColor(activity.getResources().getColor(colorId));
+//        }
+//    }
     /**
      * 返回按钮监听
      */
-    public void initBackClick() {
-        if (backLayout != null) {
-            backLayout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    InputMethodManager inputmanger = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-                    inputmanger.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                    AppManager.getAppManager().finishActivity(BaseFragmentActivity.this);
-                    finish();
-                }
-            });
-        }
-    }
+//    public void initBackClick() {
+//        if (backLayout != null) {
+//            backLayout.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    InputMethodManager inputmanger = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+//                    inputmanger.hideSoftInputFromWindow(v.getWindowToken(), 0);
+//                    AppManager.getAppManager().finishActivity(BaseFragmentActivity.this);
+//                    finish();
+//                }
+//            });
+//        }
+//    }
 
     /**
      * 设置标题
      *
      * @param name 标题名
      */
-    public void setTitle(String name) {
-        if (titleName != null) {
-            titleName.setText(name);
-        }
-    }
-
-    /**
-     * 隐藏大标题  显示小标题
-     *
-     * @param message 小标题显示内容
-     */
-    public void hideBigeTitleShowSmallTitle(String message) {
-        titleName.setVisibility(View.GONE);
-        titleSmallName.setText(message);
-    }
+//    public void setTitle(String name) {
+//        if (titleName != null) {
+//            titleName.setText(name);
+//        }
+//    }
+//
+//    /**
+//     * 隐藏大标题  显示小标题
+//     *
+//     * @param message 小标题显示内容
+//     */
+//    public void hideBigeTitleShowSmallTitle(String message) {
+//        titleName.setVisibility(View.GONE);
+//        titleSmallName.setText(message);
+//    }
 
     /**
      * 隐藏小标题  显示小大标题
      *
      * @param message 大标题显示内容
      */
-    public void hideSmallTitleShowBigeTitle(String message) {
-        titleName.setText(message);
-        titleSmallName.setVisibility(View.GONE);
-    }
+//    public void hideSmallTitleShowBigeTitle(String message) {
+//        titleName.setText(message);
+//        titleSmallName.setVisibility(View.GONE);
+//    }
 
     /**
      * 设置右边文字
      * 默认隐藏
      */
-    public void setRightText(String name) {
-        if (rightText != null) {
-            rightText.setVisibility(View.VISIBLE);
-            rightText.setText(name);
-        }
-    }
+//    public void setRightText(String name) {
+//        if (rightText != null) {
+//            rightText.setVisibility(View.VISIBLE);
+//            rightText.setText(name);
+//        }
+//    }
 
 
     /**
      * 设置右边文字点击事件
      *
-     * @param onClickListener 点击监听
-     */
-    public void setRightOnclick(View.OnClickListener onClickListener) {
-        rightLayout.setOnClickListener(onClickListener);
-    }
+//     * @param onClickListener 点击监听
+//     */
+//    public void setRightOnclick(View.OnClickListener onClickListener) {
+//        rightLayout.setOnClickListener(onClickListener);
+//    }
 
 
     @Override

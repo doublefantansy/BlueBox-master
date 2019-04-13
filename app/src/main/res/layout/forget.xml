@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_fff"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <com.xuexiang.xui.widget.actionbar.TitleBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/white1"
+        app:tb_actionPadding="20dp"
+        app:tb_barHeight="65dp"
+        app:tb_sideTextPadding="20dp"
+        app:tb_titleText="登录到设备"
+        app:tb_titleTextColor="@color/balck" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_23"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_23"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="主机名称:"
+            android:textColor="@color/balck" />
+
+        <TextView
+            android:id="@+id/hostName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/balck" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_23"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_23"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="硬件类型:"
+            android:textColor="@color/balck" />
+
+        <TextView
+            android:id="@+id/type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/balck" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_23"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_23"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="激活状态:"
+            android:textColor="@color/balck" />
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/balck" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_23"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_23"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="硬件SN:"
+            android:textColor="@color/balck" />
+
+        <TextView
+            android:id="@+id/sn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/balck" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_23"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_23"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="网络:"
+            android:textColor="@color/balck" />
+
+        <TextView
+            android:id="@+id/net"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/balck" />
+    </LinearLayout>
+
+    <TextView
+        style="@style/no_font_padding_text_view"
+        android:layout_marginLeft="@dimen/dp_23"
+        android:layout_marginTop="79dp"
+        android:text="登录密码"
+        android:textColor="@color/color_333"
+        android:textSize="@dimen/text_size_20" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_48"
+        android:layout_marginLeft="@dimen/dp_23"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginRight="@dimen/dp_23">
+
+        <EditText
+            android:id="@+id/pass1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@mipmap/ic_input_bg"
+            android:hint="请输入8位硬件CODE,不区分大小写"
+            android:inputType="textPassword"
+            android:padding="@dimen/dp_1"
+            android:paddingRight="@dimen/dp_10" />
+    </RelativeLayout>
+
+    <com.xuexiang.xui.widget.button.ButtonView
+        android:id="@+id/next"
+        android:layout_width="@dimen/dp_250"
+        android:layout_height="@dimen/dp_40"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp"
+        android:text="提交机器码"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:textColor="@color/white1"
+        app:textSolidColor="@color/myBlue" />
+
+    <TextView
+        android:id="@+id/forget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_50"
+        android:gravity="center"
+        android:text="返回密码登录"
+        android:textColor="@color/default_blue" />
+    <!--<TextView-->
+    <!--android:id="@+id/next"-->
+    <!--android:layout_width="@dimen/dp_200"-->
+    <!--android:layout_height="@dimen/dp_35"-->
+    <!--android:layout_gravity="center_horizontal"-->
+    <!--android:layout_margin="@dimen/dp_30"-->
+    <!--android:gravity="center"-->
+    <!--android:text="完成"-->
+    <!--android:textColor="@color/white"-->
+    <!--android:textSize="18sp"-->
+    <!--app:bl_corners_radius="5dp"-->
+    <!--app:bl_solid_color="@color/myBlue"-->
+    <!--tools:ignore="MissingPrefix" />-->
+</LinearLayout>

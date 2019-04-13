@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/dp_80"
+    android:background="@color/white1"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
         android:paddingLeft="@dimen/dp_5"
         android:text="我的设备"
         android:textColor="@color/gray" />
@@ -27,19 +29,19 @@
             android:textSize="24sp" />
 
         <ImageView
+            android:id="@+id/erweima"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dp_30"
-            android:layout_marginLeft="@dimen/dp_5"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_5"
             android:layout_toRightOf="@id/name"
-            android:src="@drawable/ic_erweima" />
+            android:src="@drawable/ic_erweima_3" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/ic_laji" />
+            android:src="@drawable/ic_laji_2" />
     </RelativeLayout>
-
 </LinearLayout>

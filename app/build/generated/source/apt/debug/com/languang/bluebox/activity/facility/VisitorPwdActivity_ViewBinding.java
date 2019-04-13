@@ -1,21 +1,22 @@
 // Generated code from Butter Knife. Do not modify!
 package com.languang.bluebox.activity.facility;
 
+import android.support.annotation.CallSuper;
 import android.support.annotation.UiThread;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import butterknife.Unbinder;
 import butterknife.internal.DebouncingOnClickListener;
 import butterknife.internal.Utils;
 import com.languang.bluebox.R;
-import com.languang.bluebox.basework.base.BaseFragmentActivity_ViewBinding;
 import java.lang.IllegalStateException;
 import java.lang.Override;
 
-public class VisitorPwdActivity_ViewBinding extends BaseFragmentActivity_ViewBinding {
+public class VisitorPwdActivity_ViewBinding implements Unbinder {
   private VisitorPwdActivity target;
 
-  private View view2131230854;
+  private View view2131230951;
 
   @UiThread
   public VisitorPwdActivity_ViewBinding(VisitorPwdActivity target) {
@@ -24,15 +25,13 @@ public class VisitorPwdActivity_ViewBinding extends BaseFragmentActivity_ViewBin
 
   @UiThread
   public VisitorPwdActivity_ViewBinding(final VisitorPwdActivity target, View source) {
-    super(target, source);
-
     this.target = target;
 
     View view;
     target.pwdEt = Utils.findRequiredViewAsType(source, R.id.pwd_et, "field 'pwdEt'", EditText.class);
     view = Utils.findRequiredView(source, R.id.eye, "field 'eye' and method 'onViewClicked'");
     target.eye = Utils.castView(view, R.id.eye, "field 'eye'", ImageView.class);
-    view2131230854 = view;
+    view2131230951 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -42,6 +41,7 @@ public class VisitorPwdActivity_ViewBinding extends BaseFragmentActivity_ViewBin
   }
 
   @Override
+  @CallSuper
   public void unbind() {
     VisitorPwdActivity target = this.target;
     if (target == null) throw new IllegalStateException("Bindings already cleared.");
@@ -50,9 +50,7 @@ public class VisitorPwdActivity_ViewBinding extends BaseFragmentActivity_ViewBin
     target.pwdEt = null;
     target.eye = null;
 
-    view2131230854.setOnClickListener(null);
-    view2131230854 = null;
-
-    super.unbind();
+    view2131230951.setOnClickListener(null);
+    view2131230951 = null;
   }
 }

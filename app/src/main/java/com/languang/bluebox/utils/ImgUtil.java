@@ -50,6 +50,9 @@ public class ImgUtil {
                     imgEntity.setSmallpath(jsonObject5.getString("smallpath"));
                     imgEntity.setSrcname(jsonObject5.getString("srcname"));
                     imgEntity.setSrcpath(jsonObject5.getString("srcpath"));
+                    imgEntity.setVocuuid(jsonObject5.getString("vocuuid"));
+                    imgEntity.setVoice1(jsonObject5.getString("voice"));
+
 //                    ImgEntity.TagsBean tagsBean = new ImgEntity.TagsBean();
                     String tags = jsonObject5.getString("tags");
                     imgEntity.setTags(tags);

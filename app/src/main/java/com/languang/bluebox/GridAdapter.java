@@ -62,12 +62,7 @@ public class GridAdapter extends BaseAdapter {
                         .getSmallpath() + list.get(position)
                         .getSmallname())
                 .into(holder.imageView);
-//        list.get(position)
-//                .setLinearLayout(holder.frameLayout);
-//        newList.get(position)
-//                .setGou(holder.gou);
-//        newList.get(position)
-//                .setImageView(holder.imageView);
+
         list.get(position)
                 .setChecked(list.get(position)
                         .isChecked());

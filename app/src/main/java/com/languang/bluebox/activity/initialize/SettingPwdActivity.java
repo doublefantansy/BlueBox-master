@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.languang.bluebox.LoadingPopView;
 import com.languang.bluebox.R;
 import com.languang.bluebox.TimeUtils;
 import com.languang.bluebox.activity.facility.AdminPwdActivity;
@@ -30,6 +31,7 @@ public class SettingPwdActivity extends BaseFragmentActivity {
     NetPort netPort;
     EditText password1;
     EditText edit;
+    LoadingPopView popView;
 
     @Override
     protected int getLayoutResId() {
@@ -38,7 +40,9 @@ public class SettingPwdActivity extends BaseFragmentActivity {
 
     @Override
     protected void initView() {
+        popView = new LoadingPopView(this);
         next = findViewById(R.id.next);
+        next.setText("下一步");
         TextView hostName = findViewById(R.id.hostName);
         TextView type = findViewById(R.id.type);
         TextView status = findViewById(R.id.status);
@@ -68,6 +72,7 @@ public class SettingPwdActivity extends BaseFragmentActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                popView.show();
                 Map<String, Object> params = new HashMap<>(1);
                 params.put("admin", password1.getText()
                         .toString());
@@ -76,17 +81,19 @@ public class SettingPwdActivity extends BaseFragmentActivity {
                 params.put("token", MMKV.defaultMMKV()
                         .decodeString("token"));
                 OkHttpUtils.getInstance()
-                        .okPost(SettingPwdActivity.this, TimeUtils.getGateway(SettingPwdActivity.this) + "/setbox", null, new OkHttpCallBack() {
+                        .okPost(SettingPwdActivity.this, TimeUtils.getGateway() + "/setbox", null, new OkHttpCallBack() {
                             @Override
                             public void onSucceed(String requestUrl, String response) {
                                 Intent intent = new Intent(SettingPwdActivity.this, AdminPwdActivity.class);
                                 intent.putExtra("pwd", password1.getText()
                                         .toString());
                                 startActivity(intent);
+                                finish();
                             }
 
                             @Override
                             public void onFailed() {
+                                popView.dissmiss();
                                 Log.d("ccnb", "f");
                             }
                         });

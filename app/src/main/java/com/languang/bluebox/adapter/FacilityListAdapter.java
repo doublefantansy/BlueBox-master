@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.languang.bluebox.R;
@@ -27,54 +28,53 @@ public class FacilityListAdapter extends RecyclerArrayAdapter<FacilityListInfo> 
         return new CouponViewHolder(parent);
     }
 
-    public class CouponViewHolder extends BaseViewHolder<FacilityListInfo> implements View.OnClickListener {
-        TextView nickName, boxName, setNick, code, deleteBox, netInfo;
+    public class CouponViewHolder extends BaseViewHolder<FacilityListInfo>  {
+        TextView nickName, boxName, code;
+        ImageView laji, erweima;
 
         public CouponViewHolder(ViewGroup parent) {
             super(parent, R.layout.item_facility_list);
             nickName = $(R.id.box_nick);
             boxName = $(R.id.box_name);
-            setNick = $(R.id.set_nick);
             code = $(R.id.code);
-            deleteBox = $(R.id.delete_box);
-            netInfo = $(R.id.net_info);
+            laji = $(R.id.laji);
+            erweima = $(R.id.erweima);
         }
 
         @Override
         public void setData(FacilityListInfo data, int position) {
-            nickName.setText(data.getNikename());
-            boxName.setText(data.getBluename());
             if (data.isOnline()) {
                 boxName.setTextColor(context.getResources()
                         .getColor(R.color.myBlue));
+                nickName.setTextColor(context.getResources()
+                        .getColor(R.color.myBlue));
+                laji.setImageDrawable(context.getResources()
+                        .getDrawable(R.drawable.ic_laji));
+                erweima.setImageDrawable(context.getResources()
+                        .getDrawable(R.drawable.ic_erweima));
             } else {
                 boxName.setTextColor(context.getResources()
                         .getColor(R.color.gray));
+                nickName.setTextColor(context.getResources()
+                        .getColor(R.color.gray));
+                laji.setImageDrawable(context.getResources()
+                        .getDrawable(R.drawable.ic_laji_2));
+                erweima.setImageDrawable(context.getResources()
+                        .getDrawable(R.drawable.ic_erweima_3));
             }
+            nickName.setText(data.getNikename() + (data.isOnline() ? "(在线)" : "(离线)"));
+            boxName.setText(data.getBluename());
             uid = data.getBlueuuid();
-            setNick.setOnClickListener(this);
-            code.setOnClickListener(this);
-            deleteBox.setOnClickListener(this);
-            netInfo.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View v) {
-            final FacilityListActivity activity = (FacilityListActivity) context;
-            switch (v.getId()) {
-                case R.id.set_nick:
-                    activity.showDialog(uid);
-                    break;
-                case R.id.code:
-                    break;
-                case R.id.delete_box:
+            laji.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
                     builder.setTitle("提示")
                             .setMessage("是否确认删除？")
                             .setPositiveButton("确认", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    activity.deleteBox(uid);
+                                    ((FacilityListActivity) context).deleteBox(uid);
                                     dialog.dismiss();
                                 }
                             })
@@ -86,11 +86,14 @@ public class FacilityListAdapter extends RecyclerArrayAdapter<FacilityListInfo> 
                             });
                     AlertDialog alertDialog = builder.create();
                     alertDialog.show();
-                    break;
-                case R.id.net_info:
-                    break;
-            }
+                }
+            });
+//            setNick.setOnClickListener(this);
+//            code.setOnClickListener(this);
+//            deleteBox.setOnClickListener(this);
+//            netInfo.setOnClickListener(this);
         }
+
     }
 
     @Override

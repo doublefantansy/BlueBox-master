@@ -2,19 +2,36 @@ package com.languang.bluebox;
 
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Bitmap;
+import android.graphics.drawable.AnimationDrawable;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.languang.bluebox.activity.SplashActivity;
+import com.languang.CropActivity;
+import com.languang.bluebox.activity.VoiceBean;
 import com.languang.bluebox.basework.base.BaseFragmentActivity;
 import com.languang.bluebox.basework.net.OkHttpUtils;
+import com.languang.bluebox.constant.ApiConstant;
 import com.languang.bluebox.constant.Constant;
 import com.languang.bluebox.coustomview.tabview.MainViewAdapter;
 import com.languang.bluebox.coustomview.tabview.TabContainerView;
@@ -34,12 +51,16 @@ import com.languang.bluebox.utils.WiFiHandler;
 import com.languang.bluebox.utils.wifi.Courier;
 import com.mrj.framworklib.utils.OkHttpCallBack;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -65,8 +86,18 @@ public class MainActivity extends BaseFragmentActivity implements FAInterface {
     LinearLayout biaozhus;
     @BindView(R.id.del)
     LinearLayout del;
+    @BindView(R.id.share)
+    LinearLayout share;
+    @BindView(R.id.voice)
+    LinearLayout voice;
+    @BindView(R.id.meihua)
+    LinearLayout meihua;
     @BindView(R.id.ss2)
     LinearLayout ss2;
+    @BindView(R.id.ani)
+    ImageView anim;
+    @BindView(R.id.ani1)
+    ImageView anim1;
     @BindView(R.id.tianjiadaochu)
     LinearLayout out;
     private WiFiStateReceiver wiFiStateReceiver;
@@ -82,14 +113,31 @@ public class MainActivity extends BaseFragmentActivity implements FAInterface {
     FacilityFragment fragment5;
     List<Fragment> fragments = new ArrayList<>();
     List<ImgEntity> chose = new ArrayList<>();
-    List<ImgEntity> mapChose;
+    List<ImgEntity> mapChose = new ArrayList<>();
     List<ImgListEntity> mapChose1;
+    Thread thread;
+    PopupWindow popupWindow;
+    AnimationDrawable drawable;
+    WindowManager.LayoutParams ll;
+    ArrayList<Uri> imageUris = new ArrayList<Uri>();
+    TextView content;
+    int count3 = 0;
     int count1 = 0;
     private In in = new In() {
         @Override
         public void click() {
         }
     };
+    private boolean isFirst = true;
+    private Bitmap bitmap;
+
+    public List<ImgEntity> getMapChose() {
+        return mapChose;
+    }
+
+    public void setMapChose(List<ImgEntity> mapChose) {
+        this.mapChose = mapChose;
+    }
 
     public void clear() {
         chose.clear();
@@ -97,6 +145,17 @@ public class MainActivity extends BaseFragmentActivity implements FAInterface {
         tabContainer.setTabTextGone(false);
     }
 
+    public void clear1() {
+        mapChose.clear();
+        ss.setVisibility(View.INVISIBLE);
+        tabContainer.setTabTextGone(false);
+    }
+
+    //    public void clea1r() {
+//        chose.clear();
+//        ss.setVisibility(View.INVISIBLE);
+//        tabContainer.setTabTextGone(false);
+//    }
     @Override
     protected int getLayoutResId() {
         return R.layout.activity_main;
@@ -115,11 +174,178 @@ public class MainActivity extends BaseFragmentActivity implements FAInterface {
 
     @Override
     protected void initView() {
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                Window window = getWindow();
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.setStatusBarColor(
+                        getResources()
+                                .getColor(R.color.myBlue));
+                //底部导航栏
+                window.setNavigationBarColor(getResources()
+                        .getColor(R.color.myBlue));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                count3 = 0;
+                imageUris.clear();
+                for (ImgEntity imgEntity : mapChose) {
+                    Glide.with(MainActivity.this)
+                            .asBitmap()
+                            .load(TimeUtils.getWlanIp() + "/public/" + imgEntity
+                                    .getSrcpath() + imgEntity
+                                    .getSrcname())
+                            .into(new SimpleTarget<Bitmap>() {
+                                @Override
+                                public void onResourceReady(Bitmap resource, Transition<? super Bitmap> transition) {
+                                    bitmap = resource;
+                                    count3++;
+                                    File file = new File(CropActivity.saveBitmap(MainActivity.this, bitmap));
+                                    imageUris.add(Uri.fromFile(file));
+                                    if (count3 == mapChose.size()) {
+                                        Intent shareIntent = new Intent();
+                                        shareIntent.setAction(Intent.ACTION_SEND_MULTIPLE);
+                                        shareIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, imageUris);
+                                        shareIntent.setType("image/*");
+                                        startActivity(Intent.createChooser(shareIntent, "分享图片"));
+                                    }
+                                }
+                            });
+                }
+            }
+        });
+        drawable = (AnimationDrawable) anim.getBackground();
+        voice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mapChose.size() == 1) {
+                    MediaPlayer mediaPlayer = new MediaPlayer();
+                    VoiceBean path = mapChose.get(0)
+                            .getVoice();
+                    if (path != null) {
+                        try {
+                            anim1.setVisibility(View.GONE);
+                            anim.setVisibility(View.VISIBLE);
+                            Toast.makeText(MainActivity.this, "开始播放", Toast.LENGTH_SHORT)
+                                    .show();
+                            mediaPlayer.setDataSource(TimeUtils.getWlanIp() + "/public/" + path.getVcpath()
+                                    + path
+                                    .getVcname());
+                            mediaPlayer.prepare();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        mediaPlayer.start();
+                        drawable.start();
+                        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mediaPlayer) {
+                                drawable.stop();
+                                anim1.setVisibility(View.VISIBLE);
+                                anim.setVisibility(View.GONE);
+                                Toast.makeText(MainActivity.this, "播放完毕", Toast.LENGTH_SHORT)
+                                        .show();
+                            }
+                        });
+                    } else {
+                        Toast.makeText(MainActivity.this, "该图片没有相应的音频", Toast.LENGTH_SHORT)
+                                .show();
+                    }
+                } else {
+                    Toast.makeText(MainActivity.this, "只能播放一个音频", Toast.LENGTH_SHORT)
+                            .show();
+                }
+            }
+        });
+        meihua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, CropActivity.class));
+            }
+        });
+        thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Timer timer = new Timer();
+                TimerTask timerTask = new TimerTask() {
+                    @Override
+                    public void run() {
+                        OkHttpUtils.getInstance()
+                                .okPost(MainActivity.this, ApiConstant.CLOUD_PULL_MSG, null, new OkHttpCallBack() {
+                                    @Override
+                                    public void onSucceed(String requestUrl, String response) {
+                                        LogFiles.d("cctag", requestUrl + ":" + response);
+                                        final ResponseMessage<MessageBean> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<MessageBean>>() {
+                                        }.getType());
+                                        if (responseMessage.getData()
+                                                .getStatus()
+                                                .equals("9999")) {
+                                            if (Integer.valueOf(responseMessage.getData().count) > 0) {
+                                                content.setText(responseMessage.getData().msg);
+                                                if (!popupWindow.isShowing()) {
+                                                    ll.alpha = 0.5f;
+                                                    MainActivity.this.getWindow()
+                                                            .setAttributes(ll);
+                                                    popupWindow.showAtLocation(MainActivity.this.getWindow()
+                                                            .getDecorView(), Gravity.CENTER, 0, 0);
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onFailed() {
+                                    }
+                                });
+                    }
+                };
+                timer.schedule(timerTask,
+                        0,//延迟1秒执行
+                        10000);
+            }
+        });
+//        thread.start();
+        popupWindow = new PopupWindow();
+        View view = getLayoutInflater().inflate(R.layout.messageview, null);
+        Button submit = view.findViewById(R.id.submit);
+        Button cancel = view.findViewById(R.id.cancel);
+        content = view.findViewById(R.id.content);
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                OkHttpUtils.getInstance()
+//                        .okPost(MainActivity.this, );
+            }
+        });
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss();
+                ll.alpha = 1f;
+                MainActivity.this.getWindow()
+                        .setAttributes(ll);
+            }
+        });
+        popupWindow.setContentView(view);
+        popupWindow.setHeight(400);
+        popupWindow.setFocusable(true);
+        popupWindow.setWidth(800);
+        popupWindow.setAnimationStyle(R.style.popwin_anim_style);
+        ll = getWindow().getAttributes();
+        bottomTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        });
         fragment1 = new PictureStoreageFragment(this);
         fragment2 = new MapStorageFragment();
         fragment3 = new LightDiskFragment();
         fragment4 = new PropertySheetFragment();
-        fragment5 = new FacilityFragment();
+        fragment5 = new FacilityFragment(getIntent().getIntExtra("p", 11));
         fragments.add(fragment1);
         fragments.add(fragment2);
         fragments.add(fragment3);
@@ -128,11 +354,11 @@ public class MainActivity extends BaseFragmentActivity implements FAInterface {
         out.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d("cctag", mapChose.size() + "");
                 Intent intent = new Intent(MainActivity.this, DaoChuActivity.class);
                 intent.putExtra("spe", new Gson().toJson(mapChose));
                 startActivity(intent);
                 mapChose.clear();
-//                PictureAddressAdapter.clear();
             }
         });
         mainViewAdapter = new MainViewAdapter(getSupportFragmentManager(),
@@ -144,25 +370,6 @@ public class MainActivity extends BaseFragmentActivity implements FAInterface {
                 Intent intent = new Intent(MainActivity.this, BiaoZhuActivity.class);
                 intent.putExtra("json", new Gson().toJson(chose));
                 startActivity(intent);
-//                String[] strings = new String[chose.size()];
-//                Map<String, Object> map = new HashMap<>();
-//                for (int i = 0; i < chose.size(); i++) {
-//                    strings[i] = chose.get(i)
-//                            .getUuid();
-//                }
-//                map.put("files", strings);
-//                OkHttpUtils.getInstance()
-//                        .okPost(MainActivity.this, ApiConstant.BOX_TAG_FILES, map, new OkHttpCallBack() {
-//                            @Override
-//                            public void onSucceed(String requestUrl, String response) {
-//                                Log.d("ccnb", response);
-//                            }
-//
-//                            @Override
-//                            public void onFailed() {
-//                                Log.d("ccnb", "failed");
-//                            }
-//                        });
             }
 //            }
         });
@@ -174,7 +381,7 @@ public class MainActivity extends BaseFragmentActivity implements FAInterface {
                     Map<String, Object> map = new HashMap<>();
                     map.put("file", imgEntity.getUuid());
                     OkHttpUtils.getInstance()
-                            .okPost(MainActivity.this, SplashActivity.wlanIp + "/deletefiles", map, new OkHttpCallBack() {
+                            .okPost(MainActivity.this, TimeUtils.getWlanIp() + "/deletefiles", map, new OkHttpCallBack() {
                                 @Override
                                 public void onSucceed(String requestUrl, String response) {
                                     count1++;
@@ -301,14 +508,14 @@ public class MainActivity extends BaseFragmentActivity implements FAInterface {
 //        }
 //    }
     public void setGone(boolean t, List<ImgEntity> imgEntities1) {
-            Set<ImgEntity> set = new LinkedHashSet<ImgEntity>();
-            set.addAll(imgEntities1);
-            List<ImgEntity> list2 = new ArrayList<ImgEntity>();
-            list2.addAll(set);
-            Log.d("ccnbccnb", list2.size() + "");
-            mapChose = list2;
-            ss1.setVisibility(View.GONE);
-            ss2.setVisibility(View.VISIBLE);
+        Set<ImgEntity> set = new LinkedHashSet<ImgEntity>();
+        set.addAll(imgEntities1);
+        List<ImgEntity> list2 = new ArrayList<ImgEntity>();
+        list2.addAll(set);
+        Log.d("ccnbccnb", list2.size() + "");
+        mapChose = list2;
+        ss1.setVisibility(View.GONE);
+        ss2.setVisibility(View.VISIBLE);
         if (!t) {
             ss.setVisibility(View.VISIBLE);
             tabContainer.setTabTextGone(true);
@@ -329,8 +536,10 @@ public class MainActivity extends BaseFragmentActivity implements FAInterface {
             tabContainer.setTabTextGone(false);
         }
     }
+
     @Override
     public void click(boolean t, boolean isadd, ImgEntity imgEntity) {
+        Log.d("cctag", chose.size() + "");
         ss1.setVisibility(View.VISIBLE);
         ss2.setVisibility(View.GONE);
         if (t) {
@@ -349,3 +558,4 @@ public class MainActivity extends BaseFragmentActivity implements FAInterface {
 //        tabContainer.setVisibility(View.INVISIBLE);
     }
 }
+

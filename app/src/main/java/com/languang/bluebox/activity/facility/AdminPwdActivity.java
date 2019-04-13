@@ -1,7 +1,6 @@
 package com.languang.bluebox.activity.facility;
 
 import android.content.Intent;
-import android.support.v7.view.menu.ActionMenuItemView;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
@@ -10,21 +9,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
-import com.languang.bluebox.activity.initialize.SettingPwdActivity;
-import com.languang.bluebox.activity.initialize.SettingWanActivity;
-import com.languang.bluebox.entity.NetPort;
-import com.mrj.framworklib.utils.OkHttpCallBack;
-import com.mrj.framworklib.utils.ToastUtilsBase;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import com.languang.bluebox.R;
+import com.languang.bluebox.activity.initialize.SettingWanActivity;
 import com.languang.bluebox.basework.base.BaseFragmentActivity;
-import com.languang.bluebox.basework.net.OkHttpUtils;
-import com.languang.bluebox.constant.ApiConstant;
-import com.languang.bluebox.constant.Constant;
-import com.languang.bluebox.entity.ResponseMessage;
+import com.languang.bluebox.entity.NetPort;
 import com.tencent.mmkv.MMKV;
 
 import butterknife.BindView;
@@ -72,6 +60,7 @@ public class AdminPwdActivity extends BaseFragmentActivity {
                         .toString())) {
                     Intent intent = new Intent(AdminPwdActivity.this, SettingWanActivity.class);
                     startActivity(intent);
+                    finish();
                 }
             }
         });

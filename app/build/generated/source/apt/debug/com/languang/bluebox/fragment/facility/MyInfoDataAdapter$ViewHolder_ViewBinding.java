@@ -4,6 +4,8 @@ package com.languang.bluebox.fragment.facility;
 import android.support.annotation.CallSuper;
 import android.support.annotation.UiThread;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import butterknife.Unbinder;
 import butterknife.internal.Utils;
@@ -21,6 +23,12 @@ public class MyInfoDataAdapter$ViewHolder_ViewBinding implements Unbinder {
 
     target.name = Utils.findRequiredViewAsType(source, R.id.name, "field 'name'", TextView.class);
     target.title = Utils.findRequiredViewAsType(source, R.id.title, "field 'title'", TextView.class);
+    target.device = Utils.findRequiredViewAsType(source, R.id.device, "field 'device'", LinearLayout.class);
+    target.passWord = Utils.findRequiredViewAsType(source, R.id.passWord, "field 'passWord'", LinearLayout.class);
+    target.net = Utils.findRequiredViewAsType(source, R.id.net, "field 'net'", LinearLayout.class);
+    target.code = Utils.findRequiredViewAsType(source, R.id.code, "field 'code'", LinearLayout.class);
+    target.rename = Utils.findRequiredViewAsType(source, R.id.rename, "field 'rename'", LinearLayout.class);
+    target.erweima = Utils.findRequiredViewAsType(source, R.id.erweima, "field 'erweima'", ImageView.class);
   }
 
   @Override
@@ -32,5 +40,11 @@ public class MyInfoDataAdapter$ViewHolder_ViewBinding implements Unbinder {
 
     target.name = null;
     target.title = null;
+    target.device = null;
+    target.passWord = null;
+    target.net = null;
+    target.code = null;
+    target.rename = null;
+    target.erweima = null;
   }
 }

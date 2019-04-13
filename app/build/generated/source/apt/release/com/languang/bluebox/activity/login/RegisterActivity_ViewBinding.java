@@ -1,24 +1,27 @@
 // Generated code from Butter Knife. Do not modify!
 package com.languang.bluebox.activity.login;
 
+import android.support.annotation.CallSuper;
 import android.support.annotation.UiThread;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
+import butterknife.Unbinder;
 import butterknife.internal.DebouncingOnClickListener;
 import butterknife.internal.Utils;
 import com.languang.bluebox.R;
-import com.languang.bluebox.basework.base.BaseFragmentActivity_ViewBinding;
+import com.xuexiang.xui.widget.actionbar.TitleBar;
 import java.lang.IllegalStateException;
 import java.lang.Override;
 
-public class RegisterActivity_ViewBinding extends BaseFragmentActivity_ViewBinding {
+public class RegisterActivity_ViewBinding implements Unbinder {
   private RegisterActivity target;
 
-  private View view2131230868;
+  private View view2131230974;
 
-  private View view2131231020;
+  private View view2131231181;
 
-  private View view2131230764;
+  private View view2131230803;
 
   @UiThread
   public RegisterActivity_ViewBinding(RegisterActivity target) {
@@ -27,8 +30,6 @@ public class RegisterActivity_ViewBinding extends BaseFragmentActivity_ViewBindi
 
   @UiThread
   public RegisterActivity_ViewBinding(final RegisterActivity target, View source) {
-    super(target, source);
-
     this.target = target;
 
     View view;
@@ -36,8 +37,10 @@ public class RegisterActivity_ViewBinding extends BaseFragmentActivity_ViewBindi
     target.codeEt = Utils.findRequiredViewAsType(source, R.id.code_et, "field 'codeEt'", EditText.class);
     target.pwdEt = Utils.findRequiredViewAsType(source, R.id.pwd_et, "field 'pwdEt'", EditText.class);
     target.consumePwdEt = Utils.findRequiredViewAsType(source, R.id.consume_pwd_et, "field 'consumePwdEt'", EditText.class);
+    target.xieyi = Utils.findRequiredViewAsType(source, R.id.xieyi, "field 'xieyi'", TextView.class);
+    target.bar = Utils.findRequiredViewAsType(source, R.id.bar, "field 'bar'", TitleBar.class);
     view = Utils.findRequiredView(source, R.id.get_code, "method 'onViewClicked'");
-    view2131230868 = view;
+    view2131230974 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -45,7 +48,7 @@ public class RegisterActivity_ViewBinding extends BaseFragmentActivity_ViewBindi
       }
     });
     view = Utils.findRequiredView(source, R.id.register_submit, "method 'onViewClicked'");
-    view2131231020 = view;
+    view2131231181 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -53,7 +56,7 @@ public class RegisterActivity_ViewBinding extends BaseFragmentActivity_ViewBindi
       }
     });
     view = Utils.findRequiredView(source, R.id.back_to_login, "method 'onViewClicked'");
-    view2131230764 = view;
+    view2131230803 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -63,6 +66,7 @@ public class RegisterActivity_ViewBinding extends BaseFragmentActivity_ViewBindi
   }
 
   @Override
+  @CallSuper
   public void unbind() {
     RegisterActivity target = this.target;
     if (target == null) throw new IllegalStateException("Bindings already cleared.");
@@ -72,14 +76,14 @@ public class RegisterActivity_ViewBinding extends BaseFragmentActivity_ViewBindi
     target.codeEt = null;
     target.pwdEt = null;
     target.consumePwdEt = null;
+    target.xieyi = null;
+    target.bar = null;
 
-    view2131230868.setOnClickListener(null);
-    view2131230868 = null;
-    view2131231020.setOnClickListener(null);
-    view2131231020 = null;
-    view2131230764.setOnClickListener(null);
-    view2131230764 = null;
-
-    super.unbind();
+    view2131230974.setOnClickListener(null);
+    view2131230974 = null;
+    view2131231181.setOnClickListener(null);
+    view2131231181 = null;
+    view2131230803.setOnClickListener(null);
+    view2131230803 = null;
   }
 }

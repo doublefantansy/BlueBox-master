@@ -67,6 +67,8 @@ public class PropertySheetAdapter extends RecyclerView.Adapter<PropertySheetAdap
         return new PropertySheetAdapter.ViewHolder(view);
     }
 
+
+
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         holder.serial_tv.setText(newlist.get(position));

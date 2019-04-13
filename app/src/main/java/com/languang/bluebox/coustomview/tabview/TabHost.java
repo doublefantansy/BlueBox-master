@@ -111,12 +111,10 @@ public class TabHost {
         return tabList.get(index);
     }
 
-    public void setGone(boolean t) {
-        Log.d("ccnb", t + "");
+    public void notmove(boolean t) {
         for (int i = 0; i < tabList.size(); i++) {
-            tabList.get(i)
-                    .setGone(t);
             if (t) {
+                Log.d("cctag", "1");
                 tabList.get(i)
                         .setOnTabSelectedListener(new OnTabSelectedListener() {
                             @Override
@@ -125,6 +123,7 @@ public class TabHost {
                             }
                         });
             } else {
+                Log.d("cctag", "2");
                 tabList.get(i)
                         .setOnTabSelectedListener(new OnTabSelectedListener() {
                             @Override
@@ -133,6 +132,32 @@ public class TabHost {
                             }
                         });
             }
+        }
+    }
+
+    public void setGone(boolean t) {
+        for (int i = 0; i < tabList.size(); i++) {
+            tabList.get(i)
+                    .setGone(t);
+//            if (t) {
+//                Log.d("cctag", "1");
+//                tabList.get(i)
+//                        .setOnTabSelectedListener(new OnTabSelectedListener() {
+//                            @Override
+//                            public void onTabSelected(Tab tab) {
+////                                Log.d("ccnb", t + "1");
+//                            }
+//                        });
+//            } else {
+//                Log.d("cctag", "2");
+//                tabList.get(i)
+//                        .setOnTabSelectedListener(new OnTabSelectedListener() {
+//                            @Override
+//                            public void onTabSelected(Tab tab) {
+//                                contentViewPager.setCurrentItem(tab.getIndex(), false);
+//                            }
+//                        });
+//            }
         }
     }
 }

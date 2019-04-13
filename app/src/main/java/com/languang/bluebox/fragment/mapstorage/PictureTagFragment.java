@@ -128,6 +128,9 @@ public class PictureTagFragment extends BaseFragment implements OkHttpCallBack {
                     @Override
                     public void onSucceed(String requestUrl, String response) {
                         getImgEntities = ImgUtil.getTimeImg(response);
+                        if (getImgEntities != null) {
+
+
                         for (ImgListEntity imgEntity : getImgEntities) {
                             for (ImgEntity entity : imgEntity.getImgEntityList()) {
                                 Map<String, String> map = new Gson().fromJson(entity.getTags(), new TypeToken<Map<String, String>>() {
@@ -158,7 +161,7 @@ public class PictureTagFragment extends BaseFragment implements OkHttpCallBack {
                         adapter = new PictureTagAdapter(getActivity(), entityList, tagInterface);
                         tagGrid.setAdapter(adapter);
                     }
-
+                    }
                     @Override
                     public void onFailed() {
                     }

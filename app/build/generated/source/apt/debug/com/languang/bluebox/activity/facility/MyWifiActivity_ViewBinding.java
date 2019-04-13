@@ -1,23 +1,24 @@
 // Generated code from Butter Knife. Do not modify!
 package com.languang.bluebox.activity.facility;
 
+import android.support.annotation.CallSuper;
 import android.support.annotation.UiThread;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import butterknife.Unbinder;
 import butterknife.internal.DebouncingOnClickListener;
 import butterknife.internal.Utils;
 import com.languang.bluebox.R;
-import com.languang.bluebox.basework.base.BaseFragmentActivity_ViewBinding;
 import java.lang.IllegalStateException;
 import java.lang.Override;
 
-public class MyWifiActivity_ViewBinding extends BaseFragmentActivity_ViewBinding {
+public class MyWifiActivity_ViewBinding implements Unbinder {
   private MyWifiActivity target;
 
-  private View view2131230854;
+  private View view2131230951;
 
-  private View view2131231053;
+  private View view2131231218;
 
   @UiThread
   public MyWifiActivity_ViewBinding(MyWifiActivity target) {
@@ -26,15 +27,13 @@ public class MyWifiActivity_ViewBinding extends BaseFragmentActivity_ViewBinding
 
   @UiThread
   public MyWifiActivity_ViewBinding(final MyWifiActivity target, View source) {
-    super(target, source);
-
     this.target = target;
 
     View view;
     target.pwdEt = Utils.findRequiredViewAsType(source, R.id.pwd_et, "field 'pwdEt'", EditText.class);
     view = Utils.findRequiredView(source, R.id.eye, "field 'eye' and method 'onViewClicked'");
     target.eye = Utils.castView(view, R.id.eye, "field 'eye'", ImageView.class);
-    view2131230854 = view;
+    view2131230951 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -42,7 +41,7 @@ public class MyWifiActivity_ViewBinding extends BaseFragmentActivity_ViewBinding
       }
     });
     view = Utils.findRequiredView(source, R.id.save_or_restart, "method 'onViewClicked'");
-    view2131231053 = view;
+    view2131231218 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -52,6 +51,7 @@ public class MyWifiActivity_ViewBinding extends BaseFragmentActivity_ViewBinding
   }
 
   @Override
+  @CallSuper
   public void unbind() {
     MyWifiActivity target = this.target;
     if (target == null) throw new IllegalStateException("Bindings already cleared.");
@@ -60,11 +60,9 @@ public class MyWifiActivity_ViewBinding extends BaseFragmentActivity_ViewBinding
     target.pwdEt = null;
     target.eye = null;
 
-    view2131230854.setOnClickListener(null);
-    view2131230854 = null;
-    view2131231053.setOnClickListener(null);
-    view2131231053 = null;
-
-    super.unbind();
+    view2131230951.setOnClickListener(null);
+    view2131230951 = null;
+    view2131231218.setOnClickListener(null);
+    view2131231218 = null;
   }
 }

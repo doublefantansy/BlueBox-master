@@ -8,22 +8,23 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.languang.bluebox.MainActivity;
 import com.languang.bluebox.R;
 import com.languang.bluebox.TimeUtils;
-import com.languang.bluebox.activity.SplashActivity;
 import com.languang.bluebox.basework.base.BaseFragment;
 import com.languang.bluebox.basework.net.OkHttpUtils;
-import com.languang.bluebox.constant.Constant;
 import com.languang.bluebox.entity.Device;
 import com.languang.bluebox.entity.ResponseMessage;
 import com.languang.bluebox.entity.Test;
 import com.mrj.framworklib.utils.OkHttpCallBack;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -56,6 +57,7 @@ public class LightDiskFragment extends BaseFragment {
     TextView display;
     @BindView(R.id.content)
     TextView content;
+    int jinduzhi = 0;
 //    private ILightDisk lightDiskModel;
 
     @Override
@@ -64,26 +66,37 @@ public class LightDiskFragment extends BaseFragment {
     }
 
     MyThread thread;
+//    MyThread1 thread1;
 
     @Override
     protected void initView(View view) {
+        thread = new MyThread();
         Map<String, Object> params = new HashMap<>(1);
         params.put("type", "cdrom");
         OkHttpUtils.getInstance()
-                .okPost(getActivity(), TimeUtils.getWlanIp()+"/waisheinfo", params, new OkHttpCallBack() {
+                .okPost(getActivity(), TimeUtils.getWlanIp() + "/waisheinfo", params, new OkHttpCallBack() {
                     @Override
                     public void onSucceed(String requestUrl, String response) {
                         ResponseMessage<Device> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<Device>>() {
                         }.getType());
-                        if (responseMessage.getData().getCdrom().size()==0)
-                        {
+                        List list = new ArrayList();
+                        list.add(1);
+                        responseMessage.getData()
+                                .setCdrom(list);
+                        if (responseMessage.getData()
+                                .getCdrom()
+                                .size() == 0) {
                             nothing.setVisibility(View.VISIBLE);
                             guidang.setVisibility(View.GONE);
                             xinxi.setVisibility(View.GONE);
                             relativeLayout.setVisibility(View.VISIBLE);
                             display.setText("刻录等待中");
-
-                            content.setText("新标注"+ MainActivity.count+"张照片/"+MainActivity.count2+"个视频未光盘归档，需要光盘控件20G");
+                            progressBar.setVisibility(View.GONE);
+                            content.setText("新标注" + MainActivity.count + "张照片/" + MainActivity.count2 + "个视频未光盘归档，需要光盘控件20G");
+                        } else {
+                            display.setText("光盘刻录中");
+                            xinxi.setVisibility(View.GONE);
+                            progressBar.setVisibility(View.VISIBLE);
                         }
                     }
 
@@ -94,8 +107,10 @@ public class LightDiskFragment extends BaseFragment {
         start_archive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                guidang.setVisibility(View.GONE);
+                relativeLayout.setVisibility(View.VISIBLE);
                 OkHttpUtils.getInstance()
-                        .okPost(getActivity(), SplashActivity.wlanIp+"/startguidang", null, new OkHttpCallBack() {
+                        .okPost(getActivity(), TimeUtils.getWlanIp() + "/startguidang", null, new OkHttpCallBack() {
                             @Override
                             public void onSucceed(String requestUrl, String response) {
                                 ResponseMessage<Test> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<Test>>() {
@@ -103,23 +118,14 @@ public class LightDiskFragment extends BaseFragment {
                                 if (responseMessage.getData()
                                         .getState()
                                         .equals("1")) {
-//                                    Log.d("ccnb", "lsy");
-                                    nothing.setVisibility(View.VISIBLE);
-                                    guidang.setVisibility(View.GONE);
-                                    xinxi.setVisibility(View.GONE);
+                                    progressBar.setVisibility(View.VISIBLE);
+                                    thread.start();
+                                } else {
+                                    progressBar.setVisibility(View.GONE);
+                                    Toast.makeText(getActivity(), responseMessage.getData()
+                                            .getMsg(), Toast.LENGTH_SHORT)
+                                            .show();
                                 }
-//                                relativeLayout.setVisibility(View.VISIBLE);
-//                                relativeLayout1.setVisibility(View.GONE);
-//                                OkHttpUtils.getInstance()
-//                                        .okPost(getActivity(), ApiConstant.BOX_GUIDANG, null, new OkHttpCallBack() {
-//                                            @Override
-//                                            public void onSucceed(String requestUrl, String response) {
-//                                            }
-//
-//                                            @Override
-//                                            public void onFailed() {
-//                                            }
-//                                        });
                             }
 
                             @Override
@@ -129,53 +135,54 @@ public class LightDiskFragment extends BaseFragment {
                         });
             }
         });
-//        thread = new MyThread();
-//        thread.start();
     }
-//    @OnClick(R.id.start_archive)
-//    public void onViewClicked() {
-//        lightDiskModel.archiveProgress(this);
-//    }
-//    @Override
-//    public void onSucceed(String requestUrl, String response) {
-//        if (ApiConstant.BOX_START_GUIDANG.equals(requestUrl)) {
-//            lightDiskModel.archiveProgress(this);
-//        } else if (ApiConstant.BOX_GUIDANG.equals(requestUrl)) {
-//
-//        }
-//    }
-//    @Override
-//    public void onFailed() {
-//
-//    }
 
     class MyThread extends Thread {
         @Override
         public void run() {
             super.run();
-            for (int i = 0; i <= Constant.TOTAL_PROGRESS; i++) {
-                if (null == progressBar || null == progressPosition) {
-                    return;
-                }
-                progressBar.setProgress(i);
-                //在子线程中发送消息
-                final int finalI = i;
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        progressPosition.setText(finalI + "%");
-                    }
-                });
-                if (i == 100) {
-                    new MyThread().start();
-                    this.interrupt();
-                    thread = null;
-                }
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+            while (jinduzhi != 101) {
+                OkHttpUtils.getInstance()
+                        .okPost(getActivity(), TimeUtils.getWlanIp() + "/guidang", null, new OkHttpCallBack() {
+                            @Override
+                            public void onSucceed(String requestUrl, String response) {
+                                ResponseMessage<GuiDangJinDu> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<GuiDangJinDu>>() {
+                                }.getType());
+                                final int jindu = Integer.valueOf(responseMessage.getData()
+                                        .getJindu());
+                                if (jindu > 0 & jindu < 101) {
+                                    getActivity().runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            progressBar.setProgress(jindu);
+                                        }
+                                    });
+                                    try {
+                                        sleep(1000);
+                                    } catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                    }
+                                } else if (jindu == 101) {
+                                    jinduzhi = jindu;
+                                    display.setText("刻录已完成");
+                                } else {
+                                    jinduzhi = 101;
+                                    getActivity().runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            progressBar.setVisibility(View.GONE);
+                                        }
+                                    });
+                                    Toast.makeText(getActivity(), responseMessage.getData()
+                                            .getMsg(), Toast.LENGTH_SHORT)
+                                            .show();
+                                }
+                            }
+
+                            @Override
+                            public void onFailed() {
+                            }
+                        });
             }
         }
     }
@@ -187,7 +194,6 @@ public class LightDiskFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-//        lightDiskModel = new LightDiskModel(getActivity());
     }
 
     @Override

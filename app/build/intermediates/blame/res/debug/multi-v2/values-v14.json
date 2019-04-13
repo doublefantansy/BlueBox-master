@@ -4,6 +4,25 @@
             "outputFile": "/Users/cc/Library/Mobile Documents/com~apple~CloudDocs/BlueBox/BlueBox-master/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v14/values-v14.xml",
             "map": [
                 {
+                    "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/cropper-1.0.1.aar/cfa26a8cfe9966b4a759633959c04d63/res/values-v14/values.xml",
+                    "from": {
+                        "startLines": "6",
+                        "startColumns": "4",
+                        "startOffsets": "162",
+                        "endLines": "8",
+                        "endColumns": "12",
+                        "endOffsets": "308"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "4",
+                        "endColumns": "12",
+                        "endOffsets": "201"
+                    }
+                },
+                {
                     "source": "/Users/cc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.1.aar/0b79fb72e096fc2bcf454b26461e3cc2/res/values-v14/values-v14.xml",
                     "from": {
                         "startLines": "2,7,8,9,15",
@@ -12,6 +31,14 @@
                         "endLines": "6,7,8,14,20",
                         "endColumns": "12,70,82,12,12",
                         "endOffsets": "326,397,480,890,1312"
+                    },
+                    "to": {
+                        "startLines": "5,10,11,12,18",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "206,482,553,636,1046",
+                        "endLines": "9,10,11,17,23",
+                        "endColumns": "12,70,82,12,12",
+                        "endOffsets": "477,548,631,1041,1463"
                     }
                 }
             ]

@@ -9,143 +9,19 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <include layout="@layout/item_title_bar" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dp_23"
-        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_40"
         android:layout_marginRight="@dimen/dp_23"
         android:orientation="horizontal">
 
         <TextView
-            android:textColor="@color/balck"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="主机名称:" />
-
-        <TextView
-            android:textColor="@color/balck"
-            android:id="@+id/hostName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_1"
-        android:layout_marginLeft="@dimen/dp_23"
-        android:layout_marginTop="@dimen/dp_10"
-        android:layout_marginRight="@dimen/dp_23"
-        android:background="@color/main_bg" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dp_23"
-        android:layout_marginTop="@dimen/dp_10"
-        android:layout_marginRight="@dimen/dp_23"
-        android:orientation="horizontal">
-
-        <TextView
-            android:textColor="@color/balck"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="硬件类型:" />
-
-        <TextView
-            android:textColor="@color/balck"
-            android:id="@+id/type"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_1"
-        android:layout_marginLeft="@dimen/dp_23"
-        android:layout_marginTop="@dimen/dp_10"
-        android:layout_marginRight="@dimen/dp_23"
-        android:background="@color/main_bg" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dp_23"
-        android:layout_marginTop="@dimen/dp_10"
-        android:layout_marginRight="@dimen/dp_23"
-        android:orientation="horizontal">
-
-        <TextView
-            android:textColor="@color/balck"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="激活状态:" />
-
-        <TextView
-            android:textColor="@color/balck"
-            android:id="@+id/status"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_1"
-        android:layout_marginLeft="@dimen/dp_23"
-        android:layout_marginTop="@dimen/dp_10"
-        android:layout_marginRight="@dimen/dp_23"
-        android:background="@color/main_bg" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dp_23"
-        android:layout_marginTop="@dimen/dp_10"
-        android:layout_marginRight="@dimen/dp_23"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="硬件SN:"
-            android:textColor="@color/balck"/>
-
-        <TextView
-            android:textColor="@color/balck"
-            android:id="@+id/sn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_1"
-        android:layout_marginLeft="@dimen/dp_23"
-        android:layout_marginTop="@dimen/dp_10"
-        android:layout_marginRight="@dimen/dp_23"
-        android:background="@color/main_bg" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dp_23"
-        android:layout_marginTop="@dimen/dp_10"
-        android:layout_marginRight="@dimen/dp_23"
-        android:orientation="horizontal">
-
-        <TextView
-            android:textColor="@color/balck"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="网络:" />
-
-        <TextView
-            android:textColor="@color/balck"
-            android:id="@+id/net"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:text="拥有管理密码可以导入标注归档所有图片和视频"
+            android:textColor="@color/balck" />
     </LinearLayout>
 
     <View
@@ -245,7 +121,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_margin="@dimen/dp_30"
         android:gravity="center"
-        android:text="下一步"
+        android:text="完成"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:bl_corners_radius="5dp"

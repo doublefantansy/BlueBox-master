@@ -53,10 +53,10 @@ public class PictureAddressFragment extends BaseFragment implements OkHttpCallBa
     List<ImgListEntity> getImgEntities;
     List<ImgListEntity> imgEntities = new ArrayList<>();
     Map<String, List<ImgEntity>> imgListEntityMap = new HashMap<>();
-    Map<String, List<ImgEntity>> searchMap = new HashMap<>();
+    Map<String, ImgListEntity> searchMap = new HashMap<String, ImgListEntity>();
     Map<String, Integer> si = new HashMap<>();
     AdressInterface adressInterface;
-    List<String> strings=new ArrayList<>();
+    List<String> strings = new ArrayList<>();
     boolean isfirst = true;
 
     public void setIn(AdressInterface adressInterface) {
@@ -84,7 +84,9 @@ public class PictureAddressFragment extends BaseFragment implements OkHttpCallBa
                             .contains(charSequence)) {
                         List<ImgEntity> list = new ArrayList();
                         list.addAll(entry.getValue());
-                        searchMap.put(entry.getKey(), list);
+                        ImgListEntity listEntity = new ImgListEntity();
+                        listEntity.setImgEntityList(list);
+                        searchMap.put(entry.getKey(), listEntity);
                     }
                 }
                 addressAdapter.setImgEntities(searchMap);
@@ -106,36 +108,38 @@ public class PictureAddressFragment extends BaseFragment implements OkHttpCallBa
                     @Override
                     public void onSucceed(String requestUrl, String response) {
                         getImgEntities = ImgUtil.getTimeImg(response);
-                        for (ImgListEntity imgEntity : getImgEntities) {
-                            for (ImgEntity entity : imgEntity.getImgEntityList()) {
+                        if (getImgEntities != null) {
+                            for (ImgListEntity imgEntity : getImgEntities) {
+                                for (ImgEntity entity : imgEntity.getImgEntityList()) {
 //                if (entity.getLocation() != null) {
-                                if (imgListEntityMap.containsKey(entity.getLocation())) {
-                                    List<ImgEntity> list = imgListEntityMap.get(entity.getLocation());
-                                    list.add(entity);
-                                    imgListEntityMap.put(entity.getLocation(), list);
-                                    int b = si.get(entity.getLocation());
-                                    b++;
-                                    si.put(entity.getLocation(), b);
-                                } else {
+                                    if (imgListEntityMap.containsKey(entity.getLocation())) {
+                                        List<ImgEntity> list = imgListEntityMap.get(entity.getLocation());
+                                        list.add(entity);
+                                        imgListEntityMap.put(entity.getLocation(), list);
+                                        int b = si.get(entity.getLocation());
+                                        b++;
+                                        si.put(entity.getLocation(), b);
+                                    } else {
 //                                    imgEntityList.put(entity.getLocation(), entity);
-                                    List<ImgEntity> imgEntities1 = new ArrayList<>();
-                                    imgEntities1.add(entity);
-                                    si.put(entity.getLocation(), 1);
-                                    imgListEntityMap.put(entity.getLocation(), imgEntities1);
-                                }
+                                        List<ImgEntity> imgEntities1 = new ArrayList<>();
+                                        imgEntities1.add(entity);
+                                        si.put(entity.getLocation(), 1);
+                                        imgListEntityMap.put(entity.getLocation(), imgEntities1);
+                                    }
 //                }
+                                }
                             }
-                        }
-                        Log.d("ccnbccnb", imgListEntityMap.size() + "");
+                            Log.d("ccnbccnb", imgListEntityMap.size() + "");
 //                        List<Integer> integers = new ArrayList<>();
-                       strings  = new ArrayList<>();
-                        for (Map.Entry<String, Integer> entry : si.entrySet()) {
-                            strings.add(entry.getKey());
+                            strings = new ArrayList<>();
+                            for (Map.Entry<String, Integer> entry : si.entrySet()) {
+                                strings.add(entry.getKey());
 //                            integers.add(entry.getValue());
-                        }
+                            }
 //                        Log.d("ccnbccnbccnb1", integers.size() + "");
-                        addressAdapter = new PictureAddressAdapter(getActivity(), imgListEntityMap, strings, adressInterface);
-                        addressGrid.setAdapter(addressAdapter);
+                            addressAdapter = new PictureAddressAdapter(getActivity(), imgListEntityMap, strings, adressInterface);
+                            addressGrid.setAdapter(addressAdapter);
+                        }
                     }
 
                     @Override
@@ -149,10 +153,10 @@ public class PictureAddressFragment extends BaseFragment implements OkHttpCallBa
     public void onResume() {
         super.onResume();
         searchEt.setCursorVisible(false);
-        if (!isfirst) {
-            addressAdapter.clear();
-        } else {
+        if (isfirst) {
             isfirst = false;
+        } else {
+            addressAdapter.clear();
         }
 //        addressAdapter.notifyDataSetChanged();
     }

@@ -3,85 +3,51 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_fff"
+    android:background="@color/common_line_two"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_44"
-        android:background="@color/color_fff">
+        android:layout_height="@dimen/dp_65"
+        android:background="@color/mainColor">
 
-        <LinearLayout
-            android:id="@+id/item_title_left_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerVertical="true"
-            android:gravity="center_vertical"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/dp_10">
-
-            <TextView
-                android:id="@+id/item_title_left_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingRight="@dimen/dp_10"
-                android:text="删除"
-                android:textColor="@color/color_000"
-                android:textSize="@dimen/dp_16" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:gravity="center_vertical"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/item_title_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="光盘清单"
-                android:textColor="@color/color_000"
-                android:textSize="@dimen/dp_17" />
-
-            <TextView
-                android:id="@+id/item_title_small_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/app_name"
-                android:textColor="@color/color_000"
-                android:textSize="@dimen/dp_11"
-                android:visibility="gone" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/item_title_right_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:gravity="center_vertical"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/dp_10">
-
-            <TextView
-                android:id="@+id/item_title_right_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingRight="@dimen/dp_10"
-                android:text="全部导出"
-                android:textColor="@color/color_000"
-                android:textSize="@dimen/dp_16" />
-        </LinearLayout>
-
-        <View
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_1"
-            android:layout_alignParentBottom="true"
-            android:background="@color/main_bg" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp_20">
+
+            <TextView
+                android:id="@+id/del"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:text="删除"
+                android:textColor="@color/color_fff"
+                android:textSize="@dimen/text_size_17" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="迁出单"
+                android:textColor="@color/color_fff"
+                android:textSize="@dimen/text_size_17" />
+
+            <TextView
+                android:id="@+id/allout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="@dimen/dp_5"
+                android:text="全部导出"
+                android:textColor="@color/color_fff"
+                android:textSize="@dimen/text_size_17" />
+        </RelativeLayout>
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView

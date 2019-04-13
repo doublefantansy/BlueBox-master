@@ -66,31 +66,6 @@
             android:textSize="@dimen/text_size_16" />
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/find_pwd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginTop="@dimen/dp_5"
-        android:layout_marginRight="@dimen/dp_23"
-        android:padding="@dimen/dp_5"
-        android:text="找回密码"
-        android:textColor="@color/color_fff"
-        android:textSize="@dimen/text_size_13" />
-
-    <Button
-        android:id="@+id/login_submit"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_44"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="@dimen/dp_72"
-        android:layout_marginTop="@dimen/dp_38"
-        android:layout_marginRight="@dimen/dp_72"
-        android:background="@mipmap/ic_login_submit"
-        android:text="提交"
-        android:textColor="@color/color_fff"
-        android:textSize="@dimen/text_size_18" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -118,5 +93,29 @@
             android:text="短信验证码登录"
             android:textColor="@color/color_fff"
             android:textSize="@dimen/text_size_13" />
+
+        <TextView
+            android:id="@+id/find_pwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="@dimen/dp_5"
+            android:text="找回密码"
+            android:textColor="@color/color_fff"
+            android:textSize="@dimen/text_size_13" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/login_submit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_44"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="@dimen/dp_72"
+        android:layout_marginTop="@dimen/dp_38"
+        android:layout_marginRight="@dimen/dp_72"
+        android:background="@mipmap/ic_login_submit"
+        android:text="提交"
+        android:textColor="@color/color_fff"
+        android:textSize="@dimen/text_size_18" />
 </LinearLayout>

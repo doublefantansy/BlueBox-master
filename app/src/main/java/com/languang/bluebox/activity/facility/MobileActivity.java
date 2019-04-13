@@ -5,16 +5,18 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.languang.bluebox.LoadingPopView;
 import com.languang.bluebox.R;
 import com.languang.bluebox.TimeUtils;
+import com.languang.bluebox.activity.SplashActivity;
 import com.languang.bluebox.activity.login.LoginActivity;
 import com.languang.bluebox.basework.base.BaseFragmentActivity;
 import com.languang.bluebox.basework.net.OkHttpUtils;
-import com.languang.bluebox.constant.ApiConstant;
 import com.languang.bluebox.entity.NetPort;
-import com.languang.bluebox.entity.SpeRes;
+import com.languang.bluebox.entity.ResponseMessage;
 import com.mrj.framworklib.utils.OkHttpCallBack;
 import com.tencent.mmkv.MMKV;
 
@@ -30,6 +32,8 @@ public class MobileActivity extends BaseFragmentActivity {
     TextView mobile;
     @BindView(R.id.name)
     TextView name;
+    LoadingPopView popView;
+    boolean isBreak;
 
     @Override
     protected int getLayoutResId() {
@@ -38,6 +42,7 @@ public class MobileActivity extends BaseFragmentActivity {
 
     @Override
     protected void initView() {
+        popView = new LoadingPopView(this);
         setTitle("绑定手机");
         TextView hostName = findViewById(R.id.hostName);
         TextView type = findViewById(R.id.type);
@@ -54,42 +59,78 @@ public class MobileActivity extends BaseFragmentActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Map<String, Object> params = new HashMap<>(1);
-                params.put("mobile", mobile.getText()
+                popView.show();
+                Map<String, Object> map = new HashMap<>();
+                map.put("name", name.getText()
                         .toString());
-                params.put("name", name.getText()
+                map.put("mobile", mobile.getText()
                         .toString());
-                params.put("token", MMKV.defaultMMKV()
-                        .decodeString("token"));
                 OkHttpUtils.getInstance()
-                        .okPost(MobileActivity.this, TimeUtils.getGateway(MobileActivity.this) + "/setbox", null, new OkHttpCallBack() {
+                        .okPost(MobileActivity.this, TimeUtils.getGateway() + "/setbox", map, new OkHttpCallBack() {
                             @Override
                             public void onSucceed(String requestUrl, String response) {
-                                OkHttpUtils.getInstance()
-                                        .okPost(MobileActivity.this, ApiConstant.CLOUD_WLAN_INFO, null, new OkHttpCallBack() {
-                                            @Override
-                                            public void onSucceed(String requestUrl, String response) {
-                                                Log.d("ccnb", response);
-                                                SpeRes speRes = new Gson().fromJson(response, SpeRes.class);
-                                                if (speRes.getRet() == 200) {
-                                                    Intent intent = new Intent(MobileActivity.this, LoginActivity.class);
-                                                    startActivity(intent);
-                                                }
-                                            }
+                                Log.d("cctag", response);
+                                if (TimeUtils.getGateway()
+                                        .equals("http://box.haotuwei.com")) {
+                                    Intent intent = new Intent(MobileActivity.this, LoginActivity.class);
+                                    MobileActivity.this.startActivity(intent);
+                                    finish();
+                                } else {
+                                    OkHttpUtils.getInstance()
+                                            .okPost(MobileActivity.this, TimeUtils.getGateway() + "/chongqi", null, new OkHttpCallBack() {
+                                                @Override
+                                                public void onSucceed(String requestUrl, String response) {
+                                                    ResponseMessage responseMessage = new Gson().fromJson(response, ResponseMessage.class);
+                                                    if (responseMessage.getRet() == 200) {
+                                                        OkHttpUtils.getInstance()
+                                                                .okPost(MobileActivity.this, TimeUtils.getGateway() + "/info", null, new OkHttpCallBack() {
+                                                                    @Override
+                                                                    public void onSucceed(String requestUrl, String response) {
+                                                                        Intent intent = new Intent(MobileActivity.this, SplashActivity.class);
+                                                                        startActivity(intent);
+                                                                        finish();
+                                                                    }
 
-                                            @Override
-                                            public void onFailed() {
-                                            }
-                                        });
+                                                                    @Override
+                                                                    public void onFailed() {
+                                                                        OkHttpUtils.getInstance()
+                                                                                .okPost(MobileActivity.this, TimeUtils.getGateway() + "/info", null, new OkHttpCallBack() {
+                                                                                    @Override
+                                                                                    public void onSucceed(String requestUrl, String response) {
+                                                                                        Intent intent = new Intent(MobileActivity.this, SplashActivity.class);
+                                                                                        startActivity(intent);
+                                                                                        finish();
+                                                                                    }
+
+                                                                                    @Override
+                                                                                    public void onFailed() {
+                                                                                        Toast.makeText(MobileActivity.this, "重启失败，请物理重启", Toast.LENGTH_SHORT)
+                                                                                                .show();
+                                                                                        popView.dissmiss();
+                                                                                    }
+                                                                                });
+                                                                    }
+                                                                });
+                                                    }
+                                                }
+
+                                                @Override
+                                                public void onFailed() {
+                                                }
+                                            });
+                                }
                             }
 
                             @Override
                             public void onFailed() {
-                                Log.d("ccnb", "fail");
+                                popView.dissmiss();
                             }
                         });
             }
         });
+    }
+
+    private void chongqi() {
     }
 
     @Override

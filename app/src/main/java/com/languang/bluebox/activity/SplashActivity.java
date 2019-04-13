@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -45,7 +46,7 @@ import java.util.Map;
  */
 public class SplashActivity extends AppCompatActivity {
     public static String wlanIp;
-    MaterialDialog.Builder dialog;
+    com.afollestad.materialdialogs.MaterialDialog.Builder dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +54,7 @@ public class SplashActivity extends AppCompatActivity {
         List<String> strings = new ArrayList<>();
         strings.add("线上模拟");
         strings.add("真实盒子");
-        dialog = new MaterialDialog.Builder(this).items(strings)
+         new com.afollestad.materialdialogs.MaterialDialog.Builder(this).items(strings)
                 .itemsCallback(new MaterialDialog.ListCallback() {
                     @Override
                     public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
@@ -66,8 +67,7 @@ public class SplashActivity extends AppCompatActivity {
                         checkInfo();
                     }
                 })
-        ;
-        dialog.show();
+                .show();
         ScreenUtilBase.setStatusBarColor(this, DefaultCode.G_STATUS_BAR_COLOR);
         if (!checkPermissionAllGranted(
                 new String[]{
@@ -89,12 +89,11 @@ public class SplashActivity extends AppCompatActivity {
                 .okPost(this, TimeUtils.getGateway() + "/info", null, new OkHttpCallBack() {
                     @Override
                     public void onSucceed(String requestUrl, String response) {
-                        LogFiles.d("cctag", requestUrl + ":" + response);
+                        Log.d("ccnb1111", response);
                         try {
                             ResponseMessage<NetPort> responseMessage = new Gson().fromJson(response, new TypeToken<ResponseMessage<NetPort>>() {
                             }.getType());
                             int a;
-                         
                             NetPort netPort = responseMessage.getData();
                             if (responseMessage.getData()
                                     .getStatus()

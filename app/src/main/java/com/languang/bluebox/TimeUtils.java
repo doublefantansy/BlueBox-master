@@ -1,14 +1,23 @@
 package com.languang.bluebox;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.net.DhcpInfo;
+import android.net.Uri;
 import android.net.wifi.WifiManager;
+import android.os.Environment;
 import android.util.Log;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.UUID;
 
 public class TimeUtils {
     public static String wlanIp;
+    public static String gate;
 
     public TimeUtils() {
     }
@@ -17,17 +26,21 @@ public class TimeUtils {
         WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
         DhcpInfo info = wifiManager.getDhcpInfo();
         return intToIp1(info.ipAddress);
-//        return "https://" + ip;
-//         ip;
     }
 
-    public static String getGateway(Context context) {
-        WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
-        DhcpInfo info = wifiManager.getDhcpInfo();
-        String ip = intToIp1(info.gateway);
-        return "http://" + ip;
-//        return "http://box.haotuwei.com";
-//        ApiConstant.BOX_BASE_URL
+    public static String getGateway() {
+        return gate;
+    }
+
+    public static void setGateway(Context context, boolean a) {
+        if (a) {
+            WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+            DhcpInfo info = wifiManager.getDhcpInfo();
+            String ip = intToIp1(info.gateway);
+            gate = "http://" + ip;
+        } else {
+            gate = "http://box.haotuwei.com";
+        }
     }
 
     public static boolean isOnline(Context context, String wlanIp) {
@@ -76,20 +89,42 @@ public class TimeUtils {
     }
 
     public static String getWlanIp() {
+//        return wlanIp;
         return wlanIp;
-//        return "http://box.haotuwei.com";
     }
 
-    public static void setWlanIp(String wlanIp) {
-        TimeUtils.wlanIp = wlanIp;
+    public static Uri saveBitmap(Bitmap bm, String picName) {
+        try {
+            String dir = Environment.getExternalStorageDirectory()
+                    .getAbsolutePath() + "/renji/" + picName + ".jpg";
+            File f = new File(dir);
+            if (!f.exists()) {
+                f.getParentFile()
+                        .mkdirs();
+                f.createNewFile();
+            }
+            FileOutputStream out = new FileOutputStream(f);
+            bm.compress(Bitmap.CompressFormat.PNG, 90, out);
+            out.flush();
+            out.close();
+            Uri uri = Uri.fromFile(f);
+            return uri;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
-    //    public static String intToIp1(int addr) {
-//        return ((addr & 0xFF) + "." +
-//                ((addr >>>= 8) & 0xFF) + "." +
-//                ((addr >>>= 8) & 0xFF) + "." +
-//                ((addr >>>= 8) & 0xFF));
-//    }
+    public static void setWlanIp(boolean a, String wlanIp) {
+        if (a) {
+            TimeUtils.wlanIp = wlanIp;
+        } else {
+            TimeUtils.wlanIp = "http://box.haotuwei.com";
+        }
+    }
+
     private static String intToIp1(int paramInt) {
         return (paramInt & 0xFF) + "." + (0xFF & paramInt >> 8) + "." + (0xFF & paramInt >> 16) + "."
                 + (0xFF & paramInt >> 24);
@@ -105,5 +140,40 @@ public class TimeUtils {
     public static String getCurrentTime() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
         return sdf.format(Long.valueOf(System.currentTimeMillis()));
+    }
+
+    public static String saveBitmap(Context context, Bitmap mBitmap) {
+        final String SD_PATH = "/sdcard/dskqxt/pic/";
+        final String IN_PATH = "/dskqxt/pic/";
+        String savePath;
+        File filePic;
+        if (Environment.getExternalStorageState()
+                .equals(
+                        Environment.MEDIA_MOUNTED)) {
+            savePath = SD_PATH;
+        } else {
+            savePath = context.getApplicationContext()
+                    .getFilesDir()
+                    .getAbsolutePath()
+                    + IN_PATH;
+        }
+        try {
+            filePic = new File(savePath + UUID.randomUUID()
+                    .toString() + ".jpg");
+            if (!filePic.exists()) {
+                filePic.getParentFile()
+                        .mkdirs();
+                filePic.createNewFile();
+            }
+            FileOutputStream fos = new FileOutputStream(filePic);
+            mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+            fos.flush();
+            fos.close();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return null;
+        }
+        return filePic.getAbsolutePath();
     }
 }

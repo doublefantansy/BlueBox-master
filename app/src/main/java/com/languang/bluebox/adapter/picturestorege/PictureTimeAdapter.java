@@ -1,16 +1,13 @@
 package com.languang.bluebox.adapter.picturestorege;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.languang.bluebox.CountInterface;
 import com.languang.bluebox.MapGridAdapter;
 import com.languang.bluebox.R;
@@ -59,8 +56,16 @@ public class PictureTimeAdapter extends RecyclerView.Adapter<PictureTimeAdapter.
         return new PictureTimeAdapter.CouponViewHolder(view);
     }
 
+    public void setChoose(boolean isCheaked) {
+
+        for (ImgListEntity imgListEntity : list) {
+            imgListEntity.setChecked(isCheaked);
+        }
+        notifyDataSetChanged();
+    }
+
     @Override
-    public void onBindViewHolder(CouponViewHolder holder, int position) {
+    public void onBindViewHolder(CouponViewHolder holder, final int position) {
         holder.time.setText(list.get(position)
                 .getTime()
                 .split("-")[0] + "年" + list.get(position)
@@ -81,20 +86,10 @@ public class PictureTimeAdapter extends RecyclerView.Adapter<PictureTimeAdapter.
                     }
                 }
             }
-        }, list.get(position)
-                .getImgEntityList());
+        }
+        );
+        adapter.setList(list.get(position));
         holder.myGridView.setAdapter(adapter);
-        holder.myGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(context, ShareActivity1.class);
-                intent.putExtra("ima", new Gson().toJson(list.get(position)));
-                context.startActivity(intent);
-//                    for (ImgEntity imgEntity : adapter.list) {
-//                        imgEntity
-//                    }
-            }
-        });
     }
 
     @Override

@@ -1,22 +1,23 @@
 // Generated code from Butter Knife. Do not modify!
 package com.languang.bluebox.activity.picturestorege;
 
+import android.support.annotation.CallSuper;
 import android.support.annotation.UiThread;
 import android.view.View;
+import butterknife.Unbinder;
 import butterknife.internal.DebouncingOnClickListener;
 import butterknife.internal.Utils;
 import com.languang.bluebox.R;
-import com.languang.bluebox.basework.base.BaseFragmentActivity_ViewBinding;
 import com.luck.easyrecyclerview.EasyRecyclerView;
 import java.lang.IllegalStateException;
 import java.lang.Override;
 
-public class PhotoAlbumActivity_ViewBinding extends BaseFragmentActivity_ViewBinding {
+public class PhotoAlbumActivity_ViewBinding implements Unbinder {
   private PhotoAlbumActivity target;
 
-  private View view2131230900;
+  private View view2131231021;
 
-  private View view2131230903;
+  private View view2131231024;
 
   @UiThread
   public PhotoAlbumActivity_ViewBinding(PhotoAlbumActivity target) {
@@ -25,14 +26,12 @@ public class PhotoAlbumActivity_ViewBinding extends BaseFragmentActivity_ViewBin
 
   @UiThread
   public PhotoAlbumActivity_ViewBinding(final PhotoAlbumActivity target, View source) {
-    super(target, source);
-
     this.target = target;
 
     View view;
     target.recyclerView = Utils.findRequiredViewAsType(source, R.id.recycler_view, "field 'recyclerView'", EasyRecyclerView.class);
     view = Utils.findRequiredView(source, R.id.item_title_left_tv, "method 'onViewClicked'");
-    view2131230900 = view;
+    view2131231021 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -40,7 +39,7 @@ public class PhotoAlbumActivity_ViewBinding extends BaseFragmentActivity_ViewBin
       }
     });
     view = Utils.findRequiredView(source, R.id.item_title_right_tv, "method 'onViewClicked'");
-    view2131230903 = view;
+    view2131231024 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -50,6 +49,7 @@ public class PhotoAlbumActivity_ViewBinding extends BaseFragmentActivity_ViewBin
   }
 
   @Override
+  @CallSuper
   public void unbind() {
     PhotoAlbumActivity target = this.target;
     if (target == null) throw new IllegalStateException("Bindings already cleared.");
@@ -57,11 +57,9 @@ public class PhotoAlbumActivity_ViewBinding extends BaseFragmentActivity_ViewBin
 
     target.recyclerView = null;
 
-    view2131230900.setOnClickListener(null);
-    view2131230900 = null;
-    view2131230903.setOnClickListener(null);
-    view2131230903 = null;
-
-    super.unbind();
+    view2131231021.setOnClickListener(null);
+    view2131231021 = null;
+    view2131231024.setOnClickListener(null);
+    view2131231024 = null;
   }
 }

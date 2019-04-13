@@ -2,11 +2,8 @@ package com.languang.bluebox.fragment.mapstorage;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 
 import com.languang.bluebox.FFInterface;
@@ -17,13 +14,11 @@ import com.languang.bluebox.basework.base.BaseFragment;
 import com.languang.bluebox.coustomview.CustomViewPager;
 import com.languang.bluebox.entity.ImgEntity;
 import com.languang.bluebox.entity.ImgListEntity;
-import com.languang.bluebox.popupwd.AddPicturePopupWindow;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
  * 图库页面
@@ -32,15 +27,18 @@ import butterknife.OnClick;
  * @date 2018/3/26
  */
 public class MapStorageFragment extends BaseFragment {
-    @BindView(R.id.item_title_add_layout)
-    LinearLayout itemTitleAddLayout;
+//    @BindView(R.id.item_title_add_layout)
+//    LinearLayout itemTitleAddLayout;
     @BindView(R.id.radio_group)
     RadioGroup radioGroup;
     @BindView(R.id.view_pager)
     CustomViewPager viewPager;
+//    @BindView(R.id.startChoose)
+//    TextView startChoose;
     public PictureTimeFragment fragment1;
     public PictureAddressFragment fragment2;
     public PictureTagFragment fragment3;
+    StartChooseInterface startChooseInterface;
     List<ImgEntity> imgEntities1 = new ArrayList<ImgEntity>();
     private List<Fragment> fragments = new ArrayList<>(3);
     List<ImgEntity> choose = new ArrayList<>();
@@ -50,6 +48,7 @@ public class MapStorageFragment extends BaseFragment {
     public static int count = 0;
     AdressInterface adressInterface;
     boolean first = true;
+    boolean isCheaked;
 
     public void setIn(AdressInterface adressInterface) {
         this.adressInterface = adressInterface;
@@ -64,15 +63,84 @@ public class MapStorageFragment extends BaseFragment {
     protected void initView(View view) {
         initRadioGroup();
         initViewPager();
+//        startChoose.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (isCheaked) {
+//                    imgEntities1.clear();
+//                    ((MainActivity) getActivity()).clear1();
+//                }
+//                notmove(!isCheaked);
+//                isCheaked = !isCheaked;
+//                startChoose.setText(isCheaked == true ? "取消" : "选择");
+//                fragment1.adapter.setChoose(isCheaked);
+//            }
+//        });
+    }
+
+    private void notmove(boolean b) {
+        if (b) {
+            radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(RadioGroup group, int checkedId) {
+                    radioGroup.check(R.id.time_radio);
+                }
+            });
+        } else {
+            radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(RadioGroup group, int checkedId) {
+                    switch (checkedId) {
+                        case R.id.time_radio:
+                            radioGroup.check(R.id.time_radio);
+                            viewPager.setCurrentItem(0);
+                            break;
+                        case R.id.address_radio:
+                            radioGroup.check(R.id.address_radio);
+                            viewPager.setCurrentItem(1);
+                            break;
+                        case R.id.person_radio:
+                            radioGroup.check(R.id.person_radio);
+                            viewPager.setCurrentItem(2);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            });
+        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
         count = 0;
+        isCheaked = false;
+//        startChoose.setText("选择");
         imgEntities1.clear();
         choose.clear();
         chooseTag.clear();
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.time_radio:
+                        radioGroup.check(R.id.time_radio);
+                        viewPager.setCurrentItem(0);
+                        break;
+                    case R.id.address_radio:
+                        radioGroup.check(R.id.address_radio);
+                        viewPager.setCurrentItem(1);
+                        break;
+                    case R.id.person_radio:
+                        radioGroup.check(R.id.person_radio);
+                        viewPager.setCurrentItem(2);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
     }
 
     /**
@@ -296,25 +364,25 @@ public class MapStorageFragment extends BaseFragment {
         super.onDestroy();
     }
 
-    @OnClick({R.id.item_title_left_layout, R.id.item_title_add_layout})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            //添加
-            case R.id.item_title_left_layout:
-                getActivity().finish();
-                break;
-            //选择
-            case R.id.item_title_add_layout:
-                WindowManager m = getActivity().getWindowManager();
-                DisplayMetrics outMetrics = new DisplayMetrics();
-                m.getDefaultDisplay()
-                        .getMetrics(outMetrics);
-                int width = (int) (outMetrics.widthPixels * 0.6);
-                AddPicturePopupWindow picturePopupWindow = new AddPicturePopupWindow(getActivity(), width);
-                picturePopupWindow.showAsDropDown(itemTitleAddLayout);
-                break;
-            default:
-                break;
-        }
-    }
+//    @OnClick({R.id.item_title_left_layout, R.id.item_title_add_layout})
+//    public void onViewClicked(View view) {
+//        switch (view.getId()) {
+//            //添加
+//            case R.id.item_title_left_layout:
+//                getActivity().finish();
+//                break;
+//            //选择
+//            case R.id.item_title_add_layout:
+//                WindowManager m = getActivity().getWindowManager();
+//                DisplayMetrics outMetrics = new DisplayMetrics();
+//                m.getDefaultDisplay()
+//                        .getMetrics(outMetrics);
+//                int width = (int) (outMetrics.widthPixels * 0.6);
+//                AddPicturePopupWindow picturePopupWindow = new AddPicturePopupWindow(getActivity(), width);
+//                picturePopupWindow.showAsDropDown(itemTitleAddLayout);
+//                break;
+//            default:
+//                break;
+//        }
+//    }
 }

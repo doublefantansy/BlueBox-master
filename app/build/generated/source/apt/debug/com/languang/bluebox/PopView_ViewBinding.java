@@ -13,9 +13,9 @@ import java.lang.Override;
 public class PopView_ViewBinding implements Unbinder {
   private PopView target;
 
-  private View view2131231192;
+  private View view2131231397;
 
-  private View view2131231203;
+  private View view2131231410;
 
   @UiThread
   public PopView_ViewBinding(final PopView target, View source) {
@@ -23,7 +23,7 @@ public class PopView_ViewBinding implements Unbinder {
 
     View view;
     view = Utils.findRequiredView(source, R.id.waishe, "method 'onViewClicked'");
-    view2131231192 = view;
+    view2131231397 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -31,7 +31,7 @@ public class PopView_ViewBinding implements Unbinder {
       }
     });
     view = Utils.findRequiredView(source, R.id.xiangce, "method 'onViewClicked'");
-    view2131231203 = view;
+    view2131231410 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -47,9 +47,9 @@ public class PopView_ViewBinding implements Unbinder {
     target = null;
 
 
-    view2131231192.setOnClickListener(null);
-    view2131231192 = null;
-    view2131231203.setOnClickListener(null);
-    view2131231203 = null;
+    view2131231397.setOnClickListener(null);
+    view2131231397 = null;
+    view2131231410.setOnClickListener(null);
+    view2131231410 = null;
   }
 }

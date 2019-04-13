@@ -190,7 +190,7 @@ public class OkHttpUtils {
                         mHandler.post(new Runnable() {
                             @Override
                             public void run() {
-                                Log.d("ccnb", e.getMessage());
+//                                Log.d("ccnb", e.getMessage());
                                 callBack.onFailed();
                             }
                         });
